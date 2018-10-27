@@ -62,7 +62,7 @@
                         <span class="nav-link-inner--text">Try MVP</span>
                     </a>
                     <div class="dropdown-menu-inner">
-                        <a href="https://demos.creative-tim.com/vue-argon-design-system/documentation/"
+                        <router-link to=""
                            class="media d-flex align-items-center">
                             <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                                 <i class="ni ni-money-coins"></i>
@@ -73,8 +73,8 @@
                                         Funding is used to pay for incentives.  
                                         View a full audit trail of how sponsorship money was used.  </p>
                             </div>
-                        </a>
-                        <a href="https://demos.creative-tim.com/vue-argon-design-system/documentation/"
+                        </router-link>
+                        <router-link to=""
                            class="media d-flex align-items-center">
                             <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
                                 <i class="ni ni-istanbul"></i>
@@ -85,8 +85,8 @@
                                         Register patients and users for a program.  
                                         View program user engagement statistics. </p>
                             </div>
-                        </a>
-                        <a href="https://demos.creative-tim.com/vue-argon-design-system/documentation/"
+                        </router-link>
+                        <router-link to=""
                            class="media d-flex align-items-center">
                             <div class="icon icon-shape bg-gradient-info rounded-circle text-white">
                                 <i class="fa fa-user-md"></i>
@@ -96,8 +96,8 @@
                                 <p class="description d-none d-md-inline-block mb-0">Allocate tokens to users and patients based on their activity.
                                         Receive rewards for positive patient feedback.</p>
                             </div>
-                        </a>
-                        <a href="https://demos.creative-tim.com/vue-argon-design-system/documentation/"
+                        </router-link>
+                        <router-link to="/userDashboard"
                            class="media d-flex align-items-center">
                             <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
                                 <i class="fa fa-user"></i>
@@ -107,7 +107,7 @@
                                 <p class="description d-none d-md-inline-block mb-0">Manage your incentive balances and spend them where you want. 
                                         View your past history within a particular program.</p>
                             </div>
-                        </a>
+                        </router-link>
                     </div>
                 </base-dropdown>
 
