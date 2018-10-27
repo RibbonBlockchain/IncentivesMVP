@@ -55,15 +55,62 @@
                     </a>
                 </li>
                 
-                <li class="nav-item d-none d-lg-block ml-lg-4">
-                    <a href="https://www.creative-tim.com/product/vue-argon-design-system" target="_blank"
-                       class="btn btn-neutral btn-icon">
-                <span class="btn-inner--icon">
-                  <i class="fa fa-location-arrow mr-2"></i>
-                </span>
-                        <span class="nav-link-inner--text">View Demo</span>
+                <base-dropdown class="nav-item" menu-classes="dropdown-menu-xl">
+                    <a slot="title" href="#" class="btn btn-neutral btn-icon" data-toggle="dropdown" role="button">
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <i class="fa fa-location-arrow mr-2"></i>
+                        <span class="nav-link-inner--text">Try MVP</span>
                     </a>
-                </li>
+                    <div class="dropdown-menu-inner">
+                        <a href="https://demos.creative-tim.com/vue-argon-design-system/documentation/"
+                           class="media d-flex align-items-center">
+                            <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                                <i class="ni ni-money-coins"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h6 class="heading text-primary mb-md-1">Sponsor Login</h6>
+                                <p class="description d-none d-md-inline-block mb-0">Contribute to an incentive program. 
+                                        Funding is used to pay for incentives.  
+                                        View a full audit trail of how sponsorship money was used.  </p>
+                            </div>
+                        </a>
+                        <a href="https://demos.creative-tim.com/vue-argon-design-system/documentation/"
+                           class="media d-flex align-items-center">
+                            <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
+                                <i class="ni ni-istanbul"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-success mb-md-1">Manager Login</h5>
+                                <p class="description d-none d-md-inline-block mb-0">Allocate incentive allowances to practitioners. 
+                                        Register patients and users for a program.  
+                                        View program user engagement statistics. </p>
+                            </div>
+                        </a>
+                        <a href="https://demos.creative-tim.com/vue-argon-design-system/documentation/"
+                           class="media d-flex align-items-center">
+                            <div class="icon icon-shape bg-gradient-info rounded-circle text-white">
+                                <i class="fa fa-user-md"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-info mb-md-1">Practitioner Login</h5>
+                                <p class="description d-none d-md-inline-block mb-0">Allocate tokens to users and patients based on their activity.
+                                        Receive rewards for positive patient feedback.</p>
+                            </div>
+                        </a>
+                        <a href="https://demos.creative-tim.com/vue-argon-design-system/documentation/"
+                           class="media d-flex align-items-center">
+                            <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-warning mb-md-1">User and Patient Login</h5>
+                                <p class="description d-none d-md-inline-block mb-0">Manage your incentive balances and spend them where you want. 
+                                        View your past history within a particular program.</p>
+                            </div>
+                        </a>
+                    </div>
+                </base-dropdown>
+
             </ul>
         </base-nav>
     </header>
