@@ -46,68 +46,8 @@
             </section>
             <!-- 1st Hero Variation -->
         </div>
-        <section class="section section-lg pt-lg-0 mt--200">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="row row-grid">
-                            <div class="col-lg-4">
-                                <card class="border-0" hover shadow body-classes="py-5">
-                                    <icon name="ni ni-check-bold" type="primary" rounded class="mb-4">
-                                    </icon>
-                                    <h6 class="text-primary text-uppercase">Download Argon</h6>
-                                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4
-                                        that includes the most important components and features.</p>
-                                    <div>
-                                        <badge type="primary" rounded>design</badge>
-                                        <badge type="primary" rounded>system</badge>
-                                        <badge type="primary" rounded>creative</badge>
-                                    </div>
-                                    <base-button tag="a" href="#" type="primary" class="mt-4">
-                                        Learn more
-                                    </base-button>
-                                </card>
-                            </div>
-                            <div class="col-lg-4">
-                                <card class="border-0" hover shadow body-classes="py-5">
-                                    <icon name="ni ni-istanbul" type="success" rounded class="mb-4">
-                                    </icon>
-                                    <h6 class="text-success text-uppercase">Build Something</h6>
-                                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap
-                                        4 that includes the most important components and features.</p>
-                                    <div>
-                                        <badge type="success" rounded>business</badge>
-                                        <badge type="success" rounded>vision</badge>
-                                        <badge type="success" rounded>success</badge>
-                                    </div>
-                                    <base-button tag="a" href="#" type="success" class="mt-4">
-                                        Learn more
-                                    </base-button>
-                                </card>
-                            </div>
-                            <div class="col-lg-4">
-                                <card class="border-0" hover shadow body-classes="py-5">
-                                    <icon name="ni ni-planet" type="warning" rounded class="mb-4">
-                                    </icon>
-                                    <h6 class="text-warning text-uppercase">Prepare Launch</h6>
-                                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap
-                                        4 that includes the most important components and features.</p>
-                                    <div>
-                                        <badge type="warning" rounded>marketing</badge>
-                                        <badge type="warning" rounded>product</badge>
-                                        <badge type="warning" rounded>launch</badge>
-                                    </div>
-                                    <base-button tag="a" href="#" type="warning" class="mt-4">
-                                        Learn more
-                                    </base-button>
-                                </card>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section section-lg">
+
+        <section class="section section-lg mt--100">
             <div class="container">
                 <div class="row row-grid align-items-center">
                     <div class="col-md-6 order-md-2">
@@ -117,25 +57,24 @@
                         <div class="pr-md-5">
                             <icon name="ni ni-settings-gear-65" class="mb-5" size="lg" type="success" shadow
                                   rounded></icon>
-                            <h3>Awesome features</h3>
-                            <p>The kit comes with three pre-built pages to help you get started faster. You can change
-                                the text and images and you're good to go.</p>
+                            <h3>System Integration</h3>
+                            <p>The Ribbon Blockchain incentive system is designed to be interoperable with any existing government healthcare program through a universal API. This means that current initiatives can benefit from the addition of an incentive layer.</p>
                             <ul class="list-unstyled mt-5">
                                 <li class="py-2">
                                     <div class="d-flex align-items-center">
-                                        <badge type="success" circle class="mr-3" icon="ni ni-settings-gear-65"></badge>
-                                        <h6 class="mb-0">Carefully crafted components</h6>
-                                    </div>
-                                </li>
-                                <li class="py-2">
-                                    <div class="d-flex align-items-center">
-                                        <badge type="success" circle class="mr-3" icon="ni ni-html5"></badge>
-                                        <h6 class="mb-0">Amazing page examples</h6>
-                                    </div>
-                                </li>
-                                <li class="py-2">
-                                    <div class="d-flex align-items-center">
                                         <badge type="success" circle class="mr-3" icon="ni ni-satisfied"></badge>
+                                        <h6 class="mb-0">Universal, documented API to connect to any project</h6>
+                                    </div>
+                                </li>
+                                <li class="py-2">
+                                    <div class="d-flex align-items-center">
+                                        <badge type="success" circle class="mr-3" icon="fa fa-server"></badge>
+                                        <h6 class="mb-0">System scalability to enable future projects</h6>
+                                    </div>
+                                </li>
+                                <li class="py-2">
+                                    <div class="d-flex align-items-center">
+                                        <badge type="success" circle class="mr-3" icon="fa fa-server"></badge>
                                         <h6 class="mb-0">Super friendly support team</h6>
                                     </div>
                                 </li>
@@ -145,6 +84,7 @@
                 </div>
             </div>
         </section>
+
         <section class="section bg-secondary">
             <div class="container">
                 <div class="row row-grid align-items-center">
@@ -242,6 +182,88 @@
                 </div>
             </div>
         </section>
+
+        <section class="section section-lg pt-lg-0">
+            <div class="container">
+                <div class="row justify-content-center text-center mb-lg mb-0" style="margin-bottom:30px !important">
+                    <div class="col-lg-8">
+                        <h2 class="display-3">System Users</h2>
+                        <p class="lead text-muted">The Ribbon Blockchain incentive protocol brings together all key stakeholders in a mutually beneficial way.</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center pt-0">
+                    <div class="col-lg-12">
+                        <div class="row row-grid">
+                            <div class="col-lg-6">
+                                <card class="border-0 text-center" hover shadow body-classes="py-5">
+                                    <icon name="ni ni-money-coins" type="primary" rounded class="mb-4">
+                                    </icon>
+                                    <h6 class="text-primary text-uppercase">Program Sponsors</h6>
+                                    <p class="description mt-3">
+                                        Contribute to an incentive program. 
+                                        Funding is used to pay for incentives.  
+                                        View a full audit trail of how sponsorship money was used.  
+                                    </p>
+                                    <base-button tag="a" href="#" type="primary" class="mt-4">
+                                        Learn more
+                                    </base-button>
+                                </card>
+                            </div>
+                            <div class="col-lg-6">
+                                <card class="border-0 text-center" hover shadow body-classes="py-5">
+                                    <icon name="ni ni-istanbul" type="success" rounded class="mb-4">
+                                    </icon>
+                                    <h6 class="text-success text-uppercase">Program Managers</h6>
+                                    <p class="description mt-3">
+                                        Allocate incentive allowances to practitioners. 
+                                        Register patients and users for a program.  
+                                        View program user engagement statistics. 
+                                        
+                                        </p>
+                                    <div>
+    
+                                    </div>
+                                    <base-button tag="a" href="#" type="success" class="mt-4">
+                                        Learn more
+                                    </base-button>
+                                </card>
+                            </div>
+                            </div>
+                            <div class="row row-grid">
+                            <div class="col-lg-6">
+                                <card class="border-0 text-center" hover shadow body-classes="py-5">
+                                    <icon name="fa fa-user-md" type="info" rounded class="mb-4">
+                                    </icon>
+                                    <h6 class="text-info text-uppercase">Program Practitioners</h6>
+                                    <p class="description mt-3">
+                                        Allocate tokens to users and patients based on their activity.
+                                        Receive rewards for positive patient feedback.
+
+                                    </p>
+                                    <base-button tag="a" href="#" type="info" class="mt-4">
+                                        Learn more
+                                    </base-button>
+                                </card>
+                            </div>
+                            <div class="col-lg-6">
+                                <card class="border-0 text-center" hover shadow body-classes="py-5">
+                                    <icon name="fa fa-user" type="warning" rounded class="mb-4">
+                                    </icon>
+                                    <h6 class="text-warning text-uppercase">Program Users and Patients</h6>
+                                    <p class="description mt-3">
+                                        Manage your incentive balances and spend them where you want. 
+                                        View your past history within a particular program.</p>
+                                    <base-button tag="a" href="#" type="warning" class="mt-4">
+                                        Learn more
+                                    </base-button>
+                                </card>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="section section-lg">
             <div class="container">
                 <div class="row justify-content-center text-center mb-lg">
