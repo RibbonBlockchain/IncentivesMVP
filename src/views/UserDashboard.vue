@@ -69,67 +69,67 @@
     <!-- MODALS -->
     <!-- withdraw modal -->
     <modal :show.sync="modals.withdraw">
-                <h4 slot="header" class="modal-title" id="modal-title-default">Withdraw your Ribbon Tokens</h4>
+    <h4 slot="header" class="modal-title" id="modal-title-default">Withdraw your Ribbon Tokens</h4>
         <label>Recipient Address</label>              
        
-        <base-dropdown class="nav-item" menu-classes="dropdown-menu-xl">
+       
+       <div class="row" >
+       <div class="col-7">
+       <input type="text" class="form-control form-control-alternative" v-model="withdrawAddress">  
+       </div>
+       <div class="col-5 m-r-2">
+               <base-dropdown class="nav-item" menu-classes="dropdown-menu-xl">
                     <a slot="title" href="#" class="btn btn-neutral btn-icon" data-toggle="dropdown" role="button">
                         <i class="ni ni-ui-04 d-lg-none"></i>
-                        <i class="fa fa-location-arrow mr-2"></i>
-                        <span class="nav-link-inner--text">Select Contact</span>
+                        <i class="ni ni-circle-08"></i>
+                        <span class="nav-link-inner--text">Contacts</span>
                     </a>
                     <div class="dropdown-menu-inner">
-                        <router-link to=""
+                        <router-link to="/userDashboard"
+                        style="padding:10px"
                            class="media d-flex align-items-center">
-                            <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
-                                <i class="ni ni-money-coins"></i>
-                            </div>
+                            <img v-lazy="'img/theme/team-1-800x800.jpg'" class="rounded-circle" style="width:50px">
                             <div class="media-body ml-3">
-                                <h6 class="heading text-primary mb-md-1">Sponsor Login</h6>
-                                <p class="description d-none d-md-inline-block mb-0">Contribute to an incentive program. 
-                                        Funding is used to pay for incentives.  
-                                        View a full audit trail of how sponsorship money was used.  </p>
-                            </div>
-                        </router-link>
-                        <router-link to=""
-                           class="media d-flex align-items-center">
-                            <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
-                                <i class="ni ni-istanbul"></i>
-                            </div>
-                            <div class="media-body ml-3">
-                                <h5 class="heading text-success mb-md-1">Manager Login</h5>
-                                <p class="description d-none d-md-inline-block mb-0">Allocate incentive allowances to practitioners. 
-                                        Register patients and users for a program.  
-                                        View program user engagement statistics. </p>
-                            </div>
-                        </router-link>
-                        <router-link to=""
-                           class="media d-flex align-items-center">
-                            <div class="icon icon-shape bg-gradient-info rounded-circle text-white">
-                                <i class="fa fa-user-md"></i>
-                            </div>
-                            <div class="media-body ml-3">
-                                <h5 class="heading text-info mb-md-1">Practitioner Login</h5>
-                                <p class="description d-none d-md-inline-block mb-0">Allocate tokens to users and patients based on their activity.
-                                        Receive rewards for positive patient feedback.</p>
+                                <h5 class="heading text-primary mb-md-1">Ottoline Lambert</h5>
+                                <p class="description d-none d-md-inline-block mb-0">0x3f04D2d3711507f81e0Fcd0E8c1810BCE0B3CD84</p>
                             </div>
                         </router-link>
                         <router-link to="/userDashboard"
+                        style="padding:10px"
                            class="media d-flex align-items-center">
-                            <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                                <i class="fa fa-user"></i>
-                            </div>
+                            <img v-lazy="'img/theme/team-2-800x800.jpg'" class="rounded-circle" style="width:50px">
                             <div class="media-body ml-3">
-                                <h5 class="heading text-warning mb-md-1">User and Patient Login</h5>
-                                <p class="description d-none d-md-inline-block mb-0">Manage your incentive balances and spend them where you want. 
-                                        View your past history within a particular program.</p>
+                                <h5 class="heading text-primary mb-md-1">Princess Poole</h5>
+                                <p class="description d-none d-md-inline-block mb-0">0x190253F903cdE8298e572624aed44085BC04E810</p>
                             </div>
                         </router-link>
-                        <div>
+                        <router-link to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center">
+                            <img v-lazy="'img/theme/team-3-800x800.jpg'" class="rounded-circle" style="width:50px">
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-primary mb-md-1">Kolton Dunn</h5>
+                                <p class="description d-none d-md-inline-block mb-0">0x759c17Afe27707A9C2e3c06c943ac1df92166d0A</p>
+                            </div>
+                        </router-link>
                         
-                        </div>
+                        <router-link to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center">
+                            <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                                <i class="fa fa-mobile"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-primary mb-md-1">Personal Wallet on phone</h5>
+                                <p class="description d-none d-md-inline-block mb-0">0x90E18A928Cc22173154B91b94a89C0a0c2B933A0</p>
+                            </div>
+                        </router-link>
                     </div>
                 </base-dropdown>
+       </div>
+       </div>
+
+          
           <span style="padding-bottom:20px"/>
           <br>
           <label style="margin-top:30px">Withdraw Amount</label>
@@ -137,25 +137,22 @@
             
             <div>
                 <div class="row">
-                <div class=col-10>
+                <div class=col-7>
                     <input type="number" class="form-control form-control-alternative" v-model="withdrawValue">
                 </div>
-                <div class=col-2>
-                    <button style="margin-top:10px" type="button" class="btn btn-secondary btn-sm" @click="setMaxWithdraw">Max</button>
+                <div class=col-5>
+                    <button  type="button" class="btn btn-neutral btn-icon" @click="setMaxWithdraw">Max</button>
                 </div>
                 </div>
             </div>
-            
-
-          
-
-              
                 <template slot="footer">
                     <base-button type="primary">Withdraw</base-button>
                     <base-button type="link" class="ml-auto" @click="modals.withdraw = false">Cancel
                     </base-button>
                 </template>
     </modal>
+
+    
     </div>
 </template>
 <script>
@@ -172,8 +169,9 @@ export default {
         withdraw: false
       },
       withdrawValue: 0,
-
-      walletBalance: 3724
+      walletBalance: 3724,
+      customAddress: false,
+      withdrawAddress: ""
     };
   },
   methods: {

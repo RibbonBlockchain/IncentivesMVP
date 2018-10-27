@@ -88,7 +88,7 @@ export default {
     },
     animationDuration: {
       type: Number,
-      default: 500,
+      default: 800,
       description: "Modal transition duration"
     }
   },
