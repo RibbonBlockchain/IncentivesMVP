@@ -25,23 +25,20 @@
                             </div>
                             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0">
-                                    <base-button type="info" size="sm" class="mr-4">Connect</base-button>
-                                    <base-button type="default" size="sm" class="float-right">Message</base-button>
+                                    <base-button type="info" size="sm" class="mr-4" @click="modals.withdraw = true">Withdraw</base-button>
+                                    <base-button type="default" size="sm" class="float-right">Spend</base-button>
+                                
                                 </div>
                             </div>
                             <div class="col-lg-4 order-lg-1">
                                 <div class="card-profile-stats d-flex justify-content-center">
                                     <div>
-                                        <span class="heading">22</span>
-                                        <span class="description">Friends</span>
+                                        <span class="heading">3724</span>
+                                        <span class="description">Ribbon Tokens</span>
                                     </div>
                                     <div>
-                                        <span class="heading">10</span>
-                                        <span class="description">Photos</span>
-                                    </div>
-                                    <div>
-                                        <span class="heading">89</span>
-                                        <span class="description">Comments</span>
+                                        <span class="heading">R37.24</span>
+                                        <span class="description">Equivalent Value</span>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +47,7 @@
                             <h3>Jessica Jones
                                 <span class="font-weight-light">, 27</span>
                             </h3>
-                            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Bucharest, Romania</div>
+                            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Johannesburg South Africa</div>
                             <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer</div>
                             <div><i class="ni education_hat mr-2"></i>University of Computer Science</div>
                         </div>
@@ -64,12 +61,50 @@
                         </div>
                     </div>
                 </card>
+                <div class="col-md-4">
+            
+        </div>
             </div>
         </section>
+    <!-- MODALS -->
+    <!-- withdraw modal -->
+    <modal :show.sync="modals.withdraw">
+                <h6 slot="header" class="modal-title" id="modal-title-default">Type your modal title</h6>
+
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
+                    right at the coast of the Semantics, a large language ocean.</p>
+                <p>A small river named Duden flows by their place and supplies it with the necessary
+                    regelialia. It is a paradisematic country, in which roasted parts of sentences
+                    fly into your mouth.</p>
+
+                <template slot="footer">
+                    <base-button type="primary">Save changes</base-button>
+                    <base-button type="link" class="ml-auto" @click="modals.withdraw = false">Close
+                    </base-button>
+                </template>
+            </modal>
     </div>
 </template>
 <script>
-export default {};
+import Modal from "@/components/Modal.vue";
+export default {
+  components: {
+    Modal
+  },
+  data() {
+    return {
+      modals: {
+        withdraw: false
+      }
+    };
+  },
+  methods: {
+    click() {
+      console.log("CLICKED");
+    }
+  }
+};
 </script>
 <style>
 </style>

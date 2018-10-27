@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="text-center mt-5">
-                            <h3>Jessica Jones
+                            <h3>Johannesburg, South Africa
                                 <span class="font-weight-light">, 27</span>
                             </h3>
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Bucharest, Romania</div>
