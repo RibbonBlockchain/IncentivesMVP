@@ -47,7 +47,7 @@
             <!-- 1st Hero Variation -->
         </div>
 
-        <section class="section section-lg mt--100">
+        <section class="section section-lg mt--100" id="Integration">
             <div class="container">
                 <div class="row row-grid align-items-center">
                     <div class="col-md-6 order-md-2">
@@ -57,12 +57,12 @@
                         <div class="pr-md-5">
                             <icon name="ni ni-settings-gear-65" class="mb-5" size="lg" type="success" shadow
                                   rounded></icon>
-                            <h3>System Integration</h3>
+                            <h3>Incentive API Integration</h3>
                             <p>The Ribbon Blockchain incentive system is designed to be interoperable with any existing government healthcare program through a universal API. This means that current initiatives can benefit from the addition of an incentive layer.</p>
                             <ul class="list-unstyled mt-5">
                                 <li class="py-2">
                                     <div class="d-flex align-items-center">
-                                        <badge type="success" circle class="mr-3" icon="ni ni-satisfied"></badge>
+                                        <badge type="success" circle class="mr-3" icon="ni ni-books"></badge>
                                         <h6 class="mb-0">Universal, documented API to connect to any project</h6>
                                     </div>
                                 </li>
@@ -74,8 +74,8 @@
                                 </li>
                                 <li class="py-2">
                                     <div class="d-flex align-items-center">
-                                        <badge type="success" circle class="mr-3" icon="fa fa-server"></badge>
-                                        <h6 class="mb-0">Super friendly support team</h6>
+                                        <badge type="success" circle class="mr-3" icon="ni ni-satisfied"></badge>
+                                        <h6 class="mb-0">Minimum architectural change required</h6>
                                     </div>
                                 </li>
                             </ul>
@@ -85,7 +85,7 @@
             </div>
         </section>
 
-        <section class="section bg-secondary">
+        <section class="section bg-secondary" id="UseCase">
             <div class="container">
                 <div class="row row-grid align-items-center">
                     <div class="col-md-6">
@@ -108,11 +108,13 @@
                         <div class="pl-md-5">
                             <icon name="ni ni-settings" class="mb-5" size="lg" type="warning" shadow rounded></icon>
 
-                            <h3>Our customers</h3>
-                            <p class="lead">Don't let your uses guess by attaching tooltips and popoves to any element.
-                                Just make sure you enable them first via JavaScript.</p>
-                            <p>The kit comes with three pre-built pages to help you get started faster. You can change
-                                the text and images and you're good to go.</p>
+                            <h3>Incentives use cases</h3>
+                            <p class="lead">
+                                The Ribbon blockchain Incentive platform can be used to integrate with any healthcare system that requires an incentive layer.
+                            </p>
+                            <p>
+                                Incentives any behavioral change, from going for medical tests to interacting with a healtcare app.
+                            </p>
                             <p>The kit comes with three pre-built pages to help you get started faster. You can change
                                 the text and images and you're good to go.</p>
                             <a href="#" class="font-weight-bold text-warning mt-5">A beautiful UI Kit for impactful
@@ -183,11 +185,11 @@
             </div>
         </section>
 
-        <section class="section section-lg pt-lg-0">
+        <section class="section section-lg pt-lg-0" id="Stakeholders">
             <div class="container">
                 <div class="row justify-content-center text-center mb-lg mb-0" style="margin-bottom:30px !important">
                     <div class="col-lg-8">
-                        <h2 class="display-3">System Users</h2>
+                        <h2 class="display-3">System Stakeholders</h2>
                         <p class="lead text-muted">The Ribbon Blockchain incentive protocol brings together all key stakeholders in a mutually beneficial way.</p>
                     </div>
                 </div>
