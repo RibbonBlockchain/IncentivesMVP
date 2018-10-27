@@ -18,27 +18,25 @@
                 <div class="container shape-container d-flex">
                     <div class="col px-0">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <h1 class="display-3  text-white">A beautiful Design System
-                                    <span>completed with examples</span>
+                            <div class="col-lg-8">
+                                <h1 class="display-3  text-white">Ribbon Blockchain
+                                    <span>Public Healthcare Incentive Program</span>
                                 </h1>
-                                <p class="lead  text-white">The design system comes with four pre-built pages to help
-                                    you get started faster. You can change the text and images and you're good to
-                                    go.</p>
+                                <p class="lead  text-white">Using crypto incentives to make positive lifestyle changes. Reducing the burden on the medical system and making communities healthier. </p>
                                 <div class="btn-wrapper">
                                     <base-button tag="a"
                                                  href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html"
                                                  class="mb-3 mb-sm-0"
                                                  type="info"
-                                                 icon="fa fa-code">
-                                        Components
+                                                 icon="fa fa-question">
+                                        Learn More
                                     </base-button>
                                     <base-button tag="a"
                                                  href="https://www.creative-tim.com/product/argon-design-system"
                                                  class="mb-3 mb-sm-0"
                                                  type="white"
-                                                 icon="ni ni-cloud-download-95">
-                                        Download HTML
+                                                 icon="fa fa-paper-plane">
+                                        Get in touch
                                     </base-button>
                                 </div>
                             </div>
