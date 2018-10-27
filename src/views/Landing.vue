@@ -47,7 +47,43 @@
             <!-- 1st Hero Variation -->
         </div>
 
-        <section class="section section-lg mt--100" id="Integration">
+        <section class="section section-shaped my-0 overflow-hidden mt--100" id="About">
+            <div class="container pt-lg">
+                <div class="row text-center justify-content-center">
+                    <div class="col-lg-10">
+                        <h2 class="display-3">Incentives a healthier lifestyle</h2>
+                        <p class="lead ">
+                            Ribbon Blockchain aims to create a universal healthcare incentive layer. Encourage behavioral changes through incentives to make people healthier. Integrate with the existing architecture to drastically lower development costs.
+                        </p>
+                    </div>
+                </div>
+                <div class="row row-grid mt-5">
+                    <div class="col-lg-4 text-center">
+                        <icon name="fa fa-users" size="lg" gradient="white" shadow round color="primary"></icon>
+                        <h5 class=" mt-3">Drive Program Usage</h5>
+                        <p class=" mt-3">
+                            Increase the number of users of an intervention program by incentivising particular interactions. 
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <icon name="fa fa-heart" size="lg" gradient="white" shadow round color="primary"></icon>
+                        <h5 class=" mt-3">Reward Healthy Choices</h5>
+                        <p class=" mt-3">
+                            Each Program can choose what activity to reward and how much each activity is worth thereby Encouraging a healthier lifestyle.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <icon name="ni ni-atom" size="lg" gradient="white" shadow round color="primary"></icon>
+                        <h5 class=" mt-3">Universal Token</h5>
+                        <p class=" mt-3">
+                            All programs on the Ribbon incentive system use one native token removing the complexity of multiple incentive tokens.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-lg bg-secondary" id="Integration">
             <div class="container">
                 <div class="row row-grid align-items-center">
                     <div class="col-md-6 order-md-2">
@@ -85,7 +121,7 @@
             </div>
         </section>
 
-        <section class="section bg-secondary" id="UseCase">
+        <section class="section" id="UseCase">
             <div class="container">
                 <div class="row row-grid align-items-center">
                     <div class="col-md-6">
@@ -266,7 +302,7 @@
             </div>
         </section>
 
-        <section class="section section-lg">
+        <!-- <section class="section section-lg">
             <div class="container">
                 <div class="row justify-content-center text-center mb-lg">
                     <div class="col-lg-8">
@@ -452,7 +488,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
     </div>
 </template>
 
