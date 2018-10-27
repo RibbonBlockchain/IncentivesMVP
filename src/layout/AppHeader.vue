@@ -20,28 +20,28 @@
                 
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" v-scroll-to="'#About'" href="#" target="_blank"
-                       data-toggle="tooltip">
+                       data-toggle="tooltip" @click="reRoute('#About')">
                         About
                         
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" v-scroll-to="'#Integration'" href="#" target="_blank"
-                       data-toggle="tooltip">
+                       data-toggle="tooltip" @click="reRoute('#Integration')">
                         Integration
                         
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" v-scroll-to="'#UseCase'" href="#" target="_blank"
-                       data-toggle="tooltip">
+                       data-toggle="tooltip" @click="reRoute('#UseCase')">
                         Use Cases
                         
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" v-scroll-to="'#Stakeholders'" href="#" target="_blank"
-                       data-toggle="tooltip">
+                       data-toggle="tooltip" @click="reRoute('#Stakeholders')">
                         Stakeholders
                         
                     </a>
@@ -125,6 +125,46 @@ export default {
     BaseNav,
     CloseButton,
     BaseDropdown
+  },
+  data(){
+      return{
+          scrollId: "",
+          options: {
+          container: "#container",
+          easing: "ease-in",
+          offset: -60,
+          force: true,
+          cancelable: true,
+          onStart: function(element) {
+            // scrolling started
+          },
+          onDone: function(element) {
+            // scrolling is done
+          },
+          onCancel: function() {
+            // scrolling has been interrupted
+          },
+          x: false,
+          y: true
+        }
+      }
+  },
+  methods: {
+    reRoute(id) {
+      //   console.log(this.$route.fullPath != "/");
+      if (this.$route.fullPath != "/") {
+        this.$router.push({ path: "/" });
+        console.log(id);
+        this.scrollId = id
+
+        setTimeout(this.scroll, 500);
+      }
+    },
+    scroll() {
+      console.log(this.scrollId);
+      console.log("SCROLELD");
+      this.$scrollTo(this.scrollId);
+    }
   }
 };
 </script>

@@ -69,39 +69,116 @@
     <!-- MODALS -->
     <!-- withdraw modal -->
     <modal :show.sync="modals.withdraw">
-                <h6 slot="header" class="modal-title" id="modal-title-default">Type your modal title</h6>
+                <h4 slot="header" class="modal-title" id="modal-title-default">Withdraw your Ribbon Tokens</h4>
+        <label>Recipient Address</label>              
+       
+        <base-dropdown class="nav-item" menu-classes="dropdown-menu-xl">
+                    <a slot="title" href="#" class="btn btn-neutral btn-icon" data-toggle="dropdown" role="button">
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <i class="fa fa-location-arrow mr-2"></i>
+                        <span class="nav-link-inner--text">Select Contact</span>
+                    </a>
+                    <div class="dropdown-menu-inner">
+                        <router-link to=""
+                           class="media d-flex align-items-center">
+                            <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                                <i class="ni ni-money-coins"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h6 class="heading text-primary mb-md-1">Sponsor Login</h6>
+                                <p class="description d-none d-md-inline-block mb-0">Contribute to an incentive program. 
+                                        Funding is used to pay for incentives.  
+                                        View a full audit trail of how sponsorship money was used.  </p>
+                            </div>
+                        </router-link>
+                        <router-link to=""
+                           class="media d-flex align-items-center">
+                            <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
+                                <i class="ni ni-istanbul"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-success mb-md-1">Manager Login</h5>
+                                <p class="description d-none d-md-inline-block mb-0">Allocate incentive allowances to practitioners. 
+                                        Register patients and users for a program.  
+                                        View program user engagement statistics. </p>
+                            </div>
+                        </router-link>
+                        <router-link to=""
+                           class="media d-flex align-items-center">
+                            <div class="icon icon-shape bg-gradient-info rounded-circle text-white">
+                                <i class="fa fa-user-md"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-info mb-md-1">Practitioner Login</h5>
+                                <p class="description d-none d-md-inline-block mb-0">Allocate tokens to users and patients based on their activity.
+                                        Receive rewards for positive patient feedback.</p>
+                            </div>
+                        </router-link>
+                        <router-link to="/userDashboard"
+                           class="media d-flex align-items-center">
+                            <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-warning mb-md-1">User and Patient Login</h5>
+                                <p class="description d-none d-md-inline-block mb-0">Manage your incentive balances and spend them where you want. 
+                                        View your past history within a particular program.</p>
+                            </div>
+                        </router-link>
+                        <div>
+                        
+                        </div>
+                    </div>
+                </base-dropdown>
+          <span style="padding-bottom:20px"/>
+          <br>
+          <label style="margin-top:30px">Withdraw Amount</label>
+          <base-slider :range={min:0,max:walletBalance} v-model="withdrawValue"/><br>
+            
+            <div>
+                <div class="row">
+                <div class=col-10>
+                    <input type="number" class="form-control form-control-alternative" v-model="withdrawValue">
+                </div>
+                <div class=col-2>
+                    <button style="margin-top:10px" type="button" class="btn btn-secondary btn-sm" @click="setMaxWithdraw">Max</button>
+                </div>
+                </div>
+            </div>
+            
 
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-                    right at the coast of the Semantics, a large language ocean.</p>
-                <p>A small river named Duden flows by their place and supplies it with the necessary
-                    regelialia. It is a paradisematic country, in which roasted parts of sentences
-                    fly into your mouth.</p>
+          
 
+              
                 <template slot="footer">
-                    <base-button type="primary">Save changes</base-button>
-                    <base-button type="link" class="ml-auto" @click="modals.withdraw = false">Close
+                    <base-button type="primary">Withdraw</base-button>
+                    <base-button type="link" class="ml-auto" @click="modals.withdraw = false">Cancel
                     </base-button>
                 </template>
-            </modal>
+    </modal>
     </div>
 </template>
 <script>
 import Modal from "@/components/Modal.vue";
+import BaseDropdown from "@/components/BaseDropdown";
 export default {
   components: {
-    Modal
+    Modal,
+    BaseDropdown
   },
   data() {
     return {
       modals: {
         withdraw: false
-      }
+      },
+      withdrawValue: 0,
+
+      walletBalance: 3724
     };
   },
   methods: {
-    click() {
-      console.log("CLICKED");
+    setMaxWithdraw() {
+      this.withdrawValue = this.walletBalance;
     }
   }
 };
