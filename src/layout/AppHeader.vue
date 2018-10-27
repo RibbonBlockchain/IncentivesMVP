@@ -2,7 +2,7 @@
     <header class="header-global">
         <base-nav class="navbar-main" transparent type="" effect="light" expand>
             <router-link slot="brand" class="navbar-brand mr-lg-5" to="/">
-                <img src="img/brand/white.png">
+                <img src="img/brand/white.png" style="height:100%; width:150px">
             </router-link>
 
             <div class="row" slot="content-header" slot-scope="{closeMenu}">
