@@ -64,13 +64,14 @@
                                 <th>Program</th>
                                 <th>Date Launched</th>
                                 <th>Description</th>
-                                <th>View</th>
+                                <th>More Info</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>2018-07-24</td>
                                 <td>Lola</td>
+                                <td>2018-07-24</td>
+                                
                                 <td>Completed A survey</td>
                                 <td>
                                     <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.projectInfo = true">
@@ -79,18 +80,7 @@
                                     </button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2018-07-28</td>
-                                <td>Lola</td>
-                                <td>Completed A survey</td>
-                                <td>150</td>
-                            </tr>
-                            <tr>
-                                <td>2018-08-30</td>
-                                <td>Lola</td>
-                                <td>Completed A survey</td>
-                                <td>350</td>
-                            </tr>
+                            
                             </tbody>
                         </table>
                     </tab-pane>
@@ -140,6 +130,36 @@
                         </table>
     </div>
 </div>
+                    </tab-pane>
+                     <tab-pane key="tab3">
+                        <template slot="title">
+                            <i class="ni ni-money-coins mr-2"></i>Analytics
+                        </template>
+                           <table class="table table-striped" style="width:800px">
+                            <thead>
+                            <tr>
+                                <th>Program</th>
+                                <th>Date Launched</th>
+                                <th>Description</th>
+                                <th>More Info</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Lola</td>
+                                <td>2018-07-24</td>
+                                
+                                <td>Completed A survey</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.projectInfo = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-eye"></i></span>
+
+                                    </button>
+                                </td>
+                            </tr>
+                            
+                            </tbody>
+                        </table>
                     </tab-pane>
                 </card>
             </tabs>                 
