@@ -183,24 +183,24 @@
     <h4 slot="header" class="modal-title" id="modal-title-default">Spend your Ribbon Tokens</h4>
         <div class="row">
             <div class="col-4">
-                <img v-lazy="'img/theme/team-2-800x800.jpg'" class="" style="width:135px; cursor: pointer" @click="photoClick('woolworth')">
+                <img v-lazy="'img/stores/clicks.png'" class="" style="width:135px; cursor: pointer; margin-top:35px;" @click="photoClick('Clicks')">
             </div>
             <div class="col-4">
-                <img v-lazy="'img/theme/team-2-800x800.jpg'" class="" style="width:135px; cursor: pointer" @click="photoClick('woolworth')">
+                <img v-lazy="'img/stores/dischem.JPG'" class="" style="width:135px; cursor: pointer" @click="photoClick('Dischem')">
             </div>
             <div class="col-4">
-                <img v-lazy="'img/theme/team-2-800x800.jpg'" class="" style="width:135px; cursor: pointer" @click="photoClick('woolworth')">
+                <img v-lazy="'img/stores/gautrain.jpg'" class="" style="width:135px; cursor: pointer; margin-top:10px" @click="photoClick('Gautrain')">
             </div>
         </div>
         <div class="row pt-4">
             <div class="col-4">
-                <img v-lazy="'img/theme/team-2-800x800.jpg'" class="" style="width:135px; cursor: pointer" @click="photoClick('woolworth')">
+                <img v-lazy="'img/stores/metrobus.jpg'" class="" style="width:135px; cursor: pointer" @click="photoClick('Metrobus')">
             </div>
             <div class="col-4">
-                <img v-lazy="'img/theme/team-2-800x800.jpg'" class="" style="width:135px; cursor: pointer" @click="photoClick('woolworth')">
+                <img v-lazy="'img/stores/picknpay.jpg'" class="" style="width:135px; cursor: pointer; margin-top:45px" @click="photoClick('PicknPay')">
             </div>
             <div class="col-4">
-                <img v-lazy="'img/theme/team-2-800x800.jpg'" class="" style="width:135px; cursor: pointer" @click="photoClick('woolworth')">
+                <img v-lazy="'img/stores/shopright.png'" class="" style="width:135px; cursor: pointer" @click="photoClick('Shopright')">
             </div>
         </div>
         
