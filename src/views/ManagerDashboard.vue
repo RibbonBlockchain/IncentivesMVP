@@ -26,8 +26,14 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                                <div class="card-profile-actions py-4 mt-lg-0">
-                                    <!-- <base-button type="info" size="sm" class="mr-4" @click="transferManagement">Transfer Management</base-button> -->
+                                <div class="card-profile-stats d-flex justify-content-center">
+                                    <div class="row">
+                                        <div class="col-12">
+                                        <span class="heading">Funding Health</span>
+                                    <vue-plotly class="heading" :data="gaugeData.data" :layout="gaugeData.layout" :options="options" :autoResize="true" style="padding-top:0px;padding-left:0px"/>
+                                    
+                                    </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 order-lg-1">
@@ -35,25 +41,22 @@
                                     <div>
                                         <span class="heading">Manager of of 1 program</span>
                                         
-                                            <!-- <base-dropdown tag="li" class="nav-item description">
-                                <a slot="title" href="#" class="nav-link" data-toggle="dropdown" role="button">
-                                    <i class="ni ni-collection d-lg-none"></i>
-                                    <span class="nav-link-inner--text">Select Program</span>
-                                </a>
-                                <router-link to="/landing" class="dropdown-item">Lola</router-link>
-                            </base-dropdown> -->
-                            <span class="description">Lola</span>
+                            <span class="description">Project name: <strong>Lola</strong></span><br>
+                            <span class="description">Total active users: <strong>1945</strong></span><br>
+                            <span class="description">Starting date: <strong>2018-07-24</strong></span><br>
+                            <span class="description">Manager address: <strong>0x90E1...33A0</strong></span>
                                     </div>
     
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center mt-5">
+                        <div class="text-center mt-5 mt--100">
                             <h3>Re-Action!
                                 
                             </h3>
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>South Africa</div>
-                            
+                        
+
                         </div>
                          <div class="mt-3  text-center">
                             <div class="row justify-content-center">
@@ -248,12 +251,14 @@ import Tabs from "@/components/Tabs/Tabs.vue";
 import TabPane from "@/components/Tabs/TabPane.vue";
 import Modal from "@/components/Modal.vue";
 import BaseDropdown from "@/components/BaseDropdown";
+import VuePlotly from "@statnett/vue-plotly";
 export default {
   components: {
     Tabs,
     TabPane,
     Modal,
-    BaseDropdown
+    BaseDropdown,
+    VuePlotly
   },
   data() {
     return {
@@ -261,7 +266,12 @@ export default {
         practitioner: false
       },
       originalAllowance: 0,
-      programAllowance: 3759.32
+      programAllowance: 3759.32,
+      options: {
+        responsive: true,
+        showLink: false,
+        displayModeBar: false
+      }
     };
   },
   methods: {
@@ -281,6 +291,107 @@ export default {
   },
   mounted() {
     this.originalAllowance = this.programAllowance;
+  },
+  computed: {
+    gaugeData() {
+      // Enter a balance between 0 and 180
+      var level = 55;
+
+      // Trig to calc meter point
+      var degrees = 180 - level,
+        radius = 0.5;
+      var radians = (degrees * Math.PI) / 180;
+      var x = radius * Math.cos(radians);
+      var y = radius * Math.sin(radians);
+
+      // Path: may have to change to create a better triangle
+      var mainPath = "M -.0 -0.025 L .0 0.025 L ",
+        pathX = String(x),
+        space = " ",
+        pathY = String(y),
+        pathEnd = " Z";
+      var path = mainPath.concat(pathX, space, pathY, pathEnd);
+
+      var data = [
+        {
+          type: "scatter",
+          x: [0],
+          y: [0],
+          marker: { size: 28, color: "850000" },
+          showlegend: false,
+          name: "balance",
+          text: "3759",
+          hoverinfo: "text+name"
+        },
+        {
+          values: [50 / 6, 50 / 6, 50 / 6, 50 / 6, 50 / 6, 50 / 6, 50],
+          rotation: 90,
+          text: ["10000+", "8000", "6000", "4000", "2000", "0", ""],
+          textinfo: "text",
+          textposition: "inside",
+          marker: {
+            colors: [
+              "#00FF00",
+              "#00FF00",
+              "#FEFF00",
+              "#FEFF00",
+              "#FF7E00",
+              "#FF410C",
+              "#FFFFFF"
+            ]
+          },
+          labels: [
+            "Over 10000",
+            "8000 to 9999",
+            "6000 to 7999",
+            "4000-5999",
+            "2000-3999",
+            "0-1999",
+            ""
+          ],
+          hoverinfo: "label",
+          hole: 0.5,
+          type: "pie",
+          showlegend: false
+        }
+      ];
+
+      var layout = {
+        shapes: [
+          {
+            type: "path",
+            path: path,
+            fillcolor: "850000",
+            line: {
+              color: "850000"
+            }
+          }
+        ],
+        // title: "Funding Health",
+        height: 200,
+        width: 200,
+        margin: {
+          l: 0,
+          r: 0,
+          b: 0,
+          t: 0,
+          pad: 0
+        },
+        xaxis: {
+          zeroline: false,
+          showticklabels: false,
+          showgrid: false,
+          range: [-1, 1]
+        },
+        yaxis: {
+          zeroline: false,
+          showticklabels: false,
+          showgrid: false,
+          range: [-1, 1]
+        }
+      };
+      return { data: data, layout: layout };
+    }
   }
 };
 </script>

@@ -68,7 +68,7 @@
                                 <i class="fa fa-tachometer"></i>
                             </div>
                             <div class="media-body ml-3">
-                                <h5 class="heading text-default mb-md-1">Ribbon Blockchain Dashboard</h5>
+                                <h5 class="heading text-default mb-md-1">Ribbon Ecosystem Dashboard</h5>
                                 <p class="description d-none d-md-inline-block mb-0"> Add new Projects to the platform.
                                     View Holistic information on the state of all programs.
                                      Gain insight into what makes projects successful.

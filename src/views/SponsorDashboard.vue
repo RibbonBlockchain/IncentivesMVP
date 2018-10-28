@@ -200,18 +200,6 @@
                     
                     
                         </div>
-                        <div class="row pt-5 border-top" style="width:800px">
-                        <div class="col-12">
-                        <h5>Current Project Balances</h5>
-                            <div class="row">
-                            <div class="col-12 center text-center">
-                                 <vue-plotly :data="chartData" :layout="layout" :options="options" :watchedShallow="false" :autoResize="true" style="padding-left:150px"/>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                           
-
                     </tab-pane>
                 </card>
             </tabs>                 
@@ -429,8 +417,7 @@ export default {
             marker: {
               colors: "#5CC9F5"
             }
-          },
-          
+          }
         ];
       }
       if (this.ContributionPiMode == "Month") {
