@@ -133,33 +133,16 @@
                     </tab-pane>
                      <tab-pane key="tab3">
                         <template slot="title">
-                            <i class="ni ni-money-coins mr-2"></i>Analytics
+                            <i class="fa fa-pie-chart"></i> Analytics
                         </template>
-                           <table class="table table-striped" style="width:800px">
-                            <thead>
-                            <tr>
-                                <th>Program</th>
-                                <th>Date Launched</th>
-                                <th>Description</th>
-                                <th>More Info</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Lola</td>
-                                <td>2018-07-24</td>
-                                
-                                <td>Completed A survey</td>
-                                <td>
-                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.projectInfo = true">
-	                                    <span class="btn-inner--icon"><i class="fa fa-eye"></i></span>
+                        <div class="row" style="width:800px">
+                        <div class="col-12">
+                        <h5>Historic Donation Distribution</h5>
+                           <vue-plotly :data="data" :layout="layout" :options="options" :watchedShallow="false" :autoResize="true"/>
+                        </div>
+                        </div>
+                           
 
-                                    </button>
-                                </td>
-                            </tr>
-                            
-                            </tbody>
-                        </table>
                     </tab-pane>
                 </card>
             </tabs>                 
@@ -293,12 +276,15 @@ import Tabs from "@/components/Tabs/Tabs.vue";
 import TabPane from "@/components/Tabs/TabPane.vue";
 import Modal from "@/components/Modal.vue";
 import BaseDropdown from "@/components/BaseDropdown";
+import VuePlotly from "@statnett/vue-plotly";
+
 export default {
   components: {
     Tabs,
     TabPane,
     Modal,
-    BaseDropdown
+    BaseDropdown,
+    VuePlotly
   },
   data() {
     return {
@@ -306,12 +292,35 @@ export default {
         projectInfo: false,
         deposit: false,
         withdraw: false
-
       },
       withdrawValue: 0,
       walletBalance: 3724,
       customAddress: false,
-      withdrawAddress: ""
+      withdrawAddress: "",
+      data: [
+        {
+          values: [19, 26, 505],
+          labels: ["Sponsorship 1", "Sponsorship 2", "Sponsorship 3"],
+          type: "pie",
+          hole: 0.4
+        }
+      ],
+      layout: {
+        height: 650,
+        width: 750,
+        margin: {
+          l: 0,
+          r: 0,
+          b: 0,
+          t: 50,
+          pad: 5
+        }
+      },
+      options: {
+        responsive: true,
+        showLink: false,
+        displayModeBar: false
+      }
     };
   },
   methods: {
@@ -320,7 +329,7 @@ export default {
     },
     contactSelect(address) {
       this.withdrawAddress = address;
-    },
+    }
   }
 };
 </script>
