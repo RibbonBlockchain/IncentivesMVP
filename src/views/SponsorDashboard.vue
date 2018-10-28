@@ -11,7 +11,7 @@
                 <span></span>
             </div>
         </section>
-        <section class="section section-skew">
+        <section class="section section-skew  mt--100">
             <div class="container">
                 <card shadow class="card-profile mt--300" no-body>
                     <div class="px-4">
@@ -25,8 +25,8 @@
                             </div>
                             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0">
-                                    <base-button type="info" size="sm" class="mr-4">Deposit</base-button>
-                                    <base-button type="default" size="sm" class="float-right">Withdraw</base-button>
+                                    <base-button type="info" size="sm" class="mr-4" @click="modals.deposit = true">Deposit</base-button>
+                                    <base-button type="default" size="sm" class="float-right" @click="modals.withdraw = true">Withdraw</base-button>
                                 </div>
                             </div>
                             <div class="col-lg-4 order-lg-1">
@@ -43,14 +43,12 @@
                             </div>
                         </div>
                         <div class="text-center mt-5">
-                            <h3>Johannesburg, South Africa
-                                <span class="font-weight-light">, 27</span>
+                            <h3>Department Of Health
+                                
                             </h3>
-                            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Bucharest, Romania</div>
-                            <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer</div>
-                            <div><i class="ni education_hat mr-2"></i>University of Computer Science</div>
+                            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>South Africa</div>
                         </div>
-                        <div class="mt-5 py-1 border-top text-center">
+                        <div class="mt-3  text-center">
                             <div class="row justify-content-center">
                              <div class="nav-wrapper">
                                  
@@ -217,44 +215,13 @@
                     <div class="dropdown-menu-inner">
                         <a to="/userDashboard"
                         style="padding:10px"
-                           class="media d-flex align-items-center">
-                            <img v-lazy="'img/theme/team-1-800x800.jpg'" class="rounded-circle" style="width:50px">
-                            <div class="media-body ml-3"
-                            @click="contactSelect('0x3f04D2d3711507f81e0Fcd0E8c1810BCE0B3CD84')">
-                                <h5 class="heading text-primary mb-md-1">Ottoline Lambert</h5>
-                                <p class="description d-none d-md-inline-block mb-0">0x3f04D2d3711507f81e0Fcd0E8c1810BCE0B3CD84</p>
-                            </div>
-                        </a>
-                        <a to="/userDashboard"
-                        style="padding:10px"
-                           class="media d-flex align-items-center"
-                           @click="contactSelect('0x190253F903cdE8298e572624aed44085BC04E810')">
-                            <img v-lazy="'img/theme/team-2-800x800.jpg'" class="rounded-circle" style="width:50px">
-                            <div class="media-body ml-3">
-                                <h5 class="heading text-primary mb-md-1">Princess Poole</h5>
-                                <p class="description d-none d-md-inline-block mb-0">0x190253F903cdE8298e572624aed44085BC04E810</p>
-                            </div>
-                        </a>
-                        <a to="/userDashboard"
-                        style="padding:10px"
-                           class="media d-flex align-items-center"
-                           @click="contactSelect('0x759c17Afe27707A9C2e3c06c943ac1df92166d0A')">
-                            <img v-lazy="'img/theme/team-3-800x800.jpg'" class="rounded-circle" style="width:50px">
-                            <div class="media-body ml-3">
-                                <h5 class="heading text-primary mb-md-1">Kolton Dunn</h5>
-                                <p class="description d-none d-md-inline-block mb-0">0x759c17Afe27707A9C2e3c06c943ac1df92166d0A</p>
-                            </div>
-                        </a>
-                        
-                        <a to="/userDashboard"
-                        style="padding:10px"
                            class="media d-flex align-items-center"
                            @click="contactSelect('0x90E18A928Cc22173154B91b94a89C0a0c2B933A0')">
                             <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
-                                <i class="fa fa-mobile"></i>
+                                <i class="fa fa-archive"></i>
                             </div>
                             <div class="media-body ml-3">
-                                <h5 class="heading text-primary mb-md-1">Personal Wallet on phone</h5>
+                                <h5 class="heading text-primary mb-md-1">DOH Cold Storage</h5>
                                 <p class="description d-none d-md-inline-block mb-0">0x90E18A928Cc22173154B91b94a89C0a0c2B933A0</p>
                             </div>
                         </a>
@@ -336,7 +303,10 @@ export default {
   methods: {
     setMaxWithdraw() {
       this.withdrawValue = this.walletBalance;
-    }
+    },
+    contactSelect(address) {
+      this.withdrawAddress = address;
+    },
   }
 };
 </script>

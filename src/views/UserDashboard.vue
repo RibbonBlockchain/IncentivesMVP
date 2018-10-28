@@ -11,7 +11,7 @@
                 <span></span>
             </div>
         </section>
-        <section class="section section-skew">
+        <section class="section section-skew  mt--100">
             <div class="container">
                 <card shadow class="card-profile mt--300" no-body>
                     <div class="px-4">
