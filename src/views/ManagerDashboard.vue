@@ -17,7 +17,7 @@
             <div class="container">
                 <card shadow class="card-profile mt--300" no-body>
                     <div class="px-4">
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center pb-3">
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
                                     <a href="#">
@@ -39,10 +39,9 @@
                             <div class="col-lg-4 order-lg-1">
                                 <div class="card-profile-stats d-flex justify-content-center">
                                     <div>
-                                        <span class="heading">Manager of of 1 program</span>
-                                        
-                            <span class="description">Project name: <strong>Lola</strong></span><br>
-                            <span class="description">Total active users: <strong>1945</strong></span><br>
+                                        <span class="heading">She Conquers - Lola</span>
+                            <span class="description">Daily active users: <strong>28</strong></span><br>
+                            <span class="description">Total historic users: <strong>1945</strong></span><br>
                             <span class="description">Starting date: <strong>2018-07-24</strong></span><br>
                             <span class="description">Manager address: <strong>0x90E1...33A0</strong></span>
                                     </div>
@@ -50,7 +49,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center mt-5 mt--100">
+                        <div class="text-center mt-5 mt--150">
                             <h3>Re-Action!
                                 
                             </h3>
@@ -70,18 +69,72 @@
                            <table class="table table-striped" style="width:800px">
                             <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Practitioner Name</th>
                                 <th>Last Active</th>
                                 <th>Total Awarded</th>
-                                <th>Remaining Allowance</th>
                                 <th>Edit</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Lola Program API</td>
+                                <td>Lola API Gauteng</td>
                                 <td>2018-10-28</td>
-                                <td>123891 RBN</td>
+                                
+                                <td>3759 RBN</td> 
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Lola Gauteng Community Kiosks</td>
+                                <td>2018-10-28</td>
+                                
+                                <td>3759 RBN</td> 
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Lola API Mpumalanga</td>
+                                <td>2018-10-28</td>
+                                
+                                <td>3759 RBN</td> 
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Lola Mpumalanga Community Kiosks</td>
+                                <td>2018-10-28</td>
+                                
+                                <td>3759 RBN</td> 
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Lola API Free State</td>
+                                <td>2018-10-28</td>
+                                
+                                <td>3759 RBN</td> 
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Lola Free State Community Kiosks</td>
+                                <td>2018-10-28</td>
+                                
                                 <td>3759 RBN</td> 
                                 <td>
                                     <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
@@ -124,10 +177,77 @@
                                     </button>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>Robin</td>
+                                <td>Olson</td>
+                                <td>0x72A2...44B1</td>    
+                                <td>2018-10-29</td>
+                                <td>120 RBN</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
+                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Herbert</td>
+                                <td>Singleton</td>
+                                <td>0x10F2...28C5</td>    
+                                <td>2018-10-25</td>
+                                <td>15 RBN</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
+                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Harry</td>
+                                <td>Short</td>
+                                <td>0x12E5...55C4</td>    
+                                <td>2018-10-11</td>
+                                <td>295 RBN</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
+                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Amar</td>
+                                <td>Hogan</td>
+                                <td>0x12Cd...28C2</td>    
+                                <td>2018-10-23</td>
+                                <td>193 RBN</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
+                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
                             
                             
                             </tbody>
                         </table>
+                        <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">
+        <i class="fa fa-angle-left"></i>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">
+        <i class="fa fa-angle-right"></i>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
                         </div>
                     </div>
 
@@ -358,8 +478,8 @@ export default {
           }
         ],
         // title: "Funding Health",
-        height: 170,
-        width: 170,
+        height: 180,
+        width: 180,
         margin: {
           l: 0,
           r: 0,

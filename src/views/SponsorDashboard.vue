@@ -244,7 +244,7 @@
                 </div>
                 <template slot="footer">
                     <base-button type="primary">Contribute</base-button>
-                    <base-button type="link" class="ml-auto" @click="modals.withdraw = false">Cancel
+                    <base-button type="link" class="ml-auto" @click="modals.projectInfo = false">Cancel
                     </base-button>
                 </template>
         
