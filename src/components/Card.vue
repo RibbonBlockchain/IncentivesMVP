@@ -11,7 +11,7 @@
             <slot name="header">
             </slot>
         </div>
-        <div class="card-body" :class="bodyClasses" v-if="!noBody">
+        <div class="card-body p-0" :class="bodyClasses" v-if="!noBody">
             <slot></slot>
         </div>
 

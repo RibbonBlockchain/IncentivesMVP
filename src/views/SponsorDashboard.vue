@@ -58,23 +58,62 @@
                         <template slot="title">
                             <i class="ni ni-money-coins mr-2"></i>Fund
                         </template>
-                           <table class="table table-striped" style="width:800px">
+                           <table class="table table-striped m-0 p-0" style="width:800px">
                             <thead>
                             <tr>
                                 <th>Program</th>
                                 <th>Date Launched</th>
-                                <th>Description</th>
+                                <th>Token Balance</th>
+                                <th>Program Health</th>
                                 <th>More Info</th>
+                                
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td>Lola</td>
                                 <td>2018-07-24</td>
-                                
-                                <td>Completed A survey</td>
+                                <td>3759 RBN</td>
+                                <td class="text-warning">Low Balance</td>
                                 <td>
-                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.projectInfo = true">
+                                    <button class="btn btn-icon btn-2 btn-secondary m-0" type="button" @click="modals.projectInfo = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-eye"></i></span>
+
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mom Connect</td>
+                                <td>2018-08-20</td>
+                                <td>12201 RBN</td>
+                                <td class="text-success">Safe Balance</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary m-0" type="button" @click="modals.projectInfo = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-eye"></i></span>
+
+                                    </button>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>B-Wise</td>
+                                <td>2018-08-20</td>
+                                <td>12201 RBN</td>
+                                <td class="text-success">Safe Balance</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary m-0" type="button" @click="modals.projectInfo = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-eye"></i></span>
+
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Phila</td>
+                                <td>2018-08-20</td>
+                                <td>12201 RBN</td>
+                                <td class="text-success">Safe Balance</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary m-0" type="button" @click="modals.projectInfo = true">
 	                                    <span class="btn-inner--icon"><i class="fa fa-eye"></i></span>
 
                                     </button>
