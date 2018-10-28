@@ -19,29 +19,25 @@
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
                                     <a href="#">
-                                        <img v-lazy="'img/theme/team-4-800x800.jpg'" class="rounded-circle">
+                                        <img v-lazy="'img/sponsors/departmentofhealth.jpg'" class="rounded-circle">
                                     </a>
                                 </div>
                             </div>
                             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0">
-                                    <base-button type="info" size="sm" class="mr-4">Connect</base-button>
-                                    <base-button type="default" size="sm" class="float-right">Message</base-button>
+                                    <base-button type="info" size="sm" class="mr-4">Deposit</base-button>
+                                    <base-button type="default" size="sm" class="float-right">Withdraw</base-button>
                                 </div>
                             </div>
                             <div class="col-lg-4 order-lg-1">
                                 <div class="card-profile-stats d-flex justify-content-center">
                                     <div>
-                                        <span class="heading">22</span>
-                                        <span class="description">Friends</span>
+                                        <span class="heading">3724</span>
+                                        <span class="description">Ribbon Tokens</span>
                                     </div>
                                     <div>
-                                        <span class="heading">10</span>
-                                        <span class="description">Photos</span>
-                                    </div>
-                                    <div>
-                                        <span class="heading">89</span>
-                                        <span class="description">Comments</span>
+                                        <span class="heading">R37.24</span>
+                                        <span class="description">Equivalent Value</span>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +104,9 @@
                             <i class="ni ni-calendar-grid-58 mr-2"></i>History
                         </template>
 
-                         <table class="table table-striped" style="width:800px">
+<div class="row">
+    <div class="col-12" style="width:100%">
+                                 <table class="table table-striped" style="width:800px">
                             <thead>
                             <tr>
                                 <th>Program</th>
@@ -125,25 +123,31 @@
                             </tr>
                             <tr>
                                 <td>Lola</td>
-                                <td>2018-07-24</td>
+                                <td>2018-07-26</td>
                                 <td>1000 RBN</td>
                                 
                             </tr>
                             <tr>
                                 <td>Lola</td>
-                                <td>2018-07-24</td>
+                                <td>2018-07-27</td>
                                 <td>1000 RBN</td>
                                 
                             </tr>
                             <tr>
                                 <td>Lola</td>
-                                <td>2018-07-24</td>
+                                <td>2018-07-30</td>
                                 <td>1000 RBN</td>
                                 
                             </tr>
                             
                             </tbody>
                         </table>
+    </div>
+</div>
+
+
+
+
                     </tab-pane>
                 </card>
             </tabs>                 
@@ -154,6 +158,7 @@
                 </card>
             </div>
         </section>
+    <!-- MODALS -->
     <!-- Program Info Window -->
     <modal :show.sync="modals.projectInfo">
     <h4 slot="header" class="modal-title" id="modal-title-default">Lola (She Conquers)</h4>
@@ -192,6 +197,114 @@
                 </template>
         
     </modal>
+       <!-- withdraw modal -->
+    <modal :show.sync="modals.withdraw">
+    <h4 slot="header" class="modal-title" id="modal-title-default">Withdraw your Ribbon Tokens</h4>
+        <label>Recipient Address</label>              
+       
+       
+       <div class="row" >
+       <div class="col-7">
+       <input type="text" class="form-control form-control-alternative" v-model="withdrawAddress">  
+       </div>
+       <div class="col-5 m-r-2">
+               <base-dropdown class="nav-item" menu-classes="dropdown-menu-xl">
+                    <a slot="title" href="#" class="btn btn-neutral btn-icon" data-toggle="dropdown" role="button">
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <i class="ni ni-circle-08"></i>
+                        <span class="nav-link-inner--text">Contacts</span>
+                    </a>
+                    <div class="dropdown-menu-inner">
+                        <a to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center">
+                            <img v-lazy="'img/theme/team-1-800x800.jpg'" class="rounded-circle" style="width:50px">
+                            <div class="media-body ml-3"
+                            @click="contactSelect('0x3f04D2d3711507f81e0Fcd0E8c1810BCE0B3CD84')">
+                                <h5 class="heading text-primary mb-md-1">Ottoline Lambert</h5>
+                                <p class="description d-none d-md-inline-block mb-0">0x3f04D2d3711507f81e0Fcd0E8c1810BCE0B3CD84</p>
+                            </div>
+                        </a>
+                        <a to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center"
+                           @click="contactSelect('0x190253F903cdE8298e572624aed44085BC04E810')">
+                            <img v-lazy="'img/theme/team-2-800x800.jpg'" class="rounded-circle" style="width:50px">
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-primary mb-md-1">Princess Poole</h5>
+                                <p class="description d-none d-md-inline-block mb-0">0x190253F903cdE8298e572624aed44085BC04E810</p>
+                            </div>
+                        </a>
+                        <a to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center"
+                           @click="contactSelect('0x759c17Afe27707A9C2e3c06c943ac1df92166d0A')">
+                            <img v-lazy="'img/theme/team-3-800x800.jpg'" class="rounded-circle" style="width:50px">
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-primary mb-md-1">Kolton Dunn</h5>
+                                <p class="description d-none d-md-inline-block mb-0">0x759c17Afe27707A9C2e3c06c943ac1df92166d0A</p>
+                            </div>
+                        </a>
+                        
+                        <a to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center"
+                           @click="contactSelect('0x90E18A928Cc22173154B91b94a89C0a0c2B933A0')">
+                            <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                                <i class="fa fa-mobile"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-primary mb-md-1">Personal Wallet on phone</h5>
+                                <p class="description d-none d-md-inline-block mb-0">0x90E18A928Cc22173154B91b94a89C0a0c2B933A0</p>
+                            </div>
+                        </a>
+                    </div>
+                </base-dropdown>
+       </div>
+       </div>
+
+          
+          <span style="padding-bottom:20px"/>
+          <br>
+          <label style="margin-top:30px">Withdraw Amount</label>
+          <base-slider :range={min:0,max:walletBalance} v-model="withdrawValue"/><br>
+            
+            <div>
+                <div class="row">
+                <div class=col-7>
+                    <input type="number" class="form-control form-control-alternative" v-model="withdrawValue">
+                </div>
+                <div class=col-5>
+                    <button  type="button" class="btn btn-neutral btn-icon" @click="setMaxWithdraw">Max</button>
+                </div>
+                </div>
+            </div>
+                <template slot="footer">
+                    <base-button type="primary">Withdraw</base-button>
+                    <base-button type="link" class="ml-auto" @click="modals.withdraw = false">Cancel
+                    </base-button>
+                </template>
+    </modal>
+
+
+    <!-- Deposit Window -->
+    <modal :show.sync="modals.deposit">
+    <h4 slot="header" class="modal-title" id="modal-title-default">Deposit Ribbon Tokens</h4>
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>You can deposit Ribbon tokens to your account. Scan the QR code with any web3 wallet.</p>
+            </div>
+            </div>
+                    
+            <div class="row">
+            <div class="col-12 text-center">
+                <img v-lazy="'img/other/qr.png'" class="" style="width:135px; cursor: pointer">
+                <p>Alternatively, you can send Ribbon tokens to this address:
+                <label> 0x90E18A928Cc22173154B91b94a89C0a0c2B933A0</label>
+                </p>
+            </div>
+            </div>      
+    </modal>
     </div>
 </template>
 <script>
@@ -203,12 +316,16 @@ export default {
   components: {
     Tabs,
     TabPane,
-    Modal
+    Modal,
+    BaseDropdown
   },
   data() {
     return {
       modals: {
-        projectInfo: false
+        projectInfo: false,
+        deposit: false,
+        withdraw: false
+
       },
       withdrawValue: 0,
       walletBalance: 3724,

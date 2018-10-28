@@ -25,8 +25,10 @@
                             </div>
                             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0">
+                                    <base-button type="primary" size="sm" class="float-left" @click="modals.deposit = true">Deposit</base-button>
                                     <base-button type="info" size="sm" class="mr-4" @click="modals.withdraw = true">Withdraw</base-button>
                                     <base-button type="default" size="sm" class="float-right" @click="modals.spend = true">Spend</base-button>
+                                    
                                 
                                 </div>
                             </div>
@@ -204,6 +206,26 @@
             </div>
         </div>        
     </modal>
+
+    <!-- Deposit Window -->
+    <modal :show.sync="modals.deposit">
+    <h4 slot="header" class="modal-title" id="modal-title-default">Deposit Ribbon Tokens</h4>
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>You can deposit Ribbon tokens to your account. Scan the QR code with any web3 wallet.</p>
+            </div>
+            </div>
+                    
+            <div class="row">
+            <div class="col-12 text-center">
+                <img v-lazy="'img/other/qr.png'" class="" style="width:135px; cursor: pointer">
+                <p>Alternatively, you can send Ribbon tokens to this address:
+                <label> 0x90E18A928Cc22173154B91b94a89C0a0c2B933A0</label>
+                </p>
+            </div>
+            </div>      
+    </modal>
+
     </div>
 </template>
 <script>
@@ -218,7 +240,8 @@ export default {
     return {
       modals: {
         withdraw: false,
-        spend: false
+        spend: false,
+        deposit: false
       },
       withdrawValue: 0,
       walletBalance: 3724,
