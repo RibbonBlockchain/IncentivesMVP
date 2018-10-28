@@ -95,7 +95,7 @@
 
                     <tab-pane key="tab2">
                         <template slot="title">
-                            <i class="fa fa-user"></i> Users and Patients
+                            <i class="fa fa-user"></i> Users
                         </template>
 
                         <div class="row">
@@ -113,29 +113,18 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Lola</td>
-                                <td>2018-07-24</td>
-                                <td>1000 RBN</td>
-                                
+                                <td>Ezra</td>
+                                <td>Munro</td>
+                                <td>0x90E1...33A0</td>    
+                                <td>2018-10-28</td>
+                                <td>75 RBN</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
+                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
+                                    </button>
+                                </td>
                             </tr>
-                            <tr>
-                                <td>Lola</td>
-                                <td>2018-07-26</td>
-                                <td>1000 RBN</td>
-                                
-                            </tr>
-                            <tr>
-                                <td>Lola</td>
-                                <td>2018-07-27</td>
-                                <td>1000 RBN</td>
-                                
-                            </tr>
-                            <tr>
-                                <td>Lola</td>
-                                <td>2018-07-30</td>
-                                <td>1000 RBN</td>
-                                
-                            </tr>
+                            
                             
                             </tbody>
                         </table>
