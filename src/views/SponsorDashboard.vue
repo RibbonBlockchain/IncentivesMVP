@@ -135,7 +135,7 @@
                             <thead>
                             <tr>
                                 <th>Program</th>
-                                <th>Donation Date</th>
+                                <th>Contribution Date</th>
                                 <th>Amount</th>
                             </tr>
                             </thead>
@@ -176,18 +176,18 @@
                         </template>
                         <div class="row pb-5" style="width:800px">
                         <div class="col-12">
-                        <h5>Historic Donation Distribution</h5>
+                        <h5>Historic Contribution Distribution</h5>
                             <div class="row">
                                 <div class=" col custom-control custom-radio mb-3">
-                                <input value="Total" v-model="donationPiMode" name="custom-radio-1" class="custom-control-input" id="modeRadio1" checked="" type="radio">
+                                <input value="Total" v-model="ContributionPiMode" name="custom-radio-1" class="custom-control-input" id="modeRadio1" checked="" type="radio">
                                 <label class="custom-control-label" for="modeRadio1">Total</label>
                                 </div>
                                 <div class=" col custom-control custom-radio mb-3">
-                                <input v-model="donationPiMode" value="Year" name="custom-radio-1" class="custom-control-input" id="modeRadio2" type="radio">
+                                <input v-model="ContributionPiMode" value="Year" name="custom-radio-1" class="custom-control-input" id="modeRadio2" type="radio">
                                 <label class="custom-control-label" for="modeRadio2">Last Year</label>
                                 </div>
                                 <div class=" col custom-control custom-radio mb-3">
-                                <input v-model="donationPiMode" value="Month" name="custom-radio-1" class="custom-control-input" id="modeRadio3" type="radio">
+                                <input v-model="ContributionPiMode" value="Month" name="custom-radio-1" class="custom-control-input" id="modeRadio3" type="radio">
                                 <label class="custom-control-label" for="modeRadio3">Month Month</label>
                                 </div>                              
                             </div>
@@ -202,21 +202,7 @@
                         </div>
                         <div class="row pt-5 border-top" style="width:800px">
                         <div class="col-12">
-                        <h5>Program Health</h5>
-                            <div class="row">
-                                <div class=" col custom-control custom-radio mb-3">
-                                <input value="Total" v-model="donationPiMode" name="custom-radio-1" class="custom-control-input" id="modeRadio1" checked="" type="radio">
-                                <label class="custom-control-label" for="modeRadio1">Total</label>
-                                </div>
-                                <div class=" col custom-control custom-radio mb-3">
-                                <input v-model="donationPiMode" value="Year" name="custom-radio-1" class="custom-control-input" id="modeRadio2" type="radio">
-                                <label class="custom-control-label" for="modeRadio2">Last Year</label>
-                                </div>
-                                <div class=" col custom-control custom-radio mb-3">
-                                <input v-model="donationPiMode" value="Month" name="custom-radio-1" class="custom-control-input" id="modeRadio3" type="radio">
-                                <label class="custom-control-label" for="modeRadio3">Month Month</label>
-                                </div>                              
-                            </div>
+                        <h5>Current Project Balances</h5>
                             <div class="row">
                             <div class="col-12 center text-center">
                                  <vue-plotly :data="chartData" :layout="layout" :options="options" :watchedShallow="false" :autoResize="true" style="padding-left:150px"/>
@@ -258,7 +244,7 @@
         <hr>
           <div class="row">
             <div class="col-12">
-          <label>Donation Amount</label>
+          <label>Contribution Amount</label>
           <base-slider :range={min:0,max:walletBalance} v-model="withdrawValue"/><br>
                 </div>
                 <div class="col-7">
@@ -269,7 +255,7 @@
                 </div>
                 </div>
                 <template slot="footer">
-                    <base-button type="primary">Donate</base-button>
+                    <base-button type="primary">Contribute</base-button>
                     <base-button type="link" class="ml-auto" @click="modals.withdraw = false">Cancel
                     </base-button>
                 </template>
@@ -371,7 +357,7 @@ export default {
   },
   data() {
     return {
-      donationPiMode: "Total",
+      ContributionPiMode: "Total",
       modals: {
         projectInfo: false,
         deposit: false,
@@ -390,8 +376,8 @@ export default {
         }
       ],
       layout: {
-        plot_bgcolor:"green",
-        paper_bgcolor:"#FFF3",
+        plot_bgcolor: "green",
+        paper_bgcolor: "#FFF3",
         height: 450,
         width: 550,
         margin: {
@@ -415,42 +401,52 @@ export default {
     },
     contactSelect(address) {
       this.withdrawAddress = address;
-    },
+    }
   },
   computed: {
-      chartData(){
-    console.log(this.donationPiMode)
-          if (this.donationPiMode=="Total"){
-              return [
-        {
-          values: [12059683, 5185927, 8370216],
-          labels: ["Lola", "Mom Connect", "B-Wize"],
-          type: "pie",
-          hole: 0.4
-        }
-      ]
+    chartData() {
+      console.log(this.ContributionPiMode);
+      if (this.ContributionPiMode == "Total") {
+        return [
+          {
+            values: [12059683, 5185927, 8370216],
+            labels: ["Lola", "Mom Connect", "B-Wize"],
+            type: "pie",
+            hole: 0.4,
+            marker: {
+              colors: "#B0F566"
+            }
           }
-          if (this.donationPiMode=="Year"){
-              return [
-        {
-          values: [1000000, 500000, 500000],
-          labels: ["Lola", "Mom Connect", "B-Wize"],
-          type: "pie",
-          hole: 0.4
-        }
-      ]
-          }
-          if (this.donationPiMode=="Month"){
-              return [
-        {
-          values: [250, 240, 4032],
-          labels: ["Lola", "Mom Connect", "B-Wize"],
-          type: "pie",
-          hole: 0.4
-        }
-      ]
-          }
+        ];
       }
+      if (this.ContributionPiMode == "Year") {
+        return [
+          {
+            values: [1000000, 500000, 500000],
+            labels: ["Lola", "Mom Connect", "B-Wize"],
+            type: "pie",
+            hole: 0.4,
+            marker: {
+              colors: "#5CC9F5"
+            }
+          },
+          
+        ];
+      }
+      if (this.ContributionPiMode == "Month") {
+        return [
+          {
+            values: [250, 240, 4032],
+            labels: ["Lola", "Mom Connect", "B-Wize"],
+            type: "pie",
+            hole: 0.4,
+            marker: {
+              colors: "#6638F0"
+            }
+          }
+        ];
+      }
+    }
   }
 };
 </script>
