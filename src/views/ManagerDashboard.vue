@@ -102,9 +102,12 @@
                                  <table class="table table-striped" style="width:800px">
                             <thead>
                             <tr>
-                                <th>Program</th>
-                                <th>Donation Date</th>
-                                <th>Amount</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Address</th>
+                                <th>Last Active</th>
+                                <th>Balance</th>
+                                <th>remove</th>
                             </tr>
                             </thead>
                             <tbody>
