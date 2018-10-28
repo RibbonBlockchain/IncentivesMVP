@@ -54,22 +54,142 @@
                             <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer</div>
                             <div><i class="ni education_hat mr-2"></i>University of Computer Science</div>
                         </div>
-                        <div class="mt-5 py-5 border-top text-center">
+                        <div class="mt-5 py-1 border-top text-center">
                             <div class="row justify-content-center">
-                                <div class="col-lg-9">
-                                    <p>An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
-                                    <a href="#">Show more</a>
-                                </div>
+                             <div class="nav-wrapper">
+                                 
+            <tabs fill class="flex-md-row col-12 ">
+                <card shadow slot-scope="{activeTabIndex}">
+                    <tab-pane key="tab1">
+                        <template slot="title">
+                            <i class="ni ni-money-coins mr-2"></i>Sponsor
+                        </template>
+
+                         
+                           <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Program</th>
+                                <th>Date Launched</th>
+                                <th>Description</th>
+                                <th>View</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>2018-07-24</td>
+                                <td>Lola</td>
+                                <td>Completed A survey</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.projectInfo = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-eye"></i></span>
+
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2018-07-28</td>
+                                <td>Lola</td>
+                                <td>Completed A survey</td>
+                                <td>150</td>
+                            </tr>
+                            <tr>
+                                <td>2018-08-30</td>
+                                <td>Lola</td>
+                                <td>Completed A survey</td>
+                                <td>350</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </tab-pane>
+
+                    <tab-pane key="tab2">
+                        <template slot="title">
+                            <i class="ni ni-calendar-grid-58 mr-2"></i>History
+                        </template>
+
+                        <p class="description">Raw denim you probably haven't heard of them jean shorts
+                            Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache
+                            cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
+                            keffiyeh dreamcatcher synth.</p>
+                    </tab-pane>
+                </card>
+            </tabs>                 
+            </div>
                             </div>
                         </div>
                     </div>
                 </card>
             </div>
         </section>
+    <!-- Program Info Window -->
+    <modal :show.sync="modals.projectInfo">
+    <h4 slot="header" class="modal-title" id="modal-title-default">Lola (She Conquers)</h4>
+        <div class="row">
+            <div class="col-12 text-center">
+                <img v-lazy="'img/programs/sheconquers.png'" class="center" style="width:200px; cursor: pointer; text-align:center" @click="photoClick('Metrobus')">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                
+                <p class="text-justify">Dolor commodo enim reprehenderit veniam exercitation. Ad amet est consequat anim excepteur amet nisi voluptate consectetur eu officia pariatur nisi eu. Reprehenderit ad reprehenderit officia enim excepteur ad ullamco.
+                    <br>
+                    <br>
+                    More information on the Lola project can be found <a href="">Here</a>
+                </p>
+            </div>
+        </div>
+        <hr>
+          <div class="row">
+            <div class="col-12">
+          <label>Donation Amount</label>
+          <base-slider :range={min:0,max:walletBalance} v-model="withdrawValue"/><br>
+                </div>
+                <div class="col-7">
+                    <input type="number" class="form-control form-control-alternative" v-model="withdrawValue">
+                </div>
+                <div class="col-5">
+                    <button  type="button" class="btn btn-neutral btn-icon" @click="setMaxWithdraw">Max</button>
+                </div>
+                </div>
+                <template slot="footer">
+                    <base-button type="primary">Donate</base-button>
+                    <base-button type="link" class="ml-auto" @click="modals.withdraw = false">Cancel
+                    </base-button>
+                </template>
+        
+    </modal>
     </div>
 </template>
 <script>
-export default {};
+import Tabs from "@/components/Tabs/Tabs.vue";
+import TabPane from "@/components/Tabs/TabPane.vue";
+import Modal from "@/components/Modal.vue";
+import BaseDropdown from "@/components/BaseDropdown";
+export default {
+  components: {
+    Tabs,
+    TabPane,
+    Modal
+  },
+  data() {
+    return {
+      modals: {
+        projectInfo: false
+      },
+      withdrawValue: 0,
+      walletBalance: 3724,
+      customAddress: false,
+      withdrawAddress: ""
+    };
+  },
+  methods: {
+    setMaxWithdraw() {
+      this.withdrawValue = this.walletBalance;
+    }
+  }
+};
 </script>
 <style>
 </style>

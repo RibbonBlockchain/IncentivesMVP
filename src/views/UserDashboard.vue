@@ -54,28 +54,28 @@
                            <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>Date</th>
                                 <th>Program</th>
+                                <th>Date</th>
                                 <th>Action</th>
                                 <th>Amount</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>2018-07-24</td>
                                 <td>Lola</td>
+                                <td>2018-07-24</td>
                                 <td>Completed A survey</td>
                                 <td>200</td>
                             </tr>
                             <tr>
-                                <td>2018-07-28</td>
                                 <td>Lola</td>
+                                <td>2018-07-28</td>
                                 <td>Completed A survey</td>
                                 <td>150</td>
                             </tr>
                             <tr>
-                                <td>2018-08-30</td>
                                 <td>Lola</td>
+                                <td>2018-08-30</td>
                                 <td>Completed A survey</td>
                                 <td>350</td>
                             </tr>
@@ -202,8 +202,7 @@
             <div class="col-4">
                 <img v-lazy="'img/stores/shopright.png'" class="" style="width:135px; cursor: pointer" @click="photoClick('Shopright')">
             </div>
-        </div>
-        
+        </div>        
     </modal>
     </div>
 </template>
