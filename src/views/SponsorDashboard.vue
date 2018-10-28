@@ -66,7 +66,7 @@
                         </template>
 
                          
-                           <table class="table table-striped">
+                           <table class="table table-striped" style="width:800px">
                             <thead>
                             <tr>
                                 <th>Program</th>
@@ -108,10 +108,42 @@
                             <i class="ni ni-calendar-grid-58 mr-2"></i>History
                         </template>
 
-                        <p class="description">Raw denim you probably haven't heard of them jean shorts
-                            Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache
-                            cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
-                            keffiyeh dreamcatcher synth.</p>
+                         <table class="table table-striped" style="width:800px">
+                            <thead>
+                            <tr>
+                                <th>Program</th>
+                                <th>Donation Date</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Lola</td>
+                                <td>2018-07-24</td>
+                                <td>1000 RBN</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Lola</td>
+                                <td>2018-07-24</td>
+                                <td>1000 RBN</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Lola</td>
+                                <td>2018-07-24</td>
+                                <td>1000 RBN</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Lola</td>
+                                <td>2018-07-24</td>
+                                <td>1000 RBN</td>
+                                
+                            </tr>
+                            
+                            </tbody>
+                        </table>
                     </tab-pane>
                 </card>
             </tabs>                 
