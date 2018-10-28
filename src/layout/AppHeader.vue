@@ -62,7 +62,7 @@
                         <span class="nav-link-inner--text">Try MVP</span>
                     </a>
                     <div class="dropdown-menu-inner">
-                        <router-link to=""
+                        <router-link to="/sponsorDashboard"
                            class="media d-flex align-items-center">
                             <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                                 <i class="ni ni-money-coins"></i>
@@ -74,7 +74,7 @@
                                         View a full audit trail of how sponsorship money was used.  </p>
                             </div>
                         </router-link>
-                        <router-link to=""
+                        <router-link to="/managerDashboard"
                            class="media d-flex align-items-center">
                             <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
                                 <i class="ni ni-istanbul"></i>
@@ -86,7 +86,7 @@
                                         View program user engagement statistics. </p>
                             </div>
                         </router-link>
-                        <router-link to=""
+                        <router-link to="/practitionerDashboard"
                            class="media d-flex align-items-center">
                             <div class="icon icon-shape bg-gradient-info rounded-circle text-white">
                                 <i class="fa fa-user-md"></i>
