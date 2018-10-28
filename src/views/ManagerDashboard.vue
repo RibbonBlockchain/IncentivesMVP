@@ -27,24 +27,15 @@
                             </div>
                             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0">
-                                    <base-button type="info" size="sm" class="mr-4">Connect</base-button>
-                                    <base-button type="default" size="sm" class="float-right">Message</base-button>
+                                    <base-button type="info" size="sm" class="mr-4">Transfer Management</base-button>
                                 </div>
                             </div>
                             <div class="col-lg-4 order-lg-1">
                                 <div class="card-profile-stats d-flex justify-content-center">
                                     <div>
-                                        <span class="heading">22</span>
-                                        <span class="description">Friends</span>
+                                        <span class="heading">Manager of of 1 program</span>
                                     </div>
-                                    <div>
-                                        <span class="heading">10</span>
-                                        <span class="description">Photos</span>
-                                    </div>
-                                    <div>
-                                        <span class="heading">89</span>
-                                        <span class="description">Comments</span>
-                                    </div>
+    
                                 </div>
                             </div>
                         </div>
@@ -55,11 +46,104 @@
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>South Africa</div>
                             
                         </div>
-                        <div class="mt-5 py-5 border-top text-center">
+     <div class="mt-3  text-center">
                             <div class="row justify-content-center">
-                                <div class="col-lg-9">
-                                    <p>An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
-                                    <a href="#">Show more</a>
+                             <div class="nav-wrapper">
+            <tabs fill class="flex-md-row col-12 ">
+                <card shadow slot-scope="{activeTabIndex}">
+                    <tab-pane key="tab1">
+                        <template slot="title">
+                            <i class="fa fa-user-md"></i> Practitioners
+                        </template>
+                           <table class="table table-striped" style="width:800px">
+                            <thead>
+                            <tr>
+                                <th>Program</th>
+                                <th>Date Launched</th>
+                                <th>Description</th>
+                                <th>View</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>2018-07-24</td>
+                                <td>Lola</td>
+                                <td>Completed A survey</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.projectInfo = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-eye"></i></span>
+
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2018-07-28</td>
+                                <td>Lola</td>
+                                <td>Completed A survey</td>
+                                <td>150</td>
+                            </tr>
+                            <tr>
+                                <td>2018-08-30</td>
+                                <td>Lola</td>
+                                <td>Completed A survey</td>
+                                <td>350</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </tab-pane>
+
+                    <tab-pane key="tab2">
+                        <template slot="title">
+                            <i class="fa fa-user"></i> Users
+                        </template>
+
+<div class="row">
+    <div class="col-12" style="width:100%">
+                                 <table class="table table-striped" style="width:800px">
+                            <thead>
+                            <tr>
+                                <th>Program</th>
+                                <th>Donation Date</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Lola</td>
+                                <td>2018-07-24</td>
+                                <td>1000 RBN</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Lola</td>
+                                <td>2018-07-26</td>
+                                <td>1000 RBN</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Lola</td>
+                                <td>2018-07-27</td>
+                                <td>1000 RBN</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Lola</td>
+                                <td>2018-07-30</td>
+                                <td>1000 RBN</td>
+                                
+                            </tr>
+                            
+                            </tbody>
+                        </table>
+    </div>
+</div>
+
+
+
+
+                    </tab-pane>
+                </card>
+            </tabs> 
                                 </div>
                             </div>
                         </div>
@@ -70,7 +154,18 @@
     </div>
 </template>
 <script>
-export default {};
+import Tabs from "@/components/Tabs/Tabs.vue";
+import TabPane from "@/components/Tabs/TabPane.vue";
+import Modal from "@/components/Modal.vue";
+import BaseDropdown from "@/components/BaseDropdown";
+export default {
+  components: {
+    Tabs,
+    TabPane,
+    Modal,
+    BaseDropdown
+  }
+};
 </script>
 <style>
 </style>

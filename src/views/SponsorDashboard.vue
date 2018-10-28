@@ -58,8 +58,6 @@
                         <template slot="title">
                             <i class="ni ni-money-coins mr-2"></i>Sponsor
                         </template>
-
-                         
                            <table class="table table-striped" style="width:800px">
                             <thead>
                             <tr>
@@ -142,10 +140,6 @@
                         </table>
     </div>
 </div>
-
-
-
-
                     </tab-pane>
                 </card>
             </tabs>                 
