@@ -8,7 +8,7 @@ import UserDashboard from "./views/UserDashboard.vue"
 import SponsorDashboard from "./views/SponsorDashboard.vue"
 import PractitionerDashboard from "./views/PractitionerDashboard.vue"
 import ManagerDashboard from "./views/ManagerDashboard.vue"
-
+import RibbonDashboard from "./views/RibbonDashboard"
 
 Vue.use(Router);
 
@@ -57,6 +57,15 @@ export default new Router({
       components: {
         header: AppHeader,
         default: ManagerDashboard,
+        footer: AppFooter
+      }
+    },
+    {
+      path: "/ribbonDashboard",
+      name: "ribbonDashboard",
+      components: {
+        header: AppHeader,
+        default: RibbonDashboard,
         footer: AppFooter
       }
     },

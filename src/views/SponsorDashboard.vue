@@ -56,7 +56,7 @@
                 <card shadow slot-scope="{activeTabIndex}">
                     <tab-pane key="tab1">
                         <template slot="title">
-                            <i class="ni ni-money-coins mr-2"></i>Sponsor
+                            <i class="ni ni-money-coins mr-2"></i>Fund
                         </template>
                            <table class="table table-striped" style="width:800px">
                             <thead>
@@ -135,10 +135,54 @@
                         <template slot="title">
                             <i class="fa fa-pie-chart"></i> Analytics
                         </template>
-                        <div class="row" style="width:800px">
+                        <div class="row pb-5" style="width:800px">
                         <div class="col-12">
                         <h5>Historic Donation Distribution</h5>
-                           <vue-plotly :data="data" :layout="layout" :options="options" :watchedShallow="false" :autoResize="true"/>
+                            <div class="row">
+                                <div class=" col custom-control custom-radio mb-3">
+                                <input value="Total" v-model="donationPiMode" name="custom-radio-1" class="custom-control-input" id="modeRadio1" checked="" type="radio">
+                                <label class="custom-control-label" for="modeRadio1">Total</label>
+                                </div>
+                                <div class=" col custom-control custom-radio mb-3">
+                                <input v-model="donationPiMode" value="Year" name="custom-radio-1" class="custom-control-input" id="modeRadio2" type="radio">
+                                <label class="custom-control-label" for="modeRadio2">Last Year</label>
+                                </div>
+                                <div class=" col custom-control custom-radio mb-3">
+                                <input v-model="donationPiMode" value="Month" name="custom-radio-1" class="custom-control-input" id="modeRadio3" type="radio">
+                                <label class="custom-control-label" for="modeRadio3">Month Month</label>
+                                </div>                              
+                            </div>
+                            <div class="row">
+                            <div class="col-12 center text-center">
+                                 <vue-plotly :data="chartData" :layout="layout" :options="options" :watchedShallow="false" :autoResize="true" style="padding-left:150px"/>
+                            </div>
+                            </div>
+                        </div>
+                    
+                    
+                        </div>
+                        <div class="row pt-5 border-top" style="width:800px">
+                        <div class="col-12">
+                        <h5>Program Health</h5>
+                            <div class="row">
+                                <div class=" col custom-control custom-radio mb-3">
+                                <input value="Total" v-model="donationPiMode" name="custom-radio-1" class="custom-control-input" id="modeRadio1" checked="" type="radio">
+                                <label class="custom-control-label" for="modeRadio1">Total</label>
+                                </div>
+                                <div class=" col custom-control custom-radio mb-3">
+                                <input v-model="donationPiMode" value="Year" name="custom-radio-1" class="custom-control-input" id="modeRadio2" type="radio">
+                                <label class="custom-control-label" for="modeRadio2">Last Year</label>
+                                </div>
+                                <div class=" col custom-control custom-radio mb-3">
+                                <input v-model="donationPiMode" value="Month" name="custom-radio-1" class="custom-control-input" id="modeRadio3" type="radio">
+                                <label class="custom-control-label" for="modeRadio3">Month Month</label>
+                                </div>                              
+                            </div>
+                            <div class="row">
+                            <div class="col-12 center text-center">
+                                 <vue-plotly :data="chartData" :layout="layout" :options="options" :watchedShallow="false" :autoResize="true" style="padding-left:150px"/>
+                            </div>
+                            </div>
                         </div>
                         </div>
                            
@@ -288,6 +332,7 @@ export default {
   },
   data() {
     return {
+      donationPiMode: "Total",
       modals: {
         projectInfo: false,
         deposit: false,
@@ -306,8 +351,10 @@ export default {
         }
       ],
       layout: {
-        height: 650,
-        width: 750,
+        plot_bgcolor:"green",
+        paper_bgcolor:"#FFF3",
+        height: 450,
+        width: 550,
         margin: {
           l: 0,
           r: 0,
@@ -329,7 +376,42 @@ export default {
     },
     contactSelect(address) {
       this.withdrawAddress = address;
-    }
+    },
+  },
+  computed: {
+      chartData(){
+    console.log(this.donationPiMode)
+          if (this.donationPiMode=="Total"){
+              return [
+        {
+          values: [12059683, 5185927, 8370216],
+          labels: ["Lola", "Mom Connect", "B-Wize"],
+          type: "pie",
+          hole: 0.4
+        }
+      ]
+          }
+          if (this.donationPiMode=="Year"){
+              return [
+        {
+          values: [1000000, 500000, 500000],
+          labels: ["Lola", "Mom Connect", "B-Wize"],
+          type: "pie",
+          hole: 0.4
+        }
+      ]
+          }
+          if (this.donationPiMode=="Month"){
+              return [
+        {
+          values: [250, 240, 4032],
+          labels: ["Lola", "Mom Connect", "B-Wize"],
+          type: "pie",
+          hole: 0.4
+        }
+      ]
+          }
+      }
   }
 };
 </script>
