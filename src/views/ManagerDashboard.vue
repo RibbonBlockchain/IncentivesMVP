@@ -150,18 +150,19 @@
                         <template slot="title">
                             <i class="fa fa-cogs"></i> Advanced
                         </template>
-                           <div class="row" style="width:800px">
+                           <div class="row  p-3 m-3" style="width:800px">
                         <div class="col-4">
                             <base-button type="secondary" class="mr-4" @click="advancedFunction">Transfer Management</base-button>
                         </div>
                         <div class="col-4">
                             <base-button type="secondary" class="mr-4" @click="advancedFunction">Change Program Name</base-button>
                         </div>
-                           </div>
-                        
                         <div class="col-4">
                             <base-button type="warning" class="mr-4" @click="advancedFunction">Delete Program</base-button>
                            </div>
+                           </div>
+                        
+                        
                     </tab-pane>
                                     </card>
                                 </tabs> 
