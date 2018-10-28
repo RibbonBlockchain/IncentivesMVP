@@ -25,7 +25,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+                            <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center pr-1">
                                 <div class="card-profile-stats d-flex justify-content-center">
                                     <div class="row">
                                         <div class="col-12">
@@ -316,17 +316,17 @@ export default {
         {
           values: [50 / 6, 50 / 6, 50 / 6, 50 / 6, 50 / 6, 50 / 6, 50],
           rotation: 90,
-          text: ["10000+", "8000", "6000", "4000", "2000", "0", ""],
+          text: ["10000", "8000", "6000", "4000", "2000", "0", ""],
           textinfo: "text",
           textposition: "inside",
           marker: {
             colors: [
-              "#00FF00",
-              "#00FF00",
-              "#FEFF00",
-              "#FEFF00",
-              "#FF7E00",
-              "#FF410C",
+              "#6CFF6A",
+              "#A3FE6A",
+              "#DBFE67",
+              "#FEE766",
+              "#FEAB64",
+              "#FE6F63",
               "#FFFFFF"
             ]
           },
@@ -358,8 +358,8 @@ export default {
           }
         ],
         // title: "Funding Health",
-        height: 200,
-        width: 200,
+        height: 170,
+        width: 170,
         margin: {
           l: 0,
           r: 0,
