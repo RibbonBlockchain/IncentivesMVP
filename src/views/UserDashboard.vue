@@ -157,7 +157,7 @@
                 </base-dropdown>
        </div>
        <div class="col-1">
-           <button  type="button" class="btn btn-neutral btn-icon" @click="openQRScanner"><i class="fa fa-camera"></i></button>
+           <button type="button" class="btn btn-neutral btn-icon" @click="openQRScanner"><i class="fa fa-camera"></i></button>
        </div>
        </div>
 
@@ -264,11 +264,15 @@ export default {
       this.$notify({
         group: "foo",
         title: "Spending of Ribbon tokens is not yet enabled",
-        text: "Using your Ribbon tokens at an affiliate is not yet possib.le"
+        text: "Using your Ribbon tokens at an affiliate is not yet possible"
       });
     },
     openQRScanner(){
-        
+        this.$notify({
+        group: "foo",
+        title: "Scanning QR codes is not yet enabled",
+        text: "Please either enter the address directly or use the contacts"
+      });
     }
   }
 };

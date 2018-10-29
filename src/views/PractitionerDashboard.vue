@@ -433,15 +433,61 @@
             </div>
             </div>
                     
-            <div class="row">
-            <div class="col-sm-12 text-center">
-                Patient Address:
-
-            </div>
-            </div>
+             <label>Patient Address</label>              
+    
+       <div class="row" >
+       <div class="col-6 pr-0">
+       <input type="text" class="form-control form-control-alternative" v-model="withdrawAddress" style="margin-right:20px">  
+       </div>
+       <div class="col-4 m-r-2">
+               <base-dropdown class="nav-item" menu-classes="dropdown-menu-xl">
+                    <a slot="title" href="#" class="btn btn-neutral btn-icon" data-toggle="dropdown" role="button">
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <i class="ni ni-circle-08"></i>
+                        <span class="nav-link-inner--text">Contacts</span>
+                    </a>
+                    <div class="dropdown-menu-inner">
+                        <a to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center">
+                            <img v-lazy="'img/theme/team-5-800x800.jpg'" class="rounded-circle" style="width:50px">
+                            <div class="media-body ml-3"
+                            @click="contactSelect('0x3f04D2d3711507f81e0Fcd0E8c1810BCE0B3CD84')">
+                                <h5 class="heading text-primary mb-md-1">Ottoline Lambert</h5>
+                                <p class="description d-none d-md-inline-block mb-0">0x3f04D2d3711507f81e0Fcd0E8c1810BCE0B3CD84</p>
+                            </div>
+                        </a>
+                        <a to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center"
+                           @click="contactSelect('0x190253F903cdE8298e572624aed44085BC04E810')">
+                            <img v-lazy="'img/theme/team-2-800x800.jpg'" class="rounded-circle" style="width:50px">
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-primary mb-md-1">Princess Poole</h5>
+                                <p class="description d-none d-md-inline-block mb-0">0x190253F903cdE8298e572624aed44085BC04E810</p>
+                            </div>
+                        </a>
+                        <a to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center"
+                           @click="contactSelect('0x759c17Afe27707A9C2e3c06c943ac1df92166d0A')">
+                            <img v-lazy="'img/theme/team-3-800x800.jpg'" class="rounded-circle" style="width:50px">
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-primary mb-md-1">Kolton Dunn</h5>
+                                <p class="description d-none d-md-inline-block mb-0">0x759c17Afe27707A9C2e3c06c943ac1df92166d0A</p>
+                            </div>
+                        </a>
+                    </div>
+                </base-dropdown>
+       </div>
+       <div class="col-1">
+           <button type="button" class="btn btn-neutral btn-icon" @click="openQRScanner"><i class="fa fa-camera"></i></button>
+       </div>
+       </div>
+                     <label class=" pt-5">Patient Activities</label>              
             <div class="row">
             
-            <div class="col-sm-12 text-center">
+            <div class="col-sm-12">
                                <base-dropdown class="nav-item pb-2" menu-classes="dropdown-menu-xl">
                     <a slot="title" href="#" class="btn btn-neutral btn-icon" data-toggle="dropdown" role="button">
                         <i class="ni ni-ui-04 d-lg-none"></i>
@@ -529,7 +575,7 @@
             </div>
             </div>      
     <template slot="footer">
-                    <base-button type="primary" :disabled="rewardsToSendTotal==0">Award</base-button>
+                    <base-button type="primary" :disabled="rewardsToSendTotal==0 || withdrawAddress==''">Award</base-button>
                     <base-button type="link" class="ml-auto" @click="modals.patientInteraction = false">Cancel
                     </base-button>
                 </template>
@@ -574,6 +620,13 @@ export default {
     },
     contactSelect(address) {
       this.withdrawAddress = address;
+    },
+    openQRScanner(){
+        this.$notify({
+        group: "foo",
+        title: "Scanning QR codes is not yet enabled",
+        text: "Please either enter the address directly or use the contacts"
+      });
     },
     photoClick(companyName) {
       console.log(companyName);
