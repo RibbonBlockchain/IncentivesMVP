@@ -53,7 +53,7 @@
                         <div class="col-2">
                         </div>
                         <div class="col-4">
-                            <button  type="button" class="btn btn-primary btn-icon mt-2" @click="setMaxWithdraw">Patient Interaction</button>
+                            <button  type="button" class="btn btn-primary btn-icon mt-2" @click="modals.patientInteraction = true">Patient Interaction</button>
                         </div>
                         <div class="col-5">
                             Total people helped: <strong>4521</strong><br>
@@ -61,37 +61,227 @@
                         </div>
 
                         </div>
-                        <div class="mt-5  border-top text-center">
-                           <table class="table table-striped">
+                        <hr>
+                                                 <div class="mt-3  text-center">
+                            <div class="row justify-content-center">
+                             <div class="nav-wrapper">
+            <tabs fill class="flex-md-row col-12 ">
+                <card shadow slot-scope="{activeTabIndex}">
+                    <tab-pane key="tab1">
+                        <template slot="title">
+                            <i class="fa fa-calendar"></i> Past Patients
+                        </template>
+                           <table class="table table-striped" style="width:800px">
                             <thead>
                             <tr>
-                                <th>Program</th>
-                                <th>Date</th>
-                                <th>Action</th>
-                                <th>Amount</th>
+                                <th>Practitioner Name</th>
+                                <th>Last Active</th>
+                                <th>Total Awarded</th>
+                                <th>Edit</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Lola</td>
-                                <td>2018-07-24</td>
-                                <td>Completed A survey</td>
-                                <td>200</td>
+                                <td>Lola API Gauteng</td>
+                                <td>2018-10-28</td>
+                                
+                                <td>375905 RBN</td> 
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
+                                    </button>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Lola</td>
-                                <td>2018-07-28</td>
-                                <td>Completed A survey</td>
-                                <td>150</td>
+                                <td>Lola Gauteng Community Kiosks</td>
+                                <td>2018-10-28</td>
+                                
+                                <td>15759 RBN</td> 
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
+                                    </button>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Lola</td>
-                                <td>2018-08-30</td>
-                                <td>Completed A survey</td>
-                                <td>350</td>
+                                <td>Lola API Mpumalanga</td>
+                                <td>2018-10-28</td>
+                                
+                                <td>29544 RBN</td> 
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Lola Mpumalanga Community Kiosks</td>
+                                <td>2018-10-28</td>
+                                
+                                <td>5983 RBN</td> 
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Lola API Free State</td>
+                                <td>2018-10-28</td>
+                                
+                                <td>69483 RBN</td> 
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Lola Free State Community Kiosks</td>
+                                <td>2018-10-28</td>
+                                
+                                <td>39483 RBN</td> 
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
+	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
+                                    </button>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
+                    </tab-pane>
+
+                    <tab-pane key="tab2">
+                        <template slot="title">
+                            <i class="fa fa-user"></i> Personal Token History
+                        </template>
+
+                        <div class="row">
+                            <div class="col-12" style="width:100%">
+                                 <table class="table table-striped" style="width:800px">
+                            <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Address</th>
+                                <th>Last Active</th>
+                                <th>Balance</th>
+                                <th>remove</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Ezra</td>
+                                <td>Munro</td>
+                                <td>0x90E1...33A0</td>    
+                                <td>2018-10-28</td>
+                                <td>75 RBN</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
+                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Robin</td>
+                                <td>Olson</td>
+                                <td>0x72A2...44B1</td>    
+                                <td>2018-10-29</td>
+                                <td>120 RBN</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
+                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Herbert</td>
+                                <td>Singleton</td>
+                                <td>0x10F2...28C5</td>    
+                                <td>2018-10-25</td>
+                                <td>15 RBN</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
+                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Harry</td>
+                                <td>Short</td>
+                                <td>0x12E5...55C4</td>    
+                                <td>2018-10-11</td>
+                                <td>295 RBN</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
+                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Amar</td>
+                                <td>Hogan</td>
+                                <td>0x12Cd...28C2</td>    
+                                <td>2018-10-23</td>
+                                <td>193 RBN</td>
+                                <td>
+                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
+                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            
+                            
+                            </tbody>
+                        </table>
+                        <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">
+        <i class="fa fa-angle-left"></i>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">
+        <i class="fa fa-angle-right"></i>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+                        </div>
+                    </div>
+
+
+
+
+                                            </tab-pane>
+              <!-- <tab-pane key="tab3">
+                        <template slot="title">
+                            <i class="fa fa-cogs"></i> Advanced
+                        </template>
+                           <div class="row  p-3 m-3" style="width:800px">
+                        <div class="col-4">
+                            <base-button type="secondary" class="mr-4" @click="advancedFunction">Transfer Management</base-button>
+                        </div>
+                        <div class="col-4">
+                            <base-button type="secondary" class="mr-4" @click="advancedFunction">Change Program Name</base-button>
+                        </div>
+                        <div class="col-4">
+                            <base-button type="warning" class="mr-4" @click="advancedFunction">Delete Program</base-button>
+                           </div>
+                           </div>
+                        
+                        
+                    </tab-pane> -->
+                                    </card>
+                                </tabs> 
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </card>
@@ -234,23 +424,118 @@
             </div>
             </div>      
     </modal>
+    <!-- Patient Interaction Window -->
+    <modal :show.sync="modals.patientInteraction">
+    <h4 slot="header" class="modal-title" id="modal-title-default">Reward A Patient Activity</h4>
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>Reward a patient based on a predefined set of activities. Scan their QR code to send them their reward.</p>
+            </div>
+            </div>
+                    
+            <div class="row">
+            <!-- <div class="col-sm-4">
+                <p>Select Activity:</p>
+            </div> -->
+            <div class="col-sm-12 text-center">
+                               <base-dropdown class="nav-item" menu-classes="dropdown-menu-xl">
+                    <a slot="title" href="#" class="btn btn-neutral btn-icon" data-toggle="dropdown" role="button">
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <i class="fa fa-hand-pointer-o"></i>
+                        <span class="nav-link-inner--text">Activities</span>
+                    </a>
+                    <div class="dropdown-menu-inner">
+                        <a to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center">
+                            <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="media-body ml-3"
+                            @click="contactSelect('0x3f04D2d3711507f81e0Fcd0E8c1810BCE0B3CD84')">
+                                <h5 class="heading text-primary mb-md-1">General Checkup</h5>
+                                <p class="description d-none d-md-inline-block mb-0">100 Ribbon Tokens</p>
+                            </div>
+                        </a>
+                        <a to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center"
+                           @click="contactSelect('0x190253F903cdE8298e572624aed44085BC04E810')">
+                            <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                                <i class="fa fa-question"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-primary mb-md-1">HIV Test</h5>
+                                <p class="description d-none d-md-inline-block mb-0">1500</p>
+                            </div>
+                        </a>
+                        <a to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center"
+                           @click="contactSelect('0x759c17Afe27707A9C2e3c06c943ac1df92166d0A')">
+                            <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                                <i class="fa fa-male"></i> <i class="fa fa-female"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-primary mb-md-1">STD Test</h5>
+                                <p class="description d-none d-md-inline-block mb-0">800  Ribbon Tokens</p>
+                            </div>
+                        </a>
+                        
+                        <a to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center"
+                           @click="contactSelect('0x90E18A928Cc22173154B91b94a89C0a0c2B933A0')">
+                            <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                                <i class="fa fa-hospital-o"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-primary mb-md-1">TB Medication Dispensary</h5>
+                                <p class="description d-none d-md-inline-block mb-0">500 Ribbon Tokens</p>
+                            </div>
+                        </a>
+                        <a to="/userDashboard"
+                        style="padding:10px"
+                           class="media d-flex align-items-center"
+                           @click="contactSelect('0x90E18A928Cc22173154B91b94a89C0a0c2B933A0')">
+                            <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                                <i class="fa fa-medkit"></i>
+                            </div>
+                            <div class="media-body ml-3">
+                                <h5 class="heading text-primary mb-md-1">Complected Antibiotics course</h5>
+                                <p class="description d-none d-md-inline-block mb-0">600 Ribbon Tokens</p>
+                            </div>
+                        </a>
+                    </div>
+                </base-dropdown>
+            </div>
+            </div>      
+    </modal>
 
     </div>
 </template>
 <script>
+import Tabs from "@/components/Tabs/Tabs.vue";
+import TabPane from "@/components/Tabs/TabPane.vue";
 import Modal from "@/components/Modal.vue";
 import BaseDropdown from "@/components/BaseDropdown";
+import VuePlotly from "@statnett/vue-plotly";
+
 export default {
   components: {
+    Tabs,
+    TabPane,
     Modal,
-    BaseDropdown
+    BaseDropdown,
+    VuePlotly
   },
   data() {
     return {
       modals: {
         withdraw: false,
         spend: false,
-        deposit: false
+        deposit: false,
+        patientInteraction: false
       },
       withdrawValue: 0,
       walletBalance: 3724,
