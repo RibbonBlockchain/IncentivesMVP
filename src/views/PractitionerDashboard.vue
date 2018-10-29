@@ -66,19 +66,14 @@
                                                  <div class="mt-3  text-center">
                             <div class="row justify-content-center">
                              <div class="nav-wrapper">
-            <tabs fill class="flex-md-row col-12 ">
-                <card shadow slot-scope="{activeTabIndex}">
-                    <tab-pane key="tab1">
-                        <template slot="title">
-                            <i class="fa fa-calendar"></i> Past Patients
-                        </template>
-                           <table class="table table-striped" style="width:800px">
+                                      <table class="table table-striped" style="width:100%">
                             <thead>
                             <tr>
                                 <th>Patient Name</th>
                                 <th>Date</th>
                                 <th>Interaction</th>
                                 <th>Tokens Awarded</th>
+                                <th>Personal Tokens Received</th>
                                 
                             </tr>
                             </thead>
@@ -88,30 +83,36 @@
                                 <td>2018-10-28</td>
                                 <td>General Checkup</td>
                                 <td>100 RBN</td> 
+                                <td>5 RBN</td> 
                             </tr>
                             <tr>
                                 <td>Nomsa Afeworki</td>
                                 <td>2018-10-28</td>
                                 <td>General Checkup</td>
                                 <td>100 RBN</td> 
+                                <td>5 RBN</td> 
                             </tr>
                             <tr>
                                 <td>Anonymous</td>
                                 <td>2018-10-27</td>
                                 <td>HIV Test</td>
                                 <td>1500 RBN</td> 
+                                <td>75 RBN</td> 
                             </tr>
                             <tr>
                                 <td>Batsheva Muthoni</td>
                                 <td>2018-10-27</td>
                                 <td>General Checkup</td>
                                 <td>100 RBN</td> 
+                                <td>5 RBN</td> 
+                                
                             </tr>
                             <tr>
                                 <td>Afiwa Edmund</td>
                                 <td>2018-10-27</td>
                                 <td>TB Medication Dispensary</td>
                                 <td>500 RBN</td> 
+                                <td>25 RBN</td> 
                             </tr>
                             
                             </tbody>
@@ -135,105 +136,6 @@
     </li>
   </ul>
 </nav>
-                    </tab-pane>
-
-                    <tab-pane key="tab2">
-                        <template slot="title">
-                            <i class="fa fa-user"></i> Personal Token History
-                        </template>
-
-                        <div class="row">
-                            <div class="col-12" style="width:100%">
-                                                        <table class="table table-striped" style="width:800px">
-                            <thead>
-                            <tr>
-                                <th>Patient Name</th>
-                                <th>Date</th>
-                                <th>Interaction</th>
-                                <th>Tokens Awarded</th>
-                                
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Shauntae Nolwazi</td>
-                                <td>2018-10-28</td>
-                                <td>General Checkup</td>
-                                <td>100 RBN</td> 
-                            </tr>
-                            <tr>
-                                <td>Nomsa Afeworki</td>
-                                <td>2018-10-28</td>
-                                <td>General Checkup</td>
-                                <td>100 RBN</td> 
-                            </tr>
-                            <tr>
-                                <td>Anonymous</td>
-                                <td>2018-10-27</td>
-                                <td>HIV Test</td>
-                                <td>1500 RBN</td> 
-                            </tr>
-                            <tr>
-                                <td>Batsheva Muthoni</td>
-                                <td>2018-10-27</td>
-                                <td>General Checkup</td>
-                                <td>100 RBN</td> 
-                            </tr>
-                            <tr>
-                                <td>Afiwa Edmund</td>
-                                <td>2018-10-27</td>
-                                <td>TB Medication Dispensary</td>
-                                <td>500 RBN</td> 
-                            </tr>
-                            
-                            </tbody>
-                        </table>
-                        <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">
-        <i class="fa fa-angle-left"></i>
-        <span class="sr-only">Previous</span>
-      </a>
-    </li>
-    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">
-        <i class="fa fa-angle-right"></i>
-        <span class="sr-only">Next</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-                        </div>
-                    </div>
-
-
-
-
-                                            </tab-pane>
-              <!-- <tab-pane key="tab3">
-                        <template slot="title">
-                            <i class="fa fa-cogs"></i> Advanced
-                        </template>
-                           <div class="row  p-3 m-3" style="width:800px">
-                        <div class="col-4">
-                            <base-button type="secondary" class="mr-4" @click="advancedFunction">Transfer Management</base-button>
-                        </div>
-                        <div class="col-4">
-                            <base-button type="secondary" class="mr-4" @click="advancedFunction">Change Program Name</base-button>
-                        </div>
-                        <div class="col-4">
-                            <base-button type="warning" class="mr-4" @click="advancedFunction">Delete Program</base-button>
-                           </div>
-                           </div>
-                        
-                        
-                    </tab-pane> -->
-                                    </card>
-                                </tabs> 
                             </div>
                             </div>
                         </div>
