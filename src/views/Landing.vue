@@ -138,7 +138,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="pl-md-5">
-                            <icon name="ni ni-settings" class="mb-5 mt--200" size="lg" type="warning" shadow rounded></icon>
+                            <icon name="ni ni-atom" class="mb-5 mt--200" size="lg" type="info" shadow rounded></icon>
 
                             <h3>Incentives use cases</h3>
                             <p class="lead">
@@ -177,36 +177,32 @@
                                       rounded></icon>
                             </div>
                             <div class="pl-4">
-                                <h4 class="display-3 text-white">Modern Interface</h4>
-                                <p class="text-white">The Arctic Ocean freezes every winter and much of the sea-ice then
-                                    thaws every summer, and that process will continue whatever happens.</p>
+                                <h4 class="display-3 text-white">Simple User Interface</h4>
+                                <p class="text-white">The Ribbon incentive program is design to be as easy to use as possible for all users, irrespective of technical abilities and exposures.</p>
                             </div>
                         </div>
                         <card shadow class="shadow-lg--hover mt-5">
                             <div class="d-flex px-3">
                                 <div>
-                                    <icon name="ni ni-satisfied" gradient="success" color="white" shadow
+                                    <icon class="mt-5" name="ni ni-satisfied" gradient="success" color="white" shadow
                                           rounded></icon>
                                 </div>
                                 <div class="pl-4">
-                                    <h5 class="title text-success">Awesome Support</h5>
-                                    <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws
-                                        every summer, and that process will continue whatever happens.</p>
-                                    <a href="#" class="text-success">Learn more</a>
+                                    <h5 class="mt-1 title text-success">Native in app support</h5>
+                                    <p>The Universal API enables the rewards system to be integrated directly into existing applications. This means that users do not need to install any custom software to access their rewards.</p>
+                                    
                                 </div>
                             </div>
                         </card>
                         <card shadow class="shadow-lg--hover mt-5">
                             <div class="d-flex px-3">
                                 <div>
-                                    <icon name="ni ni-active-40" gradient="warning" color="white" shadow
+                                    <icon class="mt-5" name="fa fa-lock" gradient="warning" color="white" shadow
                                           rounded></icon>
                                 </div>
                                 <div class="pl-4">
-                                    <h5 class="title text-warning">Modular Components</h5>
-                                    <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws
-                                        every summer, and that process will continue whatever happens.</p>
-                                    <a href="#" class="text-warning">Learn more</a>
+                                    <h5 class="mt-1 title text-warning">Full Account Control</h5>
+                                    <p>The user has compleate control over what information is added to the platform and who it is shared with. Privacy is of utmost importance in a medical context. </p>
                                 </div>
                             </div>
                         </card>
