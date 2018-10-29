@@ -66,24 +66,55 @@
                             <tbody>
                             <tr>
                                 <td>Lola</td>
-                                <td>2018-07-24</td>
-                                <td>Completed A survey</td>
+                                <td>2018-10-29</td>
+                                <td>Completed A Survey</td>
                                 <td>200</td>
                             </tr>
                             <tr>
                                 <td>Lola</td>
-                                <td>2018-07-28</td>
+                                <td>2018-10-05</td>
                                 <td>TB Medication Dispensary</td>
                                 <td>500</td>
                             </tr>
                             <tr>
                                 <td>Mom Connect</td>
-                                <td>2018-08-30</td>
+                                <td>2018-09-01</td>
                                 <td>Visited a clinic for a checkup</td>
                                 <td>750</td>
                             </tr>
+                            <tr>
+                                <td>Lola</td>
+                                <td>2018-08-30</td>
+                                <td>HIV Test</td>
+                                <td>1500</td>
+                            </tr>
+                            <tr>
+                                <td>Mom Connect</td>
+                                <td>2018-08-01</td>
+                                <td>Compleated A Survey</td>
+                                <td>200</td>
+                            </tr>
                             </tbody>
                         </table>
+                                                <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">
+        <i class="fa fa-angle-left"></i>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">
+        <i class="fa fa-angle-right"></i>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
                         </div>
                     </div>
                 </card>

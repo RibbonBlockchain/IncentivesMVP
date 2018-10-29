@@ -75,81 +75,66 @@
                            <table class="table table-striped" style="width:800px">
                             <thead>
                             <tr>
-                                <th>Practitioner Name</th>
-                                <th>Last Active</th>
-                                <th>Total Awarded</th>
-                                <th>Edit</th>
+                                <th>Patient Name</th>
+                                <th>Date</th>
+                                <th>Interaction</th>
+                                <th>Tokens Awarded</th>
+                                
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Lola API Gauteng</td>
+                                <td>Shauntae Nolwazi</td>
                                 <td>2018-10-28</td>
-                                
-                                <td>375905 RBN</td> 
-                                <td>
-                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
-	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
-                                    </button>
-                                </td>
+                                <td>General Checkup</td>
+                                <td>100 RBN</td> 
                             </tr>
                             <tr>
-                                <td>Lola Gauteng Community Kiosks</td>
+                                <td>Nomsa Afeworki</td>
                                 <td>2018-10-28</td>
-                                
-                                <td>15759 RBN</td> 
-                                <td>
-                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
-	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
-                                    </button>
-                                </td>
+                                <td>General Checkup</td>
+                                <td>100 RBN</td> 
                             </tr>
                             <tr>
-                                <td>Lola API Mpumalanga</td>
-                                <td>2018-10-28</td>
-                                
-                                <td>29544 RBN</td> 
-                                <td>
-                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
-	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
-                                    </button>
-                                </td>
+                                <td>Anonymous</td>
+                                <td>2018-10-27</td>
+                                <td>HIV Test</td>
+                                <td>1500 RBN</td> 
                             </tr>
                             <tr>
-                                <td>Lola Mpumalanga Community Kiosks</td>
-                                <td>2018-10-28</td>
-                                
-                                <td>5983 RBN</td> 
-                                <td>
-                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
-	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
-                                    </button>
-                                </td>
+                                <td>Batsheva Muthoni</td>
+                                <td>2018-10-27</td>
+                                <td>General Checkup</td>
+                                <td>100 RBN</td> 
                             </tr>
                             <tr>
-                                <td>Lola API Free State</td>
-                                <td>2018-10-28</td>
-                                
-                                <td>69483 RBN</td> 
-                                <td>
-                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
-	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
-                                    </button>
-                                </td>
+                                <td>Afiwa Edmund</td>
+                                <td>2018-10-27</td>
+                                <td>TB Medication Dispensary</td>
+                                <td>500 RBN</td> 
                             </tr>
-                            <tr>
-                                <td>Lola Free State Community Kiosks</td>
-                                <td>2018-10-28</td>
-                                
-                                <td>39483 RBN</td> 
-                                <td>
-                                    <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
-	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
+                            
                             </tbody>
                         </table>
+                        <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">
+        <i class="fa fa-angle-left"></i>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">
+        <i class="fa fa-angle-right"></i>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
                     </tab-pane>
 
                     <tab-pane key="tab2">
@@ -159,79 +144,47 @@
 
                         <div class="row">
                             <div class="col-12" style="width:100%">
-                                 <table class="table table-striped" style="width:800px">
+                                                        <table class="table table-striped" style="width:800px">
                             <thead>
                             <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Address</th>
-                                <th>Last Active</th>
-                                <th>Balance</th>
-                                <th>remove</th>
+                                <th>Patient Name</th>
+                                <th>Date</th>
+                                <th>Interaction</th>
+                                <th>Tokens Awarded</th>
+                                
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Ezra</td>
-                                <td>Munro</td>
-                                <td>0x90E1...33A0</td>    
+                                <td>Shauntae Nolwazi</td>
                                 <td>2018-10-28</td>
-                                <td>75 RBN</td>
-                                <td>
-                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
-                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
-                                    </button>
-                                </td>
+                                <td>General Checkup</td>
+                                <td>100 RBN</td> 
                             </tr>
                             <tr>
-                                <td>Robin</td>
-                                <td>Olson</td>
-                                <td>0x72A2...44B1</td>    
-                                <td>2018-10-29</td>
-                                <td>120 RBN</td>
-                                <td>
-                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
-                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
-                                    </button>
-                                </td>
+                                <td>Nomsa Afeworki</td>
+                                <td>2018-10-28</td>
+                                <td>General Checkup</td>
+                                <td>100 RBN</td> 
                             </tr>
                             <tr>
-                                <td>Herbert</td>
-                                <td>Singleton</td>
-                                <td>0x10F2...28C5</td>    
-                                <td>2018-10-25</td>
-                                <td>15 RBN</td>
-                                <td>
-                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
-                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
-                                    </button>
-                                </td>
+                                <td>Anonymous</td>
+                                <td>2018-10-27</td>
+                                <td>HIV Test</td>
+                                <td>1500 RBN</td> 
                             </tr>
                             <tr>
-                                <td>Harry</td>
-                                <td>Short</td>
-                                <td>0x12E5...55C4</td>    
-                                <td>2018-10-11</td>
-                                <td>295 RBN</td>
-                                <td>
-                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
-                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
-                                    </button>
-                                </td>
+                                <td>Batsheva Muthoni</td>
+                                <td>2018-10-27</td>
+                                <td>General Checkup</td>
+                                <td>100 RBN</td> 
                             </tr>
                             <tr>
-                                <td>Amar</td>
-                                <td>Hogan</td>
-                                <td>0x12Cd...28C2</td>    
-                                <td>2018-10-23</td>
-                                <td>193 RBN</td>
-                                <td>
-                                    <button class="btn btn-icon btn-2 btn-warning" type="button">
-                                        <span class="btn-inner--icon p-0 m-0"><i class="fa fa-trash"></i></span>
-                                    </button>
-                                </td>
+                                <td>Afiwa Edmund</td>
+                                <td>2018-10-27</td>
+                                <td>TB Medication Dispensary</td>
+                                <td>500 RBN</td> 
                             </tr>
-                            
                             
                             </tbody>
                         </table>
