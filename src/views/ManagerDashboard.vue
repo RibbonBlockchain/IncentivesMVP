@@ -80,7 +80,7 @@
                                 <td>Lola API Gauteng</td>
                                 <td>2018-10-28</td>
                                 
-                                <td>3759 RBN</td> 
+                                <td>375905 RBN</td> 
                                 <td>
                                     <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
 	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
@@ -91,7 +91,7 @@
                                 <td>Lola Gauteng Community Kiosks</td>
                                 <td>2018-10-28</td>
                                 
-                                <td>3759 RBN</td> 
+                                <td>15759 RBN</td> 
                                 <td>
                                     <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
 	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
@@ -102,7 +102,7 @@
                                 <td>Lola API Mpumalanga</td>
                                 <td>2018-10-28</td>
                                 
-                                <td>3759 RBN</td> 
+                                <td>29544 RBN</td> 
                                 <td>
                                     <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
 	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
@@ -113,7 +113,7 @@
                                 <td>Lola Mpumalanga Community Kiosks</td>
                                 <td>2018-10-28</td>
                                 
-                                <td>3759 RBN</td> 
+                                <td>5983 RBN</td> 
                                 <td>
                                     <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
 	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
@@ -124,7 +124,7 @@
                                 <td>Lola API Free State</td>
                                 <td>2018-10-28</td>
                                 
-                                <td>3759 RBN</td> 
+                                <td>69483 RBN</td> 
                                 <td>
                                     <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
 	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
@@ -135,7 +135,7 @@
                                 <td>Lola Free State Community Kiosks</td>
                                 <td>2018-10-28</td>
                                 
-                                <td>3759 RBN</td> 
+                                <td>39483 RBN</td> 
                                 <td>
                                     <button class="btn btn-icon btn-2 btn-secondary" type="button" @click="modals.practitioner = true">
 	                                    <span class="btn-inner--icon"><i class="fa fa-pencil"></i></span>
@@ -301,6 +301,10 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>Address</td>
+                                    <td>0x14A3...0492</td>   
+                                </tr>
+                                <tr>
                                     <td>Total Tokens Awarded</td>
                                     <td>123891.19 RBN</td>   
                                 </tr>
@@ -342,10 +346,10 @@
             </div>
 
             <div class="row pt-3">
-            <div class="col-7">
+            <div class="col-6">
                 <base-slider :range={min:0,max:100000} v-model="programAllowance"/><br>
             </div>
-            <div class="col-5">
+            <div class="col-6">
                 <input type="number" v-model="programAllowance">
             </div>
         </div>
