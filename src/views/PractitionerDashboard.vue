@@ -434,9 +434,13 @@
             </div>
                     
             <div class="row">
-            <!-- <div class="col-sm-4">
-                <p>Select Activity:</p>
-            </div> -->
+            <div class="col-sm-12 text-center">
+                Patient Address:
+
+            </div>
+            </div>
+            <div class="row">
+            
             <div class="col-sm-12 text-center">
                                <base-dropdown class="nav-item pb-2" menu-classes="dropdown-menu-xl">
                     <a slot="title" href="#" class="btn btn-neutral btn-icon" data-toggle="dropdown" role="button">

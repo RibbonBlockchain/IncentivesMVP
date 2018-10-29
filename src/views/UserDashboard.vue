@@ -99,10 +99,10 @@
        
        
        <div class="row" >
-       <div class="col-7">
-       <input type="text" class="form-control form-control-alternative" v-model="withdrawAddress">  
+       <div class="col-6 pr-0">
+       <input type="text" class="form-control form-control-alternative" v-model="withdrawAddress" style="margin-right:20px">  
        </div>
-       <div class="col-5 m-r-2">
+       <div class="col-4 m-r-2">
                <base-dropdown class="nav-item" menu-classes="dropdown-menu-xl">
                     <a slot="title" href="#" class="btn btn-neutral btn-icon" data-toggle="dropdown" role="button">
                         <i class="ni ni-ui-04 d-lg-none"></i>
@@ -155,6 +155,9 @@
                         </a>
                     </div>
                 </base-dropdown>
+       </div>
+       <div class="col-1">
+           <button  type="button" class="btn btn-neutral btn-icon" @click="openQRScanner"><i class="fa fa-camera"></i></button>
        </div>
        </div>
 
@@ -263,6 +266,9 @@ export default {
         title: "Spending of Ribbon tokens is not yet enabled",
         text: "Using your Ribbon tokens at an affiliate is not yet possib.le"
       });
+    },
+    openQRScanner(){
+        
     }
   }
 };
