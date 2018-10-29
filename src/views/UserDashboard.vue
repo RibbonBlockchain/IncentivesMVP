@@ -39,7 +39,7 @@
                                         <span class="description">Ribbon Tokens</span>
                                     </div>
                                     <div>
-                                        <span class="heading">R37.24</span>
+                                        <span class="heading">R372.40</span>
                                         <span class="description">Equivalent Value</span>
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@
                         <a to="/userDashboard"
                         style="padding:10px"
                            class="media d-flex align-items-center">
-                            <img v-lazy="'img/theme/team-1-800x800.jpg'" class="rounded-circle" style="width:50px">
+                            <img v-lazy="'img/theme/team-5-800x800.jpg'" class="rounded-circle" style="width:50px">
                             <div class="media-body ml-3"
                             @click="contactSelect('0x3f04D2d3711507f81e0Fcd0E8c1810BCE0B3CD84')">
                                 <h5 class="heading text-primary mb-md-1">Ottoline Lambert</h5>
