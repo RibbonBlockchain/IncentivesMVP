@@ -293,11 +293,7 @@
                     
              <table class="table">
                             <thead>
-                            <!-- <tr>
-                                <th>Program</th>
-                                <th>Donation Date</th>
-                                <th>Amount</th>
-                            </tr> -->
+                            
                             </thead>
                             <tbody>
                                 <tr>

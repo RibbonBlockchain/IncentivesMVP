@@ -438,7 +438,7 @@
                 <p>Select Activity:</p>
             </div> -->
             <div class="col-sm-12 text-center">
-                               <base-dropdown class="nav-item" menu-classes="dropdown-menu-xl">
+                               <base-dropdown class="nav-item pb-2" menu-classes="dropdown-menu-xl">
                     <a slot="title" href="#" class="btn btn-neutral btn-icon" data-toggle="dropdown" role="button">
                         <i class="ni ni-ui-04 d-lg-none"></i>
                         <i class="fa fa-hand-pointer-o"></i>
@@ -446,21 +446,21 @@
                     </a>
                     <div class="dropdown-menu-inner">
                         <a to="/userDashboard"
-                        style="padding:10px"
-                           class="media d-flex align-items-center">
+                        style="padding:10px; cursor: pointer;"
+                           class="media d-flex align-items-center" >
                             <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                                 <i class="fa fa-search"></i>
                             </div>
                             <div class="media-body ml-3"
-                            @click="contactSelect('0x3f04D2d3711507f81e0Fcd0E8c1810BCE0B3CD84')">
+                            @click="awardPatient('General Checkup', 100)">
                                 <h5 class="heading text-primary mb-md-1">General Checkup</h5>
                                 <p class="description d-none d-md-inline-block mb-0">100 Ribbon Tokens</p>
                             </div>
                         </a>
                         <a to="/userDashboard"
-                        style="padding:10px"
+                        style="padding:10px; cursor: pointer;"
                            class="media d-flex align-items-center"
-                           @click="contactSelect('0x190253F903cdE8298e572624aed44085BC04E810')">
+                           @click="awardPatient('HIV Test', 1500)">
                             <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                                 <i class="fa fa-question"></i>
                             </div>
@@ -470,9 +470,9 @@
                             </div>
                         </a>
                         <a to="/userDashboard"
-                        style="padding:10px"
+                        style="padding:10px; cursor: pointer;"
                            class="media d-flex align-items-center"
-                           @click="contactSelect('0x759c17Afe27707A9C2e3c06c943ac1df92166d0A')">
+                           @click="awardPatient('STD Test', 800)">
                             <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                                 <i class="fa fa-male"></i> <i class="fa fa-female"></i>
                             </div>
@@ -483,9 +483,9 @@
                         </a>
                         
                         <a to="/userDashboard"
-                        style="padding:10px"
+                        style="padding:10px; cursor: pointer;"
                            class="media d-flex align-items-center"
-                           @click="contactSelect('0x90E18A928Cc22173154B91b94a89C0a0c2B933A0')">
+                           @click="awardPatient('TB Medication Dispensary', 500)">
                             <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                                 <i class="fa fa-hospital-o"></i>
                             </div>
@@ -495,9 +495,9 @@
                             </div>
                         </a>
                         <a to="/userDashboard"
-                        style="padding:10px"
+                        style="padding:10px; cursor: pointer;"
                            class="media d-flex align-items-center"
-                           @click="contactSelect('0x90E18A928Cc22173154B91b94a89C0a0c2B933A0')">
+                           @click="awardPatient('Complected Antibiotics course', 600)">
                             <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                                 <i class="fa fa-medkit"></i>
                             </div>
@@ -508,8 +508,27 @@
                         </a>
                     </div>
                 </base-dropdown>
+                <div v-if="rewardsToSendTotal>0">
+                <table class="table mb-0">
+                <thead>            
+                </thead>
+                        <tbody>
+                            <tr v-for="reward in rewardsToSend">
+                                <td>{{reward.award}}</td>
+                                <td>{{reward.value}}</td>
+                                <td> <base-button type="secondary" icon="fa fa-trash" @click="removeAward(reward)"></base-button></td>
+                            </tr>
+                        </tbody>
+                </table>
+                <p class="description text-left">Total: <strong>{{rewardsToSendTotal}}</strong></p>
+                </div>
             </div>
             </div>      
+    <template slot="footer">
+                    <base-button type="primary" :disabled="rewardsToSendTotal==0">Award</base-button>
+                    <base-button type="link" class="ml-auto" @click="modals.patientInteraction = false">Cancel
+                    </base-button>
+                </template>
     </modal>
 
     </div>
@@ -540,7 +559,9 @@ export default {
       withdrawValue: 0,
       walletBalance: 3724,
       customAddress: false,
-      withdrawAddress: ""
+      withdrawAddress: "",
+      rewardsToSend: [],
+      rewardsToSendTotal: 0
     };
   },
   methods: {
@@ -557,6 +578,17 @@ export default {
         title: "Spending of Ribbon tokens is not yet enabled",
         text: "Using your Ribbon tokens at an affiliate is not yet possib.le"
       });
+    },
+    awardPatient(award, value) {
+      this.rewardsToSend.push({ award: award, value: value });
+      this.rewardsToSendTotal += value;
+    },
+    removeAward(reward) {
+      var index = this.rewardsToSend.indexOf(reward);
+      if (index > -1) {
+        this.rewardsToSend.splice(index, 1);
+      }
+      this.rewardsToSendTotal-=reward.value
     }
   }
 };
