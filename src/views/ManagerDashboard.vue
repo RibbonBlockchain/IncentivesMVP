@@ -53,8 +53,9 @@
                             <h3>Re-Action!
                                 
                             </h3>
+                            <div class="h6"><i class="ni business_briefcase-24 mr-2"></i>Project Manager</div>
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>South Africa</div>
-                        
+                        <hr>
 
                         </div>
                          <div class="mt-3  text-center">

@@ -46,8 +46,10 @@
                             <h3>Department Of Health
                                 
                             </h3>
+                            <div class="h6"><i class="ni business_briefcase-24 mr-2"></i>Project Sponsor</div>
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>South Africa</div>
                         </div>
+                        <hr>
                         <div class="mt-3  text-center">
                             <div class="row justify-content-center">
                              <div class="nav-wrapper">
@@ -97,8 +99,8 @@
                             
                             <tr>
                                 <td>B-Wise</td>
-                                <td>2018-08-20</td>
-                                <td>12201 RBN</td>
+                                <td>2018-08-15</td>
+                                <td>293021 RBN</td>
                                 <td class="text-success">Safe Balance</td>
                                 <td>
                                     <button class="btn btn-icon btn-2 btn-secondary m-0" type="button" @click="modals.projectInfo = true">
@@ -109,8 +111,8 @@
                             </tr>
                             <tr>
                                 <td>Phila</td>
-                                <td>2018-08-20</td>
-                                <td>12201 RBN</td>
+                                <td>2018-08-03</td>
+                                <td>19381 RBN</td>
                                 <td class="text-success">Safe Balance</td>
                                 <td>
                                     <button class="btn btn-icon btn-2 btn-secondary m-0" type="button" @click="modals.projectInfo = true">
@@ -222,7 +224,7 @@
         <div class="row">
             <div class="col-12">
                 
-                <p class="text-justify">Dolor commodo enim reprehenderit veniam exercitation. Ad amet est consequat anim excepteur amet nisi voluptate consectetur eu officia pariatur nisi eu. Reprehenderit ad reprehenderit officia enim excepteur ad ullamco.
+                <p class="text-justify">An App that helps young women aged 15-24 make better health and lifestyle choices to avoid unplanned pregnancies, HIV infection and disease within DoH's She Conquers Program.
                     <br>
                     <br>
                     More information on the Lola project can be found <a href="">Here</a>

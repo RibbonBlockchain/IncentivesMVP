@@ -15,7 +15,7 @@
             <div class="container">
                 <card shadow class="card-profile mt--300" no-body>
                     <div class="px-4">
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center  mb-5">
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
                                     <a href="#">
@@ -28,10 +28,12 @@
                                     <base-button type="primary" size="sm" class="float-left" @click="modals.deposit = true">Deposit</base-button>
                                     <base-button type="info" size="sm" class="mr-4" @click="modals.withdraw = true">Withdraw</base-button>
                                     <base-button type="default" size="sm" class="float-right" @click="modals.spend = true">Spend</base-button>
+                                    <hr class="pt-0 m-3">
+                            <button  type="button" class="btn btn-primary btn-icon mt-2 mr-4" @click="modals.patientInteraction = true">Patient Interaction</button>
                                 </div>
                             </div>
-                            <div class="col-lg-4 order-lg-1">
-                                <div class="card-profile-stats d-flex justify-content-center">
+                            <div class="col-lg-4 order-lg-1 pb-0 mb-0">
+                                <div class="card-profile-stats d-flex justify-content-center  pb-0 mb-0">
                                     <div>
                                         <span class="heading">48702</span>
                                         <span class="description">Ribbon Tokens</span>
@@ -41,25 +43,24 @@
                                         <span class="description">Equivalent Value</span>
                                     </div>
                                 </div>
+                                <hr class="p-0 m-0">
+                                <div class="card-profile-stats d-flex justify-content-center pt-0 mt-0 ml-4">
+                                    <div>
+                                        <span class="description">Remaining Allowance<strong>2918</strong><br>
+                                        Total people helped: <strong>4521</strong><br>
+                                        People helped last month: <strong>18</strong></span>
+                                    </div>
+                                    <div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="text-center mt-5">
+                        <div class="text-center mt-5 mt--100">
                             <h3>Ntombi Afua
                             </h3>
+                            <div class="h6"><i class="ni business_briefcase-24 mr-2"></i>Community healthcare worker - Lola</div>
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Gauteng, South Africa</div>
-                            <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Community healthcare worker - Lola</div>
-                        </div>
-                        <div class="row mt-5">
-                        <div class="col-2">
-                        </div>
-                        <div class="col-4">
-                            <button  type="button" class="btn btn-primary btn-icon mt-2" @click="modals.patientInteraction = true">Patient Interaction</button>
-                        </div>
-                        <div class="col-5">
-                            Total people helped: <strong>4521</strong><br>
-                            People helped last month: <strong>18</strong>
-                        </div>
-
+                            
                         </div>
                         <hr>
                                                  <div class="mt-3  text-center">
@@ -621,8 +622,8 @@ export default {
     contactSelect(address) {
       this.withdrawAddress = address;
     },
-    openQRScanner(){
-        this.$notify({
+    openQRScanner() {
+      this.$notify({
         group: "foo",
         title: "Scanning QR codes is not yet enabled",
         text: "Please either enter the address directly or use the contacts"
@@ -645,7 +646,7 @@ export default {
       if (index > -1) {
         this.rewardsToSend.splice(index, 1);
       }
-      this.rewardsToSendTotal-=reward.value
+      this.rewardsToSendTotal -= reward.value;
     }
   }
 };

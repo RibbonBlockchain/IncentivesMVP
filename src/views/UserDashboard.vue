@@ -49,7 +49,8 @@
                             <h3>Jessica Jones
                                 <span class="font-weight-light">, 27</span>
                             </h3>
-                            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Johannesburg South Africa</div>
+                            <div class="h6"><i class="ni business_briefcase-24 mr-2"></i>Member of: Lola, Mom Connect</div>
+                            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Johannesburg, South Africa</div>
                             
                         </div>
                         <div class="mt-5  border-top text-center">
@@ -59,7 +60,7 @@
                                 <th>Program</th>
                                 <th>Date</th>
                                 <th>Action</th>
-                                <th>Amount</th>
+                                <th>Amount(RBN)</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -72,14 +73,14 @@
                             <tr>
                                 <td>Lola</td>
                                 <td>2018-07-28</td>
-                                <td>Completed A survey</td>
-                                <td>150</td>
+                                <td>TB Medication Dispensary</td>
+                                <td>500</td>
                             </tr>
                             <tr>
-                                <td>Lola</td>
+                                <td>Mom Connect</td>
                                 <td>2018-08-30</td>
-                                <td>Completed A survey</td>
-                                <td>350</td>
+                                <td>Visited a clinic for a checkup</td>
+                                <td>750</td>
                             </tr>
                             </tbody>
                         </table>
