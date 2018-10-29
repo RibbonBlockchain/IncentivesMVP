@@ -125,24 +125,20 @@
             <div class="container">
                 <div class="row row-grid align-items-center">
                     <div class="col-md-6">
-                        <div class="card bg-default shadow border-0">
-                            <img v-lazy="'img/theme/img-1-1200x1000.jpg'" class="card-img-top">
+                        <div class="card border-0">
+                            <img v-lazy="'img/theme/landing.png'" class="card-img-top">
                             <blockquote class="card-blockquote">
-                                <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95"
-                                     class="svg-bg">
-                                    <polygon points="0,52 583,95 0,95" class="fill-default"></polygon>
-                                    <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default"></polygon>
-                                </svg>
-                                <h4 class="display-3 font-weight-bold text-white">Design System</h4>
-                                <p class="lead text-italic text-white">The Arctic Ocean freezes every winter and much of
+                                
+                                <!-- <h4 class="display-3 font-weight-bold">No Limitations</h4>
+                                <p class="lead text-italic">The Arctic Ocean freezes every winter and much of
                                     the sea-ice then thaws every summer, and that process will continue whatever
-                                    happens.</p>
+                                    happens.</p> -->
                             </blockquote>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="pl-md-5">
-                            <icon name="ni ni-settings" class="mb-5" size="lg" type="warning" shadow rounded></icon>
+                            <icon name="ni ni-settings" class="mb-5 mt--200" size="lg" type="warning" shadow rounded></icon>
 
                             <h3>Incentives use cases</h3>
                             <p class="lead">
@@ -151,10 +147,8 @@
                             <p>
                                 Incentives any behavioral change, from going for medical tests to interacting with a healtcare app.
                             </p>
-                            <p>The kit comes with three pre-built pages to help you get started faster. You can change
-                                the text and images and you're good to go.</p>
-                            <a href="#" class="font-weight-bold text-warning mt-5">A beautiful UI Kit for impactful
-                                websites</a>
+                            <p>Integrate with community initiatives, healthcare apps or directly incentives people to visit the doctor. Any use case wherein incentives are exchanged for actions can be used.</p>
+                            
                         </div>
                     </div>
                 </div>
