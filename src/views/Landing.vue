@@ -22,17 +22,17 @@
                                 <h1 class="display-3  text-white">Ribbon Blockchain
                                     <span>Public Healthcare Incentive Program</span>
                                 </h1>
-                                <p class="lead  text-white">Using crypto incentives to make positive lifestyle changes. Reducing the burden on the medical system and making communities healthier. </p>
+                                <p class="lead  text-white">Using tokenized incentives to make positive lifestyle changes. Reducing the burden on the medical system and making communities healthier. </p>
                                 <div class="btn-wrapper">
                                     <base-button tag="a"
-                                                 href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html"
+                                                 href="#"
                                                  class="mb-3 mb-sm-0"
                                                  type="info"
                                                  icon="fa fa-question">
                                         Learn More
                                     </base-button>
                                     <base-button tag="a"
-                                                 href="https://www.creative-tim.com/product/argon-design-system"
+                                                 href="#"
                                                  class="mb-3 mb-sm-0"
                                                  type="white"
                                                  icon="fa fa-paper-plane">

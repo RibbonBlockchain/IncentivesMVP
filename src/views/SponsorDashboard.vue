@@ -32,11 +32,11 @@
                             <div class="col-lg-4 order-lg-1">
                                 <div class="card-profile-stats d-flex justify-content-center">
                                     <div>
-                                        <span class="heading">3724</span>
+                                        <span class="heading">3724092</span>
                                         <span class="description">Ribbon Tokens</span>
                                     </div>
                                     <div>
-                                        <span class="heading">R37.24</span>
+                                        <span class="heading">R37240.92</span>
                                         <span class="description">Equivalent Value</span>
                                     </div>
                                 </div>
@@ -144,31 +144,56 @@
                             <tbody>
                             <tr>
                                 <td>Lola</td>
-                                <td>2018-07-24</td>
-                                <td>1000 RBN</td>
+                                <td>2018-10-24</td>
+                                <td>102923 RBN</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Mom Connect</td>
+                                <td>2018-09-26</td>
+                                <td>593823 RBN</td>
                                 
                             </tr>
                             <tr>
                                 <td>Lola</td>
-                                <td>2018-07-26</td>
-                                <td>1000 RBN</td>
+                                <td>2018-08-30</td>
+                                <td>289372 RBN</td>
                                 
                             </tr>
                             <tr>
-                                <td>Lola</td>
-                                <td>2018-07-27</td>
-                                <td>1000 RBN</td>
+                                <td>B-wise</td>
+                                <td>2018-07-25</td>
+                                <td>14823 RBN</td>
                                 
                             </tr>
                             <tr>
-                                <td>Lola</td>
-                                <td>2018-07-30</td>
-                                <td>1000 RBN</td>
+                                <td>Mom Connect</td>
+                                <td>2018-07-11</td>
+                                <td>15921 RBN</td>
                                 
                             </tr>
                             
                             </tbody>
                         </table>
+                          <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">
+        <i class="fa fa-angle-left"></i>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">
+        <i class="fa fa-angle-right"></i>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
                     </tab-pane>
