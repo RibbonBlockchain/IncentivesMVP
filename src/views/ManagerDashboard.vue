@@ -21,7 +21,7 @@
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
                                     <a href="#">
-                                        <img v-lazy="'img/managers/reaction.png'" class="rounded-circle">
+                                        <img v-lazy="'img/programs/sheconquers.png'" class="rounded-circle">
                                     </a>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                             <div class="col-lg-4 order-lg-1">
                                 <div class="card-profile-stats d-flex justify-content-center">
                                     <div>
-                                        <span class="heading">She Conquers - Lola</span>
+                                        <span class="heading">She Conquers</span>
                             <span class="description">Daily active users: <strong>28</strong></span><br>
                             <span class="description">Total historic users: <strong>1945</strong></span><br>
                             <span class="description">Starting date: <strong>2018-07-24</strong></span><br>
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="text-center mt-5 mt--150">
-                            <h3>Re-Action!
+                            <h3>She Conquers
                                 
                             </h3>
                             <div class="h6"><i class="ni business_briefcase-24 mr-2"></i>Project Manager</div>
@@ -78,7 +78,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Lola API Gauteng</td>
+                                <td>She Conquers API Gauteng</td>
                                 <td>2018-10-28</td>
                                 
                                 <td>375905 RBN</td> 
@@ -89,7 +89,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Lola Gauteng Community Kiosks</td>
+                                <td>She Conquers Gauteng Community Kiosks</td>
                                 <td>2018-10-28</td>
                                 
                                 <td>15759 RBN</td> 
@@ -100,7 +100,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Lola API Mpumalanga</td>
+                                <td>She Conquers API Mpumalanga</td>
                                 <td>2018-10-28</td>
                                 
                                 <td>29544 RBN</td> 
@@ -111,7 +111,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Lola Mpumalanga Community Kiosks</td>
+                                <td>She Conquers Mpumalanga Community Kiosks</td>
                                 <td>2018-10-28</td>
                                 
                                 <td>5983 RBN</td> 
@@ -122,7 +122,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Lola API Free State</td>
+                                <td>She Conquers API Free State</td>
                                 <td>2018-10-28</td>
                                 
                                 <td>69483 RBN</td> 
@@ -133,7 +133,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Lola Free State Community Kiosks</td>
+                                <td>She Conquers Free State Community Kiosks</td>
                                 <td>2018-10-28</td>
                                 
                                 <td>39483 RBN</td> 
@@ -285,7 +285,7 @@
         </section>
     <!-- Deposit Window -->
     <modal :show.sync="modals.practitioner">
-    <h4 slot="header" class="modal-title" id="modal-title-default">Lola Program API</h4>
+    <h4 slot="header" class="modal-title" id="modal-title-default">She Conquers Program API</h4>
         <div class="row">
             <div class="col-12 text-center">
                 <p>This practitioner represent the wallet used to send RBN tokens for the main application API. Any interaction with the app that results in token distribution will go through this API.</p>
