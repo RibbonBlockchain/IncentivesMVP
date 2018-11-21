@@ -58,7 +58,7 @@
                         <div class="text-center mt-5 mt--100">
                             <h3>Ntombi Afua
                             </h3>
-                            <div class="h6"><i class="ni business_briefcase-24 mr-2"></i>Community healthcare worker - Lola</div>
+                            <div class="h6"><i class="ni business_briefcase-24 mr-2"></i>Community healthcare worker - She Conquers</div>
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Gauteng, South Africa</div>
                             
                         </div>

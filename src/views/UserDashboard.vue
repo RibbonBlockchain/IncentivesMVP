@@ -49,7 +49,7 @@
                             <h3>Jessica Jones
                                 <span class="font-weight-light">, 27</span>
                             </h3>
-                            <div class="h6"><i class="ni business_briefcase-24 mr-2"></i>Member of: Lola, Mom Connect</div>
+                            <div class="h6"><i class="ni business_briefcase-24 mr-2"></i>Member of: She Conquers, Mom Connect</div>
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Johannesburg, South Africa</div>
                             
                         </div>
@@ -65,13 +65,13 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Lola</td>
+                                <td>She Conquers</td>
                                 <td>2018-10-29</td>
                                 <td>Completed A Survey</td>
                                 <td>200</td>
                             </tr>
                             <tr>
-                                <td>Lola</td>
+                                <td>She Conquers</td>
                                 <td>2018-10-05</td>
                                 <td>TB Medication Dispensary</td>
                                 <td>500</td>
@@ -83,7 +83,7 @@
                                 <td>750</td>
                             </tr>
                             <tr>
-                                <td>Lola</td>
+                                <td>She Conquers</td>
                                 <td>2018-08-30</td>
                                 <td>HIV Test</td>
                                 <td>1500</td>
@@ -299,8 +299,8 @@ export default {
         text: "Using your Ribbon tokens at an affiliate is not yet possible"
       });
     },
-    openQRScanner(){
-        this.$notify({
+    openQRScanner() {
+      this.$notify({
         group: "foo",
         title: "Scanning QR codes is not yet enabled",
         text: "Please either enter the address directly or use the contacts"

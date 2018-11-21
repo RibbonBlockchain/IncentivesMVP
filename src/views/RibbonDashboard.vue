@@ -84,7 +84,7 @@ export default {
         data: [
           {
             x: [1000000, 750000, 200000, 1500000],
-            y: ["Lola", "Mom Connect", "B-Wise", "Phila"],
+            y: ["She Conquers", "Mom Connect", "B-Wise", "Phila"],
             name: "Department Of health",
             orientation: "h",
             marker: {
@@ -95,7 +95,7 @@ export default {
           },
           {
             x: [1400000, 950000, 300000, 1200000],
-            y: ["Lola", "Mom Connect", "B-Wise", "Phila"],
+            y: ["She Conquers", "Mom Connect", "B-Wise", "Phila"],
             name: "CSI Budgets",
             orientation: "h",
             type: "bar",
@@ -106,7 +106,7 @@ export default {
           },
           {
             x: [600000, 320000, 123321, 1928101],
-            y: ["Lola", "Mom Connect", "B-Wise", "Phila"],
+            y: ["She Conquers", "Mom Connect", "B-Wise", "Phila"],
             name: "Donations",
             orientation: "h",
             type: "bar",
@@ -117,7 +117,7 @@ export default {
           },
           {
             x: [600000, 320000, 3903321, 1928101],
-            y: ["Lola", "Mom Connect", "B-Wise", "Phila"],
+            y: ["She Conquers", "Mom Connect", "B-Wise", "Phila"],
             name: "Treasury",
             orientation: "h",
             type: "bar",
@@ -150,54 +150,10 @@ export default {
     },
     programAdoption() {
       var xData = [
-        [
-          "01",
-          "02",
-          "03",
-          "04",
-          "05",
-          "06",
-          "07",
-          "08",
-          "09",
-          "10"
-        ],
-        [
-          "01",
-          "02",
-          "03",
-          "04",
-          "05",
-          "06",
-          "07",
-          "08",
-          "09",
-          "10"
-        ],
-        [
-          "01",
-          "02",
-          "03",
-          "04",
-          "05",
-          "06",
-          "07",
-          "08",
-          "09",
-          "10"
-        ],
-        [
-          "01",
-          "02",
-          "03",
-          "04",
-          "05",
-          "06",
-          "07",
-          "08",
-          "09",
-          "10"
-        ]
+        ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"],
+        ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"],
+        ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"],
+        ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"]
       ];
 
       var yData = [
@@ -211,7 +167,7 @@ export default {
 
       var lineSize = [3, 3, 3, 3];
 
-      var labels = ["Phila", "B-Wise", "Mom Connect", "Lola"];
+      var labels = ["Phila", "B-Wise", "Mom Connect", "She Conquers"];
 
       var data = [];
 
@@ -240,105 +196,105 @@ export default {
       }
 
       var layout = {
-          height: 400,
-          width:900,
-  showlegend: false,
-  xaxis: {
-    showline: true,
-    showgrid: true,
-    showticklabels: true,
-    linecolor: 'rgb(204,204,204)',
-    linewidth: 2,
-    autotick: false,
-    ticks: 'outside',
-    tickcolor: 'rgb(204,204,204)',
-    tickwidth: 2,
-    ticklen: 5,
-    tickfont: {
-      family: 'Arial',
-      size: 12,
-      color: 'rgb(82, 82, 82)'
-    }
-  },
-  yaxis: {
-    showgrid: true,
-    zeroline: false,
-    showline: false,
-    showticklabels: false
-  },
-  autosize: false,
-  margin: {
-    autoexpand: false,
-    l: 100,
-    r: 20,
-    t: 0
-  },
-  annotations: [
-    // {
-    //   xref: 'paper',
-    //   yref: 'paper',
-    //   x: 0.0,
-    //   y: 1.05,
-    //   xanchor: 'left',
-    //   yanchor: 'bottom',
-    // //   text: 'Main Source for News',
-    // //   font:{
-    // //     family: 'Arial',
-    // //     size: 30,
-    // //     color: 'rgb(37,37,37)'
-    // //   },
-    //   showarrow: false
-    // },
-    {
-      xref: 'paper',
-      yref: 'paper',
-      x: 0.5,
-      y: -0.1,
-      xanchor: 'center',
-      yanchor: 'top',
-      text: 'Date (months)',
-      showarrow: false,
-      font: {
-        family: 'Arial',
-        size: 12,
-        color: 'rgb(150,150,150)'
-      }
-    }
-  ]
-};
+        height: 400,
+        width: 900,
+        showlegend: false,
+        xaxis: {
+          showline: true,
+          showgrid: true,
+          showticklabels: true,
+          linecolor: "rgb(204,204,204)",
+          linewidth: 2,
+          autotick: false,
+          ticks: "outside",
+          tickcolor: "rgb(204,204,204)",
+          tickwidth: 2,
+          ticklen: 5,
+          tickfont: {
+            family: "Arial",
+            size: 12,
+            color: "rgb(82, 82, 82)"
+          }
+        },
+        yaxis: {
+          showgrid: true,
+          zeroline: false,
+          showline: false,
+          showticklabels: false
+        },
+        autosize: false,
+        margin: {
+          autoexpand: false,
+          l: 100,
+          r: 20,
+          t: 0
+        },
+        annotations: [
+          // {
+          //   xref: 'paper',
+          //   yref: 'paper',
+          //   x: 0.0,
+          //   y: 1.05,
+          //   xanchor: 'left',
+          //   yanchor: 'bottom',
+          // //   text: 'Main Source for News',
+          // //   font:{
+          // //     family: 'Arial',
+          // //     size: 30,
+          // //     color: 'rgb(37,37,37)'
+          // //   },
+          //   showarrow: false
+          // },
+          {
+            xref: "paper",
+            yref: "paper",
+            x: 0.5,
+            y: -0.1,
+            xanchor: "center",
+            yanchor: "top",
+            text: "Date (months)",
+            showarrow: false,
+            font: {
+              family: "Arial",
+              size: 12,
+              color: "rgb(150,150,150)"
+            }
+          }
+        ]
+      };
 
-for ( var i = 0 ; i < xData.length ; i ++ ) {
-  var result = {
-    xref: 'paper',
-    x: 0.05,
-    y: yData[i][0],
-    xanchor: 'right',
-    yanchor: 'middle',
-    text: labels[i] + ' ' + yData[i][0],
-    showarrow: false,
-    font: {
-      family: 'Arial',
-      size: 16,
-      color: 'black'
-    }
-  };
-  var result2 = {
-    xref: 'paper',
-    x: 0.95,
-    y: yData[i][9],
-    xanchor: 'left',
-    yanchor: 'middle',
-    text: yData[i][9],
-    font: {
-      family: 'Arial',
-      size: 16,
-      color: 'black'
-    },
-    showarrow: false
-  };
-  
-  layout.annotations.push(result, result2);
-}
+      for (var i = 0; i < xData.length; i++) {
+        var result = {
+          xref: "paper",
+          x: 0.05,
+          y: yData[i][0],
+          xanchor: "right",
+          yanchor: "middle",
+          text: labels[i] + " " + yData[i][0],
+          showarrow: false,
+          font: {
+            family: "Arial",
+            size: 16,
+            color: "black"
+          }
+        };
+        var result2 = {
+          xref: "paper",
+          x: 0.95,
+          y: yData[i][9],
+          xanchor: "left",
+          yanchor: "middle",
+          text: yData[i][9],
+          font: {
+            family: "Arial",
+            size: 16,
+            color: "black"
+          },
+          showarrow: false
+        };
+
+        layout.annotations.push(result, result2);
+      }
       return { data: data, layout: layout };
     }
   }

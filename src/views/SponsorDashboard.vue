@@ -73,7 +73,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Lola</td>
+                                <td>She Conquers</td>
                                 <td>2018-07-24</td>
                                 <td>3759 RBN</td>
                                 <td class="text-warning">Low Balance</td>
@@ -143,7 +143,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Lola</td>
+                                <td>She Conquers</td>
                                 <td>2018-10-24</td>
                                 <td>102923 RBN</td>
                                 
@@ -155,7 +155,7 @@
                                 
                             </tr>
                             <tr>
-                                <td>Lola</td>
+                                <td>She Conquers</td>
                                 <td>2018-08-30</td>
                                 <td>289372 RBN</td>
                                 
@@ -240,7 +240,7 @@
     <!-- MODALS -->
     <!-- Program Info Window -->
     <modal :show.sync="modals.projectInfo">
-    <h4 slot="header" class="modal-title" id="modal-title-default">Lola (She Conquers)</h4>
+    <h4 slot="header" class="modal-title" id="modal-title-default">She Conquers</h4>
         <div class="row">
             <div class="col-12 text-center">
                 <img v-lazy="'img/programs/sheconquers.png'" class="center" style="width:200px; cursor: pointer; text-align:center" @click="photoClick('Metrobus')">
@@ -252,7 +252,7 @@
                 <p class="text-justify">An App that helps young women aged 15-24 make better health and lifestyle choices to avoid unplanned pregnancies, HIV infection and disease within DoH's She Conquers Program.
                     <br>
                     <br>
-                    More information on the Lola project can be found <a href="">Here</a>
+                    More information on the She Conquers project can be found <a href="http://sheconquerssa.co.za/">Here</a>
                 </p>
             </div>
         </div>
@@ -425,7 +425,7 @@ export default {
         return [
           {
             values: [12059683, 5185927, 8370216],
-            labels: ["Lola", "Mom Connect", "B-Wize"],
+            labels: ["She Conquers", "Mom Connect", "B-Wize"],
             type: "pie",
             hole: 0.4,
             marker: {
@@ -438,7 +438,7 @@ export default {
         return [
           {
             values: [1000000, 500000, 500000],
-            labels: ["Lola", "Mom Connect", "B-Wize"],
+            labels: ["She Conquers", "Mom Connect", "B-Wize"],
             type: "pie",
             hole: 0.4,
             marker: {
@@ -451,7 +451,7 @@ export default {
         return [
           {
             values: [250, 240, 4032],
-            labels: ["Lola", "Mom Connect", "B-Wize"],
+            labels: ["She Conquers", "Mom Connect", "B-Wize"],
             type: "pie",
             hole: 0.4,
             marker: {
