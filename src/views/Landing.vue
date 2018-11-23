@@ -51,7 +51,7 @@
             <div class="container pt-lg">
                 <div class="row text-center justify-content-center">
                     <div class="col-lg-10">
-                        <h2 class="display-3">Incentives a healthier lifestyle</h2>
+                        <h2 class="display-3">Incentivise a healthier lifestyle</h2>
                         <p class="lead ">
                             Ribbon Blockchain aims to create a universal healthcare incentive layer. Encourage behavioral changes through incentives to make people healthier. Integrate with the existing architecture to drastically lower development costs.
                         </p>
