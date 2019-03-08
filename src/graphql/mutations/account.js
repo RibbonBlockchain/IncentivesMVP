@@ -1,0 +1,3 @@
+const RegisterAccount = ``;
+
+export { RegisterAccount };
