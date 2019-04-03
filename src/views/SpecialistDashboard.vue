@@ -176,16 +176,16 @@
       </div>
 
       <template slot="footer">
-        <base-button type="primary">Register Patient</base-button>
+        <base-button type="primary" @click.prevent="createNewPatient">Register Patient</base-button>
         <base-button type="link" class="ml-auto" @click="modals.onboard = false">Cancel</base-button>
       </template>
     </modal>
     <!-- Patient Interaction Window -->
     <modal :show.sync="modals.patientInteraction">
-      <h4 slot="header" class="modal-title" id="modal-title-default">Reward A Patient Activity</h4>
+      <h4 slot="header" class="modal-title" id="modal-title-default">Record A Patient Activity</h4>
       <div class="row">
         <div class="col-12 text-center">
-          <p>Reward a patient based on a predefined set of activities.</p>
+          <p>Record a patient activity.</p>
         </div>
       </div>
 
@@ -371,18 +371,24 @@
         </div>
       </div>
       <template slot="footer">
-        <base-button type="primary" :disabled="rewardsToSendTotal==0 || phoneNumber==''">Award</base-button>
+        <base-button type="primary" :disabled="rewardsToSendTotal==0 || phoneNumber==''">Record</base-button>
         <base-button type="link" class="ml-auto" @click="modals.patientInteraction = false">Cancel</base-button>
       </template>
     </modal>
   </div>
 </template>
 <script>
+import { components } from "aws-amplify-vue";
+import { Auth, API, graphqlOperation } from "aws-amplify";
 import Tabs from "@/components/Tabs/Tabs.vue";
 import TabPane from "@/components/Tabs/TabPane.vue";
 import Modal from "@/components/Modal.vue";
 import BaseDropdown from "@/components/BaseDropdown";
 import VuePlotly from "@statnett/vue-plotly";
+
+import { listPatients } from "../graphql/queries.js";
+import { createPatient } from "../graphql/mutations";
+import { onCreatePatient } from "../graphql/subscriptions";
 
 export default {
   components: {
@@ -400,10 +406,26 @@ export default {
       },
       phoneNumber: "",
       firstName: "",
-      lastName: ""
+      lastName: "",
+      rewardsToSend: [],
+      rewardsToSendTotal: 0
     };
   },
   methods: {
+    async createNewPatient() {
+      const data = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        phoneNumber: this.phoneNumber
+      };
+      await API.graphql(graphqlOperation(createPatient, data))
+        .then(patient => {
+          console.log(patient);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     contactSelect(phoneNumber) {
       this.phoneNumber = phoneNumber;
     },
