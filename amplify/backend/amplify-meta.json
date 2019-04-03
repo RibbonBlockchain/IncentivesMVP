@@ -1,50 +1,14 @@
 {
-	"providers": {
-		"awscloudformation": {
-			"AuthRoleName": "server-20190326170722-authRole",
-			"UnauthRoleArn": "arn:aws:iam::853431608467:role/server-20190326170722-unauthRole",
-			"AuthRoleArn": "arn:aws:iam::853431608467:role/server-20190326170722-authRole",
-			"Region": "eu-west-1",
-			"DeploymentBucketName": "server-20190326170722-deployment",
-			"UnauthRoleName": "server-20190326170722-unauthRole",
-			"StackName": "server-20190326170722",
-			"StackId": "arn:aws:cloudformation:eu-west-1:853431608467:stack/server-20190326170722/3dcb2470-4fe1-11e9-ba0c-0a2f634edb2c"
-		}
-	},
-	"api": {
-		"ribbon": {
-			"service": "AppSync",
-			"providerPlugin": "awscloudformation",
-			"output": {
-				"securityType": "API_KEY",
-				"GraphQLAPIIdOutput": "mouom5r3wzezfirehihaykbt3u",
-				"GraphQLAPIEndpointOutput": "https://xhdqggddrfhq7hw3ffjm5nvghy.appsync-api.eu-west-1.amazonaws.com/graphql",
-				"GraphQLAPIKeyOutput": "da2-mblb7qucpnfglfislofpbxmy2y"
-			},
-			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/server-20190326170722-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-				"logicalId": "apiribbon"
-			},
-			"lastPushTimeStamp": "2019-03-26T22:27:06.910Z",
-			"lastPushDirHash": "DTzZ6jztq9BJfwgTNdPdWNPgv/A="
-		}
-	},
-	"hosting": {
-		"S3AndCloudFront": {
-			"service": "S3AndCloudFront",
-			"providerPlugin": "awscloudformation",
-			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/server-20190326170722-deployment/amplify-cfn-templates/hosting/template.json",
-				"logicalId": "hostingS3AndCloudFront"
-			},
-			"lastPushTimeStamp": "2019-03-26T22:27:06.910Z",
-			"output": {
-				"S3BucketSecureURL": "https://server-20190326232256-hostingbucket-staging.s3.amazonaws.com",
-				"WebsiteURL": "http://server-20190326232256-hostingbucket-staging.s3-website-eu-west-1.amazonaws.com",
-				"Region": "eu-west-1",
-				"HostingBucketName": "server-20190326232256-hostingbucket-staging"
-			},
-			"lastPushDirHash": "a89EaPmC5+u64AObA1eL3HrjwmM="
-		}
-	}
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "dapp-20190403182704-authRole",
+            "UnauthRoleArn": "arn:aws:iam::853431608467:role/dapp-20190403182704-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::853431608467:role/dapp-20190403182704-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "dapp-20190403182704-deployment",
+            "UnauthRoleName": "dapp-20190403182704-unauthRole",
+            "StackName": "dapp-20190403182704",
+            "StackId": "arn:aws:cloudformation:eu-west-1:853431608467:stack/dapp-20190403182704/b3692a60-5635-11e9-af9f-021d1d6e9e08"
+        }
+    }
 }
