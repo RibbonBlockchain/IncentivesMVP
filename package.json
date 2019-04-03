@@ -1,5 +1,5 @@
 {
-  "name": "vue-argon-design-system",
+  "name": "ribbon-incentives-mvp",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -34,5 +34,15 @@
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
     "vue-template-compiler": "^2.5.16"
-  }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
