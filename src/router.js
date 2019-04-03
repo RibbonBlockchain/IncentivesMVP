@@ -4,11 +4,12 @@ import AppHeader from "./layout/AppHeader";
 import AppFooter from "./layout/AppFooter";
 
 import Landing from "./views/Landing.vue";
-import UserDashboard from "./views/UserDashboard.vue"
-import SponsorDashboard from "./views/SponsorDashboard.vue"
-import PractitionerDashboard from "./views/PractitionerDashboard.vue"
-import ManagerDashboard from "./views/ManagerDashboard.vue"
-import RibbonDashboard from "./views/RibbonDashboard"
+import UserDashboard from "./views/UserDashboard.vue";
+import SponsorDashboard from "./views/SponsorDashboard.vue";
+import PractitionerDashboard from "./views/PractitionerDashboard.vue";
+import ManagerDashboard from "./views/ManagerDashboard.vue";
+import RibbonDashboard from "./views/RibbonDashboard";
+import SpecialistDashboard from './views/SpecialistDashboard'
 
 Vue.use(Router);
 
@@ -32,7 +33,7 @@ export default new Router({
         default: UserDashboard,
         footer: AppFooter
       }
-    }, 
+    },
     {
       path: "/sponsorDashboard",
       name: "sponsorDashboard",
@@ -69,6 +70,15 @@ export default new Router({
         footer: AppFooter
       }
     },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      components: {
+        header: AppHeader,
+        default: SpecialistDashboard,
+        footer: AppFooter
+      }
+    }
   ],
   scrollBehavior: to => {
     if (to.hash) {
