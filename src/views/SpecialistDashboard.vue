@@ -61,12 +61,12 @@
               </div>
             </div>
             <div class="text-center mt-5 mt--100">
-              <h3>Ntombi Afua</h3>
+              <h5>{{ user.email }}</h5>
               <div class="h6">
-                <i class="ni business_briefcase-24 mr-2"></i>Community healthcare worker - She Conquers
+                <!-- <i class="ni business_briefcase-24 mr-2"></i>Community healthcare worker - She Conquers -->
               </div>
               <div class="h6 font-weight-300">
-                <i class="ni location_pin mr-2"></i>Gauteng, South Africa
+                <!-- <i class="ni location_pin mr-2"></i>Gauteng, South Africa -->
               </div>
             </div>
             <div class="mt-3 text-center">
@@ -82,7 +82,7 @@
                         <th>Personal Tokens Received</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <!-- <tbody>
                       <tr>
                         <td>Shauntae Nolwazi</td>
                         <td>2018-10-28</td>
@@ -118,9 +118,9 @@
                         <td>500 RBN</td>
                         <td>25 RBN</td>
                       </tr>
-                    </tbody>
+                    </tbody>-->
                   </table>
-                  <nav aria-label="Page navigation example">
+                  <!-- <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-end">
                       <li class="page-item disabled">
                         <a class="page-link" href="#" tabindex="-1">
@@ -144,7 +144,7 @@
                         </a>
                       </li>
                     </ul>
-                  </nav>
+                  </nav>-->
                 </div>
               </div>
             </div>
@@ -196,7 +196,7 @@
           <input
             type="text"
             class="form-control form-control-alternative"
-            v-model="phoneNumber"
+            v-model="activity.phoneNumber"
             style="margin-right:20px"
           >
         </div>
@@ -371,7 +371,11 @@
         </div>
       </div>
       <template slot="footer">
-        <base-button type="primary" :disabled="rewardsToSendTotal==0 || phoneNumber==''">Record</base-button>
+        <base-button
+          type="primary"
+          @click="recordActivity"
+          :disabled="rewardsToSendTotal==0 || phoneNumber==''"
+        >Record</base-button>
         <base-button type="link" class="ml-auto" @click="modals.patientInteraction = false">Cancel</base-button>
       </template>
     </modal>
@@ -407,27 +411,42 @@ export default {
       phoneNumber: "",
       firstName: "",
       lastName: "",
+      activity: {
+        phoneNumber: ""
+      },
       rewardsToSend: [],
       rewardsToSendTotal: 0
     };
   },
+  computed: {
+    user: function() {
+      return this.$store.state.login.user.attributes;
+    }
+  },
   methods: {
-    async createNewPatient() {
+    createNewPatient() {
       const data = {
         firstName: this.firstName,
         lastName: this.lastName,
         phoneNumber: this.phoneNumber
       };
-      await API.graphql(graphqlOperation(createPatient, data))
-        .then(patient => {
-          console.log(patient);
-        })
+      this.$store
+        .dispatch("createPatientRecord", data)
+        .then(() => {})
         .catch(err => {
           console.log(err);
         });
     },
+    recordActivity() {
+      const data = {
+        phoneNumber: this.activity.phoneNumber,
+        activities: this.rewardsToSend,
+        total: this.rewardsToSendTotal
+      };
+      this.$store.dispatch("addInteraction", data);
+    },
     contactSelect(phoneNumber) {
-      this.phoneNumber = phoneNumber;
+      this.activity.phoneNumber = phoneNumber;
     },
     awardPatient(award, value) {
       this.rewardsToSend.push({ award: award, value: value });
