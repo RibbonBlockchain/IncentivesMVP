@@ -59,7 +59,7 @@
         </li>
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-        <li class="nav-item">
+        <li v-if="isLoggedIn === false" class="nav-item">
           <a
             class="nav-link nav-link-icon"
             href="https://github.com/ribbonblockchain"
@@ -71,6 +71,7 @@
           </a>
         </li>
         <base-button
+          v-if="isLoggedIn === false"
           class="nav-item btn btn-neutral btn-icon"
           menu-classes="dropdown-menu-xl"
           type="primary"
@@ -80,6 +81,22 @@
           <i class="fa fa-location-arrow mr-2"></i>
           <span class="nav-link-inner--text">Login</span>
         </base-button>
+
+        <li v-if="isLoggedIn === true" class="nav-item">
+          <a class="nav-link nav-link-icon" href="/#/dashboard">
+            <i class="fa fa-home"></i> Dashboard
+          </a>
+        </li>
+        <base-button
+          v-if="isLoggedIn === true"
+          class="nav-item btn btn-neutral btn-icon"
+          menu-classes="dropdown-menu-xl"
+          type="primary"
+          @click="signOut"
+        >
+          <i class="fa fa-close mr-2"></i>
+          <span class="nav-link-inner--text">Signout</span>
+        </base-button>
       </ul>
     </base-nav>
     <modal
@@ -87,7 +104,14 @@
       body-classes="p-0"
       modal-classes="modal-dialog-centered modal-sm"
     >
-      <LoginComponent/>
+      <LoginComponent @closeModal="closeModal" @showNewPasswordModal="showNewPasswordModal"/>
+    </modal>
+    <modal
+      :show.sync="this.$store.state.modals.resetModal"
+      body-classes="p-0"
+      modal-classes="modal-dialog-centered modal-sm"
+    >
+      <NewPasswordComponent @closeModal="closeNewPasswordModal"/>
     </modal>
   </header>
 </template>
@@ -98,6 +122,7 @@ import BaseDropdown from "@/components/BaseDropdown";
 import CloseButton from "@/components/CloseButton";
 import Modal from "@/components/Modal.vue";
 import LoginComponent from "@/views/Login";
+import NewPasswordComponent from "@/views/NewPassword";
 
 export default {
   components: {
@@ -106,13 +131,22 @@ export default {
     CloseButton,
     BaseDropdown,
     LoginComponent,
+    NewPasswordComponent,
     Modal
+  },
+  computed: {
+    isLoggedIn: function() {
+      return this.$store.state.login.user.hasOwnProperty("attributes")
+        ? true
+        : false;
+    }
   },
   data() {
     return {
       modals: {
         login: false,
-        register: false
+        register: false,
+        newPassword: false
       },
       scrollId: "",
       options: {
@@ -136,6 +170,19 @@ export default {
     };
   },
   methods: {
+    closeModal() {
+      this.modals.login = false;
+    },
+    showNewPasswordModal() {
+      console.log("Open New Password Modal");
+      this.modals.newPassword = true;
+    },
+    closeNewPasswordModal() {
+      this.modals.newPassword = false;
+    },
+    signOut() {
+      this.$store.dispatch('signOut');
+    },
     reRoute(id) {
       //   console.log(this.$route.fullPath != "/");
       if (this.$route.fullPath != "/") {
