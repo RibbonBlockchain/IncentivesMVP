@@ -22,7 +22,12 @@
               addon-left-icon="ni ni-lock-circle-open"
             ></base-input>
             <div class="text-center">
-              <base-button type="primary" @click="login" class="my-4">Sign In</base-button>
+              <base-button
+                type="primary"
+                :disabled="isLoading =='true'"
+                @click="login"
+                class="my-4"
+              >Sign In</base-button>
             </div>
           </form>
         </div>
@@ -35,12 +40,29 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      user: this.$store.state.login
     };
   },
+  computed: {
+    isLoading() {
+      return this.$store.state.login.isLoading;
+    }
+  },
   methods: {
-    login() {
-      console.log(this.email, this.password);
+    login: function() {
+      this.$store
+        .dispatch("loginUser", {
+          username: this.email,
+          password: this.password
+        })
+        .then(() => {
+          const { user } = this.$store.state.login;
+          this.$emit("closeModal");
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };
