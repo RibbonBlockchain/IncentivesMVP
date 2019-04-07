@@ -4,7 +4,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import Notifications from "vue-notification";
-// import store from './store'
+import store from './store'
 import Argon from "./plugins/argon-kit";
 import Amplify, * as AmplifyModules from "aws-amplify";
 import { AmplifyPlugin } from "aws-amplify-vue";
@@ -23,6 +23,6 @@ Vue.use(Argon);
 
 new Vue({
   router,
-  render: h => h(App)
-  // store,
+  render: h => h(App),
+  store,
 }).$mount("#app");
