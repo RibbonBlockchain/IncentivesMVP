@@ -1,35 +1,35 @@
 {
 	"providers": {
 		"awscloudformation": {
-			"AuthRoleName": "dapp-20190403182704-authRole",
-			"UnauthRoleArn": "arn:aws:iam::853431608467:role/dapp-20190403182704-unauthRole",
-			"AuthRoleArn": "arn:aws:iam::853431608467:role/dapp-20190403182704-authRole",
+			"AuthRoleName": "dapp-20190407145318-authRole",
+			"UnauthRoleArn": "arn:aws:iam::853431608467:role/dapp-20190407145318-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::853431608467:role/dapp-20190407145318-authRole",
 			"Region": "eu-west-1",
-			"DeploymentBucketName": "dapp-20190403182704-deployment",
-			"UnauthRoleName": "dapp-20190403182704-unauthRole",
-			"StackName": "dapp-20190403182704",
-			"StackId": "arn:aws:cloudformation:eu-west-1:853431608467:stack/dapp-20190403182704/b3692a60-5635-11e9-af9f-021d1d6e9e08"
+			"DeploymentBucketName": "dapp-20190407145318-deployment",
+			"UnauthRoleName": "dapp-20190407145318-unauthRole",
+			"StackName": "dapp-20190407145318",
+			"StackId": "arn:aws:cloudformation:eu-west-1:853431608467:stack/dapp-20190407145318/80497b80-593c-11e9-83dc-0a0c5b3ce4f4"
 		}
 	},
 	"auth": {
-		"cognito6bf65e3f": {
+		"incentivesdapp": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
-			"lastPushTimeStamp": "2019-04-05T10:54:37.492Z",
 			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190403182704-deployment/amplify-cfn-templates/auth/cognito6bf65e3f-cloudformation-template.yml",
-				"logicalId": "authcognito6bf65e3f"
+				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190407145318-deployment/amplify-cfn-templates/auth/incentivesdapp-cloudformation-template.yml",
+				"logicalId": "authincentivesdapp"
 			},
+			"lastPushTimeStamp": "2019-04-07T14:03:12.639Z",
 			"output": {
-				"AppClientSecret": "c6gjh8688q2lu9nia5e1fs64mhvq47jvrqmgfnmhh30s9qrft17",
-				"UserPoolId": "eu-west-1_XqnjPdmCS",
-				"AppClientIDWeb": "5dc3gd0iqit604a5dnqt48hom6",
-				"AppClientID": "a2jdke61147r3j6d4qljo9ug8",
-				"IdentityPoolId": "eu-west-1:c8153bac-a6a4-413c-96d6-90931aee1057",
-				"IdentityPoolName": "cognito6bf65e3f_identitypool_6bf65e3f",
-				"UserPoolName": "cognito6bf65e3f_userpool_6bf65e3f"
+				"AppClientSecret": "135na32jvfmtitsg753qudoj7aiat0rq9o62213pqj239idjb5im",
+				"UserPoolId": "eu-west-1_XwDIAt22g",
+				"AppClientIDWeb": "7nt302onprvje6brvp6rnhd3st",
+				"AppClientID": "6c9ii5bf6pdo38e64glss7vvlr",
+				"IdentityPoolId": "eu-west-1:84e40c52-ab31-4225-b831-0d02f2043ba5",
+				"IdentityPoolName": "incentivesdapp_identity_pool",
+				"UserPoolName": "incentivesdapp_user_pool"
 			},
-			"lastPushDirHash": "JvFrmSZhBdCa9u/76VqH6HYSN9c="
+			"lastPushDirHash": "d84H2ml+ldLP993YkTamYTdUbR0="
 		}
 	}
 }

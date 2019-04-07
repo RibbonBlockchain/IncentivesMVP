@@ -1,0 +1,166 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type Event {
+  eventType: String!
+  id: ID!
+  patient: Patient
+}
+
+type ModelEventConnection {
+  items: [Event]
+  nextToken: String
+}
+
+type ModelPatientConnection {
+  items: [Patient]
+  nextToken: String
+}
+
+type Mutation {
+  createEvent(input: CreateEventInput!): Event
+  createPatient(input: CreatePatientInput!): Patient
+  deleteEvent(input: DeleteEventInput!): Event
+  deletePatient(input: DeletePatientInput!): Patient
+  updateEvent(input: UpdateEventInput!): Event
+  updatePatient(input: UpdatePatientInput!): Patient
+}
+
+type Patient {
+  events(filter: ModelEventFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelEventConnection
+  firstName: String
+  id: ID!
+  lastName: String
+  phone: String!
+}
+
+type Query {
+  getEvent(id: ID!): Event
+  getPatient(id: ID!): Patient
+  listEvents(filter: ModelEventFilterInput, limit: Int, nextToken: String): ModelEventConnection
+  listPatients(filter: ModelPatientFilterInput, limit: Int, nextToken: String): ModelPatientConnection
+}
+
+type Subscription {
+  onCreateEvent: Event @aws_subscribe(mutations : ["createEvent"])
+  onCreatePatient: Patient @aws_subscribe(mutations : ["createPatient"])
+  onDeleteEvent: Event @aws_subscribe(mutations : ["deleteEvent"])
+  onDeletePatient: Patient @aws_subscribe(mutations : ["deletePatient"])
+  onUpdateEvent: Event @aws_subscribe(mutations : ["updateEvent"])
+  onUpdatePatient: Patient @aws_subscribe(mutations : ["updatePatient"])
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+input CreateEventInput {
+  eventPatientId: ID
+  eventType: String!
+  id: ID
+}
+
+input CreatePatientInput {
+  firstName: String
+  id: ID
+  lastName: String
+  phone: String!
+}
+
+input DeleteEventInput {
+  id: ID
+}
+
+input DeletePatientInput {
+  id: ID
+}
+
+input ModelBooleanFilterInput {
+  eq: Boolean
+  ne: Boolean
+}
+
+input ModelEventFilterInput {
+  and: [ModelEventFilterInput]
+  eventType: ModelStringFilterInput
+  id: ModelIDFilterInput
+  not: ModelEventFilterInput
+  or: [ModelEventFilterInput]
+}
+
+input ModelFloatFilterInput {
+  between: [Float]
+  contains: Float
+  eq: Float
+  ge: Float
+  gt: Float
+  le: Float
+  lt: Float
+  ne: Float
+  notContains: Float
+}
+
+input ModelIDFilterInput {
+  beginsWith: ID
+  between: [ID]
+  contains: ID
+  eq: ID
+  ge: ID
+  gt: ID
+  le: ID
+  lt: ID
+  ne: ID
+  notContains: ID
+}
+
+input ModelIntFilterInput {
+  between: [Int]
+  contains: Int
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+  notContains: Int
+}
+
+input ModelPatientFilterInput {
+  and: [ModelPatientFilterInput]
+  firstName: ModelStringFilterInput
+  id: ModelIDFilterInput
+  lastName: ModelStringFilterInput
+  not: ModelPatientFilterInput
+  or: [ModelPatientFilterInput]
+  phone: ModelStringFilterInput
+}
+
+input ModelStringFilterInput {
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+}
+
+input UpdateEventInput {
+  eventPatientId: ID
+  eventType: String
+  id: ID!
+}
+
+input UpdatePatientInput {
+  firstName: String
+  id: ID!
+  lastName: String
+  phone: String
+}

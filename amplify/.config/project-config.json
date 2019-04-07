@@ -1,7 +1,7 @@
 {
     "projectName": "dapp",
     "projectPath": "/home/iamonuwa/Projects/RibbonBlockchain/dapp",
-    "defaultEditor": "none",
+    "defaultEditor": "code",
     "frontendHandler": {
         "javascript": "/home/iamonuwa/.nvm/versions/node/v11.3.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-frontend-javascript"
     },
