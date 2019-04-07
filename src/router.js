@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
+import store from "./store";
 import AppHeader from "./layout/AppHeader";
 import AppFooter from "./layout/AppFooter";
 
@@ -9,9 +10,11 @@ import SponsorDashboard from "./views/SponsorDashboard.vue";
 import PractitionerDashboard from "./views/PractitionerDashboard.vue";
 import ManagerDashboard from "./views/ManagerDashboard.vue";
 import RibbonDashboard from "./views/RibbonDashboard";
-import SpecialistDashboard from './views/SpecialistDashboard'
+import SpecialistDashboard from "./views/SpecialistDashboard";
 
 Vue.use(Router);
+
+let entryUrl = null;
 
 export default new Router({
   linkExactActiveClass: "active",
@@ -71,12 +74,20 @@ export default new Router({
       }
     },
     {
-      path: '/dashboard',
-      name: 'dashboard',
+      path: "/dashboard",
+      name: "dashboard",
       components: {
         header: AppHeader,
         default: SpecialistDashboard,
         footer: AppFooter
+      },
+      beforeEnter: (to, from, next) => {
+        if (store.state.login.user.hasOwnProperty("attributes")) {
+          next();
+        } else {
+          entryUrl = to.path;
+          next("/");
+        }
       }
     }
   ],
