@@ -5,7 +5,9 @@ import {
   OPEN_LOGIN_MODAL,
   OPEN_RESET_MODAL,
   CLOSE_LOGIN_MODAL,
-  CLOSE_RESET_MODAL
+  CLOSE_RESET_MODAL,
+  NEW_PATIENT_SUCCESS,
+  NEW_PATIENT_ERROR
 } from "./types";
 
 export const AuthMutations = {
@@ -26,7 +28,7 @@ export const AuthMutations = {
   }
 };
 
-export const Modals = {
+export const ModalMutations = {
   [OPEN_LOGIN_MODAL](state) {
     state.modals.login = true;
   },
@@ -39,5 +41,16 @@ export const Modals = {
   },
   [CLOSE_RESET_MODAL](state) {
     state.modals.resetModal = false;
+  }
+};
+
+export const PatientMutations = {
+  [NEW_PATIENT_SUCCESS](state, payload) {
+    state.patients.data = state.patients.data.concat(payload);
+    state.patients.error = null;
+  },
+  [NEW_PATIENT_ERROR](state, payload) {
+    state.patients.data = state.patients.data;
+    stable.patients.error = payload;
   }
 };

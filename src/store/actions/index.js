@@ -75,12 +75,19 @@ export const AuthActions = {
 };
 
 export const PatientActions = {
-  async createNewPatient({ commit }, payload) {
-    await API.graphql(
-      graphqlOperation(createPatient, payload)
-        .then(response => commit(NEW_PATIENT_SUCCESS, response))
-        .catch(err => commit(NEW_PATIENT_ERROR, err))
-    );
+  createPatientRecord({ commit }, payload) {
+    new Promise(async (resolve, reject) => {
+      await API.graphql(graphqlOperation(createPatient, payload))
+        .then(response => {
+          commit(NEW_PATIENT_SUCCESS, response);
+          resolve();
+        })
+        .catch(err => {
+          console.log('Error ', err)
+          commit(NEW_PATIENT_ERROR, err);
+          reject(err);
+        });
+    });
   },
   async addInteraction({ commit }, payload) {
     await API.graphql(graphqlOperation(createEvent, payload))

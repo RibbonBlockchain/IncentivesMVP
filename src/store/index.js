@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import { AuthMutations, Modals } from "./mutations";
-import { AuthActions } from "./actions";
+import { AuthMutations, ModalMutations, PatientMutations } from "./mutations";
+import { AuthActions, PatientActions } from "./actions";
 import { AuthGetters } from "./getters";
 
 Vue.use(Vuex);
@@ -17,15 +17,18 @@ const store = new Vuex.Store({
       error: null,
       user: {}
     },
-    patients: [],
+    patients: {
+      data: [],
+      error: null
+    },
     interactions: [],
     modals: {
       resetModal: false
     }
   },
   getters: Object.assign({}, AuthGetters),
-  mutations: Object.assign({}, AuthMutations, Modals),
-  actions: Object.assign({}, AuthActions),
+  mutations: Object.assign({}, AuthMutations, ModalMutations),
+  actions: Object.assign({}, AuthActions, PatientActions),
   modules: {
     accounts
   }
