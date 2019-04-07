@@ -16,6 +16,9 @@ import { FadeTransition } from "vue2-transitions";
 export default {
   components: {
     FadeTransition
-  }
+  },
+  async beforeCreate() {
+    this.$store.dispatch('currentUser');
+  },
 };
 </script>
