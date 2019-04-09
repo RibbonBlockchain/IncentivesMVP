@@ -15,6 +15,7 @@ export const UPDATE_PASSWORD_ERROR = 'auth/UPDATE_PASSWORD_ERROR'
 export const NOTIFICATION_SUCCESS = "notification/SUCCESSFUL";
 export const NOTIFICATION_ERROR = "notification/ERROR";
 
+export const LIST_PATIENTS = "patient/LIST_PATIENTS";
 export const NEW_PATIENT_SUCCESS = "patient/NEW_PATIENT_SUCCESS";
 export const NEW_PATIENT_ERROR = "patient/NEW_PATIENT_ERROR";
 

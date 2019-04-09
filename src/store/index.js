@@ -27,7 +27,7 @@ const store = new Vuex.Store({
     }
   },
   getters: Object.assign({}, AuthGetters),
-  mutations: Object.assign({}, AuthMutations, ModalMutations),
+  mutations: Object.assign({}, AuthMutations, ModalMutations, PatientMutations),
   actions: Object.assign({}, AuthActions, PatientActions),
   modules: {
     accounts

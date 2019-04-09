@@ -15,7 +15,12 @@
               addon-left-icon="ni ni-lock-circle-open"
             ></base-input>
             <div class="text-center">
-              <base-button :disabled="!password" type="primary" @click="updatePassword" class="my-4">Update My Password</base-button>
+              <base-button
+                :disabled="!password"
+                type="primary"
+                @click="updatePassword"
+                class="my-4"
+              >Update My Password</base-button>
             </div>
           </form>
         </div>
@@ -24,6 +29,8 @@
   </section>
 </template>
 <script>
+import { Auth } from "aws-amplify";
+
 export default {
   name: "NewPassword",
   data() {
@@ -32,21 +39,34 @@ export default {
     };
   },
   methods: {
-    updatePassword() {
+    async updatePassword() {
       const { user } = this.$store.state.login;
-      this.$store
-        .dispatch("updatePassword", {
-          user,
-          password: this.password
-        })
-        .then(() => {
-          this.$router.push({
-            path: "/dashboard"
-          });
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      const { requiredAttributes } = user.challengeParam;
+      await user.completeNewPasswordChallenge(
+        this.password,
+        requiredAttributes,
+        {
+          onSuccess: function(session) {
+            // this.dispatch('currentUser', session)
+            this.$notify({
+              group: "foo",
+              title: "Password Reset success",
+              text:
+                "Your password has been changed successfully. You can now login in"
+            });
+            // trigger notification here.
+            this.$emit("closeNewPasswordModal");
+          },
+          onFailure: function(err) {
+            // trigger error
+            this.$notify({
+              group: "foo",
+              title: "Password Reset Failed",
+              text: err ? err.message : err
+            });
+          }
+        }
+      );
     }
   }
 };

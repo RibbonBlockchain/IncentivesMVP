@@ -4,8 +4,9 @@
 export const getPatient = `query GetPatient($id: ID!) {
   getPatient(id: $id) {
     id
+    firstName
+    lastName
     phone
-    countryCode
     events {
       items {
         id
@@ -24,8 +25,9 @@ export const listPatients = `query ListPatients(
   listPatients(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      firstName
+      lastName
       phone
-      countryCode
       events {
         nextToken
       }
@@ -40,8 +42,9 @@ export const getEvent = `query GetEvent($id: ID!) {
     eventType
     patient {
       id
+      firstName
+      lastName
       phone
-      countryCode
       events {
         nextToken
       }
@@ -60,8 +63,9 @@ export const listEvents = `query ListEvents(
       eventType
       patient {
         id
+        firstName
+        lastName
         phone
-        countryCode
       }
     }
     nextToken

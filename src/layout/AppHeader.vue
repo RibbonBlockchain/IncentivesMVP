@@ -107,7 +107,7 @@
       <LoginComponent @closeModal="closeModal" @showNewPasswordModal="showNewPasswordModal"/>
     </modal>
     <modal
-      :show.sync="this.$store.state.modals.resetModal"
+      :show.sync="modals.newPassword"
       body-classes="p-0"
       modal-classes="modal-dialog-centered modal-sm"
     >
@@ -116,6 +116,7 @@
   </header>
 </template>
 <script>
+import { Auth } from "aws-amplify";
 import BaseNav from "@/components/BaseNav";
 import BaseButton from "@/components/BaseButton";
 import BaseDropdown from "@/components/BaseDropdown";
@@ -174,14 +175,24 @@ export default {
       this.modals.login = false;
     },
     showNewPasswordModal() {
-      console.log("Open New Password Modal");
       this.modals.newPassword = true;
     },
     closeNewPasswordModal() {
       this.modals.newPassword = false;
     },
     signOut() {
-      this.$store.dispatch('signOut');
+      Auth.signOut()
+        .then(() => {
+          this.$store.dispatch("signOutSuccess");
+          this.$router.push({ name: 'landing' });
+        })
+        .catch(err => {
+          this.$notify({
+            group: "foo",
+            title: "Sign Out",
+            text: `Sign Out failed. Possible error ${err}`
+          });
+        });
     },
     reRoute(id) {
       //   console.log(this.$route.fullPath != "/");

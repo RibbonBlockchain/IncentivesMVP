@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 import Vue from "vue";
+import vSelect from 'vue-select';
 import App from "./App.vue";
 import router from "./router";
 import Notifications from "vue-notification";
@@ -14,6 +15,7 @@ Vue.use(Notifications);
 var VueScrollTo = require("vue-scrollto");
 
 Vue.use(VueScrollTo);
+Vue.component('v-select', vSelect);
 Vue.config.productionTip = false;
 
 Amplify.configure(aws_exports);

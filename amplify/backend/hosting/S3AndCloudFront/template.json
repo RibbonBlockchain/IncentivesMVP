@@ -1,52 +1,13 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Description": "Hosting resource stack creation using Amplify CLI",
-    "Parameters": {
-        "env": {
-            "Type": "String"
-        },
-        "bucketName": {
-            "Type": "String"
-        }
-    },
-    "Conditions": {
-        "ShouldNotCreateEnvResources": {
-            "Fn::Equals": [
-                {
-                    "Ref": "env"
-                },
-                "NONE"
-            ]
-        }
-    },
     "Resources": {
         "S3Bucket": {
             "Type": "AWS::S3::Bucket",
             "DeletionPolicy": "Retain",
             "Properties": {
-                "BucketName": {
-                    "Fn::If": [
-                        "ShouldNotCreateEnvResources",
-                        {
-                            "Ref": "bucketName"
-                        },
-                        {
-                            "Fn::Join": [
-                                "",
-                                [
-                                    {
-                                        "Ref": "bucketName"
-                                    },
-                                    "-",
-                                    {
-                                        "Ref": "env"
-                                    }
-                                ]
-                            ]
-                        }
-                    ]
-                },
-                "AccessControl": "Private",
+                "BucketName": "dapp-20190409153519-hostingbucket",
+                "AccessControl": "PublicRead",
                 "WebsiteConfiguration": {
                     "IndexDocument": "index.html",
                     "ErrorDocument": "index.html"
@@ -67,6 +28,38 @@
                             "MaxAge": 3000
                         }
                     ]
+                }
+            }
+        },
+        "BucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "PolicyDocument": {
+                    "Id": "MyPolicy",
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "PublicReadForGetBucketObjects",
+                            "Effect": "Allow",
+                            "Principal": "*",
+                            "Action": "s3:GetObject",
+                            "Resource": {
+                                "Fn::Join": [
+                                    "",
+                                    [
+                                        "arn:aws:s3:::",
+                                        {
+                                            "Ref": "S3Bucket"
+                                        },
+                                        "/*"
+                                    ]
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "Bucket": {
+                    "Ref": "S3Bucket"
                 }
             }
         }

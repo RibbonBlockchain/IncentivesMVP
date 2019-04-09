@@ -12,24 +12,24 @@
 		}
 	},
 	"auth": {
-		"incentivesdapp": {
+		"cognito7f82c6d3": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190407145318-deployment/amplify-cfn-templates/auth/incentivesdapp-cloudformation-template.yml",
-				"logicalId": "authincentivesdapp"
+				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190407145318-deployment/amplify-cfn-templates/auth/cognito7f82c6d3-cloudformation-template.yml",
+				"logicalId": "authcognito7f82c6d3"
 			},
-			"lastPushTimeStamp": "2019-04-07T14:03:12.639Z",
+			"lastPushTimeStamp": "2019-04-09T14:36:45.401Z",
 			"output": {
-				"AppClientSecret": "135na32jvfmtitsg753qudoj7aiat0rq9o62213pqj239idjb5im",
-				"UserPoolId": "eu-west-1_XwDIAt22g",
-				"AppClientIDWeb": "7nt302onprvje6brvp6rnhd3st",
-				"AppClientID": "6c9ii5bf6pdo38e64glss7vvlr",
-				"IdentityPoolId": "eu-west-1:84e40c52-ab31-4225-b831-0d02f2043ba5",
-				"IdentityPoolName": "incentivesdapp_identity_pool",
-				"UserPoolName": "incentivesdapp_user_pool"
+				"AppClientSecret": "1s3bjs6tmg89eg9ejdeg2bj5opi889kgfp4ct8924obveios42pf",
+				"UserPoolId": "eu-west-1_z7WYM7RJC",
+				"AppClientIDWeb": "7ovq1kburkeig01kf2tec1ic2r",
+				"AppClientID": "1kdjj9dfoa4ge50vnbndpsrj2d",
+				"IdentityPoolId": "eu-west-1:7b9d1d63-e8fd-4a54-a7f3-eed43b37518a",
+				"IdentityPoolName": "cognito7f82c6d3_identitypool_7f82c6d3",
+				"UserPoolName": "cognito7f82c6d3_userpool_7f82c6d3"
 			},
-			"lastPushDirHash": "d84H2ml+ldLP993YkTamYTdUbR0="
+			"lastPushDirHash": "58fL5BSxGHmP1x1jFUuuPMM9/oc="
 		}
 	},
 	"api": {
@@ -37,8 +37,35 @@
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {
-				"securityType": "API_KEY"
-			}
+				"securityType": "API_KEY",
+				"GraphQLAPIIdOutput": "3ru5jynbnvgzzhqlz5qvjh5xwi",
+				"GraphQLAPIEndpointOutput": "https://rrbbcf3gp5bo7cc2tzqs6mp6ki.appsync-api.eu-west-1.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-x7uknjii5zarlkrj2cgxi7qy5u"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190407145318-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apidapp"
+			},
+			"lastPushTimeStamp": "2019-04-09T14:36:45.401Z",
+			"lastPushDirHash": "uTcrfy/4LLaMjHgo2cwqWjdvALI="
+		}
+	},
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190407145318-deployment/amplify-cfn-templates/hosting/template.json",
+				"logicalId": "hostingS3AndCloudFront"
+			},
+			"lastPushTimeStamp": "2019-04-09T14:36:45.403Z",
+			"output": {
+				"S3BucketSecureURL": "https://dapp-20190409153519-hostingbucket.s3.amazonaws.com",
+				"WebsiteURL": "http://dapp-20190409153519-hostingbucket.s3-website-eu-west-1.amazonaws.com",
+				"Region": "eu-west-1",
+				"HostingBucketName": "dapp-20190409153519-hostingbucket"
+			},
+			"lastPushDirHash": "eLkaJGthTwNtR7U19KbYQBGTsYo="
 		}
 	}
 }

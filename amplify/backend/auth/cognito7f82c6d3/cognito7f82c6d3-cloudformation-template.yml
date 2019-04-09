@@ -110,15 +110,6 @@ Parameters:
   useDefault:
     Type: String
             
-  authSelections:
-    Type: String
-            
-  resourceName:
-    Type: String
-                  
-  userpoolClientWriteAttributes:
-    Type: CommaDelimitedList
-      
   unAuthRoleName:
     Type: String
             
@@ -130,7 +121,16 @@ Parameters:
             
   authRoleArn:
     Type: String
-          
+            
+  resourceName:
+    Type: String
+            
+  authSelections:
+    Type: String
+                  
+  userpoolClientWriteAttributes:
+    Type: CommaDelimitedList
+    
 Resources:
   
   # BEGIN SNS ROLE RESOURCE
@@ -173,21 +173,6 @@ Resources:
       Schema: 
         
         -
-          Name: family_name
-          Required: true
-          Mutable: true
-        
-        -
-          Name: middle_name
-          Required: true
-          Mutable: true
-        
-        -
-          Name: name
-          Required: true
-          Mutable: true
-        
-        -
           Name: email
           Required: true
           Mutable: true
@@ -217,7 +202,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: incentivesdapp_app_clientWeb
+      ClientName: cognito7f82c6d3_app_clientWeb
       
       ReadAttributes: !Ref userpoolClientReadAttributes
       WriteAttributes: !Ref userpoolClientWriteAttributes
@@ -350,7 +335,7 @@ Resources:
   # Always created
     Type: AWS::Cognito::IdentityPool
     Properties: 
-      IdentityPoolName: incentivesdapp_identity_pool
+      IdentityPoolName: cognito7f82c6d3_identitypool_7f82c6d3
       
       CognitoIdentityProviders:
         - ClientId:  !Ref UserPoolClient

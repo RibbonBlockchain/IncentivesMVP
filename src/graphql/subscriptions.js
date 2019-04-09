@@ -4,8 +4,9 @@
 export const onCreatePatient = `subscription OnCreatePatient {
   onCreatePatient {
     id
+    firstName
+    lastName
     phone
-    countryCode
     events {
       items {
         id
@@ -19,8 +20,9 @@ export const onCreatePatient = `subscription OnCreatePatient {
 export const onUpdatePatient = `subscription OnUpdatePatient {
   onUpdatePatient {
     id
+    firstName
+    lastName
     phone
-    countryCode
     events {
       items {
         id
@@ -34,8 +36,9 @@ export const onUpdatePatient = `subscription OnUpdatePatient {
 export const onDeletePatient = `subscription OnDeletePatient {
   onDeletePatient {
     id
+    firstName
+    lastName
     phone
-    countryCode
     events {
       items {
         id
@@ -52,8 +55,9 @@ export const onCreateEvent = `subscription OnCreateEvent {
     eventType
     patient {
       id
+      firstName
+      lastName
       phone
-      countryCode
       events {
         nextToken
       }
@@ -67,8 +71,9 @@ export const onUpdateEvent = `subscription OnUpdateEvent {
     eventType
     patient {
       id
+      firstName
+      lastName
       phone
-      countryCode
       events {
         nextToken
       }
@@ -82,8 +87,9 @@ export const onDeleteEvent = `subscription OnDeleteEvent {
     eventType
     patient {
       id
+      firstName
+      lastName
       phone
-      countryCode
       events {
         nextToken
       }

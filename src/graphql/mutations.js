@@ -4,8 +4,9 @@
 export const createPatient = `mutation CreatePatient($input: CreatePatientInput!) {
   createPatient(input: $input) {
     id
+    firstName
+    lastName
     phone
-    countryCode
     events {
       items {
         id
@@ -19,8 +20,9 @@ export const createPatient = `mutation CreatePatient($input: CreatePatientInput!
 export const updatePatient = `mutation UpdatePatient($input: UpdatePatientInput!) {
   updatePatient(input: $input) {
     id
+    firstName
+    lastName
     phone
-    countryCode
     events {
       items {
         id
@@ -34,8 +36,9 @@ export const updatePatient = `mutation UpdatePatient($input: UpdatePatientInput!
 export const deletePatient = `mutation DeletePatient($input: DeletePatientInput!) {
   deletePatient(input: $input) {
     id
+    firstName
+    lastName
     phone
-    countryCode
     events {
       items {
         id
@@ -52,8 +55,9 @@ export const createEvent = `mutation CreateEvent($input: CreateEventInput!) {
     eventType
     patient {
       id
+      firstName
+      lastName
       phone
-      countryCode
       events {
         nextToken
       }
@@ -67,8 +71,9 @@ export const updateEvent = `mutation UpdateEvent($input: UpdateEventInput!) {
     eventType
     patient {
       id
+      firstName
+      lastName
       phone
-      countryCode
       events {
         nextToken
       }
@@ -82,8 +87,9 @@ export const deleteEvent = `mutation DeleteEvent($input: DeleteEventInput!) {
     eventType
     patient {
       id
+      firstName
+      lastName
       phone
-      countryCode
       events {
         nextToken
       }

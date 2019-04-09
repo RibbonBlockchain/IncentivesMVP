@@ -36,6 +36,7 @@
   </section>
 </template>
 <script>
+import { Auth } from "aws-amplify";
 export default {
   data() {
     return {
@@ -50,18 +51,27 @@ export default {
     }
   },
   methods: {
-    login: function() {
-      this.$store
-        .dispatch("loginUser", {
-          username: this.email,
-          password: this.password
-        })
-        .then(() => {
-          const { user } = this.$store.state.login;
-          this.$emit("closeModal");
+    login: async function() {
+      await Auth.signIn({
+        username: this.email,
+        password: this.password
+      })
+        .then(user => {
+          if (user.challengeName === "NEW_PASSWORD_REQUIRED") {
+            this.$emit("closeModal");
+            this.$store.dispatch("updateCurrentUser", user);
+            this.$emit("showNewPasswordModal");
+          } else {
+            this.$store.dispatch('updateCurrentUser', user)
+            this.$emit("closeModal");
+          }
         })
         .catch(err => {
-          console.log(err);
+          this.$notify({
+            group: "foo",
+            title: "Login failed",
+            text: (err.message) ? err.message : err
+          });
         });
     }
   }

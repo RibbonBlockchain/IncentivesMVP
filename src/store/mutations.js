@@ -7,7 +7,8 @@ import {
   CLOSE_LOGIN_MODAL,
   CLOSE_RESET_MODAL,
   NEW_PATIENT_SUCCESS,
-  NEW_PATIENT_ERROR
+  NEW_PATIENT_ERROR,
+  LIST_PATIENTS
 } from "./types";
 
 export const AuthMutations = {
@@ -45,8 +46,19 @@ export const ModalMutations = {
 };
 
 export const PatientMutations = {
+  [LIST_PATIENTS](state, payload) {
+    state.patients.data = payload;
+    state.patients.error = null;
+  },
   [NEW_PATIENT_SUCCESS](state, payload) {
-    state.patients.data = state.patients.data.concat(payload);
+    const { firstName, lastName, id, phone } = payload;
+    const data = {
+      firstName,
+      lastName, 
+      id,
+      phone
+    }
+    state.patients.data = state.patients.data.concat(data);
     state.patients.error = null;
   },
   [NEW_PATIENT_ERROR](state, payload) {
