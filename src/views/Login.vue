@@ -64,6 +64,7 @@ export default {
           } else {
             this.$store.dispatch('updateCurrentUser', user)
             this.$emit("closeModal");
+            // this.$router.go()
           }
         })
         .catch(err => {

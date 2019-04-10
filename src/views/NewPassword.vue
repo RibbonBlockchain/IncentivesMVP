@@ -42,31 +42,24 @@ export default {
     async updatePassword() {
       const { user } = this.$store.state.login;
       const { requiredAttributes } = user.challengeParam;
-      await user.completeNewPasswordChallenge(
-        this.password,
-        requiredAttributes,
-        {
-          onSuccess: function(session) {
-            // this.dispatch('currentUser', session)
-            this.$notify({
-              group: "foo",
-              title: "Password Reset success",
-              text:
-                "Your password has been changed successfully. You can now login in"
-            });
-            // trigger notification here.
-            this.$emit("closeNewPasswordModal");
-          },
-          onFailure: function(err) {
-            // trigger error
-            this.$notify({
-              group: "foo",
-              title: "Password Reset Failed",
-              text: err ? err.message : err
-            });
-          }
-        }
-      );
+      await Auth.completeNewPassword(user, this.password, requiredAttributes)
+        .then(user => {
+          this.$emit("closeModal");
+          this.$store.dispatch("signOutSuccess");
+          this.$notify({
+            group: "foo",
+            title: "Password Reset success",
+            text:
+              "Your password has been changed successfully. You can now login in"
+          });
+        })
+        .catch(err => {
+          this.$notify({
+            group: "foo",
+            title: "Password Reset Failed",
+            text: err.message ? err.message : err
+          });
+        });
     }
   }
 };

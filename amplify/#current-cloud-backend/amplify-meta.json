@@ -32,24 +32,7 @@
 			"lastPushDirHash": "58fL5BSxGHmP1x1jFUuuPMM9/oc="
 		}
 	},
-	"api": {
-		"dapp": {
-			"service": "AppSync",
-			"providerPlugin": "awscloudformation",
-			"output": {
-				"securityType": "API_KEY",
-				"GraphQLAPIIdOutput": "3ru5jynbnvgzzhqlz5qvjh5xwi",
-				"GraphQLAPIEndpointOutput": "https://rrbbcf3gp5bo7cc2tzqs6mp6ki.appsync-api.eu-west-1.amazonaws.com/graphql",
-				"GraphQLAPIKeyOutput": "da2-x7uknjii5zarlkrj2cgxi7qy5u"
-			},
-			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190407145318-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-				"logicalId": "apidapp"
-			},
-			"lastPushTimeStamp": "2019-04-09T14:36:45.401Z",
-			"lastPushDirHash": "uTcrfy/4LLaMjHgo2cwqWjdvALI="
-		}
-	},
+	"api": {},
 	"hosting": {
 		"S3AndCloudFront": {
 			"service": "S3AndCloudFront",

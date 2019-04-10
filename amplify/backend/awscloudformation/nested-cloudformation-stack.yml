@@ -129,19 +129,6 @@
 				}
 			}
 		},
-		"apidapp": {
-			"Type": "AWS::CloudFormation::Stack",
-			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/dapp-20190407145318-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-				"Parameters": {
-					"AppSyncApiName": "dapp",
-					"schemaGraphql": "s3://dapp-20190407145318-deployment/amplify-appsync-files/schema.graphql.1554710000678",
-					"ResolverBucket": "dapp-20190407145318-deployment",
-					"ResolverRootKey": "amplify-appsync-files",
-					"DeploymentTimestamp": "1554710000678"
-				}
-			}
-		},
 		"hostingS3AndCloudFront": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {

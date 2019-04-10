@@ -38,22 +38,6 @@ export const AuthActions = {
         });
     });
   },
-  updatePassword({ commit }, payload) {
-    new Promise(async (resolve, reject) => {
-      const { user, password } = payload;
-      const { requiredAttributes } = user.challengeParam;
-      await user.completeNewPasswordChallenge(password, requiredAttributes, {
-        onSuccess: function(session) {
-          commit(CURRENT_USER, session);
-          resolve();
-        },
-        onFailure: function(err) {
-          commit(LOGIN_ERROR, err);
-          reject();
-        }
-      });
-    });
-  },
   updateCurrentUser({ commit }, payload) {
     commit(CURRENT_USER, payload);
   },
