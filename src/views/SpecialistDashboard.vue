@@ -15,74 +15,59 @@
       <div class="container">
         <card shadow class="card-profile mt--300" no-body>
           <div class="px-4">
-            <div class="row justify-content-center mb-5">
-              <div class="col-lg-3 order-lg-2">
-                <!-- <div class="card-profile-image">
-                  <a href="#">
-                    <img
-                      v-lazy="'img/practitioners/communityhealthcarworker.JPG'"
-                      class="rounded-circle"
-                    >
-                    <avatar :username="user.username"></avatar>
-                  </a>
-                </div>-->
-              </div>
-              <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                <div class="card-profile-actions py-4 mt-lg-0"></div>
-              </div>
-              <div class="col-lg-4 order-lg-1 pb-0 mb-0">
-                <div class="card-profile-stats d-flex justify-content-space-between pb-0 mb-0">
-                  <base-button
-                    type="info"
-                    size="sm"
-                    class="mr-4"
-                    @click="modals.onboard = true"
-                  >New Patient</base-button>
+            <div class="row mt-3">
+              <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+                <div class="d-flex justify-content-space-between">
+                  <base-button type="info" size="sm" @click="modals.onboard = true">New Patient</base-button>
                   <base-button
                     type="default"
                     size="sm"
-                    class="ml-4"
+                    @click="modals.newPractitioner = true"
+                  >New Practitioner</base-button>
+                  <base-button
+                    type="default"
+                    size="sm"
                     @click="modals.patientInteraction = true"
                   >Patient Interaction</base-button>
                 </div>
-                <hr class="mt-2">
-                <div class="card-profile-stats d-flex justify-content-center pt-0 mt-0 ml-4">
-                  <div>
-                    <span class="description">
-                      Registered Patients
-                      <strong>{{patients.length}}</strong>
-                    </span>
-                  </div>
-                  <div></div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6">
+                <div class="text-right">
+                  <div>{{ user.email }}</div>
+                  <span>[specialist balance here]</span>
                 </div>
               </div>
             </div>
-            <div class="text-center mt-5 mt--100">
-              <h5>{{ user.email }}</h5>
-              <div class="h6"></div>
-              <div class="h6 font-weight-300"></div>
-            </div>
-            <div class="mt-3 text-center">
-              <div class="row justify-content-center">
-                <div class="nav-wrapper">
-                  <table class="table table-striped" style="width:100%" v-if="patients.length > 0">
-                    <thead>
-                      <tr>
-                        <th>Patient Name</th>
-                        <th>Date</th>
-                        <th>Interaction</th>
-                        <th>Tokens Awarded</th>
-                        <th>Personal Tokens Received</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr v-for="patient in patients" v-bind:key="patient.id">
-                        <td>{{patient.firstName}} {{ patient.lastName }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div v-else>
-                    <span>There is no registered patient.</span>
+            <div class="mt-3">
+              <div class="row">
+                <div class="col-12">
+                  <div class="nav-wrapper">
+                    <table class="table table-striped" style="width:100%" v-if="events.length > 0">
+                      <thead>
+                        <tr>
+                          <th>Patient Name</th>
+                          <th>Practitioner</th>
+                          <th>Date</th>
+                          <th>Interaction</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="activity in events" v-bind:key="activity.id">
+                          <td>
+                            <a
+                              href="#"
+                              @click.prevent="openDetails(activity.patient)"
+                            >{{ fullName(activity.patient, true) }}</a>
+                          </td>
+                          <td></td>
+                          <td>{{ parseInt(activity.id) | moment("ddd, MMM Do YYYY") }}</td>
+                          <td>{{activity.eventType }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div v-else>
+                      <span>There is no registered interactions.</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -93,6 +78,13 @@
       </div>
     </section>
     <!-- MODALS -->
+    <modal :show.sync="modals.showDetailModal">
+      <h4
+        slot="header"
+        class="modal-title"
+        id="modal-title-default"
+      >{{ `${fullName(this.selectedPatient, false)}'s details`}}</h4>
+    </modal>
     <!-- onboard modal -->
     <modal :show.sync="modals.onboard">
       <h4 slot="header" class="modal-title" id="modal-title-default">Register new Patient</h4>
@@ -100,27 +92,102 @@
       <div class="row">
         <div class="col-12">
           <label>Patient Number</label>
-          <input type="text" class="form-control form-control-alternative" v-model="patientNumber">
+          <input
+            type="text"
+            class="form-control form-control-alternative"
+            v-model="patient.idNumber"
+          >
         </div>
+      </div>
+      <div class="row">
         <div class="col-6">
           <label>First Name</label>
-          <input type="text" class="form-control form-control-alternative" v-model="firstName">
+          <input
+            type="text"
+            class="form-control form-control-alternative"
+            v-model="patient.firstName"
+          >
         </div>
         <div class="col-6">
           <label>Last Name</label>
-          <input type="text" class="form-control form-control-alternative" v-model="lastName">
+          <input
+            type="text"
+            class="form-control form-control-alternative"
+            v-model="patient.lastName"
+          >
         </div>
       </div>
       <div class="row">
         <div class="col-12">
           <label>Phone Number</label>
-          <input type="text" class="form-control form-control-alternative" v-model="phoneNumber">
+          <input
+            type="text"
+            v-mask="'+1(###)-###-####'"
+            class="form-control form-control-alternative"
+            v-model="patient.phoneNumber"
+          >
         </div>
       </div>
 
       <template slot="footer">
-        <base-button type="primary" @click.prevent="createNewPatient">Register Patient</base-button>
+        <base-button
+          type="primary"
+          :disabled="validatePatientForm"
+          @click.prevent="createNewPatient"
+        >Register Patient</base-button>
         <base-button type="link" class="ml-auto" @click="modals.onboard = false">Cancel</base-button>
+      </template>
+    </modal>
+    <modal :show.sync="modals.newPractitioner">
+      <h4 slot="header" class="modal-title" id="modal-title-default">Register a Practitioner</h4>
+
+      <div class="row">
+        <div class="col-12">
+          <label>Practitioner Number</label>
+          <input
+            type="text"
+            class="form-control form-control-alternative"
+            v-model="practitioner.idNumber"
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label>First Name</label>
+          <input
+            type="text"
+            class="form-control form-control-alternative"
+            v-model="practitioner.firstName"
+          >
+        </div>
+        <div class="col-6">
+          <label>Last Name</label>
+          <input
+            type="text"
+            class="form-control form-control-alternative"
+            v-model="practitioner.lastName"
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label>Phone Number</label>
+          <input
+            type="text"
+            v-mask="'+1(###)-###-####'"
+            class="form-control form-control-alternative"
+            v-model="practitioner.phoneNumber"
+          >
+        </div>
+      </div>
+
+      <template slot="footer">
+        <base-button
+          type="primary"
+          :disabled="validatePractitionerForm"
+          @click.prevent="createNewPractitioner"
+        >Register Practitioner</base-button>
+        <base-button type="link" class="ml-auto" @click="modals.newPractitioner = false">Cancel</base-button>
       </template>
     </modal>
     <!-- Patient Interaction Window -->
@@ -133,31 +200,99 @@
       </div>
 
       <div class="row">
-        <div class="col-12">
+        <div class="col-6">
           <label>Select Patient</label>
           <div class="form-group">
             <v-select style="width: 100%" label="id" v-model="activity.patient" :options="patients"></v-select>
           </div>
         </div>
-        <div class="col-12">
+        <div class="col-6">
           <label>Select Activities</label>
           <div class="form-group">
             <v-select
               style="width: 100%"
               label="eventName"
-              multiple
               taggable
-              v-model="activity.activities"
+              v-model="activity.activity"
               :options="eventData"
             ></v-select>
           </div>
         </div>
+      </div>
+      <div class="row">
         <div class="col-12">
-          <star-rating v-model="rating"></star-rating>
+          <label>Select Practitioner</label>
+          <div class="form-group">
+            <v-select
+              style="width: 100%"
+              label="id"
+              v-model="activity.practitioner"
+              :options="patients"
+            ></v-select>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-12">
+          <table style="width: 100%">
+            <tr>
+              <td>
+                <span for="health_services">Access to health services</span>
+              </td>
+              <td>
+                <star-rating v-model="rating.health_services"></star-rating>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span for="health_services">Medicines</span>
+              </td>
+              <td>
+                <star-rating v-model="rating.medicines"></star-rating>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span for="health_services">Patients safety</span>
+              </td>
+              <td>
+                <star-rating v-model="rating.patient_safety"></star-rating>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span for="health_services">Cleanliness, Infection prevention & control</span>
+              </td>
+              <td>
+                <star-rating v-model="rating.cleanliness"></star-rating>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span for="health_services">Values and attitudes of staff</span>
+              </td>
+              <td>
+                <star-rating v-model="rating.staff_attitude"></star-rating>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span for="health_services">Patient waiting time for care</span>
+              </td>
+              <td>
+                <star-rating v-model="rating.wating_time"></star-rating>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
       <template slot="footer">
-        <base-button type="primary" @click="recordActivity">Record</base-button>
+        <base-button
+          type="primary"
+          :disabled="validateInteractionForm"
+          @click="recordActivity"
+        >Record</base-button>
         <base-button type="link" class="ml-auto" @click="modals.patientInteraction = false">Cancel</base-button>
       </template>
     </modal>
@@ -166,7 +301,8 @@
 <script>
 import { components } from "aws-amplify-vue";
 import { Auth, API, graphqlOperation } from "aws-amplify";
-import StarRating from 'vue-star-rating'
+import StarRating from "vue-star-rating";
+import VdtnetTable from "vue-datatables-net";
 import Avatar from "vue-avatar";
 import Tabs from "@/components/Tabs/Tabs.vue";
 import TabPane from "@/components/Tabs/TabPane.vue";
@@ -174,9 +310,14 @@ import Modal from "@/components/Modal.vue";
 import BaseDropdown from "@/components/BaseDropdown";
 import VuePlotly from "@statnett/vue-plotly";
 
+import "datatables.net-bs4/js/dataTables.bootstrap4.js";
+import "datatables.net-select-bs4";
+import "datatables.net-bs4/css/dataTables.bootstrap4.min.css";
+import "datatables.net-select-bs4/css/select.bootstrap4.min.css";
+
 import { listPatients } from "../graphql/queries.js";
 import { createPatient, createEvent } from "../graphql/mutations";
-import { onCreatePatient } from "../graphql/subscriptions";
+import { onCreatePatient, onCreateEvent } from "../graphql/subscriptions";
 
 import eventData from "../store/events.json";
 
@@ -194,28 +335,53 @@ export default {
     return {
       modals: {
         onboard: false,
-        patientInteraction: false
+        patientInteraction: false,
+        newPractitioner: false,
+        showDetailModal: false
       },
+      selectedPatient: {},
       eventData: eventData,
-      patientNumber: "",
-      phoneNumber: "",
-      firstName: "",
-      lastName: "",
+      patient: {
+        idNumber: "",
+        firstName: "",
+        lastName: "",
+        phoneNumber: ""
+      },
+      practitioner: {
+        idNumber: "",
+        firstName: "",
+        lastName: "",
+        phoneNumber: ""
+      },
       activity: {
         patient: {},
-        activities: []
+        practitioner: "",
+        activity: {}
       },
       rewardsToSend: [],
-      rewardsToSendTotal: 0
+      rewardsToSendTotal: 0,
+      rating: {
+        health_services: 5,
+        medicines: 5,
+        patient_safety: 5,
+        cleanliness: 5,
+        staff_attitude: 5,
+        wating_time: 5
+      }
     };
   },
   created() {
-    this.$store.dispatch("loadPatient");
+    this.$store.dispatch("loadEvents");
+    this.$store.dispatch("loadPatients");
   },
   mounted: function() {
+    API.graphql(graphqlOperation(onCreateEvent)).subscribe({
+      next: data => {
+        this.$store.dispatch("addInteraction", data.value.data.onCreateEvent);
+      }
+    });
     API.graphql(graphqlOperation(onCreatePatient)).subscribe({
       next: data => {
-        console.log(data.value.data.onCreatePatient)
         this.$store.dispatch("addPatient", data.value.data.onCreatePatient);
       }
     });
@@ -227,29 +393,65 @@ export default {
     patients: function() {
       return this.$store.state.patients.data;
     },
-    fullname: function(firstName, lastName) {
-      return `${lastName} ${firstName}`;
+    events: function() {
+      return this.$store.state.activities.data;
+    },
+    validateInteractionForm: function() {
+      return (
+        !this.activity.patient ||
+        !this.activity.activity ||
+        !this.activity.practitioner
+      );
+    },
+    validatePatientForm() {
+      return (
+        !this.patient.idNumber ||
+        !this.patient.firstName ||
+        !this.patient.lastName ||
+        !this.patient.phoneNumber
+      );
+    },
+    validatePractitionerForm() {
+      return (
+        !this.practitioner.idNumber ||
+        !this.practitioner.firstName ||
+        !this.practitioner.lastName ||
+        !this.practitioner.phoneNumber
+      );
     }
   },
   methods: {
+    openDetails({ firstName, lastName, phone, id }) {
+      this.selectedPatient = {
+        firstName,
+        lastName,
+        phone,
+        id
+      };
+      this.modals.showDetailModal = true;
+    },
+    fullName({ firstName, lastName }, truncate) {
+      if (truncate) {
+        return `${lastName}, ${firstName}`.substring(0, 15);
+      } else {
+        return `${lastName}, ${firstName}`;
+      }
+    },
     createNewPatient() {
       const input = {
-        id: parseInt(this.patientNumber),
-        firstName: this.firstName,
-        lastName: this.lastName,
-        phone: this.phoneNumber
+        id: parseInt(this.patient.idNumber),
+        firstName: this.patient.firstName,
+        lastName: this.patient.lastName,
+        phone: this.patient.phoneNumber
       };
       API.graphql(graphqlOperation(createPatient, { input }))
         .then(response => {
           this.$notify({
             group: "foo",
             title: "New Patient",
-            text: `Patient ${this.patientNumber} has been registered.`
+            text: `Patient ${this.patient.idNumber} has been registered.`
           });
-          this.patientNumber = "";
-          this.firstName = "";
-          this.lastName = "";
-          this.phoneNumber = "";
+          this.patient = {};
         })
         .catch(errors => {
           const err = [];
@@ -261,43 +463,62 @@ export default {
           });
         });
     },
+    createNewPractioner() {
+      const input = {
+        id: parseInt(this.practitioner.idNumber),
+        firstName: this.practitioner.firstName,
+        lastName: this.practitioner.lastName,
+        phone: this.practitioner.phoneNumber
+      };
+      API.graphql(graphqlOperation(createPatient, { input }))
+        .then(response => {
+          this.$notify({
+            group: "foo",
+            title: "New Practitioner",
+            text: `Practitioner ${
+              this.practitioner.idNumber
+            } has been registered.`
+          });
+          this.practitioner = {};
+        })
+        .catch(errors => {
+          const err = [];
+          errors.map(error, index => err.push(error));
+          this.$notify({
+            group: "foo",
+            title: "New Practitioner",
+            text: `${err}`
+          });
+        });
+    },
     recordActivity() {
       // assign the patient to each of the events
-      this.activity.activities.map((activity, index) => {
-        const input = {
-          patient: this.activity.patient,
-          eventType: activity.eventName
-        }
-        API.graphql(graphqlOperation(createEvent, {input}))
-          .then(response => {
-
-          })
-      })
-
-      // const input = {
-      //   patient: this.activity.patient,
-      //   eventType: this.activity.activities
-      // };
-      // // compute total
-      // API.graphql(graphqlOperation(createEvent, { input }))
-      //   .then(response => {
-      //     this.$notify({
-      //       group: "foo",
-      //       title: "Patient Interaction",
-      //       text: `Patient ${
-      //         this.activity.patient.id
-      //       } activity has been recorded.`
-      //     });
-      //     this.activity = {};
-      //   })
-      //   .catch(errors => {
-      //     console.log(errors);
-      //     this.$notify({
-      //       group: "foo",
-      //       title: "Patient Interaction",
-      //       text: `Internal server error. Please try again`
-      //     });
-      //   });
+      const input = {
+        id: new Date().getTime(),
+        eventPatientId: this.activity.patient.id,
+        eventType: this.activity.activity.eventName
+      };
+      API.graphql(graphqlOperation(createEvent, { input }))
+        .then(response => {
+          console.log(response);
+          this.$notify({
+            group: "foo",
+            title: "New Interaction",
+            text: `Interaction has been recorded.`
+          });
+          this.id = "";
+          this.eventPatientId = "";
+          this.eventType = "";
+        })
+        .catch(errors => {
+          const err = [];
+          errors.map(error, index => err.push(error));
+          this.$notify({
+            group: "foo",
+            title: "New Patient",
+            text: `${err}`
+          });
+        });
     },
     contactSelect(phoneNumber) {
       this.activity.phoneNumber = phoneNumber;
@@ -347,6 +568,10 @@ export default {
 
 .container .viewBTN:hover {
   background-color: black;
+}
+
+.vue-star-rating-star svg {
+  width: 20px;
 }
 </style>
 

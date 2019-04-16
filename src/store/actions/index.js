@@ -14,7 +14,8 @@ import {
   PATIENT_ACTIVITY_SUCCESS,
   OPEN_RESET_MODAL,
   CLOSE_LOGIN_MODAL,
-  LIST_PATIENTS
+  LIST_PATIENTS,
+  LIST_ACTIVITIES
 } from "../types";
 
 export const AuthActions = {
@@ -53,24 +54,22 @@ export const AuthActions = {
 };
 
 export const PatientActions = {
-  loadPatient({ commit }, payload) {
+  loadPatients({ commit }, payload) {
     API.graphql(graphqlOperation(listPatients))
       .then(response => {
         commit(LIST_PATIENTS, response.data.listPatients.items);
       })
       .catch(err => commit(LIST_PATIENTS, []));
   },
-  loadInteraction({ commit }, payload) {
+  loadEvents({ commit }, payload) {
     API.graphql(graphqlOperation(listEvents))
-      .then(response => commit(PATIENT_ACTIVITY_SUCCESS, response.data))
-      .catch(err => commit(PATIENT_ACTIVITY_SUCCESS, []));
+      .then(response => commit(LIST_ACTIVITIES, response.data.listEvents.items))
+      .catch(err => commit(LIST_ACTIVITIES, []));
   },
   addPatient({ commit }, payload) {
     commit(NEW_PATIENT_SUCCESS, payload);
   },
-  async addInteraction({ commit }, payload) {
-    await API.graphql(graphqlOperation(createEvent, payload))
-      .then(response => commit(PATIENT_ACTIVITY_SUCCESS, response))
-      .catch(err => commit(PATIENT_ACTIVITY_ERROR, err));
+  addInteraction({ commit }, payload) {
+    commit(PATIENT_ACTIVITY_SUCCESS, payload);
   }
 };

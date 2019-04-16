@@ -8,7 +8,11 @@ import {
   CLOSE_RESET_MODAL,
   NEW_PATIENT_SUCCESS,
   NEW_PATIENT_ERROR,
-  LIST_PATIENTS
+  NEW_ACTIVITY_SUCCESS,
+  NEW_ACTIVITY_ERROR,
+  LIST_PATIENTS,
+  LIST_ACTIVITIES,
+  PATIENT_ACTIVITY_SUCCESS
 } from "./types";
 
 export const AuthMutations = {
@@ -50,6 +54,10 @@ export const PatientMutations = {
     state.patients.data = payload;
     state.patients.error = null;
   },
+  [LIST_ACTIVITIES](state, payload) {
+    state.activities.data = payload;
+    state.activities.error = null;
+  },
   [NEW_PATIENT_SUCCESS](state, payload) {
     const { firstName, lastName, id, phone } = payload;
     const data = {
@@ -60,6 +68,10 @@ export const PatientMutations = {
     }
     state.patients.data = state.patients.data.concat(data);
     state.patients.error = null;
+  },
+  [PATIENT_ACTIVITY_SUCCESS](state, payload) {
+    state.activities.data = state.patients.data.concat(payload);
+    state.activities.error = null;
   },
   [NEW_PATIENT_ERROR](state, payload) {
     state.patients.data = state.patients.data;
