@@ -1,7 +1,8 @@
-type Patient @model {
+﻿type Patient @model {
   id: ID!
-  phone: Int!
-  countryCode: Int!
+  firstName: String
+  lastName: String
+  phone: String!
   events: [Event] @connection(name: "PatientEvents")
 }
 type Event @model {
