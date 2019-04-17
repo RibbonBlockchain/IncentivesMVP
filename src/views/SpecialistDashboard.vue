@@ -34,7 +34,7 @@
               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6">
                 <div class="text-right">
                   <div>{{ user.email }}</div>
-                  <span>[specialist balance here]</span>
+                  <span>{{ balance }} ETH</span>
                 </div>
               </div>
             </div>
@@ -319,8 +319,11 @@ import { listPatients } from "../graphql/queries.js";
 import { createPatient, createEvent } from "../graphql/mutations";
 import { onCreatePatient, onCreateEvent } from "../graphql/subscriptions";
 
+import Web3 from "web3";
 import eventData from "../store/events.json";
 
+let RibbonIncentiveContract = require("../../build/abi.json");
+let web3;
 export default {
   components: {
     Tabs,
@@ -341,6 +344,7 @@ export default {
       },
       selectedPatient: {},
       eventData: eventData,
+      specialistBalance: 0,
       patient: {
         idNumber: "",
         firstName: "",
@@ -375,6 +379,7 @@ export default {
     this.$store.dispatch("loadPatients");
   },
   mounted: function() {
+    web3 = new Web3(window.web3.currentProvider);
     API.graphql(graphqlOperation(onCreateEvent)).subscribe({
       next: data => {
         this.$store.dispatch("addInteraction", data.value.data.onCreateEvent);
@@ -387,6 +392,14 @@ export default {
     });
   },
   computed: {
+    balance: function() {
+      web3 = new Web3(window.web3.currentProvider);
+      web3.eth
+        .getBalance("0x196CA463e27a7B03d3CdbE03EaE4aaB37eF005e1")
+        .then(balance => {
+          return balance;
+        });
+    },
     user: function() {
       return this.$store.state.login.user.attributes;
     },
@@ -442,7 +455,8 @@ export default {
         id: parseInt(this.patient.idNumber),
         firstName: this.patient.firstName,
         lastName: this.patient.lastName,
-        phone: this.patient.phoneNumber
+        phone: this.patient.phoneNumber,
+        address: web3.eth.accounts.create()
       };
       API.graphql(graphqlOperation(createPatient, { input }))
         .then(response => {
@@ -468,7 +482,8 @@ export default {
         id: parseInt(this.practitioner.idNumber),
         firstName: this.practitioner.firstName,
         lastName: this.practitioner.lastName,
-        phone: this.practitioner.phoneNumber
+        phone: this.practitioner.phoneNumber,
+        address: web3.eth.accounts.create()
       };
       API.graphql(graphqlOperation(createPatient, { input }))
         .then(response => {

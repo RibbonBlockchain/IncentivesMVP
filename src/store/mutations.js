@@ -15,6 +15,8 @@ import {
   PATIENT_ACTIVITY_SUCCESS
 } from "./types";
 
+import pollWeb3 from "../util/pollWeb3";
+
 export const AuthMutations = {
   [LOGIN_PENDING](state) {
     state.login.isLoading = true;
@@ -62,10 +64,10 @@ export const PatientMutations = {
     const { firstName, lastName, id, phone } = payload;
     const data = {
       firstName,
-      lastName, 
+      lastName,
       id,
       phone
-    }
+    };
     state.patients.data = state.patients.data.concat(data);
     state.patients.error = null;
   },
@@ -76,5 +78,14 @@ export const PatientMutations = {
   [NEW_PATIENT_ERROR](state, payload) {
     state.patients.data = state.patients.data;
     stable.patients.error = payload;
+  }
+};
+
+export const Web3Mutations = {
+  registerWeb3Instance(state, payload) {
+    state.web3.web3Instance = payload;
+  },
+  registerContractInstance(state, payload) {
+    state.contractInstance = () => payload;
   }
 };

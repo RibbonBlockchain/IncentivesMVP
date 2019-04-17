@@ -19,6 +19,7 @@ export default {
   },
   async beforeCreate() {
     this.$store.dispatch('currentUser');
+    this.$store.dispatch('registerWeb3');
   },
 };
 </script>

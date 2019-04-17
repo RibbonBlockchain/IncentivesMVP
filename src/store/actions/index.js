@@ -17,6 +17,8 @@ import {
   LIST_PATIENTS,
   LIST_ACTIVITIES
 } from "../types";
+import getWeb3 from "../../util/getWeb3";
+import getContract from "../../util/getContract";
 
 export const AuthActions = {
   loginUser({ commit }, payload) {
@@ -71,5 +73,24 @@ export const PatientActions = {
   },
   addInteraction({ commit }, payload) {
     commit(PATIENT_ACTIVITY_SUCCESS, payload);
+  }
+};
+
+export const Web3Actions = {
+  registerWeb3({ commit }) {
+    getWeb3
+      .then(result => {
+        console.log('Result ',result);
+        commit("registerWeb3Instance", result);
+      })
+      .catch(err => console.log(err));
+  },
+  getContractInstance({ commit }) {
+    getContract
+      .then(result => {
+        console.log("ContractInstance ", result);
+        commit("registerContractInstance", result);
+      })
+      .catch(err => console.log(err));
   }
 };
