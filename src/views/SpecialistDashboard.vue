@@ -34,7 +34,7 @@
               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6">
                 <div class="text-right">
                   <div>{{ user.email }}</div>
-                  <span>{{ balance }} ETH</span>
+                  <strong>{{ web3.balance }} RBN</strong>
                 </div>
               </div>
             </div>
@@ -288,11 +288,7 @@
         </div>
       </div>
       <template slot="footer">
-        <base-button
-          type="primary"
-          :disabled="validateInteractionForm"
-          @click="recordActivity"
-        >Record</base-button>
+        <base-button type="primary" @click="recordActivity">Record</base-button>
         <base-button type="link" class="ml-auto" @click="modals.patientInteraction = false">Cancel</base-button>
       </template>
     </modal>
@@ -304,11 +300,15 @@ import { Auth, API, graphqlOperation } from "aws-amplify";
 import StarRating from "vue-star-rating";
 import VdtnetTable from "vue-datatables-net";
 import Avatar from "vue-avatar";
+
 import Tabs from "@/components/Tabs/Tabs.vue";
 import TabPane from "@/components/Tabs/TabPane.vue";
 import Modal from "@/components/Modal.vue";
 import BaseDropdown from "@/components/BaseDropdown";
 import VuePlotly from "@statnett/vue-plotly";
+import Web3 from "web3";
+import Tx from "ethereumjs-tx";
+import { toBuffer } from "ethereumjs-util";
 
 import "datatables.net-bs4/js/dataTables.bootstrap4.js";
 import "datatables.net-select-bs4";
@@ -319,11 +319,19 @@ import { listPatients } from "../graphql/queries.js";
 import { createPatient, createEvent } from "../graphql/mutations";
 import { onCreatePatient, onCreateEvent } from "../graphql/subscriptions";
 
-import Web3 from "web3";
+import token from "../util/token";
 import eventData from "../store/events.json";
 
-let RibbonIncentiveContract = require("../../build/abi.json");
-let web3;
+import abi from "../abi.json";
+
+const web3 = new Web3(
+  new Web3.providers.HttpProvider(
+    "https://rinkeby.infura.io/v3/a8853810b5054964b0fbe19c8e02e9c1"
+  )
+);
+
+const privateKey =
+  "97CBBF9B269F0F58D1C4B0F3AF662DC627937A2A1A6AA959219C7051B4306371";
 export default {
   components: {
     Tabs,
@@ -344,7 +352,9 @@ export default {
       },
       selectedPatient: {},
       eventData: eventData,
-      specialistBalance: 0,
+      web3: {
+        balance: 0
+      },
       patient: {
         idNumber: "",
         firstName: "",
@@ -374,12 +384,27 @@ export default {
       }
     };
   },
-  created() {
+  beforeCreate() {
+    this.$store.dispatch("registerWeb3");
+  },
+  async created() {
     this.$store.dispatch("loadEvents");
     this.$store.dispatch("loadPatients");
+    await token.methods
+      .owner()
+      .call()
+      .then(result => {
+        token.methods
+          .balanceOf(result)
+          .call()
+          .then(balance => {
+            this.web3 = {
+              balance: web3.utils.fromWei(balance, "ether")
+            };
+          });
+      });
   },
   mounted: function() {
-    web3 = new Web3(window.web3.currentProvider);
     API.graphql(graphqlOperation(onCreateEvent)).subscribe({
       next: data => {
         this.$store.dispatch("addInteraction", data.value.data.onCreateEvent);
@@ -392,14 +417,7 @@ export default {
     });
   },
   computed: {
-    balance: function() {
-      web3 = new Web3(window.web3.currentProvider);
-      web3.eth
-        .getBalance("0x196CA463e27a7B03d3CdbE03EaE4aaB37eF005e1")
-        .then(balance => {
-          return balance;
-        });
-    },
+    balance: function() {},
     user: function() {
       return this.$store.state.login.user.attributes;
     },
@@ -434,6 +452,52 @@ export default {
     }
   },
   methods: {
+    sendToken(receiver, amount) {
+      const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
+      const contractAbi = abi;
+      const contractOwner = {
+        addr: "0x1de929d52b94a06f21d57dafe202d36c6ca71c7a",
+        key: privateKey
+      };
+      console.log(`Start to send ${amount} tokens to ${receiver}`);
+      console.log(
+        `Private Key ${contractOwner.key} ${toBuffer(
+          `0x${contractOwner.key}`,
+          "hex"
+        )}`
+      );
+      const contract = new web3.eth.Contract(contractAbi, contractAddr);
+      const data = contract.methods.transfer(receiver, amount * 1e18);
+      const gasPrice = web3.eth.gasPrice;
+      const gasLimit = 90000;
+      const rawTransaction = {
+        from: contractOwner.addr,
+        nonce: web3.utils.toHex(new Date().getTime() + 1),
+        // nonce: web3.utils.toHex(web3.eth.getTransactionCount(contractOwner.addr)),
+        gasPrice: web3.utils.toHex(gasPrice),
+        gasLimit: web3.utils.toHex(gasLimit),
+        to: contractAddr,
+        value: 0,
+        data: data,
+        chainId: 4
+      };
+
+      const privKey = new Buffer(`0x${contractOwner.key}`, "hex");
+      const tx = new Tx(rawTransaction);
+      tx.sign(privKey);
+      const serializedTx = tx.serialize();
+      web3.eth.sendRawTransaction("0x" + serializedTx.toString("hex"), function(
+        err,
+        hash
+      ) {
+        if (err) {
+          console.log(err);
+        }
+
+        console.log(hash);
+      });
+    },
+
     openDetails({ firstName, lastName, phone, id }) {
       this.selectedPatient = {
         firstName,
@@ -506,34 +570,63 @@ export default {
           });
         });
     },
-    recordActivity() {
+    async recordActivity() {
+      this.sendToken("0xB0793421c0E8dD39439CD6916140acfA9F563e90", 100);
+
+      // let account = web3.eth.accounts.privateKeyToAccount("0x" + privateKey);
+      // let to = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
+      // let gasPriceGwei = 3;
+      // let gasLimit = 3000000;
+      // let destinationAddress = "0xB0793421c0E8dD39439CD6916140acfA9F563e90";
+      // let count = new Date().getTime()
+      // const transaction = {
+      //   from: "0x1dE929D52B94A06F21d57dAFE202D36C6CA71C7a",
+      //   to: to,
+      //   gasPrice: web3.utils.toHex(gasPriceGwei * 1e9),
+      //   gasLimit: web3.utils.toHex(gasLimit),
+      //   nonce: web3.utils.toHex(count),
+      //   data: token.methods
+      //     .transfer(destinationAddress, 1000000000)
+      //     .encodeABI(),
+      //   chainId: 4
+      // };
+      // let privKey = new Buffer(privateKey, "hex");
+      // let tx = new Tx(rawTransaction);
+      // tx.sign(privKey);
+      // let serializedTx = tx.serialize().toString("hex");
+      // web3.eth
+      //   .sendTransaction("0x" + serializedTx)
+      //   .then(response => {
+      //     console.log("Response ", response);
+      //   })
+      //   .catch(err => console.log("Error ", err));
       // assign the patient to each of the events
-      const input = {
-        id: new Date().getTime(),
-        eventPatientId: this.activity.patient.id,
-        eventType: this.activity.activity.eventName
-      };
-      API.graphql(graphqlOperation(createEvent, { input }))
-        .then(response => {
-          console.log(response);
-          this.$notify({
-            group: "foo",
-            title: "New Interaction",
-            text: `Interaction has been recorded.`
-          });
-          this.id = "";
-          this.eventPatientId = "";
-          this.eventType = "";
-        })
-        .catch(errors => {
-          const err = [];
-          errors.map(error, index => err.push(error));
-          this.$notify({
-            group: "foo",
-            title: "New Patient",
-            text: `${err}`
-          });
-        });
+      // const input = {
+      //   id: new Date().getTime(),
+      //   eventPatientId: this.activity.patient.id,
+      //   eventType: this.activity.activity.eventName
+      // };
+      // API.graphql(graphqlOperation(createEvent, { input }))
+      //   .then(response => {
+      //     console.log(response);
+      //     this.$notify({
+      //       group: "foo",
+      //       title: "New Interaction",
+      //       text: `Interaction has been recorded.`
+      //     });
+      //     this.id = "";
+      //     this.eventPatientId = "";
+      //     this.eventType = "";
+      //   })
+      //   .catch(errors => {
+      //     const err = [];
+      //     errors.map(error, index => err.push(error));
+      //     this.$notify({
+      //       group: "foo",
+      //       title: "New Patient",
+      //       text: `${err}`
+      //     });
+      //   });
     },
     contactSelect(phoneNumber) {
       this.activity.phoneNumber = phoneNumber;

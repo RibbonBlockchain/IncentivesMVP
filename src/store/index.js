@@ -5,10 +5,9 @@ import {
   AuthMutations,
   ModalMutations,
   PatientMutations,
-  Web3Mutations
 } from "./mutations";
-import { AuthActions, PatientActions, Web3Actions } from "./actions";
-import { AuthGetters, PatientGetters, Web3Getters } from "./getters";
+import { AuthActions, PatientActions } from "./actions";
+import { AuthGetters, PatientGetters } from "./getters";
 
 Vue.use(Vuex);
 
@@ -33,19 +32,16 @@ const store = new Vuex.Store({
     modals: {
       resetModal: false
     },
-    web3: {
-      web3Instance: {}
-    }
+    web3: {}
   },
-  getters: Object.assign({}, AuthGetters, PatientGetters, Web3Getters),
+  getters: Object.assign({}, AuthGetters, PatientGetters),
   mutations: Object.assign(
     {},
     AuthMutations,
     ModalMutations,
     PatientMutations,
-    Web3Mutations
   ),
-  actions: Object.assign({}, AuthActions, PatientActions, Web3Actions),
+  actions: Object.assign({}, AuthActions, PatientActions),
   modules: {
     accounts
   }

@@ -1,5 +1,17 @@
-const address = "0x78cc623E29Ddd6e75f75bcc80835626fC07A8B05";
-const ABI = [
+import web3 from "./web3";
+
+const address = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
+
+const abi = [
+  {
+    constant: false,
+    inputs: [],
+    name: "acceptOwnership",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function"
+  },
   {
     constant: false,
     inputs: [
@@ -8,14 +20,14 @@ const ABI = [
         type: "address"
       },
       {
-        name: "value",
+        name: "tokens",
         type: "uint256"
       }
     ],
     name: "approve",
     outputs: [
       {
-        name: "",
+        name: "success",
         type: "bool"
       }
     ],
@@ -31,37 +43,18 @@ const ABI = [
         type: "address"
       },
       {
-        name: "subtractedValue",
+        name: "tokens",
         type: "uint256"
-      }
-    ],
-    name: "decreaseAllowance",
-    outputs: [
-      {
-        name: "",
-        type: "bool"
-      }
-    ],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "spender",
-        type: "address"
       },
       {
-        name: "addedValue",
-        type: "uint256"
+        name: "data",
+        type: "bytes"
       }
     ],
-    name: "increaseAllowance",
+    name: "approveAndCall",
     outputs: [
       {
-        name: "",
+        name: "success",
         type: "bool"
       }
     ],
@@ -77,14 +70,37 @@ const ABI = [
         type: "address"
       },
       {
-        name: "value",
+        name: "tokens",
         type: "uint256"
       }
     ],
     name: "transfer",
     outputs: [
       {
-        name: "",
+        name: "success",
+        type: "bool"
+      }
+    ],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "tokenAddress",
+        type: "address"
+      },
+      {
+        name: "tokens",
+        type: "uint256"
+      }
+    ],
+    name: "transferAnyERC20Token",
+    outputs: [
+      {
+        name: "success",
         type: "bool"
       }
     ],
@@ -104,17 +120,31 @@ const ABI = [
         type: "address"
       },
       {
-        name: "value",
+        name: "tokens",
         type: "uint256"
       }
     ],
     name: "transferFrom",
     outputs: [
       {
-        name: "",
+        name: "success",
         type: "bool"
       }
     ],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "_newOwner",
+        type: "address"
+      }
+    ],
+    name: "transferOwnership",
+    outputs: [],
     payable: false,
     stateMutability: "nonpayable",
     type: "function"
@@ -126,6 +156,28 @@ const ABI = [
     type: "constructor"
   },
   {
+    payable: true,
+    stateMutability: "payable",
+    type: "fallback"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: "_from",
+        type: "address"
+      },
+      {
+        indexed: true,
+        name: "_to",
+        type: "address"
+      }
+    ],
+    name: "OwnershipTransferred",
+    type: "event"
+  },
+  {
     anonymous: false,
     inputs: [
       {
@@ -140,7 +192,7 @@ const ABI = [
       },
       {
         indexed: false,
-        name: "value",
+        name: "tokens",
         type: "uint256"
       }
     ],
@@ -152,7 +204,7 @@ const ABI = [
     inputs: [
       {
         indexed: true,
-        name: "owner",
+        name: "tokenOwner",
         type: "address"
       },
       {
@@ -162,7 +214,7 @@ const ABI = [
       },
       {
         indexed: false,
-        name: "value",
+        name: "tokens",
         type: "uint256"
       }
     ],
@@ -173,7 +225,7 @@ const ABI = [
     constant: true,
     inputs: [
       {
-        name: "owner",
+        name: "tokenOwner",
         type: "address"
       },
       {
@@ -184,7 +236,7 @@ const ABI = [
     name: "allowance",
     outputs: [
       {
-        name: "",
+        name: "remaining",
         type: "uint256"
       }
     ],
@@ -196,14 +248,14 @@ const ABI = [
     constant: true,
     inputs: [
       {
-        name: "owner",
+        name: "tokenOwner",
         type: "address"
       }
     ],
     name: "balanceOf",
     outputs: [
       {
-        name: "",
+        name: "balance",
         type: "uint256"
       }
     ],
@@ -228,39 +280,39 @@ const ABI = [
   {
     constant: true,
     inputs: [],
-    name: "DECIMALS",
-    outputs: [
-      {
-        name: "",
-        type: "uint8"
-      }
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "INITIAL_SUPPLY",
-    outputs: [
-      {
-        name: "",
-        type: "uint256"
-      }
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    constant: true,
-    inputs: [],
     name: "name",
     outputs: [
       {
         name: "",
         type: "string"
+      }
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: "newOwner",
+    outputs: [
+      {
+        name: "",
+        type: "address"
+      }
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        name: "",
+        type: "address"
       }
     ],
     payable: false,
@@ -297,4 +349,6 @@ const ABI = [
   }
 ];
 
-export { ABI, address };
+export default new web3.eth.Contract(abi, address, {
+  from: '0x1dE929D52B94A06F21d57dAFE202D36C6CA71C7a'
+});

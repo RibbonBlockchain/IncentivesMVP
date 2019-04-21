@@ -1,24 +1,15 @@
 import { Auth, API, graphqlOperation } from "aws-amplify";
-import { createPatient, createEvent } from "../../graphql/mutations";
 import { listPatients, listEvents } from "../../graphql/queries";
 import {
-  LOGIN_PENDING,
   LOGIN_ERROR,
-  LOGIN_SUCCESS,
   CURRENT_USER,
-  UPDATE_PASSWORD_ERROR,
-  UPDATE_PASSWORD_SUCCESS,
-  NEW_PATIENT_ERROR,
   NEW_PATIENT_SUCCESS,
-  PATIENT_ACTIVITY_ERROR,
   PATIENT_ACTIVITY_SUCCESS,
   OPEN_RESET_MODAL,
-  CLOSE_LOGIN_MODAL,
   LIST_PATIENTS,
-  LIST_ACTIVITIES
+  LIST_ACTIVITIES,
+  REGISTER_WEB3_INSTANCE
 } from "../types";
-import getWeb3 from "../../util/getWeb3";
-import getContract from "../../util/getContract";
 
 export const AuthActions = {
   loginUser({ commit }, payload) {
@@ -73,24 +64,5 @@ export const PatientActions = {
   },
   addInteraction({ commit }, payload) {
     commit(PATIENT_ACTIVITY_SUCCESS, payload);
-  }
-};
-
-export const Web3Actions = {
-  registerWeb3({ commit }) {
-    getWeb3
-      .then(result => {
-        console.log('Result ',result);
-        commit("registerWeb3Instance", result);
-      })
-      .catch(err => console.log(err));
-  },
-  getContractInstance({ commit }) {
-    getContract
-      .then(result => {
-        console.log("ContractInstance ", result);
-        commit("registerContractInstance", result);
-      })
-      .catch(err => console.log(err));
   }
 };

@@ -8,14 +8,11 @@ import {
   CLOSE_RESET_MODAL,
   NEW_PATIENT_SUCCESS,
   NEW_PATIENT_ERROR,
-  NEW_ACTIVITY_SUCCESS,
-  NEW_ACTIVITY_ERROR,
   LIST_PATIENTS,
   LIST_ACTIVITIES,
-  PATIENT_ACTIVITY_SUCCESS
+  PATIENT_ACTIVITY_SUCCESS,
+  REGISTER_WEB3_INSTANCE
 } from "./types";
-
-import pollWeb3 from "../util/pollWeb3";
 
 export const AuthMutations = {
   [LOGIN_PENDING](state) {
@@ -82,10 +79,8 @@ export const PatientMutations = {
 };
 
 export const Web3Mutations = {
-  registerWeb3Instance(state, payload) {
-    state.web3.web3Instance = payload;
-  },
-  registerContractInstance(state, payload) {
-    state.contractInstance = () => payload;
+  [REGISTER_WEB3_INSTANCE](state, payload) {
+    state.web3.web3Instance = Object.assign({}, payload.web3);
+    state.web3.contract = Object.assign({}, payload.contract);
   }
 };

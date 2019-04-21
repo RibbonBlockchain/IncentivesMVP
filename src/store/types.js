@@ -33,3 +33,6 @@ export const CLOSE_LOGIN_MODAL = "modal/CLOSE_LOGIN_MODAL";
 
 export const OPEN_RESET_MODAL = "modal/OPEN_RESET_MODAL";
 export const CLOSE_RESET_MODAL = "modal/CLOSE_RESET_MODAL";
+
+
+export const REGISTER_WEB3_INSTANCE = 'web3/REGISTER_WEB3_INSTANCE'
