@@ -1,298 +1,311 @@
 <template>
-    <div>
-
-        <div class="position-relative">
-            <!-- shape Hero -->
-            <section class="section-shaped my-0">
-                <div class="shape shape-style-1 shape-default shape-skew">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="container shape-container d-flex">
-                    <div class="col px-0">
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <h1 class="display-3  text-white">Ribbon Blockchain
-                                    <span>Public Healthcare Incentive Program</span>
-                                </h1>
-                                <p class="lead  text-white">Using tokenized incentives to make positive lifestyle changes. Reducing the burden on the medical system and making communities healthier. </p>
-                                <div class="btn-wrapper">
-                                    <base-button tag="a"
-                                                 href="#"
-                                                 class="mb-3 mb-sm-0"
-                                                 type="info"
-                                                 icon="fa fa-question">
-                                        Learn More
-                                    </base-button>
-                                    <base-button tag="a"
-                                                 href="#"
-                                                 class="mb-3 mb-sm-0"
-                                                 type="white"
-                                                 icon="fa fa-paper-plane">
-                                        Get in touch
-                                    </base-button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- 1st Hero Variation -->
+  <div>
+    <div class="position-relative">
+      <!-- shape Hero -->
+      <section class="section-shaped my-0">
+        <div class="shape shape-style-1 shape-default shape-skew">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-
-        <section class="section section-shaped my-0 overflow-hidden mt--100" id="About">
-            <div class="container pt-lg">
-                <div class="row text-center justify-content-center">
-                    <div class="col-lg-10">
-                        <h2 class="display-3">Incentivise a healthier lifestyle</h2>
-                        <p class="lead ">
-                            Ribbon Blockchain aims to create a universal healthcare incentive layer. Encourage behavioral changes through incentives to make people healthier. Integrate with the existing architecture to drastically lower development costs.
-                        </p>
-                    </div>
+        <div class="container shape-container d-flex">
+          <div class="col px-0">
+            <div class="row">
+              <div class="col-lg-8">
+                <h1 class="display-3 text-white">
+                  Ribbon Blockchain
+                  <span>Public Healthcare Incentive Program</span>
+                </h1>
+                <p
+                  class="lead text-white"
+                >Using tokenized incentives to make positive lifestyle changes. Reducing the burden on the medical system and making communities healthier.</p>
+                <div class="btn-wrapper">
+                  <base-button
+                    tag="a"
+                    href="#"
+                    class="mb-3 mb-sm-0"
+                    type="info"
+                    icon="fa fa-question"
+                  >Learn More</base-button>
+                  <base-button
+                    tag="a"
+                    href="#"
+                    class="mb-3 mb-sm-0"
+                    type="white"
+                    icon="fa fa-paper-plane"
+                  >Get in touch</base-button>
                 </div>
-                <div class="row row-grid mt-5">
-                    <div class="col-lg-4 text-center">
-                        <icon name="fa fa-users" size="lg" gradient="white" shadow round color="primary"></icon>
-                        <h5 class=" mt-3">Drive Program Usage</h5>
-                        <p class=" mt-3">
-                            Increase the number of users of an intervention program by incentivising particular interactions. 
-                        </p>
-                    </div>
-                    <div class="col-lg-4 text-center">
-                        <icon name="fa fa-heart" size="lg" gradient="white" shadow round color="primary"></icon>
-                        <h5 class=" mt-3">Reward Healthy Choices</h5>
-                        <p class=" mt-3">
-                            Each Program can choose what activity to reward and how much each activity is worth thereby Encouraging a healthier lifestyle.
-                        </p>
-                    </div>
-                    <div class="col-lg-4 text-center">
-                        <icon name="ni ni-atom" size="lg" gradient="white" shadow round color="primary"></icon>
-                        <h5 class=" mt-3">Universal Token</h5>
-                        <p class=" mt-3">
-                            All programs on the Ribbon incentive system use one native token removing the complexity of multiple incentive tokens.
-                        </p>
-                    </div>
-                </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
+      <!-- 1st Hero Variation -->
+    </div>
 
-        <section class="section section-lg bg-secondary" id="Integration">
-            <div class="container">
-                <div class="row row-grid align-items-center">
-                    <div class="col-md-6 order-md-2">
-                        <img src="img/theme/promo-1.png" class="img-fluid floating">
-                    </div>
-                    <div class="col-md-6 order-md-1">
-                        <div class="pr-md-5">
-                            <icon name="ni ni-settings-gear-65" class="mb-5" size="lg" type="success" shadow
-                                  rounded></icon>
-                            <h3>Incentive API Integration</h3>
-                            <p>The Ribbon Blockchain incentive system is designed to be interoperable with any existing government healthcare program through a universal API. This means that current initiatives can benefit from the addition of an incentive layer.</p>
-                            <ul class="list-unstyled mt-5">
-                                <li class="py-2">
-                                    <div class="d-flex align-items-center">
-                                        <badge type="success" circle class="mr-3" icon="ni ni-books"></badge>
-                                        <h6 class="mb-0">Universal, documented API to connect to any project</h6>
-                                    </div>
-                                </li>
-                                <li class="py-2">
-                                    <div class="d-flex align-items-center">
-                                        <badge type="success" circle class="mr-3" icon="fa fa-server"></badge>
-                                        <h6 class="mb-0">System scalability to enable future projects</h6>
-                                    </div>
-                                </li>
-                                <li class="py-2">
-                                    <div class="d-flex align-items-center">
-                                        <badge type="success" circle class="mr-3" icon="ni ni-satisfied"></badge>
-                                        <h6 class="mb-0">Minimum architectural change required</h6>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <section class="section section-shaped my-0 overflow-hidden mt--100" id="About">
+      <div class="container pt-lg">
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-10">
+            <h2 class="display-3">Incentivise a healthier lifestyle</h2>
+            <p
+              class="lead"
+            >Ribbon Blockchain aims to create a universal healthcare incentive layer. Encourage behavioral changes through incentives to make people healthier. Integrate with the existing architecture to drastically lower development costs.</p>
+          </div>
+        </div>
+        <div class="row row-grid mt-5">
+          <div class="col-lg-4 text-center">
+            <icon name="fa fa-users" size="lg" gradient="white" shadow round color="primary"></icon>
+            <h5 class="mt-3">Drive Program Usage</h5>
+            <p
+              class="mt-3"
+            >Increase the number of users of an intervention program by incentivising particular interactions.</p>
+          </div>
+          <div class="col-lg-4 text-center">
+            <icon name="fa fa-heart" size="lg" gradient="white" shadow round color="primary"></icon>
+            <h5 class="mt-3">Reward Healthy Choices</h5>
+            <p
+              class="mt-3"
+            >Each Program can choose what activity to reward and how much each activity is worth thereby Encouraging a healthier lifestyle.</p>
+          </div>
+          <div class="col-lg-4 text-center">
+            <icon name="ni ni-atom" size="lg" gradient="white" shadow round color="primary"></icon>
+            <h5 class="mt-3">Universal Token</h5>
+            <p
+              class="mt-3"
+            >All programs on the Ribbon incentive system use one native token removing the complexity of multiple incentive tokens.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-lg bg-secondary" id="Integration">
+      <div class="container">
+        <div class="row row-grid align-items-center">
+          <div class="col-md-6 order-md-2">
+            <img src="img/theme/promo-1.png" class="img-fluid floating">
+          </div>
+          <div class="col-md-6 order-md-1">
+            <div class="pr-md-5">
+              <icon
+                name="ni ni-settings-gear-65"
+                class="mb-5"
+                size="lg"
+                type="success"
+                shadow
+                rounded
+              ></icon>
+              <h3>Incentive API Integration</h3>
+              <p>The Ribbon Blockchain incentive system is designed to be interoperable with any existing government healthcare program through a universal API. This means that current initiatives can benefit from the addition of an incentive layer.</p>
+              <ul class="list-unstyled mt-5">
+                <li class="py-2">
+                  <div class="d-flex align-items-center">
+                    <badge type="success" circle class="mr-3" icon="ni ni-books"></badge>
+                    <h6 class="mb-0">Universal, documented API to connect to any project</h6>
+                  </div>
+                </li>
+                <li class="py-2">
+                  <div class="d-flex align-items-center">
+                    <badge type="success" circle class="mr-3" icon="fa fa-server"></badge>
+                    <h6 class="mb-0">System scalability to enable future projects</h6>
+                  </div>
+                </li>
+                <li class="py-2">
+                  <div class="d-flex align-items-center">
+                    <badge type="success" circle class="mr-3" icon="ni ni-satisfied"></badge>
+                    <h6 class="mb-0">Minimum architectural change required</h6>
+                  </div>
+                </li>
+              </ul>
             </div>
-        </section>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section class="section" id="UseCase">
-            <div class="container">
-                <div class="row row-grid align-items-center">
-                    <div class="col-md-6">
-                        <div class="card border-0">
-                            <img v-lazy="'img/theme/landing.png'" class="card-img-top">
-                            <blockquote class="card-blockquote">
-                                
-                                <!-- <h4 class="display-3 font-weight-bold">No Limitations</h4>
+    <section class="section" id="UseCase">
+      <div class="container">
+        <div class="row row-grid align-items-center">
+          <div class="col-md-6">
+            <div class="card border-0">
+              <img v-lazy="'img/theme/landing.png'" class="card-img-top">
+              <blockquote class="card-blockquote">
+                <!-- <h4 class="display-3 font-weight-bold">No Limitations</h4>
                                 <p class="lead text-italic">The Arctic Ocean freezes every winter and much of
                                     the sea-ice then thaws every summer, and that process will continue whatever
-                                    happens.</p> -->
-                            </blockquote>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="pl-md-5">
-                            <icon name="ni ni-atom" class="mb-5 mt--200" size="lg" type="info" shadow rounded></icon>
-
-                            <h3>Incentives use cases</h3>
-                            <p class="lead">
-                                The Ribbon blockchain Incentive platform can be used to integrate with any healthcare system that requires an incentive layer.
-                            </p>
-                            <p>
-                                Incentives any behavioral change, from going for medical tests to interacting with a healtcare app.
-                            </p>
-                            <p>Integrate with community initiatives, healthcare apps or directly incentives people to visit the doctor. Any use case wherein incentives are exchanged for actions can be used.</p>
-                            
-                        </div>
-                    </div>
-                </div>
+                happens.</p>-->
+              </blockquote>
             </div>
-        </section>
-        <section class="section section section-shaped my-0 overflow-hidden">
-            <div class="shape shape-style-1 bg-gradient-warning shape-skew">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="container py-0">
-                <div class="row row-grid align-items-center">
-                    <div class="col-md-6 order-lg-2 ml-lg-auto">
-                        <div class="position-relative pl-md-5">
-                            <img src="img/ill/ill-2.svg" class="img-center img-fluid">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 order-lg-1">
-                        <div class="d-flex px-3">
-                            <div>
-                                <icon name="ni ni-building" size="lg" class="bg-gradient-white" color="primary" shadow
-                                      rounded></icon>
-                            </div>
-                            <div class="pl-4">
-                                <h4 class="display-3 text-white">Simple User Interface</h4>
-                                <p class="text-white">The Ribbon incentive program is design to be as easy to use as possible for all users, irrespective of technical abilities and exposures.</p>
-                            </div>
-                        </div>
-                        <card shadow class="shadow-lg--hover mt-5">
-                            <div class="d-flex px-3">
-                                <div>
-                                    <icon class="mt-5" name="ni ni-satisfied" gradient="success" color="white" shadow
-                                          rounded></icon>
-                                </div>
-                                <div class="pl-4">
-                                    <h5 class="mt-1 title text-success">Native in app support</h5>
-                                    <p>The Universal API enables the rewards system to be integrated directly into existing applications. This means that users do not need to install any custom software to access their rewards.</p>
-                                    
-                                </div>
-                            </div>
-                        </card>
-                        <card shadow class="shadow-lg--hover mt-5">
-                            <div class="d-flex px-3">
-                                <div>
-                                    <icon class="mt-5" name="fa fa-lock" gradient="warning" color="white" shadow
-                                          rounded></icon>
-                                </div>
-                                <div class="pl-4">
-                                    <h5 class="mt-1 title text-warning">Full Account Control</h5>
-                                    <p>The user has compleate control over what information is added to the platform and who it is shared with. Privacy is of utmost importance in a medical context. </p>
-                                </div>
-                            </div>
-                        </card>
-                    </div>
-                </div>
-            </div>
-        </section>
+          </div>
+          <div class="col-md-6">
+            <div class="pl-md-5">
+              <icon name="ni ni-atom" class="mb-5 mt--200" size="lg" type="info" shadow rounded></icon>
 
-        <section class="section section-lg pt-lg-0" id="Stakeholders">
-            <div class="container">
-                <div class="row justify-content-center text-center mb-lg mb-0" style="margin-bottom:30px !important">
-                    <div class="col-lg-8">
-                        <h2 class="display-3">System Stakeholders</h2>
-                        <p class="lead text-muted">The Ribbon Blockchain incentive protocol brings together all key stakeholders in a mutually beneficial way.</p>
-                    </div>
-                </div>
-                <div class="row justify-content-center pt-0">
-                    <div class="col-lg-12">
-                        <div class="row row-grid">
-                            <div class="col-lg-6">
-                                <card class="border-0 text-center" hover shadow body-classes="py-5">
-                                    <icon name="ni ni-money-coins" type="primary" rounded class="mb-4">
-                                    </icon>
-                                    <h6 class="text-primary text-uppercase">Program Sponsors</h6>
-                                    <p class="description mt-3">
-                                        Contribute to an incentive program. 
-                                        Funding is used to pay for incentives.  
-                                        View a full audit trail of how sponsorship money was used.  
-                                    </p>
-                                    <base-button tag="a" href="#" type="primary" class="mt-4">
-                                        Learn more
-                                    </base-button>
-                                </card>
-                            </div>
-                            <div class="col-lg-6">
-                                <card class="border-0 text-center" hover shadow body-classes="py-5">
-                                    <icon name="ni ni-istanbul" type="success" rounded class="mb-4">
-                                    </icon>
-                                    <h6 class="text-success text-uppercase">Program Managers</h6>
-                                    <p class="description mt-3">
-                                        Allocate incentive allowances to practitioners. 
-                                        Register patients and users for a program.  
-                                        View program user engagement statistics. 
-                                        
-                                        </p>
-                                    <div>
-    
-                                    </div>
-                                    <base-button tag="a" href="#" type="success" class="mt-4">
-                                        Learn more
-                                    </base-button>
-                                </card>
-                            </div>
-                            </div>
-                            <div class="row row-grid">
-                            <div class="col-lg-6">
-                                <card class="border-0 text-center" hover shadow body-classes="py-5">
-                                    <icon name="fa fa-user-md" type="info" rounded class="mb-4">
-                                    </icon>
-                                    <h6 class="text-info text-uppercase">Program Practitioners</h6>
-                                    <p class="description mt-3">
-                                        Allocate tokens to users and patients based on their activity.
-                                        Receive rewards for positive patient feedback.
-
-                                    </p>
-                                    <base-button tag="a" href="#" type="info" class="mt-4">
-                                        Learn more
-                                    </base-button>
-                                </card>
-                            </div>
-                            <div class="col-lg-6">
-                                <card class="border-0 text-center" hover shadow body-classes="py-5">
-                                    <icon name="fa fa-user" type="warning" rounded class="mb-4">
-                                    </icon>
-                                    <h6 class="text-warning text-uppercase">Program Users and Patients</h6>
-                                    <p class="description mt-3">
-                                        Manage your incentive balances and spend them where you want. 
-                                        View your past history within a particular program.</p>
-                                    <base-button tag="a" href="#" type="warning" class="mt-4">
-                                        Learn more
-                                    </base-button>
-                                </card>
-                            </div>
-                            </div>
-                    </div>
-                </div>
+              <h3>Incentives use cases</h3>
+              <p
+                class="lead"
+              >The Ribbon blockchain Incentive platform can be used to integrate with any healthcare system that requires an incentive layer.</p>
+              <p>Incentives any behavioral change, from going for medical tests to interacting with a healtcare app.</p>
+              <p>Integrate with community initiatives, healthcare apps or directly incentives people to visit the doctor. Any use case wherein incentives are exchanged for actions can be used.</p>
             </div>
-        </section>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section section-shaped my-0 overflow-hidden">
+      <div class="shape shape-style-1 bg-gradient-warning shape-skew">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container py-0">
+        <div class="row row-grid align-items-center">
+          <div class="col-md-6 order-lg-2 ml-lg-auto">
+            <div class="position-relative pl-md-5">
+              <img src="img/ill/ill-2.svg" class="img-center img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="d-flex px-3">
+              <div>
+                <icon
+                  name="ni ni-building"
+                  size="lg"
+                  class="bg-gradient-white"
+                  color="primary"
+                  shadow
+                  rounded
+                ></icon>
+              </div>
+              <div class="pl-4">
+                <h4 class="display-3 text-white">Simple User Interface</h4>
+                <p
+                  class="text-white"
+                >The Ribbon incentive program is design to be as easy to use as possible for all users, irrespective of technical abilities and exposures.</p>
+              </div>
+            </div>
+            <card shadow class="shadow-lg--hover mt-5">
+              <div class="d-flex px-3">
+                <div>
+                  <icon
+                    class="mt-5"
+                    name="ni ni-satisfied"
+                    gradient="success"
+                    color="white"
+                    shadow
+                    rounded
+                  ></icon>
+                </div>
+                <div class="pl-4">
+                  <h5 class="mt-1 title text-success">Native in app support</h5>
+                  <p>The Universal API enables the rewards system to be integrated directly into existing applications. This means that users do not need to install any custom software to access their rewards.</p>
+                </div>
+              </div>
+            </card>
+            <card shadow class="shadow-lg--hover mt-5">
+              <div class="d-flex px-3">
+                <div>
+                  <icon
+                    class="mt-5"
+                    name="fa fa-lock"
+                    gradient="warning"
+                    color="white"
+                    shadow
+                    rounded
+                  ></icon>
+                </div>
+                <div class="pl-4">
+                  <h5 class="mt-1 title text-warning">Full Account Control</h5>
+                  <p>The user has compleate control over what information is added to the platform and who it is shared with. Privacy is of utmost importance in a medical context.</p>
+                </div>
+              </div>
+            </card>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- <section class="section section-lg">
+    <section class="section section-lg pt-lg-0" id="Stakeholders">
+      <div class="container">
+        <div
+          class="row justify-content-center text-center mb-lg mb-0"
+          style="margin-bottom:30px !important"
+        >
+          <div class="col-lg-8">
+            <h2 class="display-3">System Stakeholders</h2>
+            <p
+              class="lead text-muted"
+            >The Ribbon Blockchain incentive protocol brings together all key stakeholders in a mutually beneficial way.</p>
+          </div>
+        </div>
+        <div class="row justify-content-center pt-0">
+          <div class="col-lg-12">
+            <div class="row row-grid">
+              <div class="col-lg-6">
+                <card class="border-0 text-center" hover shadow body-classes="py-5">
+                  <icon name="ni ni-money-coins" type="primary" rounded class="mb-4"></icon>
+                  <h6 class="text-primary text-uppercase">Program Sponsors</h6>
+                  <p class="description mt-3">
+                    Contribute to an incentive program.
+                    Funding is used to pay for incentives.
+                    View a full audit trail of how sponsorship money was used.
+                  </p>
+                  <base-button tag="a" href="#" type="primary" class="mt-4">Learn more</base-button>
+                </card>
+              </div>
+              <div class="col-lg-6">
+                <card class="border-0 text-center" hover shadow body-classes="py-5">
+                  <icon name="ni ni-istanbul" type="success" rounded class="mb-4"></icon>
+                  <h6 class="text-success text-uppercase">Program Managers</h6>
+                  <p class="description mt-3">
+                    Allocate incentive allowances to practitioners.
+                    Register patients and users for a program.
+                    View program user engagement statistics.
+                  </p>
+                  <div></div>
+                  <base-button tag="a" href="#" type="success" class="mt-4">Learn more</base-button>
+                </card>
+              </div>
+            </div>
+            <div class="row row-grid">
+              <div class="col-lg-6">
+                <card class="border-0 text-center" hover shadow body-classes="py-5">
+                  <icon name="fa fa-user-md" type="info" rounded class="mb-4"></icon>
+                  <h6 class="text-info text-uppercase">Program Practitioners</h6>
+                  <p class="description mt-3">
+                    Allocate tokens to users and patients based on their activity.
+                    Receive rewards for positive patient feedback.
+                  </p>
+                  <base-button tag="a" href="#" type="info" class="mt-4">Learn more</base-button>
+                </card>
+              </div>
+              <div class="col-lg-6">
+                <card class="border-0 text-center" hover shadow body-classes="py-5">
+                  <icon name="fa fa-user" type="warning" rounded class="mb-4"></icon>
+                  <h6 class="text-warning text-uppercase">Program Users and Patients</h6>
+                  <p class="description mt-3">
+                    Manage your incentive balances and spend them where you want.
+                    View your past history within a particular program.
+                  </p>
+                  <base-button tag="a" href="#" type="warning" class="mt-4">Learn more</base-button>
+                </card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="section section-lg">
             <div class="container">
                 <div class="row justify-content-center text-center mb-lg">
                     <div class="col-lg-8">
@@ -478,8 +491,8 @@
                     </div>
                 </div>
             </div>
-        </section> -->
-    </div>
+    </section>-->
+  </div>
 </template>
 
 <script>

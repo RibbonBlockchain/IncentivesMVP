@@ -1,3 +1,0 @@
-const RegisterAccount = ``;
-
-export { RegisterAccount };
