@@ -88,7 +88,31 @@
         slot="header"
         class="modal-title"
         id="modal-title-default"
-      >{{ `${fullName(this.selectedPatient, false)}'s details`}}</h4>
+      >{{ `${fullName(this.selectedPerson, false)}'s details`}}</h4>
+      <div class="container pt-xs-sm">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="mb-3">
+              <a
+                target="_blank"
+                rel="noopener"
+                ref="no-referrer"
+                :href="'https://rinkeby.etherscan.io/address/' +this.selectedPerson.walletAddress"
+              >{{ this.selectedPerson.walletAddress }}</a>
+            </div>
+            <table style="width: 100%" class="pt-4">
+              <tr>
+                <td style="width: 50%">ID Number</td>
+                <td>{{ this.selectedPerson.id }}</td>
+              </tr>
+              <tr>
+                <td style="width: 50%">Phone Number</td>
+                <td>{{ this.selectedPerson.phone }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </modal>
     <!-- onboard modal -->
     <modal :show.sync="modals.onboard">
@@ -367,7 +391,7 @@ export default {
         newPractitioner: false,
         showDetailModal: false
       },
-      selectedPatient: {},
+      selectedPerson: {},
       eventData: eventData,
       web3: {
         balance: 0
@@ -454,7 +478,6 @@ export default {
       return this.$store.state.practitioners.data;
     },
     events: function() {
-      console.log(this.$store.state.activities.data);
       return this.$store.state.activities.data;
     },
     validateInteractionForm: function() {
@@ -528,12 +551,13 @@ export default {
         .on("error", console.error);
     },
 
-    openDetails({ firstName, lastName, phone, id }) {
-      this.selectedPatient = {
+    openDetails({ firstName, lastName, phone, id, walletAddress }) {
+      this.selectedPerson = {
         firstName,
         lastName,
         phone,
-        id
+        id,
+        walletAddress
       };
       this.modals.showDetailModal = true;
     },
@@ -611,7 +635,6 @@ export default {
 
       API.graphql(graphqlOperation(createEvent, { input }))
         .then(response => {
-          console.log(response);
           this.$notify({
             group: "foo",
             title: "New Interaction",
@@ -626,7 +649,6 @@ export default {
           );
         })
         .catch(error => {
-          console.log("Error ", error);
           this.$notify({
             group: "foo",
             title: "New Patient",
