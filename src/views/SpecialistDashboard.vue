@@ -227,7 +227,7 @@
               style="width: 100%"
               label="id"
               v-model="activity.practitioner"
-              :options="patients"
+              :options="practitioners"
             ></v-select>
           </div>
         </div>
@@ -315,9 +315,21 @@ import "datatables.net-select-bs4";
 import "datatables.net-bs4/css/dataTables.bootstrap4.min.css";
 import "datatables.net-select-bs4/css/select.bootstrap4.min.css";
 
-import { listPatients } from "../graphql/queries.js";
-import { createPatient, createEvent } from "../graphql/mutations";
-import { onCreatePatient, onCreateEvent } from "../graphql/subscriptions";
+import {
+  listPatients,
+  listPractitioners,
+  listEvents
+} from "../graphql/queries.js";
+import {
+  createPatient,
+  createEvent,
+  createPractitioner
+} from "../graphql/mutations";
+import {
+  onCreatePatient,
+  onCreateEvent,
+  onCreatePractitioner
+} from "../graphql/subscriptions";
 
 import token from "../util/token";
 import eventData from "../store/events.json";
@@ -385,11 +397,12 @@ export default {
     };
   },
   beforeCreate() {
-    this.$store.dispatch("registerWeb3");
+    // this.$store.dispatch("registerWeb3");
   },
   async created() {
     this.$store.dispatch("loadEvents");
     this.$store.dispatch("loadPatients");
+    this.$store.dispatch("loadPractitioners");
     await token.methods
       .owner()
       .call()
@@ -415,6 +428,14 @@ export default {
         this.$store.dispatch("addPatient", data.value.data.onCreatePatient);
       }
     });
+    API.graphql(graphqlOperation(onCreatePractitioner)).subscribe({
+      next: data => {
+        this.$store.dispatch(
+          "addPractitioner",
+          data.value.data.onCreatePractitioner
+        );
+      }
+    });
   },
   computed: {
     balance: function() {},
@@ -423,6 +444,9 @@ export default {
     },
     patients: function() {
       return this.$store.state.patients.data;
+    },
+    practitioners: function() {
+      return this.$store.state.practitioners.data;
     },
     events: function() {
       return this.$store.state.activities.data;
@@ -453,49 +477,47 @@ export default {
   },
   methods: {
     sendToken(receiver, amount) {
-      const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
-      const contractAbi = abi;
       const contractOwner = {
         addr: "0x1de929d52b94a06f21d57dafe202d36c6ca71c7a",
         key: privateKey
       };
       console.log(`Start to send ${amount} tokens to ${receiver}`);
       console.log(
-        `Private Key ${contractOwner.key} ${toBuffer(
+        `Private Key ${contractOwner.key} ${Buffer.from(
           `0x${contractOwner.key}`,
           "hex"
         )}`
       );
-      const contract = new web3.eth.Contract(contractAbi, contractAddr);
-      const data = contract.methods.transfer(receiver, amount * 1e18);
-      const gasPrice = web3.eth.gasPrice;
-      const gasLimit = 90000;
+      // Was having some issues with the amount being sent in this function
+      const data = contract.methods.transfer(receiver, parseInt(amount)).encodeABI(); // encodeABI() is required in order to get the method data into opcode/binary format
+      const gasPrice = web3.eth.getGasPrice(); // await added since the function returns a promise
+      const nonce = web3.eth.getTransactionCount(contractOwner.addr); //We need the nonce of the account added await since the function returns a promise
+      const gasLimit = 1200000; //Increased the gaslimit after checking one of the successful transactions one the contract
       const rawTransaction = {
         from: contractOwner.addr,
-        nonce: web3.utils.toHex(new Date().getTime() + 1),
-        // nonce: web3.utils.toHex(web3.eth.getTransactionCount(contractOwner.addr)),
+        nonce: web3.utils.toHex(nonce),
         gasPrice: web3.utils.toHex(gasPrice),
         gasLimit: web3.utils.toHex(gasLimit),
-        to: contractAddr,
-        value: 0,
+        to: "0x180170386b1794ccf5bb5bb420658b76bcdb5262",
+        value: "0x00", //value should be hex
         data: data,
         chainId: 4
       };
 
-      const privKey = new Buffer(`0x${contractOwner.key}`, "hex");
+      const privKey = Buffer.from(contractOwner.key, "hex");
       const tx = new Tx(rawTransaction);
       tx.sign(privKey);
       const serializedTx = tx.serialize();
-      web3.eth.sendRawTransaction("0x" + serializedTx.toString("hex"), function(
-        err,
-        hash
-      ) {
-        if (err) {
-          console.log(err);
-        }
-
-        console.log(hash);
-      });
+      web3.eth
+        .sendSignedTransaction("0x" + serializedTx.toString("hex")) //sendRawTransaction is now deprecated, replaced with sendSignedTransaction
+        .on("transactionHash", function(hash) {
+          console.log("hash:" + hash);
+          web3.eth.getTransaction(hash).then(console.log);
+        })
+        .on("receipt", function(receipt) {
+          console.log("receipt: " + JSON.stringify(receipt));
+        })
+        .on("error", console.error);
     },
 
     openDetails({ firstName, lastName, phone, id }) {
@@ -520,7 +542,7 @@ export default {
         firstName: this.patient.firstName,
         lastName: this.patient.lastName,
         phone: this.patient.phoneNumber,
-        address: web3.eth.accounts.create()
+        walletAddress: web3.eth.accounts.create().address
       };
       API.graphql(graphqlOperation(createPatient, { input }))
         .then(response => {
@@ -541,15 +563,15 @@ export default {
           });
         });
     },
-    createNewPractioner() {
+    createNewPractitioner() {
       const input = {
         id: parseInt(this.practitioner.idNumber),
         firstName: this.practitioner.firstName,
         lastName: this.practitioner.lastName,
         phone: this.practitioner.phoneNumber,
-        address: web3.eth.accounts.create()
+        walletAddress: web3.eth.accounts.create().address
       };
-      API.graphql(graphqlOperation(createPatient, { input }))
+      API.graphql(graphqlOperation(createPractitioner, { input }))
         .then(response => {
           this.$notify({
             group: "foo",
@@ -571,62 +593,40 @@ export default {
         });
     },
     async recordActivity() {
-      this.sendToken("0xB0793421c0E8dD39439CD6916140acfA9F563e90", 100);
-
-      // let account = web3.eth.accounts.privateKeyToAccount("0x" + privateKey);
-      // let to = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
-      // let gasPriceGwei = 3;
-      // let gasLimit = 3000000;
-      // let destinationAddress = "0xB0793421c0E8dD39439CD6916140acfA9F563e90";
-      // let count = new Date().getTime()
-      // const transaction = {
-      //   from: "0x1dE929D52B94A06F21d57dAFE202D36C6CA71C7a",
-      //   to: to,
-      //   gasPrice: web3.utils.toHex(gasPriceGwei * 1e9),
-      //   gasLimit: web3.utils.toHex(gasLimit),
-      //   nonce: web3.utils.toHex(count),
-      //   data: token.methods
-      //     .transfer(destinationAddress, 1000000000)
-      //     .encodeABI(),
-      //   chainId: 4
-      // };
-      // let privKey = new Buffer(privateKey, "hex");
-      // let tx = new Tx(rawTransaction);
-      // tx.sign(privKey);
-      // let serializedTx = tx.serialize().toString("hex");
-      // web3.eth
-      //   .sendTransaction("0x" + serializedTx)
-      //   .then(response => {
-      //     console.log("Response ", response);
-      //   })
-      //   .catch(err => console.log("Error ", err));
       // assign the patient to each of the events
-      // const input = {
-      //   id: new Date().getTime(),
-      //   eventPatientId: this.activity.patient.id,
-      //   eventType: this.activity.activity.eventName
-      // };
-      // API.graphql(graphqlOperation(createEvent, { input }))
-      //   .then(response => {
-      //     console.log(response);
-      //     this.$notify({
-      //       group: "foo",
-      //       title: "New Interaction",
-      //       text: `Interaction has been recorded.`
-      //     });
-      //     this.id = "";
-      //     this.eventPatientId = "";
-      //     this.eventType = "";
-      //   })
-      //   .catch(errors => {
-      //     const err = [];
-      //     errors.map(error, index => err.push(error));
-      //     this.$notify({
-      //       group: "foo",
-      //       title: "New Patient",
-      //       text: `${err}`
-      //     });
-      //   });
+      const input = {
+        id: new Date().getTime(),
+        patient: this.activity.patient.id,
+        practitioner: this.activity.practitioner.id,
+        eventType: this.activity.activity.eventName
+      };
+      const patientWallet = this.activity.patient.walletAddress;
+
+      API.graphql(graphqlOperation(createEvent, { input }))
+        .then(response => {
+          console.log(response);
+          this.$notify({
+            group: "foo",
+            title: "New Interaction",
+            text: `Interaction has been recorded.`
+          });
+          this.id = "";
+          this.eventPatientId = "";
+          this.eventType = "";
+          this.sendToken(
+            this.activity.patient.walletAddress,
+            this.activity.activity.reward
+          );
+        })
+        .catch(errors => {
+          const err = [];
+          errors.map(error, index => err.push(error));
+          this.$notify({
+            group: "foo",
+            title: "New Patient",
+            text: `${err}`
+          });
+        });
     },
     contactSelect(phoneNumber) {
       this.activity.phoneNumber = phoneNumber;

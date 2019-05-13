@@ -7,6 +7,7 @@ export const getPatient = `query GetPatient($id: ID!) {
     firstName
     lastName
     phone
+    walletAddress
     events {
       items {
         id
@@ -28,6 +29,44 @@ export const listPatients = `query ListPatients(
       firstName
       lastName
       phone
+      walletAddress
+      events {
+        nextToken
+      }
+    }
+    nextToken
+  }
+}
+`;
+export const getPractitioner = `query GetPractitioner($id: ID!) {
+  getPractitioner(id: $id) {
+    id
+    firstName
+    lastName
+    phone
+    walletAddress
+    events {
+      items {
+        id
+        eventType
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const listPractitioners = `query ListPractitioners(
+  $filter: ModelPractitionerFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listPractitioners(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      firstName
+      lastName
+      phone
+      walletAddress
       events {
         nextToken
       }
@@ -45,6 +84,17 @@ export const getEvent = `query GetEvent($id: ID!) {
       firstName
       lastName
       phone
+      walletAddress
+      events {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      phone
+      walletAddress
       events {
         nextToken
       }
@@ -66,6 +116,14 @@ export const listEvents = `query ListEvents(
         firstName
         lastName
         phone
+        walletAddress
+      }
+      practitioner {
+        id
+        firstName
+        lastName
+        phone
+        walletAddress
       }
     }
     nextToken

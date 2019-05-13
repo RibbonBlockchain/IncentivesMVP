@@ -15,8 +15,14 @@ export const PatientGetters = {
     return state.patients;
   }
 };
+
+export const PractitionerGetters = {
+  practitioners: (state, getters) => {
+    return state.practitioners;
+  }
+};
 export const Web3Getters = {
   web3: (state, getters) => {
-    return state.web3
+    return state.web3;
   }
-}
+};

@@ -7,6 +7,7 @@ export const createPatient = `mutation CreatePatient($input: CreatePatientInput!
     firstName
     lastName
     phone
+    walletAddress
     events {
       items {
         id
@@ -23,6 +24,7 @@ export const updatePatient = `mutation UpdatePatient($input: UpdatePatientInput!
     firstName
     lastName
     phone
+    walletAddress
     events {
       items {
         id
@@ -39,6 +41,58 @@ export const deletePatient = `mutation DeletePatient($input: DeletePatientInput!
     firstName
     lastName
     phone
+    walletAddress
+    events {
+      items {
+        id
+        eventType
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const createPractitioner = `mutation CreatePractitioner($input: CreatePractitionerInput!) {
+  createPractitioner(input: $input) {
+    id
+    firstName
+    lastName
+    phone
+    walletAddress
+    events {
+      items {
+        id
+        eventType
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const updatePractitioner = `mutation UpdatePractitioner($input: UpdatePractitionerInput!) {
+  updatePractitioner(input: $input) {
+    id
+    firstName
+    lastName
+    phone
+    walletAddress
+    events {
+      items {
+        id
+        eventType
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const deletePractitioner = `mutation DeletePractitioner($input: DeletePractitionerInput!) {
+  deletePractitioner(input: $input) {
+    id
+    firstName
+    lastName
+    phone
+    walletAddress
     events {
       items {
         id
@@ -58,6 +112,17 @@ export const createEvent = `mutation CreateEvent($input: CreateEventInput!) {
       firstName
       lastName
       phone
+      walletAddress
+      events {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      phone
+      walletAddress
       events {
         nextToken
       }
@@ -74,6 +139,17 @@ export const updateEvent = `mutation UpdateEvent($input: UpdateEventInput!) {
       firstName
       lastName
       phone
+      walletAddress
+      events {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      phone
+      walletAddress
       events {
         nextToken
       }
@@ -90,6 +166,17 @@ export const deleteEvent = `mutation DeleteEvent($input: DeleteEventInput!) {
       firstName
       lastName
       phone
+      walletAddress
+      events {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      phone
+      walletAddress
       events {
         nextToken
       }
