@@ -43,22 +43,23 @@ You can now see the POC at http://localhost:8080. Whoa! That was fast!
 Our Partners
 ---------------------------------
 
-* [South African Department of Science & Tech](https://api.nasa.gov)
-* [South African Reserve Bank]()
-* [Deloitte]()
-* [Reaction Consulting Pty Ltd]()
-* [Harambe Foundation NPC]()
-* [South African Blockchain Association]()
-* [Africa Blockchain Alliance]()
+* [South African Department of Science & Tech](https://www.dst.gov.za/)
+* [South African Reserve Bank](https://www.resbank.co.za/Pages/default.aspx)
+* [Deloitte](https://www2.deloitte.com/us/en.html)
+* [Reaction Consulting Pty Ltd](http://re-action.co.za/)
+* [Harambe Foundation NPC](https://harambeefoundation.org/)
+* [South African Blockchain Association](https://www.blockchain.org.za)
+* [Africa Blockchain Alliance](https://afriblockchain.org)
+* [Consensys](https://consensys.net)
 
 You can view more on [our website](http://www.ribbonblockchain.com/).
 
 Questions? Need Help? Found a bug?
 --------------------
 
-If you've got questions about setup, deploying, special feature implementation in your fork, or just want to chat with the developer, please feel free to [start a thread in our Spectrum community](https://spectrum.chat/slate)!
+If you've got questions about setup, deploying, special feature implementation in your fork, or just want to chat with the core team, please feel free to [chat to us on our Slack](https://join.slack.com/t/ribbonblockchain/shared_invite/enQtNjMzNTIzMjk2Njc3LTRiYWYxOTkwMWNjMmYwZjQ3ZDhjZTZlMDVmY2RlYTlhMTY0ZTljZjAxMjI3NTVlOWNlMGE4N2UzMjY3MGI5NWU)!
 
-Found a bug with upstream Slate? Go ahead and [submit an issue](https://github.com/lord/slate/issues). And, of course, feel free to submit pull requests with bug fixes or changes to the `dev` branch.
+Found a bug with upstream Slate? Go ahead and [submit an issue](https://github.com/RibbonBlockchain/IncentivesPOC/issues/new ). And, of course, feel free to submit pull requests with bug fixes or changes to the `dev` branch.
 
 Contributors
 --------------------
