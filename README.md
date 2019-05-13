@@ -59,7 +59,7 @@ Questions? Need Help? Found a bug?
 
 If you've got questions about setup, deploying, special feature implementation in your fork, or just want to chat with the core team, please feel free to [chat to us on our Slack](https://join.slack.com/t/ribbonblockchain/shared_invite/enQtNjMzNTIzMjk2Njc3LTRiYWYxOTkwMWNjMmYwZjQ3ZDhjZTZlMDVmY2RlYTlhMTY0ZTljZjAxMjI3NTVlOWNlMGE4N2UzMjY3MGI5NWU)!
 
-Found a bug with upstream Slate? Go ahead and [submit an issue](https://github.com/RibbonBlockchain/IncentivesPOC/issues/new ). And, of course, feel free to submit pull requests with bug fixes or changes to the `dev` branch.
+Found a bug with the app? Go ahead and [submit an issue](https://github.com/RibbonBlockchain/IncentivesPOC/issues/new ). And, of course, feel free to submit pull requests with bug fixes or changes to the `dev` branch.
 
 Contributors
 --------------------
