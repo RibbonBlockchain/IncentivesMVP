@@ -25,7 +25,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190513105413-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"logicalId": "apidapp"
 			},
-			"lastPushTimeStamp": "2019-05-13T11:38:28.095Z",
+			"lastPushTimeStamp": "2019-05-13T12:41:27.799Z",
 			"lastPushDirHash": "9y81qDIVwjZcDhpHLMfldel/MQ4="
 		}
 	},
@@ -37,7 +37,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190513105413-deployment/amplify-cfn-templates/auth/cognito159267f0-cloudformation-template.yml",
 				"logicalId": "authcognito159267f0"
 			},
-			"lastPushTimeStamp": "2019-05-13T11:38:28.097Z",
+			"lastPushTimeStamp": "2019-05-13T12:41:27.802Z",
 			"output": {
 				"AppClientSecret": "14apgsg493hp0vi3hvk1sh6m7eeb0cbefpa4i80pflm81rsckoi9",
 				"UserPoolId": "eu-west-1_QsMgMmQk6",
@@ -50,5 +50,22 @@
 			"lastPushDirHash": "epAFmntxol540BgUbJSnPOY91vs="
 		}
 	},
-	"hosting": {}
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190513105413-deployment/amplify-cfn-templates/hosting/template.json",
+				"logicalId": "hostingS3AndCloudFront"
+			},
+			"lastPushTimeStamp": "2019-05-13T12:41:27.815Z",
+			"output": {
+				"S3BucketSecureURL": "https://dapp-20190513133919-hostingbucket.s3.amazonaws.com",
+				"WebsiteURL": "http://dapp-20190513133919-hostingbucket.s3-website-eu-west-1.amazonaws.com",
+				"Region": "eu-west-1",
+				"HostingBucketName": "dapp-20190513133919-hostingbucket"
+			},
+			"lastPushDirHash": "PpXobPT2YwpuMjrbt3KmPGbFiRM="
+		}
+	}
 }

@@ -59,7 +59,12 @@
                               @click.prevent="openDetails(activity.patient)"
                             >{{ fullName(activity.patient, true) }}</a>
                           </td>
-                          <td></td>
+                          <td>
+                            <a
+                              href="#"
+                              @click.prevent="openDetails(activity.practitioner)"
+                            >{{ fullName(activity.practitioner, true) }}</a>
+                          </td>
                           <td>{{ parseInt(activity.id) | moment("ddd, MMM Do YYYY") }}</td>
                           <td>{{activity.eventType }}</td>
                         </tr>
@@ -449,6 +454,7 @@ export default {
       return this.$store.state.practitioners.data;
     },
     events: function() {
+      console.log(this.$store.state.activities.data);
       return this.$store.state.activities.data;
     },
     validateInteractionForm: function() {
@@ -489,7 +495,9 @@ export default {
         )}`
       );
       // Was having some issues with the amount being sent in this function
-      const data = contract.methods.transfer(receiver, parseInt(amount)).encodeABI(); // encodeABI() is required in order to get the method data into opcode/binary format
+      const data = contract.methods
+        .transfer(receiver, parseInt(amount))
+        .encodeABI(); // encodeABI() is required in order to get the method data into opcode/binary format
       const gasPrice = web3.eth.getGasPrice(); // await added since the function returns a promise
       const nonce = web3.eth.getTransactionCount(contractOwner.addr); //We need the nonce of the account added await since the function returns a promise
       const gasLimit = 1200000; //Increased the gaslimit after checking one of the successful transactions one the contract
@@ -553,13 +561,12 @@ export default {
           });
           this.patient = {};
         })
-        .catch(errors => {
+        .catch(error => {
           const err = [];
-          errors.map(error, index => err.push(error));
           this.$notify({
             group: "foo",
             title: "New Patient",
-            text: `${err}`
+            text: `${error}`
           });
         });
     },
@@ -596,8 +603,8 @@ export default {
       // assign the patient to each of the events
       const input = {
         id: new Date().getTime(),
-        patient: this.activity.patient.id,
-        practitioner: this.activity.practitioner.id,
+        eventPatientId: this.activity.patient.id,
+        eventPractitionerId: this.activity.practitioner.id,
         eventType: this.activity.activity.eventName
       };
       const patientWallet = this.activity.patient.walletAddress;
@@ -618,13 +625,12 @@ export default {
             this.activity.activity.reward
           );
         })
-        .catch(errors => {
-          const err = [];
-          errors.map(error, index => err.push(error));
+        .catch(error => {
+          console.log("Error ", error);
           this.$notify({
             group: "foo",
             title: "New Patient",
-            text: `${err}`
+            text: `${JSON.stringify(error)}`
           });
         });
     },
