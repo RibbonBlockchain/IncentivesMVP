@@ -50,22 +50,5 @@
 			"lastPushDirHash": "epAFmntxol540BgUbJSnPOY91vs="
 		}
 	},
-	"hosting": {
-		"S3AndCloudFront": {
-			"service": "S3AndCloudFront",
-			"providerPlugin": "awscloudformation",
-			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190513105413-deployment/amplify-cfn-templates/hosting/template.json",
-				"logicalId": "hostingS3AndCloudFront"
-			},
-			"lastPushTimeStamp": "2019-05-13T11:38:28.103Z",
-			"output": {
-				"S3BucketSecureURL": "https://dapp-20190513123621-hostingbucket.s3.amazonaws.com",
-				"WebsiteURL": "http://dapp-20190513123621-hostingbucket.s3-website-eu-west-1.amazonaws.com",
-				"Region": "eu-west-1",
-				"HostingBucketName": "dapp-20190513123621-hostingbucket"
-			},
-			"lastPushDirHash": "+LsUOe1Q9QYzXRkK7/UqcijknKM="
-		}
-	}
+	"hosting": {}
 }
