@@ -1,5 +1,9 @@
 import { Auth, API, graphqlOperation } from "aws-amplify";
-import { listPatients, listEvents } from "../../graphql/queries";
+import {
+  listPatients,
+  listEvents,
+  listPractitioners
+} from "../../graphql/queries";
 import {
   LOGIN_ERROR,
   CURRENT_USER,
@@ -8,7 +12,8 @@ import {
   OPEN_RESET_MODAL,
   LIST_PATIENTS,
   LIST_ACTIVITIES,
-  REGISTER_WEB3_INSTANCE
+  LIST_PRACTITIONERS,
+  NEW_PRACTITIONER_SUCCESS
 } from "../types";
 
 export const AuthActions = {
@@ -64,5 +69,19 @@ export const PatientActions = {
   },
   addInteraction({ commit }, payload) {
     commit(PATIENT_ACTIVITY_SUCCESS, payload);
+  }
+};
+
+export const PractitionerActions = {
+  loadPractitioners({ commit }, payload) {
+    API.graphql(graphqlOperation(listPractitioners))
+      .then(response => {
+        commit(LIST_PRACTITIONERS, response.data.listPractitioners.items);
+      })
+      .catch(err => commit(LIST_PRACTITIONERS, []));
+  },
+
+  addPractitioner({ commit }, payload) {
+    commit(NEW_PRACTITIONER_SUCCESS, payload);
   }
 };

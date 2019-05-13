@@ -1,5 +1,5 @@
 {
     "configLevel": "project",
-    "useProfile": true,
-    "profileName": "ribbonBlockchain"
+    "useProfile": false,
+    "awsConfigFilePath": "/home/iamonuwa/.amplify/awscloudformation/PmZHaXc7Z5"
 }

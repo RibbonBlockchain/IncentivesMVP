@@ -7,6 +7,7 @@ export const onCreatePatient = `subscription OnCreatePatient {
     firstName
     lastName
     phone
+    walletAddress
     events {
       items {
         id
@@ -23,6 +24,7 @@ export const onUpdatePatient = `subscription OnUpdatePatient {
     firstName
     lastName
     phone
+    walletAddress
     events {
       items {
         id
@@ -39,6 +41,58 @@ export const onDeletePatient = `subscription OnDeletePatient {
     firstName
     lastName
     phone
+    walletAddress
+    events {
+      items {
+        id
+        eventType
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const onCreatePractitioner = `subscription OnCreatePractitioner {
+  onCreatePractitioner {
+    id
+    firstName
+    lastName
+    phone
+    walletAddress
+    events {
+      items {
+        id
+        eventType
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const onUpdatePractitioner = `subscription OnUpdatePractitioner {
+  onUpdatePractitioner {
+    id
+    firstName
+    lastName
+    phone
+    walletAddress
+    events {
+      items {
+        id
+        eventType
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const onDeletePractitioner = `subscription OnDeletePractitioner {
+  onDeletePractitioner {
+    id
+    firstName
+    lastName
+    phone
+    walletAddress
     events {
       items {
         id
@@ -58,6 +112,17 @@ export const onCreateEvent = `subscription OnCreateEvent {
       firstName
       lastName
       phone
+      walletAddress
+      events {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      phone
+      walletAddress
       events {
         nextToken
       }
@@ -74,6 +139,17 @@ export const onUpdateEvent = `subscription OnUpdateEvent {
       firstName
       lastName
       phone
+      walletAddress
+      events {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      phone
+      walletAddress
       events {
         nextToken
       }
@@ -90,6 +166,17 @@ export const onDeleteEvent = `subscription OnDeleteEvent {
       firstName
       lastName
       phone
+      walletAddress
+      events {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      phone
+      walletAddress
       events {
         nextToken
       }

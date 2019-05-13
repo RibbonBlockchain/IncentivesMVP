@@ -127,10 +127,7 @@ Parameters:
             
   authSelections:
     Type: String
-                  
-  userpoolClientWriteAttributes:
-    Type: CommaDelimitedList
-    
+          
 Resources:
   
   # BEGIN SNS ROLE RESOURCE
@@ -202,10 +199,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: cognito7f82c6d3_app_clientWeb
-      
-      ReadAttributes: !Ref userpoolClientReadAttributes
-      WriteAttributes: !Ref userpoolClientWriteAttributes
+      ClientName: cognito159267f0_app_clientWeb
       
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
       UserPoolId: !Ref UserPool
@@ -216,9 +210,6 @@ Resources:
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
       ClientName: !Ref userpoolClientName
-      
-      ReadAttributes: !Ref userpoolClientReadAttributes
-      WriteAttributes: !Ref userpoolClientWriteAttributes
       
       GenerateSecret: !Ref userpoolClientGenerateSecret
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
@@ -335,7 +326,7 @@ Resources:
   # Always created
     Type: AWS::Cognito::IdentityPool
     Properties: 
-      IdentityPoolName: cognito7f82c6d3_identitypool_7f82c6d3
+      IdentityPoolName: cognito159267f0_identitypool_159267f0
       
       CognitoIdentityProviders:
         - ClientId:  !Ref UserPoolClient

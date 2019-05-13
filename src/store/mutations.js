@@ -11,7 +11,9 @@ import {
   LIST_PATIENTS,
   LIST_ACTIVITIES,
   PATIENT_ACTIVITY_SUCCESS,
-  REGISTER_WEB3_INSTANCE
+  REGISTER_WEB3_INSTANCE,
+  LIST_PRACTITIONERS,
+  NEW_PRACTITIONER_SUCCESS
 } from "./types";
 
 export const AuthMutations = {
@@ -78,6 +80,15 @@ export const PatientMutations = {
   }
 };
 
+export const PractitionerMutation = {
+  [LIST_PRACTITIONERS](state, payload) {
+    state.practitioners.data = payload;
+    state.practitioners.error = null;
+  },
+  [NEW_PRACTITIONER_SUCCESS](state, payload) {
+    state.practitioners.data = state.practitioners.data.concat(payload);
+  }
+};
 export const Web3Mutations = {
   [REGISTER_WEB3_INSTANCE](state, payload) {
     state.web3.web3Instance = Object.assign({}, payload.web3);
