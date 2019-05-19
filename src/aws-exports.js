@@ -12,7 +12,9 @@ const awsmobile = {
     "aws_user_pools_web_client_id": "3c76eb9jov2qscgo5eh7bnm1b6",
     "aws_content_delivery_bucket": "dapp-20190513133919-hostingbucket",
     "aws_content_delivery_bucket_region": "eu-west-1",
-    "aws_content_delivery_url": "http://dapp-20190513133919-hostingbucket.s3-website-eu-west-1.amazonaws.com"
+    "aws_content_delivery_url": "http://dapp-20190513133919-hostingbucket.s3-website-eu-west-1.amazonaws.com",
+    "aws_user_files_s3_bucket": "dapp08d0250a686349cb81154682ff48b9ca",
+    "aws_user_files_s3_bucket_region": "eu-west-1"
 };
 
 

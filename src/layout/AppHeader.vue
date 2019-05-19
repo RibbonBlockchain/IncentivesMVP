@@ -102,6 +102,7 @@
     <modal
       :show.sync="modals.login"
       body-classes="p-0"
+      :large="false"
       modal-classes="modal-dialog-centered modal-sm"
     >
       <LoginComponent @closeModal="closeModal" @showNewPasswordModal="showNewPasswordModal"/>

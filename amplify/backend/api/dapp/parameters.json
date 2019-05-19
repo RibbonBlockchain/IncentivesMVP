@@ -1,7 +1,7 @@
 {
     "AppSyncApiName": "dapp",
-    "schemaGraphql": "s3://dapp-20190513105413-deployment/amplify-appsync-files/schema.graphql.1557741465607",
+    "schemaGraphql": "s3://dapp-20190513105413-deployment/amplify-appsync-files/schema.graphql.1558294273415",
     "ResolverBucket": "dapp-20190513105413-deployment",
     "ResolverRootKey": "amplify-appsync-files",
-    "DeploymentTimestamp": "1557741465607"
+    "DeploymentTimestamp": "1558294273415"
 }

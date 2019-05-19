@@ -8,6 +8,7 @@ export const createPatient = `mutation CreatePatient($input: CreatePatientInput!
     lastName
     phone
     walletAddress
+    imageLink
     events {
       items {
         id
@@ -25,6 +26,7 @@ export const updatePatient = `mutation UpdatePatient($input: UpdatePatientInput!
     lastName
     phone
     walletAddress
+    imageLink
     events {
       items {
         id
@@ -42,6 +44,7 @@ export const deletePatient = `mutation DeletePatient($input: DeletePatientInput!
     lastName
     phone
     walletAddress
+    imageLink
     events {
       items {
         id
@@ -59,6 +62,7 @@ export const createPractitioner = `mutation CreatePractitioner($input: CreatePra
     lastName
     phone
     walletAddress
+    imageLink
     events {
       items {
         id
@@ -76,6 +80,7 @@ export const updatePractitioner = `mutation UpdatePractitioner($input: UpdatePra
     lastName
     phone
     walletAddress
+    imageLink
     events {
       items {
         id
@@ -93,6 +98,7 @@ export const deletePractitioner = `mutation DeletePractitioner($input: DeletePra
     lastName
     phone
     walletAddress
+    imageLink
     events {
       items {
         id
@@ -113,6 +119,7 @@ export const createEvent = `mutation CreateEvent($input: CreateEventInput!) {
       lastName
       phone
       walletAddress
+      imageLink
       events {
         nextToken
       }
@@ -123,6 +130,7 @@ export const createEvent = `mutation CreateEvent($input: CreateEventInput!) {
       lastName
       phone
       walletAddress
+      imageLink
       events {
         nextToken
       }
@@ -140,6 +148,7 @@ export const updateEvent = `mutation UpdateEvent($input: UpdateEventInput!) {
       lastName
       phone
       walletAddress
+      imageLink
       events {
         nextToken
       }
@@ -150,6 +159,7 @@ export const updateEvent = `mutation UpdateEvent($input: UpdateEventInput!) {
       lastName
       phone
       walletAddress
+      imageLink
       events {
         nextToken
       }
@@ -167,6 +177,7 @@ export const deleteEvent = `mutation DeleteEvent($input: DeleteEventInput!) {
       lastName
       phone
       walletAddress
+      imageLink
       events {
         nextToken
       }
@@ -177,6 +188,7 @@ export const deleteEvent = `mutation DeleteEvent($input: DeleteEventInput!) {
       lastName
       phone
       walletAddress
+      imageLink
       events {
         nextToken
       }

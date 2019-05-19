@@ -4,7 +4,7 @@ projects:
     includes:
       - src/graphql/**/*.js
     excludes:
-      - ./amplify/**
+      - amplify/**
     extensions:
       amplify:
         codeGenTarget: javascript
