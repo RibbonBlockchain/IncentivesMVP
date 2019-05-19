@@ -1,0 +1,228 @@
+type Patient {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  phone: String!
+  walletAddress: String!
+  imageLink: String
+  events(filter: ModelEventFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelEventConnection
+}
+
+type Practitioner {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  phone: String!
+  walletAddress: String!
+  imageLink: String
+  events(filter: ModelEventFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelEventConnection
+}
+
+type Event {
+  id: ID!
+  eventType: String!
+  patient: Patient
+  practitioner: Practitioner
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelPatientConnection {
+  items: [Patient]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelPatientFilterInput {
+  id: ModelIDFilterInput
+  firstName: ModelStringFilterInput
+  lastName: ModelStringFilterInput
+  phone: ModelStringFilterInput
+  walletAddress: ModelStringFilterInput
+  imageLink: ModelStringFilterInput
+  and: [ModelPatientFilterInput]
+  or: [ModelPatientFilterInput]
+  not: ModelPatientFilterInput
+}
+
+type Query {
+  getPatient(id: ID!): Patient
+  listPatients(filter: ModelPatientFilterInput, limit: Int, nextToken: String): ModelPatientConnection
+  getPractitioner(id: ID!): Practitioner
+  listPractitioners(filter: ModelPractitionerFilterInput, limit: Int, nextToken: String): ModelPractitionerConnection
+  getEvent(id: ID!): Event
+  listEvents(filter: ModelEventFilterInput, limit: Int, nextToken: String): ModelEventConnection
+}
+
+input CreatePatientInput {
+  id: ID
+  firstName: String!
+  lastName: String!
+  phone: String!
+  walletAddress: String!
+  imageLink: String
+}
+
+input UpdatePatientInput {
+  id: ID!
+  firstName: String
+  lastName: String
+  phone: String
+  walletAddress: String
+  imageLink: String
+}
+
+input DeletePatientInput {
+  id: ID
+}
+
+type Mutation {
+  createPatient(input: CreatePatientInput!): Patient
+  updatePatient(input: UpdatePatientInput!): Patient
+  deletePatient(input: DeletePatientInput!): Patient
+  createPractitioner(input: CreatePractitionerInput!): Practitioner
+  updatePractitioner(input: UpdatePractitionerInput!): Practitioner
+  deletePractitioner(input: DeletePractitionerInput!): Practitioner
+  createEvent(input: CreateEventInput!): Event
+  updateEvent(input: UpdateEventInput!): Event
+  deleteEvent(input: DeleteEventInput!): Event
+}
+
+type Subscription {
+  onCreatePatient: Patient @aws_subscribe(mutations: ["createPatient"])
+  onUpdatePatient: Patient @aws_subscribe(mutations: ["updatePatient"])
+  onDeletePatient: Patient @aws_subscribe(mutations: ["deletePatient"])
+  onCreatePractitioner: Practitioner @aws_subscribe(mutations: ["createPractitioner"])
+  onUpdatePractitioner: Practitioner @aws_subscribe(mutations: ["updatePractitioner"])
+  onDeletePractitioner: Practitioner @aws_subscribe(mutations: ["deletePractitioner"])
+  onCreateEvent: Event @aws_subscribe(mutations: ["createEvent"])
+  onUpdateEvent: Event @aws_subscribe(mutations: ["updateEvent"])
+  onDeleteEvent: Event @aws_subscribe(mutations: ["deleteEvent"])
+}
+
+type ModelPractitionerConnection {
+  items: [Practitioner]
+  nextToken: String
+}
+
+input ModelPractitionerFilterInput {
+  id: ModelIDFilterInput
+  firstName: ModelStringFilterInput
+  lastName: ModelStringFilterInput
+  phone: ModelStringFilterInput
+  walletAddress: ModelStringFilterInput
+  imageLink: ModelStringFilterInput
+  and: [ModelPractitionerFilterInput]
+  or: [ModelPractitionerFilterInput]
+  not: ModelPractitionerFilterInput
+}
+
+input CreatePractitionerInput {
+  id: ID
+  firstName: String!
+  lastName: String!
+  phone: String!
+  walletAddress: String!
+  imageLink: String
+}
+
+input UpdatePractitionerInput {
+  id: ID!
+  firstName: String
+  lastName: String
+  phone: String
+  walletAddress: String
+  imageLink: String
+}
+
+input DeletePractitionerInput {
+  id: ID
+}
+
+type ModelEventConnection {
+  items: [Event]
+  nextToken: String
+}
+
+input ModelEventFilterInput {
+  id: ModelIDFilterInput
+  eventType: ModelStringFilterInput
+  and: [ModelEventFilterInput]
+  or: [ModelEventFilterInput]
+  not: ModelEventFilterInput
+}
+
+input CreateEventInput {
+  id: ID
+  eventType: String!
+  eventPatientId: ID
+  eventPractitionerId: ID
+}
+
+input UpdateEventInput {
+  id: ID!
+  eventType: String
+  eventPatientId: ID
+  eventPractitionerId: ID
+}
+
+input DeleteEventInput {
+  id: ID
+}
