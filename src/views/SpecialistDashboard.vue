@@ -422,7 +422,7 @@ const web3 = new Web3(
 );
 
 const privateKey =
-  "97CBBF9B269F0F58D1C4B0F3AF662DC627937A2A1A6AA959219C7051B4306371";
+  "97cbbf9b269f0f58d1c4b0f3af662dc627937a2a1a6aa959219c7051b4306371";
 export default {
   components: {
     Tabs,
@@ -557,34 +557,35 @@ export default {
     }
   },
   methods: {
-    sendToken(receiver, amount) {
-      const contractAddr = "0x17ca197ab5a0e75caa104e6b2377ed9a4ee90317";
+    toHex(string) {
+      let result = "";
+      for (let i = 0; i < string.length; i++) {
+        result += string.charCodeAt(i).toString(16);
+      }
+      return result;
+    },
+    async sendToken(receiver, amount) {
+      //added async so we can use await
+      const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
+      const contractAbi = abi;
       const contractOwner = {
         addr: "0x1de929d52b94a06f21d57dafe202d36c6ca71c7a",
         key: privateKey
       };
       console.log(`Start to send ${amount} tokens to ${receiver}`);
-      console.log(
-        `Private Key ${contractOwner.key} ${Buffer.from(
-          `0x${contractOwner.key}`,
-          "hex"
-        )}`
-      );
+      const contract = new web3.eth.Contract(contractAbi, contractAddr);
       // Was having some issues with the amount being sent in this function
-      const contract = new web3.eth.Contract(abi, contractAddr)
-      const data = contract.methods
-        .transfer(receiver, parseInt(amount))
-        .encodeABI(); // encodeABI() is required in order to get the method data into opcode/binary format
-      const gasPrice = web3.eth.getGasPrice(); // await added since the function returns a promise
-      const nonce = web3.eth.getTransactionCount(contractOwner.addr); //We need the nonce of the account added await since the function returns a promise
+      const data = contract.methods.transfer(receiver, `0x${this.toHex(amount.toString())}`).encodeABI(); // encodeABI() is required in order to get the method data into opcode/binary format
+      const gasPrice = await web3.eth.getGasPrice(); // await added since the function returns a promise
+      const nonce = await web3.eth.getTransactionCount(contractOwner.addr); //We need the nonce of the account added await since the function returns a promise
       const gasLimit = 1200000; //Increased the gaslimit after checking one of the successful transactions one the contract
       const rawTransaction = {
         from: contractOwner.addr,
         nonce: web3.utils.toHex(nonce),
         gasPrice: web3.utils.toHex(gasPrice),
         gasLimit: web3.utils.toHex(gasLimit),
-        to: "0x180170386b1794ccf5bb5bb420658b76bcdb5262",
-        value: "0x00", //value should be hex
+        to: receiver,
+        value: `0x${this.toHex(amount.toString())}`, //value should be hex
         data: data,
         chainId: 4
       };
@@ -597,10 +598,10 @@ export default {
         .sendSignedTransaction("0x" + serializedTx.toString("hex")) //sendRawTransaction is now deprecated, replaced with sendSignedTransaction
         .on("transactionHash", function(hash) {
           console.log("hash:" + hash);
-          web3.eth.getTransaction(hash).then('hash', console.log(hash));
+          web3.eth.getTransaction(hash).then(console.log);
         })
         .on("receipt", function(receipt) {
-          console.log("receipt: " + JSON.stringify(receipt));
+          console.log("receipt: " + receipt);
         })
         .on("error", console.error);
     },
@@ -625,7 +626,7 @@ export default {
       this.modals.showDetailModal = true;
     },
 
-createNewPatient() {
+    createNewPatient() {
       const input = {
         id: parseInt(this.patient.idNumber),
         firstName: this.patient.firstName,
@@ -698,26 +699,25 @@ createNewPatient() {
       };
       const patientWallet = this.activity.patient.walletAddress;
 
-      // API.graphql(graphqlOperation(createEvent, { input }))
-      //   .then(response => {
-          this.sendToken(
+      API.graphql(graphqlOperation(createEvent, { input }))
+        .then(async (response) => {
+          await this.sendToken(
             this.activity.patient.walletAddress,
             this.activity.activity.reward
           );
-        //   this.$notify({
-        //     group: "foo",
-        //     title: "New Interaction",
-        //     text: `Interaction has been recorded.`
-        //   });
-        //   this.activity = {}
-        // })
-        // .catch(error => {
-        //   this.$notify({
-        //     group: "foo",
-        //     title: "New Patient",
-        //     text: `${JSON.stringify(error)}`
-        //   });
-        // });
+          this.$notify({
+            group: "foo",
+            title: "New Interaction",
+            text: `Interaction has been recorded.`
+          });
+      })
+      .catch(error => {
+        this.$notify({
+          group: "foo",
+          title: "New Patient",
+          text: `${JSON.stringify(error)}`
+        });
+      });
     },
 
     contactSelect(phoneNumber) {
