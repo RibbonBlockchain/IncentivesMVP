@@ -17,16 +17,16 @@
 			"providerPlugin": "awscloudformation",
 			"output": {
 				"securityType": "API_KEY",
-				"GraphQLAPIIdOutput": "67vxkwqhorgnvl2smjvyil3kd4",
-				"GraphQLAPIEndpointOutput": "https://wmv62yi2ubhq5d5iavhrj5gjfq.appsync-api.eu-west-1.amazonaws.com/graphql",
-				"GraphQLAPIKeyOutput": "da2-ncyya5tejvbwhmcuvl7q6bapoa"
+				"GraphQLAPIIdOutput": "7q56vulshrchtculpv2yd7r26i",
+				"GraphQLAPIEndpointOutput": "https://xu6tys4lbzhdvmme6ws5tj3s5i.appsync-api.eu-west-1.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-fvk4xzjrtvh4pddksqtyubowsa"
 			},
 			"providerMetadata": {
 				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190513105413-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"logicalId": "apidapp"
 			},
-			"lastPushTimeStamp": "2019-05-19T19:33:02.831Z",
-			"lastPushDirHash": "rXfsyAqlK//+KJGweZAdATI+dWg="
+			"lastPushTimeStamp": "2019-05-31T08:29:53.148Z",
+			"lastPushDirHash": "/tECvHFKR5jG3piVGvmTmsUJNn8="
 		}
 	},
 	"auth": {
@@ -37,7 +37,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190513105413-deployment/amplify-cfn-templates/auth/cognito159267f0-cloudformation-template.yml",
 				"logicalId": "authcognito159267f0"
 			},
-			"lastPushTimeStamp": "2019-05-19T19:33:00.571Z",
+			"lastPushTimeStamp": "2019-05-31T08:29:50.204Z",
 			"output": {
 				"AppClientSecret": "14apgsg493hp0vi3hvk1sh6m7eeb0cbefpa4i80pflm81rsckoi9",
 				"UserPoolId": "eu-west-1_QsMgMmQk6",
@@ -58,7 +58,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190513105413-deployment/amplify-cfn-templates/hosting/template.json",
 				"logicalId": "hostingS3AndCloudFront"
 			},
-			"lastPushTimeStamp": "2019-05-19T19:33:00.572Z",
+			"lastPushTimeStamp": "2019-05-31T08:29:50.216Z",
 			"output": {
 				"S3BucketSecureURL": "https://dapp-20190513133919-hostingbucket.s3.amazonaws.com",
 				"WebsiteURL": "http://dapp-20190513133919-hostingbucket.s3-website-eu-west-1.amazonaws.com",
@@ -76,7 +76,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/dapp-20190513105413-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
 				"logicalId": "storages36eacf634"
 			},
-			"lastPushTimeStamp": "2019-05-19T19:33:00.572Z",
+			"lastPushTimeStamp": "2019-05-31T08:29:50.307Z",
 			"output": {
 				"BucketName": "dapp08d0250a686349cb81154682ff48b9ca",
 				"Region": "eu-west-1"
