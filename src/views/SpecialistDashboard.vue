@@ -693,8 +693,8 @@ export default {
       // assign the patient to each of the events
       const input = {
         id: new Date().getTime(),
-        eventPatientId: this.activity.patient.id,
-        eventPractitionerId: this.activity.practitioner.id,
+        eventPatientId: parseInt(this.activity.patient.id),
+        eventPractitionerId: parseInt(this.activity.practitioner.id),
         eventType: this.activity.activity.eventName
       };
       const patientWallet = this.activity.patient.walletAddress;
@@ -712,6 +712,7 @@ export default {
           });
       })
       .catch(error => {
+        console.log('Error ', error)
         this.$notify({
           group: "foo",
           title: "New Patient",

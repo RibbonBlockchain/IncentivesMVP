@@ -4,13 +4,13 @@ projects:
     includes:
       - src/graphql/**/*.js
     excludes:
-      - amplify/**
+      - ./amplify/**
     extensions:
       amplify:
         codeGenTarget: javascript
         generatedFileName: ''
         docsFilePath: src/graphql
-        graphQLApiId: 67vxkwqhorgnvl2smjvyil3kd4
+        graphQLApiId: 7q56vulshrchtculpv2yd7r26i
       endpoints:
         prod: >-
-          https://wmv62yi2ubhq5d5iavhrj5gjfq.appsync-api.eu-west-1.amazonaws.com/graphql
+          https://xu6tys4lbzhdvmme6ws5tj3s5i.appsync-api.eu-west-1.amazonaws.com/graphql
