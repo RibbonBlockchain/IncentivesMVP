@@ -1,9 +1,0 @@
-{
-    "bucketName": "dapp08d0250a686349cb81154682ff48b9ca",
-    "authPolicyName": "s3_amplify_6eacf634",
-    "unauthPolicyName": "s3_amplify_6eacf634",
-    "authRoleName": "dapp-20190513105413-authRole",
-    "unauthRoleName": "dapp-20190513105413-unauthRole",
-    "authPermissions": "rw",
-    "unauthPermissions": ""
-}

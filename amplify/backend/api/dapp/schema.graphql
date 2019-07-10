@@ -1,9 +1,10 @@
-﻿type Patient @model {
+type Patient @model {
   id: ID!
   firstName: String!
   lastName: String!
   phone: String!
   walletAddress: String!
+  userId: String!
   imageLink: String
   events: [Event] @connection(name: "PatientEvents")
 }
@@ -12,6 +13,7 @@ type Practitioner @model {
   firstName: String!
   lastName: String!
   phone: String!
+  userId: String!
   walletAddress: String!
   imageLink: String
   events: [Event] @connection(name: "PractitionerEvents")
@@ -20,5 +22,6 @@ type Event @model {
   id: ID!
   eventType: String!
   patient: Patient @connection(name: "PatientEvents")
+  rating: String!
   practitioner: Practitioner @connection(name: "PractitionerEvents")
 }

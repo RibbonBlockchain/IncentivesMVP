@@ -1,10 +1,7 @@
 {
     "projectName": "dapp",
-    "projectPath": "/home/iamonuwa/Projects/RibbonBlockchain/dapp",
-    "defaultEditor": "code",
-    "frontendHandler": {
-        "javascript": "/home/iamonuwa/.nvm/versions/node/v11.3.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-frontend-javascript"
-    },
+    "version": "2.0",
+    "frontend": "javascript",
     "javascript": {
         "framework": "vue",
         "config": {
@@ -14,7 +11,7 @@
             "StartCommand": "npm run-script serve"
         }
     },
-    "providers": {
-        "awscloudformation": "/home/iamonuwa/.nvm/versions/node/v11.3.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-provider-awscloudformation"
-    }
+    "providers": [
+        "awscloudformation"
+    ]
 }

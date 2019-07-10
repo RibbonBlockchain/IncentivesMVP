@@ -8,11 +8,13 @@ export const createPatient = `mutation CreatePatient($input: CreatePatientInput!
     lastName
     phone
     walletAddress
+    userId
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -26,11 +28,13 @@ export const updatePatient = `mutation UpdatePatient($input: UpdatePatientInput!
     lastName
     phone
     walletAddress
+    userId
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -44,11 +48,13 @@ export const deletePatient = `mutation DeletePatient($input: DeletePatientInput!
     lastName
     phone
     walletAddress
+    userId
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -61,12 +67,14 @@ export const createPractitioner = `mutation CreatePractitioner($input: CreatePra
     firstName
     lastName
     phone
+    userId
     walletAddress
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -79,12 +87,14 @@ export const updatePractitioner = `mutation UpdatePractitioner($input: UpdatePra
     firstName
     lastName
     phone
+    userId
     walletAddress
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -97,12 +107,14 @@ export const deletePractitioner = `mutation DeletePractitioner($input: DeletePra
     firstName
     lastName
     phone
+    userId
     walletAddress
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -119,16 +131,19 @@ export const createEvent = `mutation CreateEvent($input: CreateEventInput!) {
       lastName
       phone
       walletAddress
+      userId
       imageLink
       events {
         nextToken
       }
     }
+    rating
     practitioner {
       id
       firstName
       lastName
       phone
+      userId
       walletAddress
       imageLink
       events {
@@ -148,16 +163,19 @@ export const updateEvent = `mutation UpdateEvent($input: UpdateEventInput!) {
       lastName
       phone
       walletAddress
+      userId
       imageLink
       events {
         nextToken
       }
     }
+    rating
     practitioner {
       id
       firstName
       lastName
       phone
+      userId
       walletAddress
       imageLink
       events {
@@ -177,16 +195,19 @@ export const deleteEvent = `mutation DeleteEvent($input: DeleteEventInput!) {
       lastName
       phone
       walletAddress
+      userId
       imageLink
       events {
         nextToken
       }
     }
+    rating
     practitioner {
       id
       firstName
       lastName
       phone
+      userId
       walletAddress
       imageLink
       events {

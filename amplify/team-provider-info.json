@@ -1,0 +1,19 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "dapp-dev-20190709230948-authRole",
+            "UnauthRoleArn": "arn:aws:iam::853431608467:role/dapp-dev-20190709230948-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::853431608467:role/dapp-dev-20190709230948-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "dapp-dev-20190709230948-deployment",
+            "UnauthRoleName": "dapp-dev-20190709230948-unauthRole",
+            "StackName": "dapp-dev-20190709230948",
+            "StackId": "arn:aws:cloudformation:eu-west-1:853431608467:stack/dapp-dev-20190709230948/454896d0-a296-11e9-a67b-0a4189c8dbd8"
+        },
+        "categories": {
+            "auth": {
+                "cognito": {}
+            }
+        }
+    }
+}
