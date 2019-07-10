@@ -78,88 +78,94 @@
 				}
 			}
 		},
-		"apidapp": {
+		"authcognito": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/dapp-20190513105413-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"TemplateURL": "https://s3.amazonaws.com/dapp-dev-20190709230948-deployment/amplify-cfn-templates/auth/cognito-cloudformation-template.yml",
 				"Parameters": {
-					"AppSyncApiName": "dapp",
-					"schemaGraphql": "s3://dapp-20190513105413-deployment/amplify-appsync-files/schema.graphql.1559291207538",
-					"ResolverBucket": "dapp-20190513105413-deployment",
-					"ResolverRootKey": "amplify-appsync-files",
-					"DeploymentTimestamp": "1559291207538"
-				}
-			}
-		},
-		"authcognito159267f0": {
-			"Type": "AWS::CloudFormation::Stack",
-			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/dapp-20190513105413-deployment/amplify-cfn-templates/auth/cognito159267f0-cloudformation-template.yml",
-				"Parameters": {
-					"identityPoolName": "cognito159267f0_identitypool_159267f0",
+					"identityPoolName": "dapp18386aa4_identitypool_18386aa4",
 					"allowUnauthenticatedIdentities": false,
-					"thirdPartyAuth": false,
-					"lambdaLogPolicy": "cognito159267f0_lambda_log_policy",
-					"openIdLambdaRoleName": "cognito159267f0_openid_lambda_role",
-					"openIdRolePolicy": "cognito159267f0_openid_pass_role_policy",
-					"openIdLambdaIAMPolicy": "cognito159267f0_openid_lambda_iam_policy",
-					"openIdLogPolicy": "cognito159267f0_openid_lambda_log_policy",
-					"userPoolName": "cognito159267f0_userpool_159267f0",
+					"lambdaLogPolicy": "cognit_18386aa4_lambda_log_policy",
+					"openIdLambdaRoleName": "cognit_18386aa4_openid_lambda_role",
+					"openIdRolePolicy": "cognit_18386aa4_openid_pass_role_policy",
+					"openIdLambdaIAMPolicy": "cognit_18386aa4_openid_lambda_iam_policy",
+					"openIdLogPolicy": "cognit_18386aa4_openid_lambda_log_policy",
+					"userPoolName": "dapp18386aa4_userpool_18386aa4",
 					"autoVerifiedAttributes": "email",
 					"mfaConfiguration": "OFF",
 					"mfaTypes": "SMS Text Message",
-					"roleName": "cognito159267f0_sns-role",
-					"roleExternalId": "cognito159267f0_role_external_id",
-					"policyName": "cognito159267f0-sns-policy",
+					"roleName": "cognit18386aa4_sns-role",
+					"roleExternalId": "cognit18386aa4_role_external_id",
+					"policyName": "cognit18386aa4-sns-policy",
 					"smsAuthenticationMessage": "Your authentication code is {####}",
 					"smsVerificationMessage": "Your verification code is {####}",
 					"emailVerificationSubject": "Your verification code",
 					"emailVerificationMessage": "Your verification code is {####}",
 					"defaultPasswordPolicy": false,
 					"passwordPolicyMinLength": 8,
-					"passwordPolicyCharacters": "Requires Lowercase,Requires Uppercase,Requires Numbers,Requires Symbols",
+					"passwordPolicyCharacters": "",
 					"requiredAttributes": "email",
-					"userpoolClientName": "cognito159267f0_app_client",
+					"userpoolClientName": "cognit18386aa4_app_client",
 					"userpoolClientGenerateSecret": true,
 					"userpoolClientRefreshTokenValidity": 30,
+					"userpoolClientWriteAttributes": "email",
 					"userpoolClientReadAttributes": "email",
-					"mfaLambdaRole": "cognito159267f0_totp_lambda_role",
-					"mfaLambdaLogPolicy": "cognito159267f0_totp_lambda_log_policy",
-					"mfaPassRolePolicy": "cognito159267f0_totp_pass_role_policy",
-					"mfaLambdaIAMPolicy": "cognito159267f0_totp_lambda_iam_policy",
-					"userpoolClientLambdaRole": "cognito159267f0_userpoolclient_lambda_role",
-					"userpoolClientLogPolicy": "cognito159267f0_userpoolclient_lambda_log_policy",
-					"userpoolClientLambdaPolicy": "cognito159267f0_userpoolclient_lambda_iam_policy",
+					"mfaLambdaRole": "cognit18386aa4_totp_lambda_role",
+					"mfaLambdaLogPolicy": "cognit18386aa4_totp_lambda_log_policy",
+					"mfaPassRolePolicy": "cognit18386aa4_totp_pass_role_policy",
+					"mfaLambdaIAMPolicy": "cognit18386aa4_totp_lambda_iam_policy",
+					"userpoolClientLambdaRole": "cognit18386aa4_userpoolclient_lambda_role",
+					"userpoolClientLogPolicy": "cognit18386aa4_userpoolclient_lambda_log_policy",
+					"userpoolClientLambdaPolicy": "cognit18386aa4_userpoolclient_lambda_iam_policy",
 					"userpoolClientSetAttributes": false,
-					"useDefault": "default",
-					"unAuthRoleName": "dapp-20190513105413-unauthRole",
-					"authRoleName": "dapp-20190513105413-authRole",
-					"unAuthRoleArn": "arn:aws:iam::853431608467:role/dapp-20190513105413-unauthRole",
-					"authRoleArn": "arn:aws:iam::853431608467:role/dapp-20190513105413-authRole",
-					"resourceName": "cognito159267f0",
-					"authSelections": "identityPoolAndUserPool"
+					"useDefault": "manual",
+					"authSelections": "identityPoolAndUserPool",
+					"resourceName": "cognito",
+					"thirdPartyAuth": false,
+					"usernameAttributes": "email",
+					"hostedUI": false,
+					"authRoleName": {
+						"Ref": "AuthRoleName"
+					},
+					"unauthRoleName": {
+						"Ref": "UnauthRoleName"
+					},
+					"authRoleArn": {
+						"Fn::GetAtt": [
+							"AuthRole",
+							"Arn"
+						]
+					},
+					"unauthRoleArn": {
+						"Fn::GetAtt": [
+							"UnauthRole",
+							"Arn"
+						]
+					},
+					"env": "dev"
+				}
+			}
+		},
+		"apidapp": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/dapp-dev-20190709230948-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"Parameters": {
+					"AppSyncApiName": "dapp",
+					"DynamoDBBillingMode": "PAY_PER_REQUEST",
+					"S3DeploymentBucket": "dapp-dev-20190709230948-deployment",
+					"S3DeploymentRootKey": "amplify-appsync-files/17a4d62d4b9a98edb5e52735c162196fd3bd4302",
+					"env": "dev"
 				}
 			}
 		},
 		"hostingS3AndCloudFront": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/dapp-20190513105413-deployment/amplify-cfn-templates/hosting/template.json",
-				"Parameters": {}
-			}
-		},
-		"storages36eacf634": {
-			"Type": "AWS::CloudFormation::Stack",
-			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/dapp-20190513105413-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"TemplateURL": "https://s3.amazonaws.com/dapp-dev-20190709230948-deployment/amplify-cfn-templates/hosting/template.json",
 				"Parameters": {
-					"bucketName": "dapp08d0250a686349cb81154682ff48b9ca",
-					"authPolicyName": "s3_amplify_6eacf634",
-					"unauthPolicyName": "s3_amplify_6eacf634",
-					"authRoleName": "dapp-20190513105413-authRole",
-					"unauthRoleName": "dapp-20190513105413-unauthRole",
-					"authPermissions": "rw",
-					"unauthPermissions": ""
+					"bucketName": "rbn-dapp",
+					"env": "dev"
 				}
 			}
 		}

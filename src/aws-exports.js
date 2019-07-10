@@ -2,19 +2,18 @@
 
 const awsmobile = {
     "aws_project_region": "eu-west-1",
-    "aws_appsync_graphqlEndpoint": "https://xu6tys4lbzhdvmme6ws5tj3s5i.appsync-api.eu-west-1.amazonaws.com/graphql",
+    "aws_cognito_identity_pool_id": "eu-west-1:a11f248f-4585-4ca3-8bd5-d7e51004fd8e",
+    "aws_cognito_region": "eu-west-1",
+    "aws_user_pools_id": "eu-west-1_MAjnucSFU",
+    "aws_user_pools_web_client_id": "773lpuq2p5bg1j8ep61g6447ma",
+    "oauth": {},
+    "aws_appsync_graphqlEndpoint": "https://qyrzie2ahfgedkrpzjcgqff4yi.appsync-api.eu-west-1.amazonaws.com/graphql",
     "aws_appsync_region": "eu-west-1",
     "aws_appsync_authenticationType": "API_KEY",
-    "aws_appsync_apiKey": "da2-fvk4xzjrtvh4pddksqtyubowsa",
-    "aws_cognito_identity_pool_id": "eu-west-1:dda9bbac-2f42-4359-a6c1-34558dae5ddc",
-    "aws_cognito_region": "eu-west-1",
-    "aws_user_pools_id": "eu-west-1_QsMgMmQk6",
-    "aws_user_pools_web_client_id": "3c76eb9jov2qscgo5eh7bnm1b6",
-    "aws_content_delivery_bucket": "dapp-20190513133919-hostingbucket",
+    "aws_appsync_apiKey": "da2-5tqlwutli5f25li3tdmhcejymi",
+    "aws_content_delivery_bucket": "rbn-dapp-dev",
     "aws_content_delivery_bucket_region": "eu-west-1",
-    "aws_content_delivery_url": "http://dapp-20190513133919-hostingbucket.s3-website-eu-west-1.amazonaws.com",
-    "aws_user_files_s3_bucket": "dapp08d0250a686349cb81154682ff48b9ca",
-    "aws_user_files_s3_bucket_region": "eu-west-1"
+    "aws_content_delivery_url": "http://rbn-dapp-dev.s3-website-eu-west-1.amazonaws.com"
 };
 
 

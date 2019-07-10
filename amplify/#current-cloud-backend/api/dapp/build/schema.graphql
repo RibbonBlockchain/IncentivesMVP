@@ -4,6 +4,7 @@ type Patient {
   lastName: String!
   phone: String!
   walletAddress: String!
+  userId: String!
   imageLink: String
   events(filter: ModelEventFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelEventConnection
 }
@@ -13,6 +14,7 @@ type Practitioner {
   firstName: String!
   lastName: String!
   phone: String!
+  userId: String!
   walletAddress: String!
   imageLink: String
   events(filter: ModelEventFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelEventConnection
@@ -22,6 +24,7 @@ type Event {
   id: ID!
   eventType: String!
   patient: Patient
+  rating: String!
   practitioner: Practitioner
 }
 
@@ -96,6 +99,7 @@ input ModelPatientFilterInput {
   lastName: ModelStringFilterInput
   phone: ModelStringFilterInput
   walletAddress: ModelStringFilterInput
+  userId: ModelStringFilterInput
   imageLink: ModelStringFilterInput
   and: [ModelPatientFilterInput]
   or: [ModelPatientFilterInput]
@@ -117,6 +121,7 @@ input CreatePatientInput {
   lastName: String!
   phone: String!
   walletAddress: String!
+  userId: String!
   imageLink: String
 }
 
@@ -126,6 +131,7 @@ input UpdatePatientInput {
   lastName: String
   phone: String
   walletAddress: String
+  userId: String
   imageLink: String
 }
 
@@ -167,6 +173,7 @@ input ModelPractitionerFilterInput {
   firstName: ModelStringFilterInput
   lastName: ModelStringFilterInput
   phone: ModelStringFilterInput
+  userId: ModelStringFilterInput
   walletAddress: ModelStringFilterInput
   imageLink: ModelStringFilterInput
   and: [ModelPractitionerFilterInput]
@@ -179,6 +186,7 @@ input CreatePractitionerInput {
   firstName: String!
   lastName: String!
   phone: String!
+  userId: String!
   walletAddress: String!
   imageLink: String
 }
@@ -188,6 +196,7 @@ input UpdatePractitionerInput {
   firstName: String
   lastName: String
   phone: String
+  userId: String
   walletAddress: String
   imageLink: String
 }
@@ -204,6 +213,7 @@ type ModelEventConnection {
 input ModelEventFilterInput {
   id: ModelIDFilterInput
   eventType: ModelStringFilterInput
+  rating: ModelStringFilterInput
   and: [ModelEventFilterInput]
   or: [ModelEventFilterInput]
   not: ModelEventFilterInput
@@ -212,6 +222,7 @@ input ModelEventFilterInput {
 input CreateEventInput {
   id: ID
   eventType: String!
+  rating: String!
   eventPatientId: ID
   eventPractitionerId: ID
 }
@@ -219,6 +230,7 @@ input CreateEventInput {
 input UpdateEventInput {
   id: ID!
   eventType: String
+  rating: String
   eventPatientId: ID
   eventPractitionerId: ID
 }

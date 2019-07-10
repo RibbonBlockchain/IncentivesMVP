@@ -8,11 +8,13 @@ export const getPatient = `query GetPatient($id: ID!) {
     lastName
     phone
     walletAddress
+    userId
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -31,6 +33,7 @@ export const listPatients = `query ListPatients(
       lastName
       phone
       walletAddress
+      userId
       imageLink
       events {
         nextToken
@@ -46,12 +49,14 @@ export const getPractitioner = `query GetPractitioner($id: ID!) {
     firstName
     lastName
     phone
+    userId
     walletAddress
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -69,6 +74,7 @@ export const listPractitioners = `query ListPractitioners(
       firstName
       lastName
       phone
+      userId
       walletAddress
       imageLink
       events {
@@ -89,16 +95,19 @@ export const getEvent = `query GetEvent($id: ID!) {
       lastName
       phone
       walletAddress
+      userId
       imageLink
       events {
         nextToken
       }
     }
+    rating
     practitioner {
       id
       firstName
       lastName
       phone
+      userId
       walletAddress
       imageLink
       events {
@@ -123,13 +132,16 @@ export const listEvents = `query ListEvents(
         lastName
         phone
         walletAddress
+        userId
         imageLink
       }
+      rating
       practitioner {
         id
         firstName
         lastName
         phone
+        userId
         walletAddress
         imageLink
       }

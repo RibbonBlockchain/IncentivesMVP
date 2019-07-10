@@ -1,0 +1,26 @@
+[
+  {
+    "key": "health_services",
+    "value": "Access to health services"
+  },
+  {
+    "key": "medicines",
+    "value": "Medicines"
+  },
+  {
+    "key": "patient_safety",
+    "value": "Patients Safety"
+  },
+  {
+    "key": "cleanliness",
+    "value": "Cleanliness, Infection prevention & control"
+  },
+  {
+    "key": "staff_attitude",
+    "value": "Values and attitudes of staff"
+  },
+  {
+    "key": "wating_time",
+    "value": "Patient waiting time for care"
+  }
+]

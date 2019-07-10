@@ -8,11 +8,13 @@ export const onCreatePatient = `subscription OnCreatePatient {
     lastName
     phone
     walletAddress
+    userId
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -26,11 +28,13 @@ export const onUpdatePatient = `subscription OnUpdatePatient {
     lastName
     phone
     walletAddress
+    userId
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -44,11 +48,13 @@ export const onDeletePatient = `subscription OnDeletePatient {
     lastName
     phone
     walletAddress
+    userId
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -61,12 +67,14 @@ export const onCreatePractitioner = `subscription OnCreatePractitioner {
     firstName
     lastName
     phone
+    userId
     walletAddress
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -79,12 +87,14 @@ export const onUpdatePractitioner = `subscription OnUpdatePractitioner {
     firstName
     lastName
     phone
+    userId
     walletAddress
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -97,12 +107,14 @@ export const onDeletePractitioner = `subscription OnDeletePractitioner {
     firstName
     lastName
     phone
+    userId
     walletAddress
     imageLink
     events {
       items {
         id
         eventType
+        rating
       }
       nextToken
     }
@@ -119,16 +131,19 @@ export const onCreateEvent = `subscription OnCreateEvent {
       lastName
       phone
       walletAddress
+      userId
       imageLink
       events {
         nextToken
       }
     }
+    rating
     practitioner {
       id
       firstName
       lastName
       phone
+      userId
       walletAddress
       imageLink
       events {
@@ -148,16 +163,19 @@ export const onUpdateEvent = `subscription OnUpdateEvent {
       lastName
       phone
       walletAddress
+      userId
       imageLink
       events {
         nextToken
       }
     }
+    rating
     practitioner {
       id
       firstName
       lastName
       phone
+      userId
       walletAddress
       imageLink
       events {
@@ -177,16 +195,19 @@ export const onDeleteEvent = `subscription OnDeleteEvent {
       lastName
       phone
       walletAddress
+      userId
       imageLink
       events {
         nextToken
       }
     }
+    rating
     practitioner {
       id
       firstName
       lastName
       phone
+      userId
       walletAddress
       imageLink
       events {

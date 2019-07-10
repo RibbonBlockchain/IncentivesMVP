@@ -129,11 +129,11 @@
       </div>
     </modal>
     <!-- onboard modal -->
-    <modal :show.sync="modals.onboard" :large="true">
+    <modal :show.sync="modals.onboard" :large="false">
       <h4 slot="header" class="modal-title" id="modal-title-default">Register new Patient</h4>
 
       <div class="row">
-        <div class="col-8">
+        <div class="col-12">
           <div class="row">
             <div class="col-12">
               <label>Patient Number</label>
@@ -141,7 +141,7 @@
                 type="text"
                 class="form-control form-control-alternative"
                 v-model="patient.idNumber"
-              >
+              />
             </div>
             <div class="col-6">
               <label>First Name</label>
@@ -149,7 +149,7 @@
                 type="text"
                 class="form-control form-control-alternative"
                 v-model="patient.firstName"
-              >
+              />
             </div>
             <div class="col-6">
               <label>Last Name</label>
@@ -157,7 +157,7 @@
                 type="text"
                 class="form-control form-control-alternative"
                 v-model="patient.lastName"
-              >
+              />
             </div>
             <div class="col-12">
               <label>Phone Number</label>
@@ -166,66 +166,49 @@
                 v-mask="'+###-(###)-###-####'"
                 class="form-control form-control-alternative"
                 v-model="patient.phoneNumber"
-              >
+              />
             </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="row">
-            <div class="col-12 text-center">
-              <uploader v-model="avatar" @uploadLink="updateUploadLink">
-                <div slot="activator">
-                  <span v-if="!avatar" class="cursor">Click to capture patient passport</span>
-                  <img
-                    v-else
-                    :src="avatar.imageURL"
-                    class="cursor"
-                    style="width: 160px; height: auto;"
-                    alt="avatar"
-                  >
-                </div>
-              </uploader>
-              <input class="upload-file" type="file" style="display: none">
+            <div class="col-12 mt-4">
+              <video
+                v-if="webCam.showCaptureDiv"
+                ref="video"
+                id="video"
+                style="width: 100%"
+                autoplay
+              ></video>
+              <img v-if="webCam.showPictureDiv" :src="avatar.imageURL" style="width: 100%" />
+            </div>
+            <div class="col-12 pt-4">
+              <base-button
+                v-if="webCam.captureButton"
+                type="primary"
+                @click.prevent="capture"
+              >Capture Passport</base-button>
+              <base-button
+                v-if="webCam.setPictureButton"
+                type="primary"
+                @click.prevent="setPicture"
+              >Save Passport</base-button>
             </div>
           </div>
         </div>
       </div>
 
       <template slot="footer">
-        <base-button
-          type="primary"
-          :disabled="validatePatientForm"
-          @click.prevent="createNewPatient"
-        >Register Patient</base-button>
+        <base-button type="primary" @click.prevent="createNewPatient">Register Patient</base-button>
         <base-button type="link" class="ml-auto" @click="closeOnboardModal">Cancel</base-button>
       </template>
     </modal>
     <modal :show.sync="modals.newPractitioner" :large="false">
       <h4 slot="header" class="modal-title" id="modal-title-default">Register a Practitioner</h4>
-
       <div class="row">
-        <div class="col-12 text-center mt-4">
-          <uploader v-model="avatar" @uploadLink="updateUploadLink">
-            <div slot="activator">
-              <span v-if="!avatar" class="cursor">Click to capture Practitioner Passport</span>
-              <img
-                v-else
-                :src="avatar.imageURL"
-                class="cursor"
-                style="width: 160px; height: auto;"
-                alt="avatar"
-              >
-            </div>
-          </uploader>
-          <input class="upload-file" type="file" style="display: none">
-        </div>
         <div class="col-12">
           <label>Practitioner Number</label>
           <input
             type="text"
             class="form-control form-control-alternative"
             v-model="practitioner.idNumber"
-          >
+          />
         </div>
       </div>
       <div class="row">
@@ -235,7 +218,7 @@
             type="text"
             class="form-control form-control-alternative"
             v-model="practitioner.firstName"
-          >
+          />
         </div>
         <div class="col-6">
           <label>Last Name</label>
@@ -243,10 +226,8 @@
             type="text"
             class="form-control form-control-alternative"
             v-model="practitioner.lastName"
-          >
+          />
         </div>
-      </div>
-      <div class="row">
         <div class="col-12">
           <label>Phone Number</label>
           <input
@@ -254,17 +235,29 @@
             v-mask="'+###-(###)-###-####'"
             class="form-control form-control-alternative"
             v-model="practitioner.phoneNumber"
-          >
+          />
+        </div>
+        <div class="col-12 mt-4">
+          <video v-if="webCam.showCaptureDiv" ref="video" id="video" style="width: 100%" autoplay></video>
+          <img v-if="webCam.showPictureDiv" :src="avatar.imageURL" style="width: 100%" />
+        </div>
+        <div class="col-12 pt-4">
+          <base-button
+            v-if="webCam.captureButton"
+            type="primary"
+            @click.prevent="capture"
+          >Capture Passport</base-button>
+          <base-button
+            v-if="webCam.setPictureButton"
+            type="primary"
+            @click.prevent="setPicture"
+          >Save Passport</base-button>
         </div>
       </div>
 
       <template slot="footer">
-        <base-button
-          type="primary"
-          :disabled="validatePractitionerForm"
-          @click.prevent="createNewPractitioner"
-        >Register Practitioner</base-button>
-        <base-button type="link" class="ml-auto" @click="modals.newPractitioner = false">Cancel</base-button>
+        <base-button type="primary" @click.prevent="createNewPractitioner">Register Practitioner</base-button>
+        <base-button type="link" class="ml-auto" @click="closeOnboardModal">Cancel</base-button>
       </template>
     </modal>
     <!-- Patient Interaction Window -->
@@ -280,11 +273,29 @@
         <div class="col-6">
           <label>Select Patient</label>
           <div class="form-group">
-            <v-select style="width: 100%" label="id" v-model="activity.patient" :options="patients"></v-select>
+            <v-select
+              style="width: 100%"
+              label="userId"
+              v-model="activity.patient"
+              :options="patients"
+            ></v-select>
           </div>
         </div>
         <div class="col-6">
-          <label>Select Activities</label>
+          <label>Select Practitioner</label>
+          <div class="form-group">
+            <v-select
+              style="width: 100%"
+              label="userId"
+              v-model="activity.practitioner"
+              :options="practitioners"
+            ></v-select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label>Select Activity</label>
           <div class="form-group">
             <v-select
               style="width: 100%"
@@ -296,69 +307,16 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <label>Select Practitioner</label>
-          <div class="form-group">
-            <v-select
-              style="width: 100%"
-              label="id"
-              v-model="activity.practitioner"
-              :options="practitioners"
-            ></v-select>
-          </div>
-        </div>
-      </div>
-      <hr>
+      <hr />
       <div class="row">
         <div class="col-12">
           <table style="width: 100%">
-            <tr>
+            <tr v-for="healthcare in healthcareServices" :key="healthcare.key">
               <td>
-                <span for="health_services">Access to health services</span>
+                <span for="health_services">{{ healthcare.value }}</span>
               </td>
               <td>
-                <star-rating v-model="rating.health_services"></star-rating>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span for="health_services">Medicines</span>
-              </td>
-              <td>
-                <star-rating v-model="rating.medicines"></star-rating>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span for="health_services">Patients safety</span>
-              </td>
-              <td>
-                <star-rating v-model="rating.patient_safety"></star-rating>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span for="health_services">Cleanliness, Infection prevention & control</span>
-              </td>
-              <td>
-                <star-rating v-model="rating.cleanliness"></star-rating>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span for="health_services">Values and attitudes of staff</span>
-              </td>
-              <td>
-                <star-rating v-model="rating.staff_attitude"></star-rating>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span for="health_services">Patient waiting time for care</span>
-              </td>
-              <td>
-                <star-rating v-model="rating.wating_time"></star-rating>
+                <star-rating v-model="rating[healthcare.key]"></star-rating>
               </td>
             </tr>
           </table>
@@ -411,7 +369,9 @@ import {
 } from "../graphql/subscriptions";
 
 import token from "../util/token";
+import { blobToDataURL } from "../util/helpers";
 import eventData from "../store/events.json";
+import healthcareServices from "../store/healthcare.json";
 
 import abi from "../abi.json";
 
@@ -444,6 +404,7 @@ export default {
       },
       selectedPerson: {},
       eventData: eventData,
+      healthcareServices: healthcareServices,
       web3: {
         balance: 0
       },
@@ -452,13 +413,15 @@ export default {
         idNumber: "",
         firstName: "",
         lastName: "",
-        phoneNumber: ""
+        phoneNumber: "",
+        imageKey: ""
       },
       practitioner: {
         idNumber: "",
         firstName: "",
         lastName: "",
-        phoneNumber: ""
+        phoneNumber: "",
+        imageKey: ""
       },
       activity: {
         patient: {},
@@ -467,16 +430,20 @@ export default {
       },
       rewardsToSend: [],
       rewardsToSendTotal: 0,
-      rating: {
-        health_services: 5,
-        medicines: 5,
-        patient_safety: 5,
-        cleanliness: 5,
-        staff_attitude: 5,
-        wating_time: 5
+      rating: {},
+      avatar: {
+        imageURL: null
       },
-      avatar: null,
-      imageKey: ""
+      imageKey: "",
+      mediaStream: null,
+      video: {},
+      canvas: {},
+      webCam: {
+        captureButton: true,
+        setPictureButton: false,
+        showCaptureDiv: false,
+        showPictureDiv: false
+      }
     };
   },
   async created() {
@@ -543,7 +510,7 @@ export default {
         !this.patient.firstName ||
         !this.patient.lastName ||
         !this.patient.phoneNumber ||
-        !this.imageKey
+        !this.avatar.imageURL
       );
     },
     validatePractitionerForm() {
@@ -552,11 +519,40 @@ export default {
         !this.practitioner.firstName ||
         !this.practitioner.lastName ||
         !this.practitioner.phoneNumber ||
-        !this.imageKey
+        !this.avatar.imageURL
       );
     }
   },
   methods: {
+    capture() {
+      this.webCam.showCaptureDiv = true;
+      this.avatar = {};
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then(mediaStream => {
+            this.mediaStream = mediaStream;
+            this.$refs.video.srcObject = mediaStream;
+            this.webCam.captureButton = false;
+            this.webCam.setPictureButton = true;
+            this.$refs.video.play();
+          })
+          .catch(err => console.error("getUserMedia() error: ", err));
+      }
+    },
+    async setPicture() {
+      this.webCam.showCaptureDiv = false;
+      this.webCam.showPictureDiv = true;
+      const mediaStreamTrack = await this.mediaStream.getVideoTracks()[0];
+      const imageCapture = new window.ImageCapture(mediaStreamTrack);
+      await imageCapture.takePhoto().then(async blob => {
+        await blobToDataURL(blob, data => {
+          this.avatar.imageURL = data;
+          this.webCam.captureButton = true;
+          this.webCam.setPictureButton = false;
+        });
+      });
+    },
     toHex(string) {
       let result = "";
       for (let i = 0; i < string.length; i++) {
@@ -564,6 +560,7 @@ export default {
       }
       return result;
     },
+
     async sendToken(receiver, amount) {
       //added async so we can use await
       const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
@@ -575,7 +572,9 @@ export default {
       console.log(`Start to send ${amount} tokens to ${receiver}`);
       const contract = new web3.eth.Contract(contractAbi, contractAddr);
       // Was having some issues with the amount being sent in this function
-      const data = contract.methods.transfer(receiver, `0x${this.toHex(amount.toString())}`).encodeABI(); // encodeABI() is required in order to get the method data into opcode/binary format
+      const data = contract.methods
+        .transfer(receiver, `0x${this.toHex(amount.toString())}`)
+        .encodeABI(); // encodeABI() is required in order to get the method data into opcode/binary format
       const gasPrice = await web3.eth.getGasPrice(); // await added since the function returns a promise
       const nonce = await web3.eth.getTransactionCount(contractOwner.addr); //We need the nonce of the account added await since the function returns a promise
       const gasLimit = 1200000; //Increased the gaslimit after checking one of the successful transactions one the contract
@@ -597,11 +596,7 @@ export default {
       web3.eth
         .sendSignedTransaction("0x" + serializedTx.toString("hex")) //sendRawTransaction is now deprecated, replaced with sendSignedTransaction
         .on("transactionHash", function(hash) {
-          console.log("hash:" + hash);
-          web3.eth.getTransaction(hash).then(console.log);
-        })
-        .on("receipt", function(receipt) {
-          console.log("receipt: " + receipt);
+          return true;
         })
         .on("error", console.error);
     },
@@ -615,9 +610,8 @@ export default {
         walletAddress,
         imageLink
       };
-      console.log(this.selectedPerson);
       token.methods
-        .balanceOf(walletAddress)
+        .balanceOf("0xab015264f703634260FF763c31f4bBF9146b545a")
         .call()
         .then(balance => {
           this.myBalance = web3.utils.fromWei(balance.toString(), "ether");
@@ -628,12 +622,12 @@ export default {
 
     createNewPatient() {
       const input = {
-        id: parseInt(this.patient.idNumber),
         firstName: this.patient.firstName,
         lastName: this.patient.lastName,
+        userId: this.patient.idNumber,
         phone: this.patient.phoneNumber,
         walletAddress: web3.eth.accounts.create().address,
-        imageLink: this.imageKey
+        imageLink: "link"
       };
       API.graphql(graphqlOperation(createPatient, { input }))
         .then(response => {
@@ -643,8 +637,7 @@ export default {
             text: `Patient ${this.patient.idNumber} has been registered.`
           });
           this.patient = {};
-          this.imageKey = "";
-          this.avatar = null;
+          this.avatar = {};
         })
         .catch(error => {
           const err = [];
@@ -658,24 +651,21 @@ export default {
 
     createNewPractitioner() {
       const input = {
-        id: parseInt(this.practitioner.idNumber),
         firstName: this.practitioner.firstName,
         lastName: this.practitioner.lastName,
+        userId: this.practitioner.idNumber,
         phone: this.practitioner.phoneNumber,
         walletAddress: web3.eth.accounts.create().address,
-        imageLink: this.imageKey
+        imageLink: "link"
       };
       API.graphql(graphqlOperation(createPractitioner, { input }))
         .then(response => {
           this.$notify({
             group: "foo",
             title: "New Practitioner",
-            text: `Practitioner ${
-              this.practitioner.idNumber
-            } has been registered.`
+            text: `Practitioner ${this.practitioner.idNumber} has been registered.`
           });
           this.practitioner = {};
-          this.imageKey = "";
           this.avatar = null;
         })
         .catch(errors => {
@@ -693,32 +683,34 @@ export default {
       // assign the patient to each of the events
       const input = {
         id: new Date().getTime(),
-        eventPatientId: parseInt(this.activity.patient.id),
-        eventPractitionerId: parseInt(this.activity.practitioner.id),
-        eventType: this.activity.activity.eventName
+        eventPatientId: this.activity.patient.id,
+        eventPractitionerId: this.activity.practitioner.id,
+        eventType: this.activity.activity.eventName,
+        rating: this.rating
       };
-      const patientWallet = this.activity.patient.walletAddress;
-
-      API.graphql(graphqlOperation(createEvent, { input }))
-        .then(async (response) => {
-          await this.sendToken(
-            this.activity.patient.walletAddress,
-            this.activity.activity.reward
-          );
-          this.$notify({
-            group: "foo",
-            title: "New Interaction",
-            text: `Interaction has been recorded.`
-          });
-      })
-      .catch(error => {
-        console.log('Error ', error)
-        this.$notify({
-          group: "foo",
-          title: "New Patient",
-          text: `${JSON.stringify(error)}`
-        });
-      });
+      let patientWallet = this.activity.patient.walletAddress;
+      let practitionerWallet = this.activity.practitioner.walletAddress;
+      await API.graphql(graphqlOperation(createEvent, { input }));
+      //   await API.graphql(graphqlOperation(createEvent, { input }))
+      //     .then(async response => {
+      //       await this.$notify({
+      //         group: "foo",
+      //         title: "New Interaction",
+      //         text: `Interaction has been recorded.`
+      //       });
+      //     })
+      //     .catch(async error => {
+      //       await this.$notify({
+      //         group: "foo",
+      //         title: "New Patient",
+      //         text: `${JSON.stringify(error)}`
+      //       });
+      //     });
+      //   console.log(this.activity);
+      //   // await this.sendToken(
+      //   //   patientWallet,
+      //   //   this.activity.activity.reward
+      //   // );
     },
 
     contactSelect(phoneNumber) {
@@ -740,10 +732,11 @@ export default {
     },
     closeOnboardModal() {
       this.imageKey = "";
-      this.avatar = null;
+      this.avatar = {};
       this.patient = {};
       this.practitioner = {};
       this.modals.onboard = false;
+      this.modals.newPractitioner = false;
     }
   }
 };

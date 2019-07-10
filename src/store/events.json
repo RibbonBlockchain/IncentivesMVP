@@ -1,10 +1,10 @@
 [
   {
     "eventName": "HIV TEST",
-    "reward": 80
+    "reward": 800000
   },
   {
     "eventName": "MALARIA",
-    "reward": 20
+    "reward": 200000
   }
 ]
