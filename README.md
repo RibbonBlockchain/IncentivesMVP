@@ -1,6 +1,6 @@
 <p align="center">
 
-<img src="http://www.ribbonblockchain.com/wp-content/uploads/2019/02/Logo-3-uai-720x257.png" alt="Slate: API Documentation Generator" width="226">
+<img src="https://i.ibb.co/rvcpHpv/thumbnail.jpg" alt="Ribbon Github" border="0">
 
 <br>
 
@@ -8,28 +8,35 @@
 
 </p>
 
-  
-
 <p align="center">Public health incentives and health data analytics platform.</p>
 
   
 
 <p align="center"><img src="https://i.ibb.co/gR8LhX2/Screenshot-at-May-13-16-22-02.png" width=500 alt="Screenshot of the ribbon MVP "></p>
 
-  
+About Us
+------------  
+Ribbon Blockchain is a healthcare incentives platform that aims to modify health and wellness behaviour through rewardable tasks.
+
+Ribbon channels donated, pledged or sponsored funding directly to patients, community health workers and healthcare practitioners; where such funding is used to incentivize preventative care, adherence to medication and therapy, quality of care delivery and overall population health outcomes.
+
+Our Incentives are distributed in DAI, an asset-backed, decentralized stablecoin on the Ethereum blockchain.
 
 Features
 ------------
 
-* **Ratings** : Patients can rate practitioners and penalize them or reward them based on their interaction. This allows governments to find problem zones and allow for better service delivery.
+* **Ratings** : Our Patient Experience of Care (PEC) rating system enables patients to rate their healthcare experience to help identify areas for continuous improvement on the quality of healthcare delivery at both healthcare practitioner and healthcare institution level.
 
-* **Incentives** : Ribbon pays patients to complete health tasks. This incentivizes good behavior as well as helps local economies earn enough to feed their families.
+* **Incentives** : We offer tokenized incentives (paid in DAI) for any private or public health and wellness program or institution that needs to encourage preventative healthcare, disease screening and testing, quality of care delivery, adherence to therapy, disease suppression and behaviour change.
 
-* **Analytics** : Healthcare data is taken with a patients permission. That data is then analysed and sold to pharmaceutical companies to help them better understand the African market. From the funds received it will be put back into the system as incentives.
+* **Analytics** : The Ribbon system generates Real-Time Data Analytics which allow healthcare institutions, practitioners, businesses and decision makers to get health insights, draw conclusions immediately and react to healthcare-related issues.
 
 * **Decentralized** : Ribbon uses smart contracts and IPFS technology to decentralized the information storage to allow for better security and no upfront infrastructure costs.
 
-* **Crowdfunding** : All healthcare programs can be crowdfunded or privately funded.
+* **Crowdfunding** : The DAO allows for transparency of funds from a donor or sponsor to the end user. That entire process is recorded and information is sent back to the donor.
+The funds are first crowdfunded by a program, all of those funds go directly into the DAO and only get sent out to the people it's supposed to. Everything is tracked and if there's any malicious intent then a user will know and they can then report that program. The funds will be returned and the program will be deleted.
+
+* **Ribbon Pay** : With Ribbon Pay, you can access crypto despite not having internet access or a smart device. Ribbon Pay uses USSD, SMS and Smart Contracts to enable seamless payment through all 
 
 
 Getting Started with Ribbon
@@ -77,8 +84,6 @@ npm run serve
 
 You can now see the POC at http://localhost:8080. Whoa! That was fast!
 
-  
-  
 
 Our Partners
 ---------------------------------
@@ -118,17 +123,19 @@ If you've got questions about setup, deploying, special feature implementation i
 
 Found a bug with the app? Go ahead and [submit an issue](https://github.com/RibbonBlockchain/IncentivesPOC/issues/new ). And, of course, feel free to submit pull requests with bug fixes or changes to the `dev` branch.
 
-  
-
-Contributors
+Special Thanks To Our Advisors
 --------------------
 
+[Mathias Forbord](https://www.linkedin.com/in/matiasforbord/]) - Back End & Serverless Architecture
   
 
-Thanks to the following people who have submitted major pull requests:
+[Ben Onuoha](https://www.linkedin.com/in/benonuoha/) - Blockchain Strategy
 
-  
-  
+[Joshua Cassidy](https://www.linkedin.com/in/joshuacassidy/) - Blockchain Application Development  
 
-Special Thanks
---------------------
+[Simon Emanuel Schmid](https://www.linkedin.com/in/schmidsi/) - User Experience Engineering  
+
+[Dr Brenda Kubheka](https://www.linkedin.com/in/dr-brenda-kubheka-7a1b1917/) - Risk, Bioethics & Health Law
+
+[Daniel Makoni](https://www.linkedin.com/in/daniel-makoni/) - Data Science & Engineering
+
