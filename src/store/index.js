@@ -5,7 +5,8 @@ import {
   AuthMutations,
   ModalMutations,
   PatientMutations,
-  PractitionerMutation
+  PractitionerMutation,
+  InteractionMutation
 } from "./mutations";
 import { AuthActions, PatientActions, PractitionerActions } from "./actions";
 import { AuthGetters, PatientGetters, PractitionerGetters } from "./getters";
@@ -45,7 +46,8 @@ const store = new Vuex.Store({
     AuthMutations,
     ModalMutations,
     PatientMutations,
-    PractitionerMutation
+    PractitionerMutation,
+    InteractionMutation
   ),
   actions: Object.assign({}, AuthActions, PatientActions, PractitionerActions),
   modules: {

@@ -10,7 +10,10 @@ import router from "./router";
 import Notifications from "vue-notification";
 import store from "./store";
 import Argon from "./plugins/argon-kit";
-import Provider from "./graphql";
+
+import Amplify, * as AmplifyModules from "aws-amplify";
+import { AmplifyPlugin } from "aws-amplify-vue";
+import aws_exports from "./aws-exports";
 
 Vue.use(Notifications);
 Vue.use(VueMask);
@@ -21,11 +24,15 @@ Vue.component("v-select", vSelect);
 
 Vue.config.productionTip = false;
 
+
+Amplify.configure(aws_exports);
+
+Vue.use(AmplifyPlugin, AmplifyModules);
+
 Vue.use(Argon);
 
 new Vue({
   router,
   render: h => h(App),
-  provide: Provider.provide(),
   store
 }).$mount("#app");

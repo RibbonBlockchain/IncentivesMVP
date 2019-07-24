@@ -10,6 +10,7 @@ import {
   NEW_PATIENT_ERROR,
   LIST_PATIENTS,
   LIST_ACTIVITIES,
+  NEW_ACTIVITY_SUCCESS,
   PATIENT_ACTIVITY_SUCCESS,
   REGISTER_WEB3_INSTANCE,
   LIST_PRACTITIONERS,
@@ -55,24 +56,9 @@ export const PatientMutations = {
     state.patients.data = payload;
     state.patients.error = null;
   },
-  [LIST_ACTIVITIES](state, payload) {
-    state.activities.data = payload;
-    state.activities.error = null;
-  },
   [NEW_PATIENT_SUCCESS](state, payload) {
-    const { firstName, lastName, id, phone } = payload;
-    const data = {
-      firstName,
-      lastName,
-      id,
-      phone
-    };
-    state.patients.data = state.patients.data.concat(data);
+    state.patients.data = state.patients.data.concat(payload);
     state.patients.error = null;
-  },
-  [PATIENT_ACTIVITY_SUCCESS](state, payload) {
-    state.activities.data = state.patients.data.concat(payload);
-    state.activities.error = null;
   },
   [NEW_PATIENT_ERROR](state, payload) {
     state.patients.data = state.patients.data;
@@ -93,5 +79,16 @@ export const Web3Mutations = {
   [REGISTER_WEB3_INSTANCE](state, payload) {
     state.web3.web3Instance = Object.assign({}, payload.web3);
     state.web3.contract = Object.assign({}, payload.contract);
+  }
+};
+
+export const InteractionMutation = {
+  [LIST_ACTIVITIES](state, payload) {
+    state.activities.data = payload;
+    state.activities.error = null;
+  },
+  [NEW_ACTIVITY_SUCCESS](state, payload) {
+    state.activities.data = state.activities.data.concat(payload);
+    state.activities.error = null;
   }
 };

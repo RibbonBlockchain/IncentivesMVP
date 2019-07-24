@@ -1,0 +1,4 @@
+{
+    "AppSyncApiName": "ribbon",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST"
+}

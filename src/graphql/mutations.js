@@ -1,33 +1,195 @@
-export const createPatient = `mutation createPatient($id: ID, $firstName: String, $lastName: String, $phoneNumber: String, $walletAddress: String, $userId: String) {
-  createPatient(id: $id, firstName: $firstName, lastName: $lastName, phoneNumber: $phoneNumber, walletAddress: $walletAddress, userId: $userId) {
+// eslint-disable
+// this is an auto generated file. This will be overwritten
+
+export const createPatient = `mutation CreatePatient($input: CreatePatientInput!) {
+  createPatient(input: $input) {
     id
     firstName
     lastName
-    phoneNumber
     walletAddress
     userId
+    interactions {
+      items {
+        id
+        interaction
+        ratings
+      }
+      nextToken
+    }
   }
-}`;
-
-export const createPractitioner = `
-mutation createPractitioner($id: ID, $firstName: String, $lastName: String, $phoneNumber: String, $walletAddress: String, $userId: String) {
-  createPractitioner(id: $id, firstName: $firstName, lastName: $lastName, phoneNumber: $phoneNumber, walletAddress: $walletAddress, userId: $userId) {
+}
+`;
+export const updatePatient = `mutation UpdatePatient($input: UpdatePatientInput!) {
+  updatePatient(input: $input) {
     id
     firstName
     lastName
-    phoneNumber
     walletAddress
     userId
+    interactions {
+      items {
+        id
+        interaction
+        ratings
+      }
+      nextToken
+    }
   }
-}`;
-
-export const createInteraction = `
-mutation createInteraction($id: ID, $ratings: AWSJSON, $patient: String, $practitioner: String, $interaction: String) {
-  createInteraction(id: $id, ratings: $ratings, patient: $patient, practitioner: $practitioner, interaction: $interaction) {
+}
+`;
+export const deletePatient = `mutation DeletePatient($input: DeletePatientInput!) {
+  deletePatient(input: $input) {
     id
-    ratings
-    patient
-    practitioner
+    firstName
+    lastName
+    walletAddress
+    userId
+    interactions {
+      items {
+        id
+        interaction
+        ratings
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const createInteraction = `mutation CreateInteraction($input: CreateInteractionInput!) {
+  createInteraction(input: $input) {
+    id
     interaction
+    ratings
+    patient {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
   }
-}`;
+}
+`;
+export const updateInteraction = `mutation UpdateInteraction($input: UpdateInteractionInput!) {
+  updateInteraction(input: $input) {
+    id
+    interaction
+    ratings
+    patient {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const deleteInteraction = `mutation DeleteInteraction($input: DeleteInteractionInput!) {
+  deleteInteraction(input: $input) {
+    id
+    interaction
+    ratings
+    patient {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const createPractitioner = `mutation CreatePractitioner($input: CreatePractitionerInput!) {
+  createPractitioner(input: $input) {
+    id
+    firstName
+    lastName
+    walletAddress
+    userId
+    interactions {
+      items {
+        id
+        interaction
+        ratings
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const updatePractitioner = `mutation UpdatePractitioner($input: UpdatePractitionerInput!) {
+  updatePractitioner(input: $input) {
+    id
+    firstName
+    lastName
+    walletAddress
+    userId
+    interactions {
+      items {
+        id
+        interaction
+        ratings
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const deletePractitioner = `mutation DeletePractitioner($input: DeletePractitionerInput!) {
+  deletePractitioner(input: $input) {
+    id
+    firstName
+    lastName
+    walletAddress
+    userId
+    interactions {
+      items {
+        id
+        interaction
+        ratings
+      }
+      nextToken
+    }
+  }
+}
+`;

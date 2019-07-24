@@ -1,0 +1,19 @@
+{
+    "rbn": {
+        "awscloudformation": {
+            "AuthRoleName": "dapp-rbn-20190724192934-authRole",
+            "UnauthRoleArn": "arn:aws:iam::853431608467:role/dapp-rbn-20190724192934-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::853431608467:role/dapp-rbn-20190724192934-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "dapp-rbn-20190724192934-deployment",
+            "UnauthRoleName": "dapp-rbn-20190724192934-unauthRole",
+            "StackName": "dapp-rbn-20190724192934",
+            "StackId": "arn:aws:cloudformation:eu-west-1:853431608467:stack/dapp-rbn-20190724192934/fd7fec70-ae40-11e9-a261-0a99a68566c4"
+        },
+        "categories": {
+            "auth": {
+                "dappd5162aded5162ade": {}
+            }
+        }
+    }
+}
