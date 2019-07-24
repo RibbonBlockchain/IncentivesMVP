@@ -1,219 +1,33 @@
-// eslint-disable
-// this is an auto generated file. This will be overwritten
+export const createPatient = `mutation createPatient($id: ID, $firstName: String, $lastName: String, $phoneNumber: String, $walletAddress: String, $userId: String) {
+  createPatient(id: $id, firstName: $firstName, lastName: $lastName, phoneNumber: $phoneNumber, walletAddress: $walletAddress, userId: $userId) {
+    id
+    firstName
+    lastName
+    phoneNumber
+    walletAddress
+    userId
+  }
+}`;
 
-export const createPatient = `mutation CreatePatient($input: CreatePatientInput!) {
-  createPatient(input: $input) {
+export const createPractitioner = `
+mutation createPractitioner($id: ID, $firstName: String, $lastName: String, $phoneNumber: String, $walletAddress: String, $userId: String) {
+  createPractitioner(id: $id, firstName: $firstName, lastName: $lastName, phoneNumber: $phoneNumber, walletAddress: $walletAddress, userId: $userId) {
     id
     firstName
     lastName
-    phone
+    phoneNumber
     walletAddress
     userId
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
   }
-}
-`;
-export const updatePatient = `mutation UpdatePatient($input: UpdatePatientInput!) {
-  updatePatient(input: $input) {
+}`;
+
+export const createInteraction = `
+mutation createInteraction($id: ID, $ratings: AWSJSON, $patient: String, $practitioner: String, $interaction: String) {
+  createInteraction(id: $id, ratings: $ratings, patient: $patient, practitioner: $practitioner, interaction: $interaction) {
     id
-    firstName
-    lastName
-    phone
-    walletAddress
-    userId
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
+    ratings
+    patient
+    practitioner
+    interaction
   }
-}
-`;
-export const deletePatient = `mutation DeletePatient($input: DeletePatientInput!) {
-  deletePatient(input: $input) {
-    id
-    firstName
-    lastName
-    phone
-    walletAddress
-    userId
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const createPractitioner = `mutation CreatePractitioner($input: CreatePractitionerInput!) {
-  createPractitioner(input: $input) {
-    id
-    firstName
-    lastName
-    phone
-    userId
-    walletAddress
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const updatePractitioner = `mutation UpdatePractitioner($input: UpdatePractitionerInput!) {
-  updatePractitioner(input: $input) {
-    id
-    firstName
-    lastName
-    phone
-    userId
-    walletAddress
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const deletePractitioner = `mutation DeletePractitioner($input: DeletePractitionerInput!) {
-  deletePractitioner(input: $input) {
-    id
-    firstName
-    lastName
-    phone
-    userId
-    walletAddress
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const createEvent = `mutation CreateEvent($input: CreateEventInput!) {
-  createEvent(input: $input) {
-    id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const updateEvent = `mutation UpdateEvent($input: UpdateEventInput!) {
-  updateEvent(input: $input) {
-    id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const deleteEvent = `mutation DeleteEvent($input: DeleteEventInput!) {
-  deleteEvent(input: $input) {
-    id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
-  }
-}
-`;
+}`;

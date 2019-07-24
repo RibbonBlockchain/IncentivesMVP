@@ -1,152 +1,29 @@
-// eslint-disable
-// this is an auto generated file. This will be overwritten
-
-export const getPatient = `query GetPatient($id: ID!) {
-  getPatient(id: $id) {
+export const getPatients = `query getPatients {
+  getPatients{
     id
     firstName
     lastName
-    phone
+    phoneNumber
     walletAddress
     userId
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
   }
-}
-`;
-export const listPatients = `query ListPatients(
-  $filter: ModelPatientFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listPatients(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    nextToken
-  }
-}
-`;
-export const getPractitioner = `query GetPractitioner($id: ID!) {
-  getPractitioner(id: $id) {
+}`;
+export const getPractitioners = `query getPractitioners {
+  getPractitioners{
     id
     firstName
     lastName
-    phone
-    userId
+    phoneNumber
     walletAddress
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
+    userId
   }
-}
-`;
-export const listPractitioners = `query ListPractitioners(
-  $filter: ModelPractitionerFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listPractitioners(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    nextToken
-  }
-}
-`;
-export const getEvent = `query GetEvent($id: ID!) {
-  getEvent(id: $id) {
+}`;
+export const getInteractions = `query getInteractions {
+  getPractitioners{
     id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
+    ratings
+    patient
+    practitioner
+    interaction
   }
-}
-`;
-export const listEvents = `query ListEvents(
-  $filter: ModelEventFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listEvents(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      eventType
-      patient {
-        id
-        firstName
-        lastName
-        phone
-        walletAddress
-        userId
-        imageLink
-      }
-      rating
-      practitioner {
-        id
-        firstName
-        lastName
-        phone
-        userId
-        walletAddress
-        imageLink
-      }
-    }
-    nextToken
-  }
-}
-`;
+}`;

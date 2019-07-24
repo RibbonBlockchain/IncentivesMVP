@@ -1,219 +1,31 @@
-// eslint-disable
-// this is an auto generated file. This will be overwritten
-
-export const onCreatePatient = `subscription OnCreatePatient {
+export const onCreatePatient = `subscription onCreatePatient {
   onCreatePatient {
     id
     firstName
     lastName
-    phone
+    phoneNumber
     walletAddress
     userId
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
   }
-}
-`;
-export const onUpdatePatient = `subscription OnUpdatePatient {
-  onUpdatePatient {
-    id
-    firstName
-    lastName
-    phone
-    walletAddress
-    userId
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onDeletePatient = `subscription OnDeletePatient {
-  onDeletePatient {
-    id
-    firstName
-    lastName
-    phone
-    walletAddress
-    userId
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onCreatePractitioner = `subscription OnCreatePractitioner {
+}`;
+
+export const onCreatePractitioner = `subscription onCreatePractitioner {
   onCreatePractitioner {
     id
     firstName
     lastName
-    phone
-    userId
+    phoneNumber
     walletAddress
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onUpdatePractitioner = `subscription OnUpdatePractitioner {
-  onUpdatePractitioner {
-    id
-    firstName
-    lastName
-    phone
     userId
-    walletAddress
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
   }
-}
-`;
-export const onDeletePractitioner = `subscription OnDeletePractitioner {
-  onDeletePractitioner {
+}`;
+
+export const onCreateInteraction = `subscription onCreateInteraction {
+  onCreateInteraction {
     id
-    firstName
-    lastName
-    phone
-    userId
-    walletAddress
-    imageLink
-    events {
-      items {
-        id
-        eventType
-        rating
-      }
-      nextToken
-    }
+    ratings
+    patient
+    practitioner
+    interaction
   }
-}
-`;
-export const onCreateEvent = `subscription OnCreateEvent {
-  onCreateEvent {
-    id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const onUpdateEvent = `subscription OnUpdateEvent {
-  onUpdateEvent {
-    id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const onDeleteEvent = `subscription OnDeleteEvent {
-  onDeleteEvent {
-    id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
-  }
-}
-`;
+}`;

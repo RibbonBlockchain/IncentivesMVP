@@ -168,28 +168,6 @@
                 v-model="patient.phoneNumber"
               />
             </div>
-            <div class="col-12 mt-4">
-              <video
-                v-if="webCam.showCaptureDiv"
-                ref="video"
-                id="video"
-                style="width: 100%"
-                autoplay
-              ></video>
-              <img v-if="webCam.showPictureDiv" :src="avatar.imageURL" style="width: 100%" />
-            </div>
-            <div class="col-12 pt-4">
-              <base-button
-                v-if="webCam.captureButton"
-                type="primary"
-                @click.prevent="capture"
-              >Capture Passport</base-button>
-              <base-button
-                v-if="webCam.setPictureButton"
-                type="primary"
-                @click.prevent="setPicture"
-              >Save Passport</base-button>
-            </div>
           </div>
         </div>
       </div>
@@ -236,22 +214,6 @@
             class="form-control form-control-alternative"
             v-model="practitioner.phoneNumber"
           />
-        </div>
-        <div class="col-12 mt-4">
-          <video v-if="webCam.showCaptureDiv" ref="video" id="video" style="width: 100%" autoplay></video>
-          <img v-if="webCam.showPictureDiv" :src="avatar.imageURL" style="width: 100%" />
-        </div>
-        <div class="col-12 pt-4">
-          <base-button
-            v-if="webCam.captureButton"
-            type="primary"
-            @click.prevent="capture"
-          >Capture Passport</base-button>
-          <base-button
-            v-if="webCam.setPictureButton"
-            type="primary"
-            @click.prevent="setPicture"
-          >Save Passport</base-button>
         </div>
       </div>
 
