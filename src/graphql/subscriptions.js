@@ -6,15 +6,13 @@ export const onCreatePatient = `subscription OnCreatePatient {
     id
     firstName
     lastName
-    phone
     walletAddress
     userId
-    imageLink
-    events {
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
     }
@@ -26,15 +24,13 @@ export const onUpdatePatient = `subscription OnUpdatePatient {
     id
     firstName
     lastName
-    phone
     walletAddress
     userId
-    imageLink
-    events {
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
     }
@@ -46,17 +42,99 @@ export const onDeletePatient = `subscription OnDeletePatient {
     id
     firstName
     lastName
-    phone
     walletAddress
     userId
-    imageLink
-    events {
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
+    }
+  }
+}
+`;
+export const onCreateInteraction = `subscription OnCreateInteraction {
+  onCreateInteraction {
+    id
+    interaction
+    ratings
+    patient {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const onUpdateInteraction = `subscription OnUpdateInteraction {
+  onUpdateInteraction {
+    id
+    interaction
+    ratings
+    patient {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const onDeleteInteraction = `subscription OnDeleteInteraction {
+  onDeleteInteraction {
+    id
+    interaction
+    ratings
+    patient {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
     }
   }
 }
@@ -66,15 +144,13 @@ export const onCreatePractitioner = `subscription OnCreatePractitioner {
     id
     firstName
     lastName
-    phone
-    userId
     walletAddress
-    imageLink
-    events {
+    userId
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
     }
@@ -86,15 +162,13 @@ export const onUpdatePractitioner = `subscription OnUpdatePractitioner {
     id
     firstName
     lastName
-    phone
-    userId
     walletAddress
-    imageLink
-    events {
+    userId
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
     }
@@ -106,113 +180,15 @@ export const onDeletePractitioner = `subscription OnDeletePractitioner {
     id
     firstName
     lastName
-    phone
-    userId
     walletAddress
-    imageLink
-    events {
+    userId
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
-    }
-  }
-}
-`;
-export const onCreateEvent = `subscription OnCreateEvent {
-  onCreateEvent {
-    id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const onUpdateEvent = `subscription OnUpdateEvent {
-  onUpdateEvent {
-    id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const onDeleteEvent = `subscription OnDeleteEvent {
-  onDeleteEvent {
-    id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
     }
   }
 }

@@ -66,7 +66,7 @@
                             >{{ `${activity.practitioner.firstName} ${activity.practitioner.lastName}` }}</a>
                           </td>
                           <td>{{ parseInt(activity.id) | moment("ddd, MMM Do YYYY") }}</td>
-                          <td>{{activity.eventType }}</td>
+                          <td>{{activity.interaction }}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -117,7 +117,7 @@
             <table style="width: 100%" class="pt-4">
               <tr>
                 <td style="width: 50%">ID Number</td>
-                <td>{{ this.selectedPerson.id }}</td>
+                <td>{{ this.selectedPerson.userId }}</td>
               </tr>
               <tr>
                 <td style="width: 50%">Phone Number</td>
@@ -168,28 +168,6 @@
                 v-model="patient.phoneNumber"
               />
             </div>
-            <div class="col-12 mt-4">
-              <video
-                v-if="webCam.showCaptureDiv"
-                ref="video"
-                id="video"
-                style="width: 100%"
-                autoplay
-              ></video>
-              <img v-if="webCam.showPictureDiv" :src="avatar.imageURL" style="width: 100%" />
-            </div>
-            <div class="col-12 pt-4">
-              <base-button
-                v-if="webCam.captureButton"
-                type="primary"
-                @click.prevent="capture"
-              >Capture Passport</base-button>
-              <base-button
-                v-if="webCam.setPictureButton"
-                type="primary"
-                @click.prevent="setPicture"
-              >Save Passport</base-button>
-            </div>
           </div>
         </div>
       </div>
@@ -236,22 +214,6 @@
             class="form-control form-control-alternative"
             v-model="practitioner.phoneNumber"
           />
-        </div>
-        <div class="col-12 mt-4">
-          <video v-if="webCam.showCaptureDiv" ref="video" id="video" style="width: 100%" autoplay></video>
-          <img v-if="webCam.showPictureDiv" :src="avatar.imageURL" style="width: 100%" />
-        </div>
-        <div class="col-12 pt-4">
-          <base-button
-            v-if="webCam.captureButton"
-            type="primary"
-            @click.prevent="capture"
-          >Capture Passport</base-button>
-          <base-button
-            v-if="webCam.setPictureButton"
-            type="primary"
-            @click.prevent="setPicture"
-          >Save Passport</base-button>
         </div>
       </div>
 
@@ -331,7 +293,7 @@
 </template>
 <script>
 import { components } from "aws-amplify-vue";
-import { Auth, API, graphqlOperation, Storage } from "aws-amplify";
+import { API, graphqlOperation, Storage } from "aws-amplify";
 import { S3Image } from "aws-amplify-vue";
 import StarRating from "vue-star-rating";
 import VdtnetTable from "vue-datatables-net";
@@ -354,17 +316,17 @@ import "datatables.net-select-bs4/css/select.bootstrap4.min.css";
 
 import {
   listPatients,
-  listPractitioners,
-  listEvents
+  listInteractions,
+  listPractitioners
 } from "../graphql/queries.js";
 import {
   createPatient,
-  createEvent,
+  createInteraction,
   createPractitioner
 } from "../graphql/mutations";
 import {
   onCreatePatient,
-  onCreateEvent,
+  onCreateInteraction,
   onCreatePractitioner
 } from "../graphql/subscriptions";
 
@@ -465,9 +427,12 @@ export default {
       });
   },
   mounted: function() {
-    API.graphql(graphqlOperation(onCreateEvent)).subscribe({
+    API.graphql(graphqlOperation(onCreateInteraction)).subscribe({
       next: data => {
-        this.$store.dispatch("addInteraction", data.value.data.onCreateEvent);
+        this.$store.dispatch(
+          "addInteraction",
+          data.value.data.onCreateInteraction
+        );
       }
     });
     API.graphql(graphqlOperation(onCreatePatient)).subscribe({
@@ -601,14 +566,15 @@ export default {
         .on("error", console.error);
     },
 
-    openDetails({ firstName, lastName, phone, id, walletAddress, imageLink }) {
+    openDetails({ firstName, lastName, phone, id, walletAddress, imageLink, userId }) {
       this.selectedPerson = {
         firstName,
         lastName,
         phone,
         id,
         walletAddress,
-        imageLink
+        imageLink,
+        userId
       };
       token.methods
         .balanceOf("0xab015264f703634260FF763c31f4bBF9146b545a")
@@ -625,9 +591,8 @@ export default {
         firstName: this.patient.firstName,
         lastName: this.patient.lastName,
         userId: this.patient.idNumber,
-        phone: this.patient.phoneNumber,
+        // phone: this.patient.phoneNumber,
         walletAddress: web3.eth.accounts.create().address,
-        imageLink: "link"
       };
       API.graphql(graphqlOperation(createPatient, { input }))
         .then(response => {
@@ -654,9 +619,8 @@ export default {
         firstName: this.practitioner.firstName,
         lastName: this.practitioner.lastName,
         userId: this.practitioner.idNumber,
-        phone: this.practitioner.phoneNumber,
-        walletAddress: web3.eth.accounts.create().address,
-        imageLink: "link"
+        // phone: this.practitioner.phoneNumber,
+        walletAddress: web3.eth.accounts.create().address
       };
       API.graphql(graphqlOperation(createPractitioner, { input }))
         .then(response => {
@@ -669,12 +633,13 @@ export default {
           this.avatar = null;
         })
         .catch(errors => {
+          console.log("Errors ", errors);
           const err = [];
           errors.map(error, index => err.push(error));
           this.$notify({
             group: "foo",
             title: "New Practitioner",
-            text: `${err}`
+            text: `${errros[0]}`
           });
         });
     },
@@ -683,34 +648,32 @@ export default {
       // assign the patient to each of the events
       const input = {
         id: new Date().getTime(),
-        eventPatientId: this.activity.patient.id,
-        eventPractitionerId: this.activity.practitioner.id,
-        eventType: this.activity.activity.eventName,
-        rating: this.rating
+        interactionPatientId: this.activity.patient.id,
+        interactionPractitionerId: this.activity.practitioner.id,
+        interaction: this.activity.activity.eventName,
+        ratings: this.rating
       };
       let patientWallet = this.activity.patient.walletAddress;
       let practitionerWallet = this.activity.practitioner.walletAddress;
-      await API.graphql(graphqlOperation(createEvent, { input }));
-      //   await API.graphql(graphqlOperation(createEvent, { input }))
-      //     .then(async response => {
-      //       await this.$notify({
-      //         group: "foo",
-      //         title: "New Interaction",
-      //         text: `Interaction has been recorded.`
-      //       });
-      //     })
-      //     .catch(async error => {
-      //       await this.$notify({
-      //         group: "foo",
-      //         title: "New Patient",
-      //         text: `${JSON.stringify(error)}`
-      //       });
-      //     });
-      //   console.log(this.activity);
-      //   // await this.sendToken(
-      //   //   patientWallet,
-      //   //   this.activity.activity.reward
-      //   // );
+        await API.graphql(graphqlOperation(createInteraction, { input }))
+          .then(async response => {
+            await this.$notify({
+              group: "foo",
+              title: "New Interaction",
+              text: `Interaction has been recorded.`
+            });
+          })
+          .catch(async error => {
+            await this.$notify({
+              group: "foo",
+              title: "New Patient",
+              text: `${JSON.stringify(error)}`
+            });
+          });
+        // await this.sendToken(
+        //   patientWallet,
+        //   this.activity.activity.reward
+        // );
     },
 
     contactSelect(phoneNumber) {

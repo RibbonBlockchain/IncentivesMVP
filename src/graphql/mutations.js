@@ -6,15 +6,13 @@ export const createPatient = `mutation CreatePatient($input: CreatePatientInput!
     id
     firstName
     lastName
-    phone
     walletAddress
     userId
-    imageLink
-    events {
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
     }
@@ -26,15 +24,13 @@ export const updatePatient = `mutation UpdatePatient($input: UpdatePatientInput!
     id
     firstName
     lastName
-    phone
     walletAddress
     userId
-    imageLink
-    events {
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
     }
@@ -46,17 +42,99 @@ export const deletePatient = `mutation DeletePatient($input: DeletePatientInput!
     id
     firstName
     lastName
-    phone
     walletAddress
     userId
-    imageLink
-    events {
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
+    }
+  }
+}
+`;
+export const createInteraction = `mutation CreateInteraction($input: CreateInteractionInput!) {
+  createInteraction(input: $input) {
+    id
+    interaction
+    ratings
+    patient {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const updateInteraction = `mutation UpdateInteraction($input: UpdateInteractionInput!) {
+  updateInteraction(input: $input) {
+    id
+    interaction
+    ratings
+    patient {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const deleteInteraction = `mutation DeleteInteraction($input: DeleteInteractionInput!) {
+  deleteInteraction(input: $input) {
+    id
+    interaction
+    ratings
+    patient {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
     }
   }
 }
@@ -66,15 +144,13 @@ export const createPractitioner = `mutation CreatePractitioner($input: CreatePra
     id
     firstName
     lastName
-    phone
-    userId
     walletAddress
-    imageLink
-    events {
+    userId
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
     }
@@ -86,15 +162,13 @@ export const updatePractitioner = `mutation UpdatePractitioner($input: UpdatePra
     id
     firstName
     lastName
-    phone
-    userId
     walletAddress
-    imageLink
-    events {
+    userId
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
     }
@@ -106,113 +180,15 @@ export const deletePractitioner = `mutation DeletePractitioner($input: DeletePra
     id
     firstName
     lastName
-    phone
-    userId
     walletAddress
-    imageLink
-    events {
+    userId
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
-    }
-  }
-}
-`;
-export const createEvent = `mutation CreateEvent($input: CreateEventInput!) {
-  createEvent(input: $input) {
-    id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const updateEvent = `mutation UpdateEvent($input: UpdateEventInput!) {
-  updateEvent(input: $input) {
-    id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const deleteEvent = `mutation DeleteEvent($input: DeleteEventInput!) {
-  deleteEvent(input: $input) {
-    id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
-      walletAddress
-      userId
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
     }
   }
 }

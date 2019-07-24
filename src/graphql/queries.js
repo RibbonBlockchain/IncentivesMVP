@@ -6,15 +6,13 @@ export const getPatient = `query GetPatient($id: ID!) {
     id
     firstName
     lastName
-    phone
     walletAddress
     userId
-    imageLink
-    events {
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
     }
@@ -31,12 +29,67 @@ export const listPatients = `query ListPatients(
       id
       firstName
       lastName
-      phone
       walletAddress
       userId
-      imageLink
-      events {
+      interactions {
         nextToken
+      }
+    }
+    nextToken
+  }
+}
+`;
+export const getInteraction = `query GetInteraction($id: ID!) {
+  getInteraction(id: $id) {
+    id
+    interaction
+    ratings
+    patient {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+    practitioner {
+      id
+      firstName
+      lastName
+      walletAddress
+      userId
+      interactions {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const listInteractions = `query ListInteractions(
+  $filter: ModelInteractionFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listInteractions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      interaction
+      ratings
+      patient {
+        id
+        firstName
+        lastName
+        walletAddress
+        userId
+      }
+      practitioner {
+        id
+        firstName
+        lastName
+        walletAddress
+        userId
       }
     }
     nextToken
@@ -48,15 +101,13 @@ export const getPractitioner = `query GetPractitioner($id: ID!) {
     id
     firstName
     lastName
-    phone
-    userId
     walletAddress
-    imageLink
-    events {
+    userId
+    interactions {
       items {
         id
-        eventType
-        rating
+        interaction
+        ratings
       }
       nextToken
     }
@@ -73,77 +124,10 @@ export const listPractitioners = `query ListPractitioners(
       id
       firstName
       lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
-    nextToken
-  }
-}
-`;
-export const getEvent = `query GetEvent($id: ID!) {
-  getEvent(id: $id) {
-    id
-    eventType
-    patient {
-      id
-      firstName
-      lastName
-      phone
       walletAddress
       userId
-      imageLink
-      events {
+      interactions {
         nextToken
-      }
-    }
-    rating
-    practitioner {
-      id
-      firstName
-      lastName
-      phone
-      userId
-      walletAddress
-      imageLink
-      events {
-        nextToken
-      }
-    }
-  }
-}
-`;
-export const listEvents = `query ListEvents(
-  $filter: ModelEventFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listEvents(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      eventType
-      patient {
-        id
-        firstName
-        lastName
-        phone
-        walletAddress
-        userId
-        imageLink
-      }
-      rating
-      practitioner {
-        id
-        firstName
-        lastName
-        phone
-        userId
-        walletAddress
-        imageLink
       }
     }
     nextToken

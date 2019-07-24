@@ -1,18 +1,18 @@
 {
-    "dev": {
+    "rbn": {
         "awscloudformation": {
-            "AuthRoleName": "dapp-dev-20190709230948-authRole",
-            "UnauthRoleArn": "arn:aws:iam::853431608467:role/dapp-dev-20190709230948-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::853431608467:role/dapp-dev-20190709230948-authRole",
+            "AuthRoleName": "dapp-rbn-20190724192934-authRole",
+            "UnauthRoleArn": "arn:aws:iam::853431608467:role/dapp-rbn-20190724192934-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::853431608467:role/dapp-rbn-20190724192934-authRole",
             "Region": "eu-west-1",
-            "DeploymentBucketName": "dapp-dev-20190709230948-deployment",
-            "UnauthRoleName": "dapp-dev-20190709230948-unauthRole",
-            "StackName": "dapp-dev-20190709230948",
-            "StackId": "arn:aws:cloudformation:eu-west-1:853431608467:stack/dapp-dev-20190709230948/454896d0-a296-11e9-a67b-0a4189c8dbd8"
+            "DeploymentBucketName": "dapp-rbn-20190724192934-deployment",
+            "UnauthRoleName": "dapp-rbn-20190724192934-unauthRole",
+            "StackName": "dapp-rbn-20190724192934",
+            "StackId": "arn:aws:cloudformation:eu-west-1:853431608467:stack/dapp-rbn-20190724192934/fd7fec70-ae40-11e9-a261-0a99a68566c4"
         },
         "categories": {
             "auth": {
-                "cognito": {}
+                "dappd5162aded5162ade": {}
             }
         }
     }

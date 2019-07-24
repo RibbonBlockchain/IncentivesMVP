@@ -1,7 +1,7 @@
 import { Auth, API, graphqlOperation } from "aws-amplify";
 import {
   listPatients,
-  listEvents,
+  listInteractions,
   listPractitioners
 } from "../../graphql/queries";
 import {
@@ -9,6 +9,7 @@ import {
   CURRENT_USER,
   NEW_PATIENT_SUCCESS,
   PATIENT_ACTIVITY_SUCCESS,
+  NEW_ACTIVITY_SUCCESS,
   OPEN_RESET_MODAL,
   LIST_PATIENTS,
   LIST_ACTIVITIES,
@@ -60,15 +61,17 @@ export const PatientActions = {
       .catch(err => commit(LIST_PATIENTS, []));
   },
   loadEvents({ commit }, payload) {
-    API.graphql(graphqlOperation(listEvents))
-      .then(response => commit(LIST_ACTIVITIES, response.data.listEvents.items))
+    API.graphql(graphqlOperation(listInteractions))
+      .then(response => {
+        commit(LIST_ACTIVITIES, response.data.listInteractions.items);
+      })
       .catch(err => commit(LIST_ACTIVITIES, []));
   },
   addPatient({ commit }, payload) {
     commit(NEW_PATIENT_SUCCESS, payload);
   },
   addInteraction({ commit }, payload) {
-    commit(PATIENT_ACTIVITY_SUCCESS, payload);
+    commit(NEW_ACTIVITY_SUCCESS, payload);
   }
 };
 

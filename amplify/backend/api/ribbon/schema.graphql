@@ -1,0 +1,23 @@
+type Patient @model {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  walletAddress: String!
+  userId: String!
+  interactions: [Interaction] @connection(name: "PatientInteraction")
+}
+type Interaction @model {
+  id: ID!
+  interaction: String!
+  ratings: String!
+  patient: Patient @connection(name: "PatientInteraction")
+  practitioner: Practitioner @connection(name: "PractitionerInteraction")
+}
+type Practitioner @model {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  walletAddress: String!
+  userId: String!
+  interactions: [Interaction] @connection(name: "PractitionerInteraction")
+}
