@@ -337,6 +337,9 @@ import healthcareServices from "../store/healthcare.json";
 
 import abi from "../abi.json";
 
+import { ethers } from 'ethers';
+
+
 const web3 = new Web3(
   new Web3.providers.HttpProvider(
     "https://rinkeby.infura.io/v3/a8853810b5054964b0fbe19c8e02e9c1"
@@ -670,10 +673,27 @@ export default {
               text: `${JSON.stringify(error)}`
             });
           });
-        // await this.sendToken(
-        //   patientWallet,
-        //   this.activity.activity.reward
-        // );
+        await this.sendToken(
+          patientWallet,
+          this.activity.activity.reward
+        );
+    },
+
+    sendToken(receiver, amount) {
+      
+      const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
+      const contractAbi = abi;
+      const contractOwner = {
+        addr: "0x1de929d52b94a06f21d57dafe202d36c6ca71c7a",
+        key: privateKey
+      };
+      const contract = new ethers.Contract(contractAddr, contractAbi, contractOwner);
+      const numberOfDecimals = 18;
+      const numberOfTokens = ethers.utils.parseUnits(amount, numberOfDecimals);
+      // Send tokens
+      contract.transfer(receiver, numberOfTokens).then(function(tx) {
+          console.log(tx);
+      });
     },
 
     contactSelect(phoneNumber) {
