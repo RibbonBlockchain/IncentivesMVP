@@ -14,6 +14,7 @@ export const onCreatePatient = `subscription OnCreatePatient {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -33,6 +34,7 @@ export const onUpdatePatient = `subscription OnUpdatePatient {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -52,6 +54,7 @@ export const onDeletePatient = `subscription OnDeletePatient {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -74,6 +77,7 @@ export const onCreateInteraction = `subscription OnCreateInteraction {
         nextToken
       }
     }
+    prescriptions
     practitioner {
       id
       firstName
@@ -104,6 +108,7 @@ export const onUpdateInteraction = `subscription OnUpdateInteraction {
         nextToken
       }
     }
+    prescriptions
     practitioner {
       id
       firstName
@@ -134,6 +139,7 @@ export const onDeleteInteraction = `subscription OnDeleteInteraction {
         nextToken
       }
     }
+    prescriptions
     practitioner {
       id
       firstName
@@ -161,6 +167,7 @@ export const onCreatePractitioner = `subscription OnCreatePractitioner {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -180,6 +187,7 @@ export const onUpdatePractitioner = `subscription OnUpdatePractitioner {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -199,6 +207,7 @@ export const onDeletePractitioner = `subscription OnDeletePractitioner {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }

@@ -14,6 +14,7 @@ export const getPatient = `query GetPatient($id: ID!) {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -57,6 +58,7 @@ export const getInteraction = `query GetInteraction($id: ID!) {
         nextToken
       }
     }
+    prescriptions
     practitioner {
       id
       firstName
@@ -89,6 +91,7 @@ export const listInteractions = `query ListInteractions(
         userId
         phoneNumber
       }
+      prescriptions
       practitioner {
         id
         firstName
@@ -115,6 +118,7 @@ export const getPractitioner = `query GetPractitioner($id: ID!) {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }

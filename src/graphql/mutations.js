@@ -14,6 +14,7 @@ export const createPatient = `mutation CreatePatient($input: CreatePatientInput!
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -33,6 +34,7 @@ export const updatePatient = `mutation UpdatePatient($input: UpdatePatientInput!
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -52,6 +54,7 @@ export const deletePatient = `mutation DeletePatient($input: DeletePatientInput!
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -74,6 +77,7 @@ export const createInteraction = `mutation CreateInteraction($input: CreateInter
         nextToken
       }
     }
+    prescriptions
     practitioner {
       id
       firstName
@@ -104,6 +108,7 @@ export const updateInteraction = `mutation UpdateInteraction($input: UpdateInter
         nextToken
       }
     }
+    prescriptions
     practitioner {
       id
       firstName
@@ -134,6 +139,7 @@ export const deleteInteraction = `mutation DeleteInteraction($input: DeleteInter
         nextToken
       }
     }
+    prescriptions
     practitioner {
       id
       firstName
@@ -161,6 +167,7 @@ export const createPractitioner = `mutation CreatePractitioner($input: CreatePra
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -180,6 +187,7 @@ export const updatePractitioner = `mutation UpdatePractitioner($input: UpdatePra
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -199,6 +207,7 @@ export const deletePractitioner = `mutation DeletePractitioner($input: DeletePra
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }

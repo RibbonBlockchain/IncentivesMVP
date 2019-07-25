@@ -121,7 +121,7 @@
               </tr>
               <tr>
                 <td style="width: 50%">Phone Number</td>
-                <td>{{ this.selectedPerson.phone }}</td>
+                <td>{{ this.selectedPerson.phoneNumber }}</td>
               </tr>
             </table>
           </div>
@@ -232,7 +232,7 @@
       </div>
 
       <div class="row">
-        <div class="col-6">
+        <div class="col-12">
           <label>Select Patient</label>
           <div class="form-group">
             <v-select
@@ -243,7 +243,9 @@
             ></v-select>
           </div>
         </div>
-        <div class="col-6">
+      </div>
+      <div class="row">
+        <div class="col-12">
           <label>Select Practitioner</label>
           <div class="form-group">
             <v-select
@@ -251,6 +253,20 @@
               label="userId"
               v-model="activity.practitioner"
               :options="practitioners"
+            ></v-select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label>Select Prescriptions</label>
+          <div class="form-group">
+            <v-select
+              multiple
+              style="width: 100%"
+              label="title"
+              v-model="activity.prescriptions"
+              :options="prescriptions"
             ></v-select>
           </div>
         </div>
@@ -334,11 +350,11 @@ import token from "../util/token";
 import { blobToDataURL } from "../util/helpers";
 import eventData from "../store/events.json";
 import healthcareServices from "../store/healthcare.json";
+import prescriptions from "../store/prescriptions.json";
 
 import abi from "../abi.json";
 
-import { ethers } from 'ethers';
-
+import { ethers } from "ethers";
 
 const web3 = new Web3(
   new Web3.providers.HttpProvider(
@@ -370,6 +386,7 @@ export default {
       selectedPerson: {},
       eventData: eventData,
       healthcareServices: healthcareServices,
+      prescriptions: prescriptions,
       web3: {
         balance: 0
       },
@@ -390,7 +407,8 @@ export default {
       },
       activity: {
         patient: {},
-        practitioner: "",
+        practitioner: {},
+        prescriptions: [],
         activity: {}
       },
       rewardsToSend: [],
@@ -529,51 +547,19 @@ export default {
       return result;
     },
 
-    async sendToken(receiver, amount) {
-      //added async so we can use await
-      const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
-      const contractAbi = abi;
-      const contractOwner = {
-        addr: "0x1de929d52b94a06f21d57dafe202d36c6ca71c7a",
-        key: privateKey
-      };
-      console.log(`Start to send ${amount} tokens to ${receiver}`);
-      const contract = new web3.eth.Contract(contractAbi, contractAddr);
-      // Was having some issues with the amount being sent in this function
-      const data = contract.methods
-        .transfer(receiver, `0x${this.toHex(amount.toString())}`)
-        .encodeABI(); // encodeABI() is required in order to get the method data into opcode/binary format
-      const gasPrice = await web3.eth.getGasPrice(); // await added since the function returns a promise
-      const nonce = await web3.eth.getTransactionCount(contractOwner.addr); //We need the nonce of the account added await since the function returns a promise
-      const gasLimit = 1200000; //Increased the gaslimit after checking one of the successful transactions one the contract
-      const rawTransaction = {
-        from: contractOwner.addr,
-        nonce: web3.utils.toHex(nonce),
-        gasPrice: web3.utils.toHex(gasPrice),
-        gasLimit: web3.utils.toHex(gasLimit),
-        to: receiver,
-        value: `0x${this.toHex(amount.toString())}`, //value should be hex
-        data: data,
-        chainId: 4
-      };
-
-      const privKey = Buffer.from(contractOwner.key, "hex");
-      const tx = new Tx(rawTransaction);
-      tx.sign(privKey);
-      const serializedTx = tx.serialize();
-      web3.eth
-        .sendSignedTransaction("0x" + serializedTx.toString("hex")) //sendRawTransaction is now deprecated, replaced with sendSignedTransaction
-        .on("transactionHash", function(hash) {
-          return true;
-        })
-        .on("error", console.error);
-    },
-
-    openDetails({ firstName, lastName, phone, id, walletAddress, imageLink, userId }) {
+    openDetails({
+      firstName,
+      lastName,
+      phoneNumber,
+      id,
+      walletAddress,
+      imageLink,
+      userId
+    }) {
       this.selectedPerson = {
         firstName,
         lastName,
-        phone,
+        phoneNumber,
         id,
         walletAddress,
         imageLink,
@@ -595,7 +581,7 @@ export default {
         lastName: this.patient.lastName,
         userId: this.patient.idNumber,
         phoneNumber: this.patient.phoneNumber,
-        walletAddress: web3.eth.accounts.create().address,
+        walletAddress: web3.eth.accounts.create().address
       };
       API.graphql(graphqlOperation(createPatient, { input }))
         .then(response => {
@@ -654,36 +640,33 @@ export default {
         interactionPatientId: this.activity.patient.id,
         interactionPractitionerId: this.activity.practitioner.id,
         interaction: this.activity.activity.eventName,
-        ratings: this.rating
+        ratings: this.rating,
+        prescriptions: this.activity.prescriptions
       };
       let patientWallet = this.activity.patient.walletAddress;
       let practitionerWallet = this.activity.practitioner.walletAddress;
-        await API.graphql(graphqlOperation(createInteraction, { input }))
-          .then(async response => {
-            await this.$notify({
-              group: "foo",
-              title: "New Interaction",
-              text: `Interaction has been recorded.`
-            });
-          })
-          .catch(async error => {
-            await this.$notify({
-              group: "foo",
-              title: "New Patient",
-              text: `${JSON.stringify(error)}`
-            });
+      await API.graphql(graphqlOperation(createInteraction, { input }))
+        .then(async response => {
+          await this.$notify({
+            group: "foo",
+            title: "New Interaction",
+            text: `Interaction has been recorded.`
           });
-        await this.sendToken(
-          patientWallet,
-          this.activity.activity.reward
-        );
+          await this.sendToken(patientWallet, this.activity.activity.reward);
+        })
+        .catch(async error => {
+          await this.$notify({
+            group: "foo",
+            title: "New Patient",
+            text: `${JSON.stringify(error)}`
+          });
+        });
     },
 
     sendToken(receiver, amount) {
-      
       const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
       const contractAbi = abi;
-      let provider = ethers.getDefaultProvider('rinkeby');
+      let provider = ethers.getDefaultProvider("rinkeby");
       let wallet = new ethers.Wallet(privateKey, provider);
       const contractOwner = {
         addr: "0x1de929d52b94a06f21d57dafe202d36c6ca71c7a",
@@ -693,7 +676,7 @@ export default {
       const numberOfTokens = ethers.utils.bigNumberify(amount);
       // Send tokens
       contract.transfer(receiver, numberOfTokens).then(function(tx) {
-          console.log(tx);
+        console.log(tx);
       });
     },
 
