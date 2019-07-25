@@ -8,6 +8,7 @@ export const onCreatePatient = `subscription OnCreatePatient {
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id
@@ -26,6 +27,7 @@ export const onUpdatePatient = `subscription OnUpdatePatient {
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id
@@ -44,6 +46,7 @@ export const onDeletePatient = `subscription OnDeletePatient {
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id
@@ -66,6 +69,7 @@ export const onCreateInteraction = `subscription OnCreateInteraction {
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
@@ -76,6 +80,7 @@ export const onCreateInteraction = `subscription OnCreateInteraction {
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
@@ -94,6 +99,7 @@ export const onUpdateInteraction = `subscription OnUpdateInteraction {
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
@@ -104,6 +110,7 @@ export const onUpdateInteraction = `subscription OnUpdateInteraction {
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
@@ -122,6 +129,7 @@ export const onDeleteInteraction = `subscription OnDeleteInteraction {
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
@@ -132,6 +140,7 @@ export const onDeleteInteraction = `subscription OnDeleteInteraction {
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
@@ -146,6 +155,7 @@ export const onCreatePractitioner = `subscription OnCreatePractitioner {
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id
@@ -164,6 +174,7 @@ export const onUpdatePractitioner = `subscription OnUpdatePractitioner {
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id
@@ -182,6 +193,7 @@ export const onDeletePractitioner = `subscription OnDeletePractitioner {
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id

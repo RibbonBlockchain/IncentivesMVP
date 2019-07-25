@@ -580,7 +580,7 @@ export default {
         userId
       };
       token.methods
-        .balanceOf("0xab015264f703634260FF763c31f4bBF9146b545a")
+        .balanceOf(walletAddress)
         .call()
         .then(balance => {
           this.myBalance = web3.utils.fromWei(balance.toString(), "ether");
@@ -594,7 +594,7 @@ export default {
         firstName: this.patient.firstName,
         lastName: this.patient.lastName,
         userId: this.patient.idNumber,
-        // phone: this.patient.phoneNumber,
+        phoneNumber: this.patient.phoneNumber,
         walletAddress: web3.eth.accounts.create().address,
       };
       API.graphql(graphqlOperation(createPatient, { input }))
@@ -622,7 +622,7 @@ export default {
         firstName: this.practitioner.firstName,
         lastName: this.practitioner.lastName,
         userId: this.practitioner.idNumber,
-        // phone: this.practitioner.phoneNumber,
+        phoneNumber: this.practitioner.phoneNumber,
         walletAddress: web3.eth.accounts.create().address
       };
       API.graphql(graphqlOperation(createPractitioner, { input }))
