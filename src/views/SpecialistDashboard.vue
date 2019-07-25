@@ -683,13 +683,14 @@ export default {
       
       const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
       const contractAbi = abi;
+      let provider = ethers.getDefaultProvider('rinkeby');
+      let wallet = new ethers.Wallet(privateKey, provider);
       const contractOwner = {
         addr: "0x1de929d52b94a06f21d57dafe202d36c6ca71c7a",
         key: privateKey
       };
-      const contract = new ethers.Contract(contractAddr, contractAbi, contractOwner);
-      const numberOfDecimals = 18;
-      const numberOfTokens = ethers.utils.parseUnits(amount, numberOfDecimals);
+      const contract = new ethers.Contract(contractAddr, contractAbi, wallet);
+      const numberOfTokens = ethers.utils.bigNumberify(amount);
       // Send tokens
       contract.transfer(receiver, numberOfTokens).then(function(tx) {
           console.log(tx);
