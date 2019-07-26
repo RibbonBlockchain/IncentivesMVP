@@ -448,6 +448,7 @@ export default {
       });
   },
   mounted: function() {
+    console.log(this.prescriptions)
     API.graphql(graphqlOperation(onCreateInteraction)).subscribe({
       next: data => {
         this.$store.dispatch(
