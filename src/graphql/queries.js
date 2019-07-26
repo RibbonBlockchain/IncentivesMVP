@@ -8,11 +8,13 @@ export const getPatient = `query GetPatient($id: ID!) {
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -31,6 +33,7 @@ export const listPatients = `query ListPatients(
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
@@ -50,16 +53,19 @@ export const getInteraction = `query GetInteraction($id: ID!) {
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
     }
+    prescriptions
     practitioner {
       id
       firstName
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
@@ -83,13 +89,16 @@ export const listInteractions = `query ListInteractions(
         lastName
         walletAddress
         userId
+        phoneNumber
       }
+      prescriptions
       practitioner {
         id
         firstName
         lastName
         walletAddress
         userId
+        phoneNumber
       }
     }
     nextToken
@@ -103,11 +112,13 @@ export const getPractitioner = `query GetPractitioner($id: ID!) {
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -126,6 +137,7 @@ export const listPractitioners = `query ListPractitioners(
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }

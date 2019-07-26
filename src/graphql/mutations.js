@@ -8,11 +8,13 @@ export const createPatient = `mutation CreatePatient($input: CreatePatientInput!
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -26,11 +28,13 @@ export const updatePatient = `mutation UpdatePatient($input: UpdatePatientInput!
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -44,11 +48,13 @@ export const deletePatient = `mutation DeletePatient($input: DeletePatientInput!
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -66,16 +72,19 @@ export const createInteraction = `mutation CreateInteraction($input: CreateInter
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
     }
+    prescriptions
     practitioner {
       id
       firstName
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
@@ -94,16 +103,19 @@ export const updateInteraction = `mutation UpdateInteraction($input: UpdateInter
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
     }
+    prescriptions
     practitioner {
       id
       firstName
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
@@ -122,16 +134,19 @@ export const deleteInteraction = `mutation DeleteInteraction($input: DeleteInter
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
     }
+    prescriptions
     practitioner {
       id
       firstName
       lastName
       walletAddress
       userId
+      phoneNumber
       interactions {
         nextToken
       }
@@ -146,11 +161,13 @@ export const createPractitioner = `mutation CreatePractitioner($input: CreatePra
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -164,11 +181,13 @@ export const updatePractitioner = `mutation UpdatePractitioner($input: UpdatePra
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }
@@ -182,11 +201,13 @@ export const deletePractitioner = `mutation DeletePractitioner($input: DeletePra
     lastName
     walletAddress
     userId
+    phoneNumber
     interactions {
       items {
         id
         interaction
         ratings
+        prescriptions
       }
       nextToken
     }

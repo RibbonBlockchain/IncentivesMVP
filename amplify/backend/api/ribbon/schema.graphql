@@ -4,6 +4,7 @@ type Patient @model {
   lastName: String!
   walletAddress: String!
   userId: String!
+  phoneNumber: String!
   interactions: [Interaction] @connection(name: "PatientInteraction")
 }
 type Interaction @model {
@@ -11,6 +12,7 @@ type Interaction @model {
   interaction: String!
   ratings: String!
   patient: Patient @connection(name: "PatientInteraction")
+  prescriptions: String!
   practitioner: Practitioner @connection(name: "PractitionerInteraction")
 }
 type Practitioner @model {
@@ -19,5 +21,6 @@ type Practitioner @model {
   lastName: String!
   walletAddress: String!
   userId: String!
+  phoneNumber: String!
   interactions: [Interaction] @connection(name: "PractitionerInteraction")
 }

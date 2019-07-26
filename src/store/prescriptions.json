@@ -1,0 +1,773 @@
+[
+  {
+    "title": "Abacavir (ABC)"
+  },
+  {
+    "title": "ACE-inhibitor"
+  },
+  {
+    "title": "Acetazolamide"
+  },
+  {
+    "title": "Acetic acid 2% in alcohol"
+  },
+  {
+    "title": "Aciclovir, oral"
+  },
+  {
+    "title": "Activated charcoal"
+  },
+  {
+    "title": "Adrenaline (epinephrine), inhalation"
+  },
+  {
+    "title": "Adrenaline (epinephrine), parenteral"
+  },
+  {
+    "title": "Albendazole"
+  },
+  {
+    "title": "Allopurinol"
+  },
+  {
+    "title": "Amitriptyline"
+  },
+  {
+    "title": "Amlodipine"
+  },
+  {
+    "title": "Amoxicillin"
+  },
+  {
+    "title": "Amoxicillin/clavulanic acid, oral"
+  },
+  {
+    "title": "Amphotericin B"
+  },
+  {
+    "title": "Ampicillin"
+  },
+  {
+    "title": "Anticholinergic"
+  },
+  {
+    "title": "Anti-D immunoglobulin"
+  },
+  {
+    "title": "Antiviral (active against herpes zoster), oral"
+  },
+  {
+    "title": "Antiviral (active against varicella zoster), oral"
+  },
+  {
+    "title": "Aqueous Cream"
+  },
+  {
+    "title": "Artemether/lumefantrine"
+  },
+  {
+    "title": "Artesunate"
+  },
+  {
+    "title": "Aspirin"
+  },
+  {
+    "title": "Atazanavir/ritonavir (ATV/r)"
+  },
+  {
+    "title": "Atenolol"
+  },
+  {
+    "title": "Atorvastatin"
+  },
+  {
+    "title": "Atropine, ophthalmic"
+  },
+  {
+    "title": "Atropine, parenteral"
+  },
+  {
+    "title": "Azithromycin, oral"
+  },
+  {
+    "title": "Bacillus camette-guerin (BCG), vaccine"
+  },
+  {
+    "title": "Benzathine benzylpenicillin"
+  },
+  {
+    "title": "Benzodiazepine, oral"
+  },
+  {
+    "title": "Benzodiazepine, parenteral"
+  },
+  {
+    "title": "Benzoyl peroxide 5%, topical"
+  },
+  {
+    "title": "Benzyl benzoate"
+  },
+  {
+    "title": "Beta-blocker, oral"
+  },
+  {
+    "title": "Betamethasone 0.1%, topical"
+  },
+  {
+    "title": "Betamethasone, parenteral"
+  },
+  {
+    "title": "Biperiden, parenteral"
+  },
+  {
+    "title": "Bismuth subgallate compound, topical"
+  },
+  {
+    "title": "Budesonide, inhaler"
+  },
+  {
+    "title": "Calamine lotion"
+  },
+  {
+    "title": "Calcium carbonate, oral"
+  },
+  {
+    "title": "Calcium gluconate 10%, parenteral"
+  },
+  {
+    "title": "Carbamazepine"
+  },
+  {
+    "title": "Cardio-selective beta-blocker, oral"
+  },
+  {
+    "title": "Carvedilol"
+  },
+  {
+    "title": "Ceftriaxone"
+  },
+  {
+    "title": "Cephalexin"
+  },
+  {
+    "title": "Cetirizine"
+  },
+  {
+    "title": "Chloramphenicol 1%, ophthalmic"
+  },
+  {
+    "title": "Chlorhexidine 0.05% aqueous solution"
+  },
+  {
+    "title": "Chlorhexidine 0.2% mouthwash"
+  },
+  {
+    "title": "Chlorhexidine 0.5% in 70 % alcohol"
+  },
+  {
+    "title": "Chlorphenamine"
+  },
+  {
+    "title": "Chlorpromazine, oral"
+  },
+  {
+    "title": "Ciprofloxacin, oral"
+  },
+  {
+    "title": "Citalopram"
+  },
+  {
+    "title": "Clotrimazole 1%, topical"
+  },
+  {
+    "title": "Clotrimazole vaginal cream"
+  },
+  {
+    "title": "Clotrimazole, vaginal pessary"
+  },
+  {
+    "title": "Coal tar (Liquor picis carbonis (LPC) BP"
+  },
+  {
+    "title": "Combined oral contraceptive"
+  },
+  {
+    "title": "Conjugated estrogens"
+  },
+  {
+    "title": "Corticosteroid potent, topical"
+  },
+  {
+    "title": "Corticosteroid potent, topical"
+  },
+  {
+    "title": "Corticosteroid, nasal solution"
+  },
+  {
+    "title": "Corticosteroid, inhaler"
+  },
+  {
+    "title": "Cotrimoxazole, oral"
+  },
+  {
+    "title": "Cu T380A, IUCD"
+  },
+  {
+    "title": "Dextrose 5%"
+  },
+  {
+    "title": "Dextrose 10%"
+  },
+  {
+    "title": "Dextrose 50%"
+  },
+  {
+    "title": "Diazepam, parenteral"
+  },
+  {
+    "title": "Diazepam, rectal"
+  },
+  {
+    "title": "Doxycycline"
+  },
+  {
+    "title": "Efavirenz (EFV)"
+  },
+  {
+    "title": "Emollient"
+  },
+  {
+    "title": "Emtricitabine (FTC)"
+  },
+  {
+    "title": "Emulsifying ointment"
+  },
+  {
+    "title": "Enalapril"
+  },
+  {
+    "title": "Ergometrine"
+  },
+  {
+    "title": "Estradiol valerate"
+  },
+  {
+    "title": "Estradiol/norethisterone acetate"
+  },
+  {
+    "title": "Ethambutol"
+  },
+  {
+    "title": "Ethinylestradiol/levonorgestrel"
+  },
+  {
+    "title": "Etonogestrel subdermal implant"
+  },
+  {
+    "title": "Ferrous fumarate"
+  },
+  {
+    "title": "Ferrous gluconate"
+  },
+  {
+    "title": "Ferrous lactate"
+  },
+  {
+    "title": "Ferrous sulfate compound BPC"
+  },
+  {
+    "title": "Flucloxacillin"
+  },
+  {
+    "title": "Fluconazole, oral"
+  },
+  {
+    "title": "Fluoxetine"
+  },
+  {
+    "title": "Flupenthixol decanoate"
+  },
+  {
+    "title": "Fluphenazine decanoate"
+  },
+  {
+    "title": "Fluticasone, nasal solution"
+  },
+  {
+    "title": "Folic Acid"
+  },
+  {
+    "title": "Formoterol, inhaler"
+  },
+  {
+    "title": "Furosemide, oral"
+  },
+  {
+    "title": "Furosemide, parenteral"
+  },
+  {
+    "title": "Glibenclamide"
+  },
+  {
+    "title": "Glimepiride"
+  },
+  {
+    "title": "Glucose, oral"
+  },
+  {
+    "title": "Haloperidol, oral"
+  },
+  {
+    "title": "Haloperidol, parenteral"
+  },
+  {
+    "title": "Hepatitis B (HepB) vaccine"
+  },
+  {
+    "title": "Hepatitis B immunoglobulin (HBIG)"
+  },
+  {
+    "title": "Hexavalent - diptheria, tetanus, acellular pertussis, inactivated polio, hepatitis B, haemophilus influenza type b vaccine"
+  },
+  {
+    "title": "HMGCoA reductase Inhibitor"
+  },
+  {
+    "title": "Human papilloma virus vaccine"
+  },
+  {
+    "title": "Hydrochlorothiazide"
+  },
+  {
+    "title": "Hydrocortisone"
+  },
+  {
+    "title": "Hydrocortisone 1%, topical"
+  },
+  {
+    "title": "Hyoscine butylbromide, oral"
+  },
+  {
+    "title": "Ibuprofen"
+  },
+  {
+    "title": "Imidazole, topical"
+  },
+  {
+    "title": "Influenza vaccine"
+  },
+  {
+    "title": "Insulin, biphasic"
+  },
+  {
+    "title": "Insulin, intermediate acting"
+  },
+  {
+    "title": "Insulin, short acting"
+  },
+  {
+    "title": "Ipratropium bromide, inhalant solution"
+  },
+  {
+    "title": "Ipratropium bromide, inhaler"
+  },
+  {
+    "title": "Iron, oral"
+  },
+  {
+    "title": "Isoniazid"
+  },
+  {
+    "title": "Isosorbide dinitrate, oral"
+  },
+  {
+    "title": "Isosorbide dinitrate, sublingual"
+  },
+  {
+    "title": "Isosorbide mononitrate, oral"
+  },
+  {
+    "title": "LABA/corticosteroid, inhaler"
+  },
+  {
+    "title": "Lactulose"
+  },
+  {
+    "title": "Lamivudine (3TC)"
+  },
+  {
+    "title": "Lamotrigine"
+  },
+  {
+    "title": "Lansoprazole, oral"
+  },
+  {
+    "title": "Levonorgestrel 1.5 mg, oral"
+  },
+  {
+    "title": "Levothyroxine"
+  },
+  {
+    "title": "Lidocaine 1% without adrenaline (epinephrine), parenteral"
+  },
+  {
+    "title": "Lidocaine 2%, parenteral"
+  },
+  {
+    "title": "Lidocaine 2%, topical"
+  },
+  {
+    "title": "Lidocaine with adrenaline (epinephrine), parenteral"
+  },
+  {
+    "title": "Lidocaine, parenteral"
+  },
+  {
+    "title": "Long-acting calcium channel blocker"
+  },
+  {
+    "title": "Loop diuretic, oral"
+  },
+  {
+    "title": "Loperamide"
+  },
+  {
+    "title": "Lopinavir/ritonavir (LPV/r)"
+  },
+  {
+    "title": "Macrolide, oral"
+  },
+  {
+    "title": "Magnesium sulfate, parenteral"
+  },
+  {
+    "title": "Measles vaccine"
+  },
+  {
+    "title": "Mebendazole"
+  },
+  {
+    "title": "Medroxyprogesterone acetate, oral"
+  },
+  {
+    "title": "Medroxyprogesterone acetate, injectable"
+  },
+  {
+    "title": "Metformin"
+  },
+  {
+    "title": "Methyl salicylate ointment"
+  },
+  {
+    "title": "Methyldopa"
+  },
+  {
+    "title": "Metoclopramide, oral"
+  },
+  {
+    "title": "Metoclopramide, parenteral"
+  },
+  {
+    "title": "Metronidazole, oral"
+  },
+  {
+    "title": "Midazolam, buccal"
+  },
+  {
+    "title": "Midazolam, parenteral"
+  },
+  {
+    "title": "Mifepristone"
+  },
+  {
+    "title": "Misoprostol"
+  },
+  {
+    "title": "Monophasic: combined estrogen/progestin pill"
+  },
+  {
+    "title": "Monophasic: ethinyloestradiol/levonorgestrel, pill"
+  },
+  {
+    "title": "Monophasic: progestin only pill"
+  },
+  {
+    "title": "Monophasic: levonorgestrel, pill"
+  },
+  {
+    "title": "Morphine, long-acting, oral"
+  },
+  {
+    "title": "Morphine, oral"
+  },
+  {
+    "title": "Morphine, parenteral"
+  },
+  {
+    "title": "Moxifloxacin, oral"
+  },
+  {
+    "title": "Multivitamin"
+  },
+  {
+    "title": "Naloxone"
+  },
+  {
+    "title": "Nevirapine (NVP)"
+  },
+  {
+    "title": "Nicotinamide"
+  },
+  {
+    "title": "Nifedipine"
+  },
+  {
+    "title": "Nifedipine"
+  },
+  {
+    "title": "Nitrates short-acting"
+  },
+  {
+    "title": "Nitrofurantoin"
+  },
+  {
+    "title": "Nitrous oxide"
+  },
+  {
+    "title": "NSAID, oral"
+  },
+  {
+    "title": "Nystatin, oral"
+  },
+  {
+    "title": "Oral polio vaccine (bOPV)"
+  },
+  {
+    "title": "Oral rehydrate solution (ORS)"
+  },
+  {
+    "title": "Orphenadrine"
+  },
+  {
+    "title": "Oxygen"
+  },
+  {
+    "title": "Oxymetazoline 0.025%, nasal"
+  },
+  {
+    "title": "Oxymetazoline 0.025%, ophthalmic"
+  },
+  {
+    "title": "Oxymetazoline 0.05%, nasal"
+  },
+  {
+    "title": "Oxytocin"
+  },
+  {
+    "title": "Oxytocin/ergometrine"
+  },
+  {
+    "title": "Paracetamol, oral"
+  },
+  {
+    "title": "Permethrin"
+  },
+  {
+    "title": "Petroleum jelly"
+  },
+  {
+    "title": "Petroleum jelly, yellow"
+  },
+  {
+    "title": "Phenobarbital, oral"
+  },
+  {
+    "title": "Phenoxymethylpenicillin"
+  },
+  {
+    "title": "Phenytoin, oral"
+  },
+  {
+    "title": "Pneumococcal conjugated vaccine"
+  },
+  {
+    "title": "Povidone-iodine, topical"
+  },
+  {
+    "title": "Prednisone, oral"
+  },
+  {
+    "title": "Progestin-only, injectable"
+  },
+  {
+    "title": "Progestin-only, subdermal implant"
+  },
+  {
+    "title": "Promethazine, parenteral"
+  },
+  {
+    "title": "Proton-pump inhibitor, oral"
+  },
+  {
+    "title": "Pyrazinamide"
+  },
+  {
+    "title": "Pyridoxine"
+  },
+  {
+    "title": "Quinine dihydrochloride, parenteral"
+  },
+  {
+    "title": "Rabies immunoglobulin"
+  },
+  {
+    "title": "Rabies vaccine"
+  },
+  {
+    "title": "Rifampicin"
+  },
+  {
+    "title": "Rifampicin/isoniazid"
+  },
+  {
+    "title": "Rifampicin/isoniazid/pyrazinamide/ethambutol"
+  },
+  {
+    "title": "Risperidone, oral"
+  },
+  {
+    "title": "Ritonavir"
+  },
+  {
+    "title": "Rotavirus vaccine"
+  },
+  {
+    "title": "Salbutamol, inhalant solution"
+  },
+  {
+    "title": "Salbutamol, inhaler"
+  },
+  {
+    "title": "Salbutamol, parenteral"
+  },
+  {
+    "title": "Salicylic acid 15-30%, topical"
+  },
+  {
+    "title": "Salicylic acid 2%, topical"
+  },
+  {
+    "title": "Salmeterol/fluticasone, inhaler"
+  },
+  {
+    "title": "Selenium sulphide 2.5%, topical"
+  },
+  {
+    "title": "Sennosides A and B"
+  },
+  {
+    "title": "Short-acting beta2 agonist, inhaler"
+  },
+  {
+    "title": "Simvastatin"
+  },
+  {
+    "title": "Soap substitute"
+  },
+  {
+    "title": "Sodium chloride 0.9%, nasal solution"
+  },
+  {
+    "title": "Sodium chloride 0.9%, parenteral"
+  },
+  {
+    "title": "Sodium cromoglycate 2%, ophthalmic"
+  },
+  {
+    "title": "Spironolactone"
+  },
+  {
+    "title": "SSRI"
+  },
+  {
+    "title": "Streptokinase"
+  },
+  {
+    "title": "Sulphonylurea"
+  },
+  {
+    "title": "Tenofovir (TDF)"
+  },
+  {
+    "title": "Tenofovir/emtriciabine/efavirenz (TDF+FTC+EFV)"
+  },
+  {
+    "title": "Tetanus and diptheria vaccine"
+  },
+  {
+    "title": "Tetanus toxoid"
+  },
+  {
+    "title": "Tetracaine 0.5%, topical"
+  },
+  {
+    "title": "Tetracaine 1%, ophthalmic"
+  },
+  {
+    "title": "Thiamine, oral"
+  },
+  {
+    "title": "Thiamine, parenteral"
+  },
+  {
+    "title": "Thrombolytic"
+  },
+  {
+    "title": "Tincture of Iodine BP"
+  },
+  {
+    "title": "Titanium dioxide (UV block)"
+  },
+  {
+    "title": "Tramadol, oral"
+  },
+  {
+    "title": "Tretinoin, topical"
+  },
+  {
+    "title": "Tricyclic antidepressants"
+  },
+  {
+    "title": "Triphasic: combined estrogen/progestin pills"
+  },
+  {
+    "title": "Triphasic: ethinyloestradiol/levonorgestrel, pills"
+  },
+  {
+    "title": "Valproic acid, oral"
+  },
+  {
+    "title": "Vitamin A"
+  },
+  {
+    "title": "Vitamin K"
+  },
+  {
+    "title": "Water for injection"
+  },
+  {
+    "title": "Zidovudine (AZT)"
+  },
+  {
+    "title": "Zinc, oral"
+  },
+  {
+    "title": "Zinc and castor oil, topical"
+  },
+  {
+    "title": "Zinc oxide, topical"
+  },
+  {
+    "title": "Zuclopenthixol decanoate"
+  }
+]
