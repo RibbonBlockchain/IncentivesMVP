@@ -1,10 +1,166 @@
 [
   {
-    "eventName": "HIV TEST",
-    "reward": 800000
+    "eventName": "Consultation",
+    "reward": 1
   },
   {
-    "eventName": "MALARIA",
-    "reward": 200000
+    "eventName": "Informed consent declaration",
+    "reward": 1
+  },
+  {
+    "eventName": "Survey",
+    "reward": 1
+  },
+  {
+    "eventName": "Sign Non-smoker's declaration",
+    "reward": 1
+  },
+  {
+    "eventName": "Blood pressure check",
+    "reward": 1
+  },
+  {
+    "eventName": "Blood glucose check",
+    "reward": 2
+  },
+  {
+    "eventName": "Cholesterol check",
+    "reward": 1
+  },
+  {
+    "eventName": "Weight assessment check",
+    "reward": 1
+  },
+  {
+    "eventName": "TB test skin/sputum",
+    "reward": 1
+  },
+  {
+    "eventName": "TB radiology test",
+    "reward": 2
+  },
+  {
+    "eventName": "Pap smear",
+    "reward": 2
+  },
+  {
+    "eventName": "Breast cancer lump physical check",
+    "reward": 1
+  },
+  {
+    "eventName": "Mammogram",
+    "reward": 2
+  },
+  {
+    "eventName": "Testicular check",
+    "reward": 1
+  },
+  {
+    "eventName": "Prostate inspection",
+    "reward": 3
+  },
+  {
+    "eventName": "Circumcision - Male",
+    "reward": 5
+  },
+  {
+    "eventName": "HIV test - rapid prick test",
+    "reward": 3
+  },
+  {
+    "eventName": "HIV test - blood draw",
+    "reward": 5
+  },
+  {
+    "eventName": "Initiation of treatment",
+    "reward": 1
+  },
+  {
+    "eventName": "Pharmaccy drug collection",
+    "reward": 1
+  },
+  {
+    "eventName": "Blood draw test",
+    "reward": 5
+  },
+  {
+    "eventName": "Blood donation",
+    "reward": 5
+  },
+  {
+    "eventName": "Colonoscopy check",
+    "reward": 2
+  },
+  {
+    "eventName": "Glaucoma check",
+    "reward": 1
+  },
+  {
+    "eventName": "Flu vaccination",
+    "reward": 1
+  },
+  {
+    "eventName": "Adherence scoring per milestone",
+    "reward": 5
+  },
+  {
+    "eventName": "Urine Test",
+    "reward": 1
+  },
+  {
+    "eventName": "Psychological therapy per visit",
+    "reward": 1
+  },
+  {
+    "eventName": "Psychiatry therapy per visit",
+    "reward": 1
+  },
+  {
+    "eventName": "Counselling per visit",
+    "reward": 1
+  },
+  {
+    "eventName": "Immunization",
+    "reward": 5
+  },
+  {
+    "eventName": "Pregnancy Test",
+    "reward": 1
+  },
+  {
+    "eventName": "Pre-natal class session",
+    "reward": 1
+  },
+  {
+    "eventName": "STI Test",
+    "reward": 1
+  },
+  {
+    "eventName": "Gynaecology check",
+    "reward": 2
+  },
+  {
+    "eventName": "Injection - in clinic per injection",
+    "reward": 1
+  },
+  {
+    "eventName": "Electrocardiogram (ECG)",
+    "reward": 1
+  },
+  {
+    "eventName": "Body Mass Index (BMI) and waist",
+    "reward": 1
+  },
+  {
+    "eventName": "Ultrasound",
+    "reward": 1
+  },
+  {
+    "eventName": "Return checkup visit",
+    "reward": 1
+  },
+  {
+    "eventName": "Return Visit",
+    "reward": 1
   }
 ]
