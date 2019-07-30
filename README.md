@@ -4,7 +4,7 @@
 
 <br>
 
-<a href="https://travis-ci.org/lord/slate"><img src="https://travis-ci.org/lord/slate.svg?branch=master" alt="Build Status"></a>
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5fc113c0-7ab6-4a26-9946-79037b13aa3a/deploy-status)](https://app.netlify.com/sites/ribbon-incentives/deploys)
 
 </p>
 
