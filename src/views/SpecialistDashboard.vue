@@ -66,7 +66,7 @@
                             >{{ `${activity.practitioner.firstName} ${activity.practitioner.lastName}` }}</a>
                           </td>
                           <td>{{ parseInt(activity.id) | moment("ddd, MMM Do YYYY") }}</td>
-                          <td>{{activity.interaction }}</td>
+                          <td>{{ activity.interaction }}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -259,6 +259,20 @@
       </div>
       <div class="row">
         <div class="col-12">
+          <label>Select Activity</label>
+          <div class="form-group">
+            <v-select
+              style="width: 100%"
+              label="eventName"
+              multiple
+              v-model="activity.activity"
+              :options="eventData"
+            ></v-select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
           <label>Select Prescriptions</label>
           <div class="form-group">
             <v-select
@@ -267,20 +281,6 @@
               label="title"
               v-model="activity.prescriptions"
               :options="prescriptions"
-            ></v-select>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <label>Select Activity</label>
-          <div class="form-group">
-            <v-select
-              style="width: 100%"
-              label="eventName"
-              taggable
-              v-model="activity.activity"
-              :options="eventData"
             ></v-select>
           </div>
         </div>
@@ -409,7 +409,7 @@ export default {
         patient: {},
         practitioner: {},
         prescriptions: [],
-        activity: {}
+        activity: []
       },
       rewardsToSend: [],
       rewardsToSendTotal: 0,
@@ -448,7 +448,6 @@ export default {
       });
   },
   mounted: function() {
-    console.log(this.prescriptions)
     API.graphql(graphqlOperation(onCreateInteraction)).subscribe({
       next: data => {
         this.$store.dispatch(
@@ -508,7 +507,7 @@ export default {
         !this.practitioner.phoneNumber ||
         !this.avatar.imageURL
       );
-    }
+	},
   },
   methods: {
     capture() {
@@ -640,7 +639,7 @@ export default {
         id: new Date().getTime(),
         interactionPatientId: this.activity.patient.id,
         interactionPractitionerId: this.activity.practitioner.id,
-        interaction: this.activity.activity.eventName,
+        interaction: this.activity.activity.map(item => item.eventName).join(', '),
         ratings: this.rating,
         prescriptions: this.activity.prescriptions
       };
@@ -652,8 +651,9 @@ export default {
             group: "foo",
             title: "New Interaction",
             text: `Interaction has been recorded.`
-          });
-          await this.sendToken(patientWallet, this.activity.activity.reward);
+		  });
+		  const rewardToBeSent = this.activity.activity.reduce((acc, balance) =>  acc + balance.reward, 0);
+		  this.sendToken(patientWallet, rewardToBeSent);
         })
         .catch(async error => {
           await this.$notify({
