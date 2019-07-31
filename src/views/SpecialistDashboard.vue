@@ -357,13 +357,20 @@ import abi from "../abi.json";
 import { ethers } from "ethers";
 
 const web3 = new Web3(
-  new Web3.providers.HttpProvider(
-    "https://rinkeby.infura.io/v3/a8853810b5054964b0fbe19c8e02e9c1"
-  )
+  // new Web3.providers.HttpProvider(
+  //   "https://rinkeby.infura.io/v3/a8853810b5054964b0fbe19c8e02e9c1"
+  // )
+  window.web3.currentProvider
 );
 
 const privateKey =
-  "97cbbf9b269f0f58d1c4b0f3af662dc627937a2a1a6aa959219c7051b4306371";
+  "97cbbf9b269f0f58d1c4b0f3af662dc627937a2a1a6aa959219c7051b4306371"; 
+const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
+const contractAbi = abi;
+let provider = ethers.getDefaultProvider("rinkeby");
+let wallet = new ethers.Wallet(privateKey, provider);
+const contract = new ethers.Contract(contractAddr, contractAbi, wallet);
+
 export default {
   components: {
     Tabs,
@@ -391,6 +398,8 @@ export default {
         balance: 0
       },
       myBalance: 0,
+      newNonce: 0,
+      account: null,
       patient: {
         idNumber: "",
         firstName: "",
@@ -433,19 +442,31 @@ export default {
     this.$store.dispatch("loadEvents");
     this.$store.dispatch("loadPatients");
     this.$store.dispatch("loadPractitioners");
-    await token.methods
-      .owner()
-      .call()
-      .then(result => {
-        token.methods
-          .balanceOf(result)
-          .call()
-          .then(balance => {
-            this.web3 = {
-              balance: web3.utils.fromWei(balance.toString(), "ether")
-            };
-          });
-      });
+    // await token.methods
+    //   .owner()
+    //   .call()
+    //   .then(result => {
+    //     token.methods
+    //       .balanceOf(result)
+    //       .call()
+    //       .then(balance => {
+    //         this.web3 = {
+    //           balance: web3.utils.fromWei(balance.toString(), "ether")
+    //         };
+    //       });
+    //   });
+    const accounts = await web3.eth.getAccounts();
+    const Nonce = await provider.getTransactionCount(accounts[0], 'pending')
+    this.account = accounts[0];
+    this.newNonce = Nonce;
+    const options = {address: accounts[0], provider: provider};
+    await contract.balanceOf(options.address)
+    .then(balance => {
+      this.web3 = {
+        balance: web3.utils.fromWei(balance.toString(), "ether")
+      }
+    })
+
   },
   mounted: function() {
     API.graphql(graphqlOperation(onCreateInteraction)).subscribe({
@@ -633,6 +654,12 @@ export default {
         });
     },
 
+    async wait(ms) {
+      return new Promise(resolve => {
+      setTimeout(resolve, ms);
+      });
+    },
+
     async recordActivity() {
       // assign the patient to each of the events
       const input = {
@@ -653,7 +680,15 @@ export default {
             text: `Interaction has been recorded.`
 		  });
 		  const rewardToBeSent = this.activity.activity.reduce((acc, balance) =>  acc + balance.reward, 0);
-		  this.sendToken(patientWallet, rewardToBeSent);
+      
+      //amount sent to patient
+		  this.sendToken(patientWallet, rewardToBeSent.toString(), 0);
+
+      //amount sent to practitioner
+      this.sendToken(practitionerWallet, rewardToBeSent.toString(), 1);
+
+      //amount sent to CommunityHealthWorker
+      this.sendToken(this.account, rewardToBeSent.toString(), 2);
         })
         .catch(async error => {
           await this.$notify({
@@ -664,19 +699,23 @@ export default {
         });
     },
 
-    sendToken(receiver, amount) {
-      const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
-      const contractAbi = abi;
-      let provider = ethers.getDefaultProvider("rinkeby");
-      let wallet = new ethers.Wallet(privateKey, provider);
-      const contractOwner = {
-        addr: "0x1de929d52b94a06f21d57dafe202d36c6ca71c7a",
-        key: privateKey
-      };
-      const contract = new ethers.Contract(contractAddr, contractAbi, wallet);
-      const numberOfTokens = ethers.utils.bigNumberify(amount);
+    //cant send bulk transactions as nonce will be the same if transaction isnt yet mined.
+    //transaction nonce has to be manipulated to aceept bulk transactions
+    sendToken(receiver, amount, gennonce) {
+      const numberOfDecimals = 18;
+      // const numberOfTokens = ethers.utils.bigNumberify(amount);
+      const numberOfTokens = ethers.utils.parseUnits(amount, numberOfDecimals);
       // Send tokens
-      contract.transfer(receiver, numberOfTokens).then(function(tx) {
+      
+      console.log(this.newNonce)
+
+      let overrides = {
+        // gasLimit: 21000,
+        // gasPrice: ethers.utils.parseUnits('9.0', 'gwei'),
+        nonce: this.newNonce+gennonce,
+      };
+
+      contract.transfer(receiver, numberOfTokens, overrides).then(function(tx) {
         console.log(tx);
       });
     },
