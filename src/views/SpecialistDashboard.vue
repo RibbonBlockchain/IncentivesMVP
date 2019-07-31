@@ -654,12 +654,6 @@ export default {
         });
     },
 
-    async wait(ms) {
-      return new Promise(resolve => {
-      setTimeout(resolve, ms);
-      });
-    },
-
     async recordActivity() {
       // assign the patient to each of the events
       const input = {
@@ -684,11 +678,16 @@ export default {
       //amount sent to patient
 		  this.sendToken(patientWallet, rewardToBeSent.toString(), 0);
 
+      //sum of ratings object
+      const sumRatings = (obj) => Object.keys(obj).reduce((acc, value) => acc + obj[value], 0);
       //amount sent to practitioner
-      this.sendToken(practitionerWallet, rewardToBeSent.toString(), 1);
+      const rewardToPractitioner = parseFloat(rewardToBeSent)*0.10 + parseFloat((sumRatings(this.rating)/30))*0.05
+      
+      this.sendToken(practitionerWallet, rewardToPractitioner.toString(), 1);
 
       //amount sent to CommunityHealthWorker
-      this.sendToken(this.account, rewardToBeSent.toString(), 2);
+      const rewardToHealthWorker = parseFloat(rewardToBeSent)*0.15
+      this.sendToken(this.account, rewardToHealthWorker.toString(), 2);
         })
         .catch(async error => {
           await this.$notify({
@@ -705,9 +704,6 @@ export default {
       const numberOfDecimals = 18;
       // const numberOfTokens = ethers.utils.bigNumberify(amount);
       const numberOfTokens = ethers.utils.parseUnits(amount, numberOfDecimals);
-      // Send tokens
-      
-      console.log(this.newNonce)
 
       let overrides = {
         // gasLimit: 21000,
@@ -715,6 +711,7 @@ export default {
         nonce: this.newNonce+gennonce,
       };
 
+      // send tokens
       contract.transfer(receiver, numberOfTokens, overrides).then(function(tx) {
         console.log(tx);
       });
