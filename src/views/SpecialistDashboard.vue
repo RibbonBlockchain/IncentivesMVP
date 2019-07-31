@@ -398,6 +398,7 @@ export default {
         balance: 0
       },
       myBalance: 0,
+      newNonce: 0,
       account: null,
       patient: {
         idNumber: "",
@@ -455,7 +456,9 @@ export default {
     //       });
     //   });
     const accounts = await web3.eth.getAccounts();
-    this.account = accounts[0]
+    const Nonce = await provider.getTransactionCount(accounts[0], 'pending')
+    this.account = accounts[0];
+    this.newNonce = Nonce;
     const options = {address: accounts[0], provider: provider};
     await contract.balanceOf(options.address)
     .then(balance => {
@@ -651,6 +654,12 @@ export default {
         });
     },
 
+    async wait(ms) {
+      return new Promise(resolve => {
+      setTimeout(resolve, ms);
+      });
+    },
+
     async recordActivity() {
       // assign the patient to each of the events
       const input = {
@@ -673,13 +682,13 @@ export default {
 		  const rewardToBeSent = this.activity.activity.reduce((acc, balance) =>  acc + balance.reward, 0);
       
       //amount sent to patient
-		  this.sendToken(patientWallet, rewardToBeSent.toString());
+		  this.sendToken(patientWallet, rewardToBeSent.toString(), 0);
 
       //amount sent to practitioner
-      this.sendToken(practitionerWallet, rewardToBeSent.toString());
+      this.sendToken(practitionerWallet, rewardToBeSent.toString(), 1);
 
       //amount sent to CommunityHealthWorker
-      this.sendToken(this.account, rewardToBeSent.toString());
+      this.sendToken(this.account, rewardToBeSent.toString(), 2);
         })
         .catch(async error => {
           await this.$notify({
@@ -691,12 +700,22 @@ export default {
     },
 
     //cant send bulk transactions as nonce will be the same if transaction isnt yet mined.
-    sendToken(receiver, amount) {
+    //transaction nonce has to be manipulated to aceept bulk transactions
+    sendToken(receiver, amount, gennonce) {
       const numberOfDecimals = 18;
       // const numberOfTokens = ethers.utils.bigNumberify(amount);
       const numberOfTokens = ethers.utils.parseUnits(amount, numberOfDecimals);
       // Send tokens
-      contract.transfer(receiver, numberOfTokens).then(function(tx) {
+      
+      console.log(this.newNonce)
+
+      let overrides = {
+        // gasLimit: 21000,
+        // gasPrice: ethers.utils.parseUnits('9.0', 'gwei'),
+        nonce: this.newNonce+gennonce,
+      };
+
+      contract.transfer(receiver, numberOfTokens, overrides).then(function(tx) {
         console.log(tx);
       });
     },
