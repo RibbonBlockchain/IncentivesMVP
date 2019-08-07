@@ -18,16 +18,16 @@
             <div class="row mt-3">
               <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
                 <div class="d-flex justify-content-space-between">
-                  <base-button type="info" size="sm" @click="modals.onboard = true">New Patient</base-button>
+                  <base-button type="info" size="sm" @click="$bvModal.show('patient-modal')">New Patient</base-button>
                   <base-button
                     type="default"
                     size="sm"
-                    @click="modals.newPractitioner = true"
+                    @click="$bvModal.show('practitioner-modal')"
                   >New Practitioner</base-button>
                   <base-button
                     type="default"
                     size="sm"
-                    @click="modals.patientInteraction = true"
+                    @click="$bvModal.show('interaction-modal')"
                   >Patient Interaction</base-button>
                 </div>
               </div>
@@ -129,9 +129,7 @@
       </div>
     </modal>
     <!-- onboard modal -->
-    <modal :show.sync="modals.onboard" :large="false">
-      <h4 slot="header" class="modal-title" id="modal-title-default">Register new Patient</h4>
-
+    <b-modal id="patient-modal" size="xl" title="Register New Patient">
       <div class="row">
         <div class="col-12">
           <div class="row">
@@ -172,13 +170,26 @@
         </div>
       </div>
 
-      <template slot="footer">
-        <base-button type="primary" @click.prevent="createNewPatient">Register Patient</base-button>
-        <base-button type="link" class="ml-auto" @click="closeOnboardModal">Cancel</base-button>
-      </template>
-    </modal>
-    <modal :show.sync="modals.newPractitioner" :large="false">
-      <h4 slot="header" class="modal-title" id="modal-title-default">Register a Practitioner</h4>
+      <div slot="modal-footer" class="w-100">
+        <b-button
+          variant="danger"
+          size="md"
+          class="float-left"
+          @click="$bvModal.hide('patient-modal')"
+        >
+          Cancel
+        </b-button>
+        <b-button
+          variant="primary"
+          size="md"
+          class="float-right"
+          @click.prevent="createNewPatient"
+        >
+          Register Patient
+        </b-button>
+      </div>
+    </b-modal>
+    <b-modal id="practitioner-modal" size="xl" title="Register New Practitioner">
       <div class="row">
         <div class="col-12">
           <label>Practitioner Number</label>
@@ -217,14 +228,27 @@
         </div>
       </div>
 
-      <template slot="footer">
-        <base-button type="primary" @click.prevent="createNewPractitioner">Register Practitioner</base-button>
-        <base-button type="link" class="ml-auto" @click="closeOnboardModal">Cancel</base-button>
-      </template>
-    </modal>
+      <div slot="modal-footer" class="w-100">
+        <b-button
+          variant="danger"
+          size="md"
+          class="float-left"
+          @click="$bvModal.hide('practitioner-modal')"
+        >
+          Cancel
+        </b-button>
+        <b-button
+          variant="primary"
+          size="md"
+          class="float-right"
+          @click.prevent="createNewPractitioner"
+        >
+          Register Practitioner
+        </b-button>
+      </div>
+    </b-modal>
     <!-- Patient Interaction Window -->
-    <modal :show.sync="modals.patientInteraction" :large="false">
-      <h4 slot="header" class="modal-title" id="modal-title-default">Record A Patient Activity</h4>
+    <b-modal id="interaction-modal" size="xl" title="Record A Patient Activity">
       <div class="row">
         <div class="col-12 text-center">
           <p>Record a patient activity.</p>
@@ -300,11 +324,25 @@
           </table>
         </div>
       </div>
-      <template slot="footer">
-        <base-button type="primary" @click="recordActivity">Record</base-button>
-        <base-button type="link" class="ml-auto" @click="modals.patientInteraction = false">Cancel</base-button>
-      </template>
-    </modal>
+      <div slot="modal-footer" class="w-100">
+        <b-button
+          variant="danger"
+          size="md"
+          class="float-left"
+          @click="$bvModal.hide('interaction-modal')"
+        >
+          Cancel
+        </b-button>
+        <b-button
+          variant="primary"
+          size="md"
+          class="float-right"
+          @click.prevent="recordActivity"
+        >
+          Record Interaction
+        </b-button>
+      </div>
+    </b-modal>
   </div>
 </template>
 <script>
@@ -613,6 +651,7 @@ export default {
           });
           this.patient = {};
           this.avatar = {};
+          this.$bvModal.hide('patient-modal')
         })
         .catch(error => {
           const err = [];
@@ -641,6 +680,7 @@ export default {
           });
           this.practitioner = {};
           this.avatar = null;
+          this.$bvModal.hide('practitioner-modal')
         })
         .catch(errors => {
           console.log("Errors ", errors);
@@ -688,6 +728,7 @@ export default {
       //amount sent to CommunityHealthWorker
       const rewardToHealthWorker = parseFloat(rewardToBeSent)*0.15
       this.sendToken(this.account, rewardToHealthWorker.toString(), 2);
+      this.$bvModal.hide('interaction-modal')
         })
         .catch(async error => {
           await this.$notify({

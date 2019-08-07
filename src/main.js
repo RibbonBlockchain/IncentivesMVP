@@ -10,6 +10,7 @@ import router from "./router";
 import Notifications from "vue-notification";
 import store from "./store";
 import Argon from "./plugins/argon-kit";
+import BootstrapVue from 'bootstrap-vue';
 
 import Amplify, * as AmplifyModules from "aws-amplify";
 import { AmplifyPlugin } from "aws-amplify-vue";
@@ -19,6 +20,7 @@ Vue.use(Notifications);
 Vue.use(VueMask);
 Vue.use(moment);
 Vue.use(VueScrollTo);
+Vue.use(BootstrapVue);
 
 Vue.component("v-select", vSelect);
 
