@@ -65,7 +65,7 @@
                               @click.prevent="openDetails(activity.practitioner)"
                             >{{ `${activity.practitioner.firstName} ${activity.practitioner.lastName}` }}</a>
                           </td>
-                          <td>{{ parseInt(activity.id) | moment("ddd, MMM Do YYYY") }}</td>
+                          <td>{{ parseInt(activity.id) | moment("ddd, MMM Do YYYY HH:mm:ss") }}</td>
                           <td>{{ activity.interaction }}</td>
                         </tr>
                       </tbody>
