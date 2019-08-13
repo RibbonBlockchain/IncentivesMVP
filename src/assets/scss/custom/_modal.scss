@@ -34,3 +34,9 @@
     max-width: auto !important;
   }
 }
+
+@media (min-width: 1200px) {
+  .modal-xl {
+    max-width: 1140px;
+  }
+}

@@ -248,7 +248,7 @@
       </div>
     </b-modal>
     <!-- Patient Interaction Window -->
-    <b-modal id="interaction-modal" size="lg" title="Record A Patient Activity">
+    <b-modal id="interaction-modal" size="xl" title="Record A Patient Activity">
       <div class="row">
         <div class="col-12 text-center">
           <p>Record a patient activity.</p>
