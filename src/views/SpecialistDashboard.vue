@@ -46,7 +46,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="nav-wrapper">
-                    <table class="table table-striped" style="width:100%" v-if="events.length > 0">
+                    <table class="table table-striped" style="width:100%" v-if="activities.length > 0">
                       <thead>
                         <tr>
                           <th>Patient Name</th>
@@ -56,7 +56,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="activity in events" v-bind:key="activity.id">
+                        <tr v-for="activity in activities" v-bind:key="activity.id">
                           <td>
                             <a
                               href="#"
@@ -280,7 +280,7 @@
           <label>Select Activity</label>
           <div class="form-group">
             <multi-select
-              :options="eventData"
+              :options="events"
               :selected-options="activity.activity"
               placeholder="select activity"
               @select="onInteractionSelect"
@@ -420,7 +420,6 @@ export default {
         showDetailModal: false
       },
       selectedPerson: {},
-      eventData: eventData,
       healthcareServices: healthcareServices,
       prescriptions: prescriptions,
       web3: {
@@ -540,9 +539,17 @@ export default {
 		  }
 	  })
     },
-    events: function() {
+    activities: function() {
       return this.$store.state.activities.data;
-    },
+	},
+	events: function() {
+		return eventData.map(event => {
+			return {
+				value: event,
+				text: `${event.text} - (${Number(event.value).toFixed(4)} RBN)`
+			}
+		})
+	},
     validateInteractionForm: function() {
       return (
         !this.activity.patient ||

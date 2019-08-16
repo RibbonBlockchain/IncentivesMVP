@@ -1,166 +1,166 @@
 [
   {
     "text": "Consultation",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Informed consent declaration",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Survey",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Sign Non-smoker's declaration",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Blood pressure check",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Blood glucose check",
-    "value": 2
+    "value": 20
   },
   {
     "text": "Cholesterol check",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Weight assessment check",
-    "value": 1
+    "value": 10
   },
   {
     "text": "TB test skin/sputum",
-    "value": 1
+    "value": 10
   },
   {
     "text": "TB radiology test",
-    "value": 2
+    "value": 20
   },
   {
     "text": "Pap smear",
-    "value": 2
+    "value": 20
   },
   {
     "text": "Breast cancer lump physical check",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Mammogram",
-    "value": 2
+    "value": 20
   },
   {
     "text": "Testicular check",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Prostate inspection",
-    "value": 3
+    "value": 30
   },
   {
     "text": "Circumcision - Male",
-    "value": 5
+    "value": 50
   },
   {
     "text": "HIV test - rapid prick test",
-    "value": 3
+    "value": 30
   },
   {
     "text": "HIV test - blood draw",
-    "value": 5
+    "value": 50
   },
   {
     "text": "Initiation of treatment",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Pharmaccy drug collection",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Blood draw test",
-    "value": 5
+    "value": 50
   },
   {
     "text": "Blood donation",
-    "value": 5
+    "value": 50
   },
   {
     "text": "Colonoscopy check",
-    "value": 2
+    "value": 20
   },
   {
     "text": "Glaucoma check",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Flu vaccination",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Adherence scoring per milestone",
-    "value": 5
+    "value": 50
   },
   {
     "text": "Urine Test",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Psychological therapy per visit",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Psychiatry therapy per visit",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Counselling per visit",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Immunization",
-    "value": 5
+    "value": 50
   },
   {
     "text": "Pregnancy Test",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Pre-natal class session",
-    "value": 1
+    "value": 10
   },
   {
     "text": "STI Test",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Gynaecology check",
-    "value": 2
+    "value": 20
   },
   {
     "text": "Injection - in clinic per injection",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Electrocardiogram (ECG)",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Body Mass Index (BMI) and waist",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Ultrasound",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Return checkup visit",
-    "value": 1
+    "value": 10
   },
   {
     "text": "Return Visit",
-    "value": 1
+    "value": 10
   }
 ]
