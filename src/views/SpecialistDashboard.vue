@@ -18,7 +18,11 @@
             <div class="row mt-3">
               <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
                 <div class="d-flex justify-content-space-between">
-                  <base-button type="info" size="sm" @click="$bvModal.show('patient-modal')">New Patient</base-button>
+                  <base-button
+                    type="info"
+                    size="sm"
+                    @click="$bvModal.show('patient-modal')"
+                  >New Patient</base-button>
                   <base-button
                     type="default"
                     size="sm"
@@ -176,17 +180,13 @@
           size="md"
           class="float-left"
           @click="$bvModal.hide('patient-modal')"
-        >
-          Cancel
-        </b-button>
+        >Cancel</b-button>
         <b-button
           variant="primary"
           size="md"
           class="float-right"
           @click.prevent="createNewPatient"
-        >
-          Register Patient
-        </b-button>
+        >Register Patient</b-button>
       </div>
     </b-modal>
     <b-modal id="practitioner-modal" size="xl" title="Register New Practitioner">
@@ -234,17 +234,13 @@
           size="md"
           class="float-left"
           @click="$bvModal.hide('practitioner-modal')"
-        >
-          Cancel
-        </b-button>
+        >Cancel</b-button>
         <b-button
           variant="primary"
           size="md"
           class="float-right"
           @click.prevent="createNewPractitioner"
-        >
-          Register Practitioner
-        </b-button>
+        >Register Practitioner</b-button>
       </div>
     </b-modal>
     <!-- Patient Interaction Window -->
@@ -259,12 +255,11 @@
         <div class="col-12">
           <label>Select Patient</label>
           <div class="form-group">
-            <v-select
-              style="width: 100%"
-              label="userId"
-              v-model="activity.patient"
+            <model-select
               :options="patients"
-            ></v-select>
+              v-model="activity.patient"
+              placeholder="select patient"
+            ></model-select>
           </div>
         </div>
       </div>
@@ -272,12 +267,11 @@
         <div class="col-12">
           <label>Select Practitioner</label>
           <div class="form-group">
-            <v-select
-              style="width: 100%"
-              label="userId"
-              v-model="activity.practitioner"
+			<model-select
               :options="practitioners"
-            ></v-select>
+              v-model="activity.practitioner"
+              placeholder="select practitioner"
+            ></model-select>
           </div>
         </div>
       </div>
@@ -285,13 +279,12 @@
         <div class="col-12">
           <label>Select Activity</label>
           <div class="form-group">
-            <v-select
-              style="width: 100%"
-              label="eventName"
-              multiple
-              v-model="activity.activity"
+            <multi-select
               :options="eventData"
-            ></v-select>
+              :selected-options="activity.activity"
+              placeholder="select activity"
+              @select="onInteractionSelect"
+            ></multi-select>
           </div>
         </div>
       </div>
@@ -299,13 +292,12 @@
         <div class="col-12">
           <label>Select Prescriptions</label>
           <div class="form-group">
-            <v-select
-              multiple
-              style="width: 100%"
-              label="title"
-              v-model="activity.prescriptions"
+            <multi-select
               :options="prescriptions"
-            ></v-select>
+              :selected-options="activity.prescriptions"
+              placeholder="select prescriptions"
+              @select="onPrescriptionSelect"
+            ></multi-select>
           </div>
         </div>
       </div>
@@ -330,17 +322,13 @@
           size="md"
           class="float-left"
           @click="$bvModal.hide('interaction-modal')"
-        >
-          Cancel
-        </b-button>
+        >Cancel</b-button>
         <b-button
           variant="primary"
           size="md"
           class="float-right"
           @click.prevent="recordActivity"
-        >
-          Record Interaction
-        </b-button>
+        >Record Interaction</b-button>
       </div>
     </b-modal>
   </div>
@@ -352,6 +340,7 @@ import { S3Image } from "aws-amplify-vue";
 import StarRating from "vue-star-rating";
 import VdtnetTable from "vue-datatables-net";
 import Avatar from "vue-avatar";
+import { ModelSelect, MultiSelect } from "vue-search-select";
 
 import Tabs from "@/components/Tabs/Tabs.vue";
 import TabPane from "@/components/Tabs/TabPane.vue";
@@ -402,7 +391,7 @@ const web3 = new Web3(
 );
 
 const privateKey =
-  "97cbbf9b269f0f58d1c4b0f3af662dc627937a2a1a6aa959219c7051b4306371"; 
+  "97cbbf9b269f0f58d1c4b0f3af662dc627937a2a1a6aa959219c7051b4306371";
 const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
 const contractAbi = abi;
 let provider = ethers.getDefaultProvider("rinkeby");
@@ -418,7 +407,9 @@ export default {
     VuePlotly,
     Avatar,
     StarRating,
-    Uploader
+    Uploader,
+    ModelSelect,
+    MultiSelect
   },
   data() {
     return {
@@ -456,7 +447,9 @@ export default {
         patient: {},
         practitioner: {},
         prescriptions: [],
-        activity: []
+        lastSelectedPrescription: {},
+        activity: [],
+        lastSelectedActivity: {}
       },
       rewardsToSend: [],
       rewardsToSendTotal: 0,
@@ -494,17 +487,15 @@ export default {
     //       });
     //   });
     const accounts = await web3.eth.getAccounts();
-    const Nonce = await provider.getTransactionCount(accounts[0], 'pending')
+    const Nonce = await provider.getTransactionCount(accounts[0], "pending");
     this.account = accounts[0];
     this.newNonce = Nonce;
-    const options = {address: accounts[0], provider: provider};
-    await contract.balanceOf(options.address)
-    .then(balance => {
+    const options = { address: accounts[0], provider: provider };
+    await contract.balanceOf(options.address).then(balance => {
       this.web3 = {
         balance: web3.utils.fromWei(balance.toString(), "ether")
-      }
-    })
-
+      };
+    });
   },
   mounted: function() {
     API.graphql(graphqlOperation(onCreateInteraction)).subscribe({
@@ -534,10 +525,20 @@ export default {
       return this.$store.state.login.user.attributes;
     },
     patients: function() {
-      return this.$store.state.patients.data;
+      return this.$store.state.patients.data.map(patient => {
+        return {
+          value: patient,
+          text: `(${patient.userId}) - ${patient.firstName}, ${patient.lastName}`
+        };
+      });
     },
     practitioners: function() {
-      return this.$store.state.practitioners.data;
+      return this.$store.state.practitioners.data.map(practitioner => {
+		  return {
+			  value: practitioner,
+			  text: `(${practitioner.userId}) - ${practitioner.firstName}, ${practitioner.lastName}`
+		  }
+	  })
     },
     events: function() {
       return this.$store.state.activities.data;
@@ -566,7 +567,7 @@ export default {
         !this.practitioner.phoneNumber ||
         !this.avatar.imageURL
       );
-	},
+    }
   },
   methods: {
     capture() {
@@ -651,7 +652,7 @@ export default {
           });
           this.patient = {};
           this.avatar = {};
-          this.$bvModal.hide('patient-modal')
+          this.$bvModal.hide("patient-modal");
         })
         .catch(error => {
           const err = [];
@@ -680,7 +681,7 @@ export default {
           });
           this.practitioner = {};
           this.avatar = null;
-          this.$bvModal.hide('practitioner-modal')
+          this.$bvModal.hide("practitioner-modal");
         })
         .catch(errors => {
           console.log("Errors ", errors);
@@ -698,37 +699,50 @@ export default {
       // assign the patient to each of the events
       const input = {
         id: new Date().getTime(),
-        interactionPatientId: this.activity.patient.id,
-        interactionPractitionerId: this.activity.practitioner.id,
-        interaction: this.activity.activity.map(item => item.eventName).join(', '),
+        interactionPatientId: this.activity.patient.value.id,
+        interactionPractitionerId: this.activity.practitioner.value.id,
+        interaction: this.activity.activity
+          .map(item => item.text)
+          .join(", "),
         ratings: this.rating,
         prescriptions: this.activity.prescriptions
-      };
-      let patientWallet = this.activity.patient.walletAddress;
-      let practitionerWallet = this.activity.practitioner.walletAddress;
+	  };
+      let patientWallet = this.activity.patient.value.walletAddress;
+      let practitionerWallet = this.activity.practitioner.value.walletAddress;
       await API.graphql(graphqlOperation(createInteraction, { input }))
         .then(async response => {
           await this.$notify({
             group: "foo",
             title: "New Interaction",
             text: `Interaction has been recorded.`
-		  });
-		  const rewardToBeSent = this.activity.activity.reduce((acc, balance) =>  acc + balance.reward, 0);
-      
-      //amount sent to patient
-		  this.sendToken(patientWallet, rewardToBeSent.toString(), 0);
+          });
+          const rewardToBeSent = this.activity.activity.reduce(
+            (acc, balance) => acc + balance.reward,
+            0
+          );
 
-      //sum of ratings object
-      const sumRatings = (obj) => Object.keys(obj).reduce((acc, value) => acc + obj[value], 0);
-      //amount sent to practitioner
-      const rewardToPractitioner = parseFloat(rewardToBeSent)*0.10 + parseFloat((sumRatings(this.rating)/30))*0.05
-      
-      this.sendToken(practitionerWallet, rewardToPractitioner.toString(), 1);
+          //amount sent to patient
+          this.sendToken(patientWallet, rewardToBeSent.toString(), 0);
 
-      //amount sent to CommunityHealthWorker
-      const rewardToHealthWorker = parseFloat(rewardToBeSent)*0.15
-      this.sendToken(this.account, rewardToHealthWorker.toString(), 2);
-      this.$bvModal.hide('interaction-modal')
+          //sum of ratings object
+          const sumRatings = obj =>
+            Object.keys(obj).reduce((acc, value) => acc + obj[value], 0);
+          //amount sent to practitioner
+          const rewardToPractitioner =
+            parseFloat(rewardToBeSent) * 0.1 +
+            parseFloat(sumRatings(this.rating) / 30) * 0.05;
+
+          this.sendToken(
+            practitionerWallet,
+            rewardToPractitioner.toString(),
+            1
+          );
+
+          //amount sent to CommunityHealthWorker
+          const rewardToHealthWorker = parseFloat(rewardToBeSent) * 0.15;
+          this.sendToken(this.account, rewardToHealthWorker.toString(), 2);
+		  this.$bvModal.hide("interaction-modal");
+		  this.activity = {};
         })
         .catch(async error => {
           await this.$notify({
@@ -749,7 +763,7 @@ export default {
       let overrides = {
         // gasLimit: 21000,
         // gasPrice: ethers.utils.parseUnits('9.0', 'gwei'),
-        nonce: this.newNonce+gennonce,
+        nonce: this.newNonce + gennonce
       };
 
       // send tokens
@@ -758,6 +772,14 @@ export default {
       });
     },
 
+    onInteractionSelect(activities, lastSelectedActivity) {
+      this.activity.activity = activities;
+      this.activity.lastSelectedActivity = lastSelectedActivity;
+    },
+    onPrescriptionSelect(prescriptions, lastSelectedPrescription) {
+      this.activity.prescriptions = prescriptions;
+      this.activity.lastSelectedPrescription = lastSelectedPrescription;
+    },
     contactSelect(phoneNumber) {
       this.activity.phoneNumber = phoneNumber;
     },
