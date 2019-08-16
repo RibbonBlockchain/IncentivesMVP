@@ -1,773 +1,1030 @@
 [
   {
-    "title": "Abacavir (ABC)"
+    "text": "Abacavir (ABC)",
+    "value": "Abacavir (ABC)"
   },
   {
-    "title": "ACE-inhibitor"
+    "text": "ACE-inhibitor",
+    "value": "ACE-inhibitor"
   },
   {
-    "title": "Acetazolamide"
+    "text": "Acetazolamide",
+    "value": "Acetazolamide"
   },
   {
-    "title": "Acetic acid 2% in alcohol"
+    "text": "Acetic acid 2% in alcohol",
+    "value": "Acetic acid 2% in alcohol"
   },
   {
-    "title": "Aciclovir, oral"
+    "text": "Aciclovir, oral",
+    "value": "Aciclovir, oral"
   },
   {
-    "title": "Activated charcoal"
+    "text": "Activated charcoal",
+    "value": "Activated charcoal"
   },
   {
-    "title": "Adrenaline (epinephrine), inhalation"
+    "text": "Adrenaline (epinephrine), inhalation",
+    "value": "Adrenaline (epinephrine), inhalation"
   },
   {
-    "title": "Adrenaline (epinephrine), parenteral"
+    "text": "Adrenaline (epinephrine), parenteral",
+    "value": "Adrenaline (epinephrine), parenteral"
   },
   {
-    "title": "Albendazole"
+    "text": "Albendazole",
+    "value": "Albendazole"
   },
   {
-    "title": "Allopurinol"
+    "text": "Allopurinol",
+    "value": "Allopurinol"
   },
   {
-    "title": "Amitriptyline"
+    "text": "Amitriptyline",
+    "value": "Amitriptyline"
   },
   {
-    "title": "Amlodipine"
+    "text": "Amlodipine",
+    "value": "Amlodipine"
   },
   {
-    "title": "Amoxicillin"
+    "text": "Amoxicillin",
+    "value": "Amoxicillin"
   },
   {
-    "title": "Amoxicillin/clavulanic acid, oral"
+    "text": "Amoxicillin/clavulanic acid, oral",
+    "value": "Amoxicillin/clavulanic acid, oral"
   },
   {
-    "title": "Amphotericin B"
+    "text": "Amphotericin B",
+    "value": "Amphotericin B"
   },
   {
-    "title": "Ampicillin"
+    "text": "Ampicillin",
+    "value": "Ampicillin"
   },
   {
-    "title": "Anticholinergic"
+    "text": "Anticholinergic",
+    "value": "Anticholinergic"
   },
   {
-    "title": "Anti-D immunoglobulin"
+    "text": "Anti-D immunoglobulin",
+    "value": "Anti-D immunoglobulin"
   },
   {
-    "title": "Antiviral (active against herpes zoster), oral"
+    "text": "Antiviral (active against herpes zoster), oral",
+    "value": "Antiviral (active against herpes zoster), oral"
   },
   {
-    "title": "Antiviral (active against varicella zoster), oral"
+    "text": "Antiviral (active against varicella zoster), oral",
+    "value": "Antiviral (active against varicella zoster), oral"
   },
   {
-    "title": "Aqueous Cream"
+    "text": "Aqueous Cream",
+    "value": "Aqueous Cream"
   },
   {
-    "title": "Artemether/lumefantrine"
+    "text": "Artemether/lumefantrine",
+    "value": "Artemether/lumefantrine"
   },
   {
-    "title": "Artesunate"
+    "text": "Artesunate",
+    "value": "Artesunate"
   },
   {
-    "title": "Aspirin"
+    "text": "Aspirin",
+    "value": "Aspirin"
   },
   {
-    "title": "Atazanavir/ritonavir (ATV/r)"
+    "text": "Atazanavir/ritonavir (ATV/r)",
+    "value": "Atazanavir/ritonavir (ATV/r)"
   },
   {
-    "title": "Atenolol"
+    "text": "Atenolol",
+    "value": "Atenolol"
   },
   {
-    "title": "Atorvastatin"
+    "text": "Atorvastatin",
+    "value": "Atorvastatin"
   },
   {
-    "title": "Atropine, ophthalmic"
+    "text": "Atropine, ophthalmic",
+    "value": "Atropine, ophthalmic"
   },
   {
-    "title": "Atropine, parenteral"
+    "text": "Atropine, parenteral",
+    "value": "Atropine, parenteral"
   },
   {
-    "title": "Azithromycin, oral"
+    "text": "Azithromycin, oral",
+    "value": "Azithromycin, oral"
   },
   {
-    "title": "Bacillus camette-guerin (BCG), vaccine"
+    "text": "Bacillus camette-guerin (BCG), vaccine",
+    "value": "Bacillus camette-guerin (BCG), vaccine"
   },
   {
-    "title": "Benzathine benzylpenicillin"
+    "text": "Benzathine benzylpenicillin",
+    "value": "Benzathine benzylpenicillin"
   },
   {
-    "title": "Benzodiazepine, oral"
+    "text": "Benzodiazepine, oral",
+    "value": "Benzodiazepine, oral"
   },
   {
-    "title": "Benzodiazepine, parenteral"
+    "text": "Benzodiazepine, parenteral",
+    "value": "Benzodiazepine, parenteral"
   },
   {
-    "title": "Benzoyl peroxide 5%, topical"
+    "text": "Benzoyl peroxide 5%, topical",
+    "value": "Benzoyl peroxide 5%, topical"
   },
   {
-    "title": "Benzyl benzoate"
+    "text": "Benzyl benzoate",
+    "value": "Benzyl benzoate"
   },
   {
-    "title": "Beta-blocker, oral"
+    "text": "Beta-blocker, oral",
+    "value": "Beta-blocker, oral"
   },
   {
-    "title": "Betamethasone 0.1%, topical"
+    "text": "Betamethasone 0.1%, topical",
+    "value": "Betamethasone 0.1%, topical"
   },
   {
-    "title": "Betamethasone, parenteral"
+    "text": "Betamethasone, parenteral",
+    "value": "Betamethasone, parenteral"
   },
   {
-    "title": "Biperiden, parenteral"
+    "text": "Biperiden, parenteral",
+    "value": "Biperiden, parenteral"
   },
   {
-    "title": "Bismuth subgallate compound, topical"
+    "text": "Bismuth subgallate compound, topical",
+    "value": "Bismuth subgallate compound, topical"
   },
   {
-    "title": "Budesonide, inhaler"
+    "text": "Budesonide, inhaler",
+    "value": "Budesonide, inhaler"
   },
   {
-    "title": "Calamine lotion"
+    "text": "Calamine lotion",
+    "value": "Calamine lotion"
   },
   {
-    "title": "Calcium carbonate, oral"
+    "text": "Calcium carbonate, oral",
+    "value": "Calcium carbonate, oral"
   },
   {
-    "title": "Calcium gluconate 10%, parenteral"
+    "text": "Calcium gluconate 10%, parenteral",
+    "value": "Calcium gluconate 10%, parenteral"
   },
   {
-    "title": "Carbamazepine"
+    "text": "Carbamazepine",
+    "value": "Carbamazepine"
   },
   {
-    "title": "Cardio-selective beta-blocker, oral"
+    "text": "Cardio-selective beta-blocker, oral",
+    "value": "Cardio-selective beta-blocker, oral"
   },
   {
-    "title": "Carvedilol"
+    "text": "Carvedilol",
+    "value": "Carvedilol"
   },
   {
-    "title": "Ceftriaxone"
+    "text": "Ceftriaxone",
+    "value": "Ceftriaxone"
   },
   {
-    "title": "Cephalexin"
+    "text": "Cephalexin",
+    "value": "Cephalexin"
   },
   {
-    "title": "Cetirizine"
+    "text": "Cetirizine",
+    "value": "Cetirizine"
   },
   {
-    "title": "Chloramphenicol 1%, ophthalmic"
+    "text": "Chloramphenicol 1%, ophthalmic",
+    "value": "Chloramphenicol 1%, ophthalmic"
   },
   {
-    "title": "Chlorhexidine 0.05% aqueous solution"
+    "text": "Chlorhexidine 0.05% aqueous solution",
+    "value": "Chlorhexidine 0.05% aqueous solution"
   },
   {
-    "title": "Chlorhexidine 0.2% mouthwash"
+    "text": "Chlorhexidine 0.2% mouthwash",
+    "value": "Chlorhexidine 0.2% mouthwash"
   },
   {
-    "title": "Chlorhexidine 0.5% in 70 % alcohol"
+    "text": "Chlorhexidine 0.5% in 70 % alcohol",
+    "value": "Chlorhexidine 0.5% in 70 % alcohol"
   },
   {
-    "title": "Chlorphenamine"
+    "text": "Chlorphenamine",
+    "value": "Chlorphenamine"
   },
   {
-    "title": "Chlorpromazine, oral"
+    "text": "Chlorpromazine, oral",
+    "value": "Chlorpromazine, oral"
   },
   {
-    "title": "Ciprofloxacin, oral"
+    "text": "Ciprofloxacin, oral",
+    "value": "Ciprofloxacin, oral"
   },
   {
-    "title": "Citalopram"
+    "text": "Citalopram",
+    "value": "Citalopram"
   },
   {
-    "title": "Clotrimazole 1%, topical"
+    "text": "Clotrimazole 1%, topical",
+    "value": "Clotrimazole 1%, topical"
   },
   {
-    "title": "Clotrimazole vaginal cream"
+    "text": "Clotrimazole vaginal cream",
+    "value": "Clotrimazole vaginal cream"
   },
   {
-    "title": "Clotrimazole, vaginal pessary"
+    "text": "Clotrimazole, vaginal pessary",
+    "value": "Clotrimazole, vaginal pessary"
   },
   {
-    "title": "Coal tar (Liquor picis carbonis (LPC) BP"
+    "text": "Coal tar (Liquor picis carbonis (LPC) BP",
+    "value": "Coal tar (Liquor picis carbonis (LPC) BP"
   },
   {
-    "title": "Combined oral contraceptive"
+    "text": "Combined oral contraceptive",
+    "value": "Combined oral contraceptive"
   },
   {
-    "title": "Conjugated estrogens"
+    "text": "Conjugated estrogens",
+    "value": "Conjugated estrogens"
   },
   {
-    "title": "Corticosteroid potent, topical"
+    "text": "Corticosteroid potent, topical",
+    "value": "Corticosteroid potent, topical"
   },
   {
-    "title": "Corticosteroid potent, topical"
+    "text": "Corticosteroid potent, topical",
+    "value": "Corticosteroid potent, topical"
   },
   {
-    "title": "Corticosteroid, nasal solution"
+    "text": "Corticosteroid, nasal solution",
+    "value": "Corticosteroid, nasal solution"
   },
   {
-    "title": "Corticosteroid, inhaler"
+    "text": "Corticosteroid, inhaler",
+    "value": "Corticosteroid, inhaler"
   },
   {
-    "title": "Cotrimoxazole, oral"
+    "text": "Cotrimoxazole, oral",
+    "value": "Cotrimoxazole, oral"
   },
   {
-    "title": "Cu T380A, IUCD"
+    "text": "Cu T380A, IUCD",
+    "value": "Cu T380A, IUCD"
   },
   {
-    "title": "Dextrose 5%"
+    "text": "Dextrose 5%",
+    "value": "Dextrose 5%"
   },
   {
-    "title": "Dextrose 10%"
+    "text": "Dextrose 10%",
+    "value": "Dextrose 10%"
   },
   {
-    "title": "Dextrose 50%"
+    "text": "Dextrose 50%",
+    "value": "Dextrose 50%"
   },
   {
-    "title": "Diazepam, parenteral"
+    "text": "Diazepam, parenteral",
+    "value": "Diazepam, parenteral"
   },
   {
-    "title": "Diazepam, rectal"
+    "text": "Diazepam, rectal",
+    "value": "Diazepam, rectal"
   },
   {
-    "title": "Doxycycline"
+    "text": "Doxycycline",
+    "value": "Doxycycline"
   },
   {
-    "title": "Efavirenz (EFV)"
+    "text": "Efavirenz (EFV)",
+    "value": "Efavirenz (EFV)"
   },
   {
-    "title": "Emollient"
+    "text": "Emollient",
+    "value": "Emollient"
   },
   {
-    "title": "Emtricitabine (FTC)"
+    "text": "Emtricitabine (FTC)",
+    "value": "Emtricitabine (FTC)"
   },
   {
-    "title": "Emulsifying ointment"
+    "text": "Emulsifying ointment",
+    "value": "Emulsifying ointment"
   },
   {
-    "title": "Enalapril"
+    "text": "Enalapril",
+    "value": "Enalapril"
   },
   {
-    "title": "Ergometrine"
+    "text": "Ergometrine",
+    "value": "Ergometrine"
   },
   {
-    "title": "Estradiol valerate"
+    "text": "Estradiol valerate",
+    "value": "Estradiol valerate"
   },
   {
-    "title": "Estradiol/norethisterone acetate"
+    "text": "Estradiol/norethisterone acetate",
+    "value": "Estradiol/norethisterone acetate"
   },
   {
-    "title": "Ethambutol"
+    "text": "Ethambutol",
+    "value": "Ethambutol"
   },
   {
-    "title": "Ethinylestradiol/levonorgestrel"
+    "text": "Ethinylestradiol/levonorgestrel",
+    "value": "Ethinylestradiol/levonorgestrel"
   },
   {
-    "title": "Etonogestrel subdermal implant"
+    "text": "Etonogestrel subdermal implant",
+    "value": "Etonogestrel subdermal implant"
   },
   {
-    "title": "Ferrous fumarate"
+    "text": "Ferrous fumarate",
+    "value": "Ferrous fumarate"
   },
   {
-    "title": "Ferrous gluconate"
+    "text": "Ferrous gluconate",
+    "value": "Ferrous gluconate"
   },
   {
-    "title": "Ferrous lactate"
+    "text": "Ferrous lactate",
+    "value": "Ferrous lactate"
   },
   {
-    "title": "Ferrous sulfate compound BPC"
+    "text": "Ferrous sulfate compound BPC",
+    "value": "Ferrous sulfate compound BPC"
   },
   {
-    "title": "Flucloxacillin"
+    "text": "Flucloxacillin",
+    "value": "Flucloxacillin"
   },
   {
-    "title": "Fluconazole, oral"
+    "text": "Fluconazole, oral",
+    "value": "Fluconazole, oral"
   },
   {
-    "title": "Fluoxetine"
+    "text": "Fluoxetine",
+    "value": "Fluoxetine"
   },
   {
-    "title": "Flupenthixol decanoate"
+    "text": "Flupenthixol decanoate",
+    "value": "Flupenthixol decanoate"
   },
   {
-    "title": "Fluphenazine decanoate"
+    "text": "Fluphenazine decanoate",
+    "value": "Fluphenazine decanoate"
   },
   {
-    "title": "Fluticasone, nasal solution"
+    "text": "Fluticasone, nasal solution",
+    "value": "Fluticasone, nasal solution"
   },
   {
-    "title": "Folic Acid"
+    "text": "Folic Acid",
+    "value": "Folic Acid"
   },
   {
-    "title": "Formoterol, inhaler"
+    "text": "Formoterol, inhaler",
+    "value": "Formoterol, inhaler"
   },
   {
-    "title": "Furosemide, oral"
+    "text": "Furosemide, oral",
+    "value": "Furosemide, oral"
   },
   {
-    "title": "Furosemide, parenteral"
+    "text": "Furosemide, parenteral",
+    "value": "Furosemide, parenteral"
   },
   {
-    "title": "Glibenclamide"
+    "text": "Glibenclamide",
+    "value": "Glibenclamide"
   },
   {
-    "title": "Glimepiride"
+    "text": "Glimepiride",
+    "value": "Glimepiride"
   },
   {
-    "title": "Glucose, oral"
+    "text": "Glucose, oral",
+    "value": "Glucose, oral"
   },
   {
-    "title": "Haloperidol, oral"
+    "text": "Haloperidol, oral",
+    "value": "Haloperidol, oral"
   },
   {
-    "title": "Haloperidol, parenteral"
+    "text": "Haloperidol, parenteral",
+    "value": "Haloperidol, parenteral"
   },
   {
-    "title": "Hepatitis B (HepB) vaccine"
+    "text": "Hepatitis B (HepB) vaccine",
+    "value": "Hepatitis B (HepB) vaccine"
   },
   {
-    "title": "Hepatitis B immunoglobulin (HBIG)"
+    "text": "Hepatitis B immunoglobulin (HBIG)",
+    "value": "Hepatitis B immunoglobulin (HBIG)"
   },
   {
-    "title": "Hexavalent - diptheria, tetanus, acellular pertussis, inactivated polio, hepatitis B, haemophilus influenza type b vaccine"
+    "text": "Hexavalent - diptheria, tetanus, acellular pertussis, inactivated polio, hepatitis B, haemophilus influenza type b vaccine",
+    "value": "Hexavalent - diptheria, tetanus, acellular pertussis, inactivated polio, hepatitis B, haemophilus influenza type b vaccine"
   },
   {
-    "title": "HMGCoA reductase Inhibitor"
+    "text": "HMGCoA reductase Inhibitor",
+    "value": "HMGCoA reductase Inhibitor"
   },
   {
-    "title": "Human papilloma virus vaccine"
+    "text": "Human papilloma virus vaccine",
+    "value": "Human papilloma virus vaccine"
   },
   {
-    "title": "Hydrochlorothiazide"
+    "text": "Hydrochlorothiazide",
+    "value": "Hydrochlorothiazide"
   },
   {
-    "title": "Hydrocortisone"
+    "text": "Hydrocortisone",
+    "value": "Hydrocortisone"
   },
   {
-    "title": "Hydrocortisone 1%, topical"
+    "text": "Hydrocortisone 1%, topical",
+    "value": "Hydrocortisone 1%, topical"
   },
   {
-    "title": "Hyoscine butylbromide, oral"
+    "text": "Hyoscine butylbromide, oral",
+    "value": "Hyoscine butylbromide, oral"
   },
   {
-    "title": "Ibuprofen"
+    "text": "Ibuprofen",
+    "value": "Ibuprofen"
   },
   {
-    "title": "Imidazole, topical"
+    "text": "Imidazole, topical",
+    "value": "Imidazole, topical"
   },
   {
-    "title": "Influenza vaccine"
+    "text": "Influenza vaccine",
+    "value": "Influenza vaccine"
   },
   {
-    "title": "Insulin, biphasic"
+    "text": "Insulin, biphasic",
+    "value": "Insulin, biphasic"
   },
   {
-    "title": "Insulin, intermediate acting"
+    "text": "Insulin, intermediate acting",
+    "value": "Insulin, intermediate acting"
   },
   {
-    "title": "Insulin, short acting"
+    "text": "Insulin, short acting",
+    "value": "Insulin, short acting"
   },
   {
-    "title": "Ipratropium bromide, inhalant solution"
+    "text": "Ipratropium bromide, inhalant solution",
+    "value": "Ipratropium bromide, inhalant solution"
   },
   {
-    "title": "Ipratropium bromide, inhaler"
+    "text": "Ipratropium bromide, inhaler",
+    "value": "Ipratropium bromide, inhaler"
   },
   {
-    "title": "Iron, oral"
+    "text": "Iron, oral",
+    "value": "Iron, oral"
   },
   {
-    "title": "Isoniazid"
+    "text": "Isoniazid",
+    "value": "Isoniazid"
   },
   {
-    "title": "Isosorbide dinitrate, oral"
+    "text": "Isosorbide dinitrate, oral",
+    "value": "Isosorbide dinitrate, oral"
   },
   {
-    "title": "Isosorbide dinitrate, sublingual"
+    "text": "Isosorbide dinitrate, sublingual",
+    "value": "Isosorbide dinitrate, sublingual"
   },
   {
-    "title": "Isosorbide mononitrate, oral"
+    "text": "Isosorbide mononitrate, oral",
+    "value": "Isosorbide mononitrate, oral"
   },
   {
-    "title": "LABA/corticosteroid, inhaler"
+    "text": "LABA/corticosteroid, inhaler",
+    "value": "LABA/corticosteroid, inhaler"
   },
   {
-    "title": "Lactulose"
+    "text": "Lactulose",
+    "value": "Lactulose"
   },
   {
-    "title": "Lamivudine (3TC)"
+    "text": "Lamivudine (3TC)",
+    "value": "Lamivudine (3TC)"
   },
   {
-    "title": "Lamotrigine"
+    "text": "Lamotrigine",
+    "value": "Lamotrigine"
   },
   {
-    "title": "Lansoprazole, oral"
+    "text": "Lansoprazole, oral",
+    "value": "Lansoprazole, oral"
   },
   {
-    "title": "Levonorgestrel 1.5 mg, oral"
+    "text": "Levonorgestrel 1.5 mg, oral",
+    "value": "Levonorgestrel 1.5 mg, oral"
   },
   {
-    "title": "Levothyroxine"
+    "text": "Levothyroxine",
+    "value": "Levothyroxine"
   },
   {
-    "title": "Lidocaine 1% without adrenaline (epinephrine), parenteral"
+    "text": "Lidocaine 1% without adrenaline (epinephrine), parenteral",
+    "value": "Lidocaine 1% without adrenaline (epinephrine), parenteral"
   },
   {
-    "title": "Lidocaine 2%, parenteral"
+    "text": "Lidocaine 2%, parenteral",
+    "value": "Lidocaine 2%, parenteral"
   },
   {
-    "title": "Lidocaine 2%, topical"
+    "text": "Lidocaine 2%, topical",
+    "value": "Lidocaine 2%, topical"
   },
   {
-    "title": "Lidocaine with adrenaline (epinephrine), parenteral"
+    "text": "Lidocaine with adrenaline (epinephrine), parenteral",
+    "value": "Lidocaine with adrenaline (epinephrine), parenteral"
   },
   {
-    "title": "Lidocaine, parenteral"
+    "text": "Lidocaine, parenteral",
+    "value": "Lidocaine, parenteral"
   },
   {
-    "title": "Long-acting calcium channel blocker"
+    "text": "Long-acting calcium channel blocker",
+    "value": "Long-acting calcium channel blocker"
   },
   {
-    "title": "Loop diuretic, oral"
+    "text": "Loop diuretic, oral",
+    "value": "Loop diuretic, oral"
   },
   {
-    "title": "Loperamide"
+    "text": "Loperamide",
+    "value": "Loperamide"
   },
   {
-    "title": "Lopinavir/ritonavir (LPV/r)"
+    "text": "Lopinavir/ritonavir (LPV/r)",
+    "value": "Lopinavir/ritonavir (LPV/r)"
   },
   {
-    "title": "Macrolide, oral"
+    "text": "Macrolide, oral",
+    "value": "Macrolide, oral"
   },
   {
-    "title": "Magnesium sulfate, parenteral"
+    "text": "Magnesium sulfate, parenteral",
+    "value": "Magnesium sulfate, parenteral"
   },
   {
-    "title": "Measles vaccine"
+    "text": "Measles vaccine",
+    "value": "Measles vaccine"
   },
   {
-    "title": "Mebendazole"
+    "text": "Mebendazole",
+    "value": "Mebendazole"
   },
   {
-    "title": "Medroxyprogesterone acetate, oral"
+    "text": "Medroxyprogesterone acetate, oral",
+    "value": "Medroxyprogesterone acetate, oral"
   },
   {
-    "title": "Medroxyprogesterone acetate, injectable"
+    "text": "Medroxyprogesterone acetate, injectable",
+    "value": "Medroxyprogesterone acetate, injectable"
   },
   {
-    "title": "Metformin"
+    "text": "Metformin",
+    "value": "Metformin"
   },
   {
-    "title": "Methyl salicylate ointment"
+    "text": "Methyl salicylate ointment",
+    "value": "Methyl salicylate ointment"
   },
   {
-    "title": "Methyldopa"
+    "text": "Methyldopa",
+    "value": "Methyldopa"
   },
   {
-    "title": "Metoclopramide, oral"
+    "text": "Metoclopramide, oral",
+    "value": "Metoclopramide, oral"
   },
   {
-    "title": "Metoclopramide, parenteral"
+    "text": "Metoclopramide, parenteral",
+    "value": "Metoclopramide, parenteral"
   },
   {
-    "title": "Metronidazole, oral"
+    "text": "Metronidazole, oral",
+    "value": "Metronidazole, oral"
   },
   {
-    "title": "Midazolam, buccal"
+    "text": "Midazolam, buccal",
+    "value": "Midazolam, buccal"
   },
   {
-    "title": "Midazolam, parenteral"
+    "text": "Midazolam, parenteral",
+    "value": "Midazolam, parenteral"
   },
   {
-    "title": "Mifepristone"
+    "text": "Mifepristone",
+    "value": "Mifepristone"
   },
   {
-    "title": "Misoprostol"
+    "text": "Misoprostol",
+    "value": "Misoprostol"
   },
   {
-    "title": "Monophasic: combined estrogen/progestin pill"
+    "text": "Monophasic: combined estrogen/progestin pill",
+    "value": "Monophasic: combined estrogen/progestin pill"
   },
   {
-    "title": "Monophasic: ethinyloestradiol/levonorgestrel, pill"
+    "text": "Monophasic: ethinyloestradiol/levonorgestrel, pill",
+    "value": "Monophasic: ethinyloestradiol/levonorgestrel, pill"
   },
   {
-    "title": "Monophasic: progestin only pill"
+    "text": "Monophasic: progestin only pill",
+    "value": "Monophasic: progestin only pill"
   },
   {
-    "title": "Monophasic: levonorgestrel, pill"
+    "text": "Monophasic: levonorgestrel, pill",
+    "value": "Monophasic: levonorgestrel, pill"
   },
   {
-    "title": "Morphine, long-acting, oral"
+    "text": "Morphine, long-acting, oral",
+    "value": "Morphine, long-acting, oral"
   },
   {
-    "title": "Morphine, oral"
+    "text": "Morphine, oral",
+    "value": "Morphine, oral"
   },
   {
-    "title": "Morphine, parenteral"
+    "text": "Morphine, parenteral",
+    "value": "Morphine, parenteral"
   },
   {
-    "title": "Moxifloxacin, oral"
+    "text": "Moxifloxacin, oral",
+    "value": "Moxifloxacin, oral"
   },
   {
-    "title": "Multivitamin"
+    "text": "Multivitamin",
+    "value": "Multivitamin"
   },
   {
-    "title": "Naloxone"
+    "text": "Naloxone",
+    "value": "Naloxone"
   },
   {
-    "title": "Nevirapine (NVP)"
+    "text": "Nevirapine (NVP)",
+    "value": "Nevirapine (NVP)"
   },
   {
-    "title": "Nicotinamide"
+    "text": "Nicotinamide",
+    "value": "Nicotinamide"
   },
   {
-    "title": "Nifedipine"
+    "text": "Nifedipine",
+    "value": "Nifedipine"
   },
   {
-    "title": "Nifedipine"
+    "text": "Nifedipine",
+    "value": "Nifedipine"
   },
   {
-    "title": "Nitrates short-acting"
+    "text": "Nitrates short-acting",
+    "value": "Nitrates short-acting"
   },
   {
-    "title": "Nitrofurantoin"
+    "text": "Nitrofurantoin",
+    "value": "Nitrofurantoin"
   },
   {
-    "title": "Nitrous oxide"
+    "text": "Nitrous oxide",
+    "value": "Nitrous oxide"
   },
   {
-    "title": "NSAID, oral"
+    "text": "NSAID, oral",
+    "value": "NSAID, oral"
   },
   {
-    "title": "Nystatin, oral"
+    "text": "Nystatin, oral",
+    "value": "Nystatin, oral"
   },
   {
-    "title": "Oral polio vaccine (bOPV)"
+    "text": "Oral polio vaccine (bOPV)",
+    "value": "Oral polio vaccine (bOPV)"
   },
   {
-    "title": "Oral rehydrate solution (ORS)"
+    "text": "Oral rehydrate solution (ORS)",
+    "value": "Oral rehydrate solution (ORS)"
   },
   {
-    "title": "Orphenadrine"
+    "text": "Orphenadrine",
+    "value": "Orphenadrine"
   },
   {
-    "title": "Oxygen"
+    "text": "Oxygen",
+    "value": "Oxygen"
   },
   {
-    "title": "Oxymetazoline 0.025%, nasal"
+    "text": "Oxymetazoline 0.025%, nasal",
+    "value": "Oxymetazoline 0.025%, nasal"
   },
   {
-    "title": "Oxymetazoline 0.025%, ophthalmic"
+    "text": "Oxymetazoline 0.025%, ophthalmic",
+    "value": "Oxymetazoline 0.025%, ophthalmic"
   },
   {
-    "title": "Oxymetazoline 0.05%, nasal"
+    "text": "Oxymetazoline 0.05%, nasal",
+    "value": "Oxymetazoline 0.05%, nasal"
   },
   {
-    "title": "Oxytocin"
+    "text": "Oxytocin",
+    "value": "Oxytocin"
   },
   {
-    "title": "Oxytocin/ergometrine"
+    "text": "Oxytocin/ergometrine",
+    "value": "Oxytocin/ergometrine"
   },
   {
-    "title": "Paracetamol, oral"
+    "text": "Paracetamol, oral",
+    "value": "Paracetamol, oral"
   },
   {
-    "title": "Permethrin"
+    "text": "Permethrin",
+    "value": "Permethrin"
   },
   {
-    "title": "Petroleum jelly"
+    "text": "Petroleum jelly",
+    "value": "Petroleum jelly"
   },
   {
-    "title": "Petroleum jelly, yellow"
+    "text": "Petroleum jelly, yellow",
+    "value": "Petroleum jelly, yellow"
   },
   {
-    "title": "Phenobarbital, oral"
+    "text": "Phenobarbital, oral",
+    "value": "Phenobarbital, oral"
   },
   {
-    "title": "Phenoxymethylpenicillin"
+    "text": "Phenoxymethylpenicillin",
+    "value": "Phenoxymethylpenicillin"
   },
   {
-    "title": "Phenytoin, oral"
+    "text": "Phenytoin, oral",
+    "value": "Phenytoin, oral"
   },
   {
-    "title": "Pneumococcal conjugated vaccine"
+    "text": "Pneumococcal conjugated vaccine",
+    "value": "Pneumococcal conjugated vaccine"
   },
   {
-    "title": "Povidone-iodine, topical"
+    "text": "Povidone-iodine, topical",
+    "value": "Povidone-iodine, topical"
   },
   {
-    "title": "Prednisone, oral"
+    "text": "Prednisone, oral",
+    "value": "Prednisone, oral"
   },
   {
-    "title": "Progestin-only, injectable"
+    "text": "Progestin-only, injectable",
+    "value": "Progestin-only, injectable"
   },
   {
-    "title": "Progestin-only, subdermal implant"
+    "text": "Progestin-only, subdermal implant",
+    "value": "Progestin-only, subdermal implant"
   },
   {
-    "title": "Promethazine, parenteral"
+    "text": "Promethazine, parenteral",
+    "value": "Promethazine, parenteral"
   },
   {
-    "title": "Proton-pump inhibitor, oral"
+    "text": "Proton-pump inhibitor, oral",
+    "value": "Proton-pump inhibitor, oral"
   },
   {
-    "title": "Pyrazinamide"
+    "text": "Pyrazinamide",
+    "value": "Pyrazinamide"
   },
   {
-    "title": "Pyridoxine"
+    "text": "Pyridoxine",
+    "value": "Pyridoxine"
   },
   {
-    "title": "Quinine dihydrochloride, parenteral"
+    "text": "Quinine dihydrochloride, parenteral",
+    "value": "Quinine dihydrochloride, parenteral"
   },
   {
-    "title": "Rabies immunoglobulin"
+    "text": "Rabies immunoglobulin",
+    "value": "Rabies immunoglobulin"
   },
   {
-    "title": "Rabies vaccine"
+    "text": "Rabies vaccine",
+    "value": "Rabies vaccine"
   },
   {
-    "title": "Rifampicin"
+    "text": "Rifampicin",
+    "value": "Rifampicin"
   },
   {
-    "title": "Rifampicin/isoniazid"
+    "text": "Rifampicin/isoniazid",
+    "value": "Rifampicin/isoniazid"
   },
   {
-    "title": "Rifampicin/isoniazid/pyrazinamide/ethambutol"
+    "text": "Rifampicin/isoniazid/pyrazinamide/ethambutol",
+    "value": "Rifampicin/isoniazid/pyrazinamide/ethambutol"
   },
   {
-    "title": "Risperidone, oral"
+    "text": "Risperidone, oral",
+    "value": "Risperidone, oral"
   },
   {
-    "title": "Ritonavir"
+    "text": "Ritonavir",
+    "value": "Ritonavir"
   },
   {
-    "title": "Rotavirus vaccine"
+    "text": "Rotavirus vaccine",
+    "value": "Rotavirus vaccine"
   },
   {
-    "title": "Salbutamol, inhalant solution"
+    "text": "Salbutamol, inhalant solution",
+    "value": "Salbutamol, inhalant solution"
   },
   {
-    "title": "Salbutamol, inhaler"
+    "text": "Salbutamol, inhaler",
+    "value": "Salbutamol, inhaler"
   },
   {
-    "title": "Salbutamol, parenteral"
+    "text": "Salbutamol, parenteral",
+    "value": "Salbutamol, parenteral"
   },
   {
-    "title": "Salicylic acid 15-30%, topical"
+    "text": "Salicylic acid 15-30%, topical",
+    "value": "Salicylic acid 15-30%, topical"
   },
   {
-    "title": "Salicylic acid 2%, topical"
+    "text": "Salicylic acid 2%, topical",
+    "value": "Salicylic acid 2%, topical"
   },
   {
-    "title": "Salmeterol/fluticasone, inhaler"
+    "text": "Salmeterol/fluticasone, inhaler",
+    "value": "Salmeterol/fluticasone, inhaler"
   },
   {
-    "title": "Selenium sulphide 2.5%, topical"
+    "text": "Selenium sulphide 2.5%, topical",
+    "value": "Selenium sulphide 2.5%, topical"
   },
   {
-    "title": "Sennosides A and B"
+    "text": "Sennosides A and B",
+    "value": "Sennosides A and B"
   },
   {
-    "title": "Short-acting beta2 agonist, inhaler"
+    "text": "Short-acting beta2 agonist, inhaler",
+    "value": "Short-acting beta2 agonist, inhaler"
   },
   {
-    "title": "Simvastatin"
+    "text": "Simvastatin",
+    "value": "Simvastatin"
   },
   {
-    "title": "Soap substitute"
+    "text": "Soap substitute",
+    "value": "Soap substitute"
   },
   {
-    "title": "Sodium chloride 0.9%, nasal solution"
+    "text": "Sodium chloride 0.9%, nasal solution",
+    "value": "Sodium chloride 0.9%, nasal solution"
   },
   {
-    "title": "Sodium chloride 0.9%, parenteral"
+    "text": "Sodium chloride 0.9%, parenteral",
+    "value": "Sodium chloride 0.9%, parenteral"
   },
   {
-    "title": "Sodium cromoglycate 2%, ophthalmic"
+    "text": "Sodium cromoglycate 2%, ophthalmic",
+    "value": "Sodium cromoglycate 2%, ophthalmic"
   },
   {
-    "title": "Spironolactone"
+    "text": "Spironolactone",
+    "value": "Spironolactone"
   },
   {
-    "title": "SSRI"
+    "text": "SSRI",
+    "value": "SSRI"
   },
   {
-    "title": "Streptokinase"
+    "text": "Streptokinase",
+    "value": "Streptokinase"
   },
   {
-    "title": "Sulphonylurea"
+    "text": "Sulphonylurea",
+    "value": "Sulphonylurea"
   },
   {
-    "title": "Tenofovir (TDF)"
+    "text": "Tenofovir (TDF)",
+    "value": "Tenofovir (TDF)"
   },
   {
-    "title": "Tenofovir/emtriciabine/efavirenz (TDF+FTC+EFV)"
+    "text": "Tenofovir/emtriciabine/efavirenz (TDF+FTC+EFV)",
+    "value": "Tenofovir/emtriciabine/efavirenz (TDF+FTC+EFV)"
   },
   {
-    "title": "Tetanus and diptheria vaccine"
+    "text": "Tetanus and diptheria vaccine",
+    "value": "Tetanus and diptheria vaccine"
   },
   {
-    "title": "Tetanus toxoid"
+    "text": "Tetanus toxoid",
+    "value": "Tetanus toxoid"
   },
   {
-    "title": "Tetracaine 0.5%, topical"
+    "text": "Tetracaine 0.5%, topical",
+    "value": "Tetracaine 0.5%, topical"
   },
   {
-    "title": "Tetracaine 1%, ophthalmic"
+    "text": "Tetracaine 1%, ophthalmic",
+    "value": "Tetracaine 1%, ophthalmic"
   },
   {
-    "title": "Thiamine, oral"
+    "text": "Thiamine, oral",
+    "value": "Thiamine, oral"
   },
   {
-    "title": "Thiamine, parenteral"
+    "text": "Thiamine, parenteral",
+    "value": "Thiamine, parenteral"
   },
   {
-    "title": "Thrombolytic"
+    "text": "Thrombolytic",
+    "value": "Thrombolytic"
   },
   {
-    "title": "Tincture of Iodine BP"
+    "text": "Tincture of Iodine BP",
+    "value": "Tincture of Iodine BP"
   },
   {
-    "title": "Titanium dioxide (UV block)"
+    "text": "Titanium dioxide (UV block)",
+    "value": "Titanium dioxide (UV block)"
   },
   {
-    "title": "Tramadol, oral"
+    "text": "Tramadol, oral",
+    "value": "Tramadol, oral"
   },
   {
-    "title": "Tretinoin, topical"
+    "text": "Tretinoin, topical",
+    "value": "Tretinoin, topical"
   },
   {
-    "title": "Tricyclic antidepressants"
+    "text": "Tricyclic antidepressants",
+    "value": "Tricyclic antidepressants"
   },
   {
-    "title": "Triphasic: combined estrogen/progestin pills"
+    "text": "Triphasic: combined estrogen/progestin pills",
+    "value": "Triphasic: combined estrogen/progestin pills"
   },
   {
-    "title": "Triphasic: ethinyloestradiol/levonorgestrel, pills"
+    "text": "Triphasic: ethinyloestradiol/levonorgestrel, pills",
+    "value": "Triphasic: ethinyloestradiol/levonorgestrel, pills"
   },
   {
-    "title": "Valproic acid, oral"
+    "text": "Valproic acid, oral",
+    "value": "Valproic acid, oral"
   },
   {
-    "title": "Vitamin A"
+    "text": "Vitamin A",
+    "value": "Vitamin A"
   },
   {
-    "title": "Vitamin K"
+    "text": "Vitamin K",
+    "value": "Vitamin K"
   },
   {
-    "title": "Water for injection"
+    "text": "Water for injection",
+    "value": "Water for injection"
   },
   {
-    "title": "Zidovudine (AZT)"
+    "text": "Zidovudine (AZT)",
+    "value": "Zidovudine (AZT)"
   },
   {
-    "title": "Zinc, oral"
+    "text": "Zinc, oral",
+    "value": "Zinc, oral"
   },
   {
-    "title": "Zinc and castor oil, topical"
+    "text": "Zinc and castor oil, topical",
+    "value": "Zinc and castor oil, topical"
   },
   {
-    "title": "Zinc oxide, topical"
+    "text": "Zinc oxide, topical",
+    "value": "Zinc oxide, topical"
   },
   {
-    "title": "Zuclopenthixol decanoate"
+    "text": "Zuclopenthixol decanoate",
+    "value": "Zuclopenthixol decanoate"
   }
 ]

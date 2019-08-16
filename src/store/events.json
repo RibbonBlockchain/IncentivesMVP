@@ -1,166 +1,166 @@
 [
   {
-    "eventName": "Consultation",
-    "reward": 1
+    "text": "Consultation",
+    "value": 10
   },
   {
-    "eventName": "Informed consent declaration",
-    "reward": 1
+    "text": "Informed consent declaration",
+    "value": 10
   },
   {
-    "eventName": "Survey",
-    "reward": 1
+    "text": "Survey",
+    "value": 10
   },
   {
-    "eventName": "Sign Non-smoker's declaration",
-    "reward": 1
+    "text": "Sign Non-smoker's declaration",
+    "value": 10
   },
   {
-    "eventName": "Blood pressure check",
-    "reward": 1
+    "text": "Blood pressure check",
+    "value": 10
   },
   {
-    "eventName": "Blood glucose check",
-    "reward": 2
+    "text": "Blood glucose check",
+    "value": 20
   },
   {
-    "eventName": "Cholesterol check",
-    "reward": 1
+    "text": "Cholesterol check",
+    "value": 10
   },
   {
-    "eventName": "Weight assessment check",
-    "reward": 1
+    "text": "Weight assessment check",
+    "value": 10
   },
   {
-    "eventName": "TB test skin/sputum",
-    "reward": 1
+    "text": "TB test skin/sputum",
+    "value": 10
   },
   {
-    "eventName": "TB radiology test",
-    "reward": 2
+    "text": "TB radiology test",
+    "value": 20
   },
   {
-    "eventName": "Pap smear",
-    "reward": 2
+    "text": "Pap smear",
+    "value": 20
   },
   {
-    "eventName": "Breast cancer lump physical check",
-    "reward": 1
+    "text": "Breast cancer lump physical check",
+    "value": 10
   },
   {
-    "eventName": "Mammogram",
-    "reward": 2
+    "text": "Mammogram",
+    "value": 20
   },
   {
-    "eventName": "Testicular check",
-    "reward": 1
+    "text": "Testicular check",
+    "value": 10
   },
   {
-    "eventName": "Prostate inspection",
-    "reward": 3
+    "text": "Prostate inspection",
+    "value": 30
   },
   {
-    "eventName": "Circumcision - Male",
-    "reward": 5
+    "text": "Circumcision - Male",
+    "value": 50
   },
   {
-    "eventName": "HIV test - rapid prick test",
-    "reward": 3
+    "text": "HIV test - rapid prick test",
+    "value": 30
   },
   {
-    "eventName": "HIV test - blood draw",
-    "reward": 5
+    "text": "HIV test - blood draw",
+    "value": 50
   },
   {
-    "eventName": "Initiation of treatment",
-    "reward": 1
+    "text": "Initiation of treatment",
+    "value": 10
   },
   {
-    "eventName": "Pharmaccy drug collection",
-    "reward": 1
+    "text": "Pharmaccy drug collection",
+    "value": 10
   },
   {
-    "eventName": "Blood draw test",
-    "reward": 5
+    "text": "Blood draw test",
+    "value": 50
   },
   {
-    "eventName": "Blood donation",
-    "reward": 5
+    "text": "Blood donation",
+    "value": 50
   },
   {
-    "eventName": "Colonoscopy check",
-    "reward": 2
+    "text": "Colonoscopy check",
+    "value": 20
   },
   {
-    "eventName": "Glaucoma check",
-    "reward": 1
+    "text": "Glaucoma check",
+    "value": 10
   },
   {
-    "eventName": "Flu vaccination",
-    "reward": 1
+    "text": "Flu vaccination",
+    "value": 10
   },
   {
-    "eventName": "Adherence scoring per milestone",
-    "reward": 5
+    "text": "Adherence scoring per milestone",
+    "value": 50
   },
   {
-    "eventName": "Urine Test",
-    "reward": 1
+    "text": "Urine Test",
+    "value": 10
   },
   {
-    "eventName": "Psychological therapy per visit",
-    "reward": 1
+    "text": "Psychological therapy per visit",
+    "value": 10
   },
   {
-    "eventName": "Psychiatry therapy per visit",
-    "reward": 1
+    "text": "Psychiatry therapy per visit",
+    "value": 10
   },
   {
-    "eventName": "Counselling per visit",
-    "reward": 1
+    "text": "Counselling per visit",
+    "value": 10
   },
   {
-    "eventName": "Immunization",
-    "reward": 5
+    "text": "Immunization",
+    "value": 50
   },
   {
-    "eventName": "Pregnancy Test",
-    "reward": 1
+    "text": "Pregnancy Test",
+    "value": 10
   },
   {
-    "eventName": "Pre-natal class session",
-    "reward": 1
+    "text": "Pre-natal class session",
+    "value": 10
   },
   {
-    "eventName": "STI Test",
-    "reward": 1
+    "text": "STI Test",
+    "value": 10
   },
   {
-    "eventName": "Gynaecology check",
-    "reward": 2
+    "text": "Gynaecology check",
+    "value": 20
   },
   {
-    "eventName": "Injection - in clinic per injection",
-    "reward": 1
+    "text": "Injection - in clinic per injection",
+    "value": 10
   },
   {
-    "eventName": "Electrocardiogram (ECG)",
-    "reward": 1
+    "text": "Electrocardiogram (ECG)",
+    "value": 10
   },
   {
-    "eventName": "Body Mass Index (BMI) and waist",
-    "reward": 1
+    "text": "Body Mass Index (BMI) and waist",
+    "value": 10
   },
   {
-    "eventName": "Ultrasound",
-    "reward": 1
+    "text": "Ultrasound",
+    "value": 10
   },
   {
-    "eventName": "Return checkup visit",
-    "reward": 1
+    "text": "Return checkup visit",
+    "value": 10
   },
   {
-    "eventName": "Return Visit",
-    "reward": 1
+    "text": "Return Visit",
+    "value": 10
   }
 ]

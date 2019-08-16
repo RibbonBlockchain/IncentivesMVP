@@ -338,6 +338,7 @@ import { S3Image } from "aws-amplify-vue";
 import StarRating from "vue-star-rating";
 import VdtnetTable from "vue-datatables-net";
 import Avatar from "vue-avatar";
+import { ModelSelect, MultiSelect } from "vue-search-select";
 
 import Tabs from "@/components/Tabs/Tabs.vue";
 import TabPane from "@/components/Tabs/TabPane.vue";
@@ -404,7 +405,9 @@ export default {
     VuePlotly,
     Avatar,
     StarRating,
-    Uploader
+    Uploader,
+    ModelSelect,
+    MultiSelect
   },
   data() {
     return {
@@ -415,7 +418,6 @@ export default {
         showDetailModal: false
       },
       selectedPerson: {},
-      eventData: eventData,
       healthcareServices: healthcareServices,
       prescriptions: prescriptions,
       web3: {
@@ -442,7 +444,9 @@ export default {
         patient: {},
         practitioner: {},
         prescriptions: [],
-        activity: []
+        lastSelectedPrescription: {},
+        activity: [],
+        lastSelectedActivity: {}
       },
       rewardsToSend: [],
       rewardsToSendTotal: 0,
@@ -518,14 +522,32 @@ export default {
       return this.$store.state.login.user.attributes;
     },
     patients: function() {
-      return this.$store.state.patients.data;
+      return this.$store.state.patients.data.map(patient => {
+        return {
+          value: patient,
+          text: `(${patient.userId}) - ${patient.firstName}, ${patient.lastName}`
+        };
+      });
     },
     practitioners: function() {
-      return this.$store.state.practitioners.data;
+      return this.$store.state.practitioners.data.map(practitioner => {
+		  return {
+			  value: practitioner,
+			  text: `(${practitioner.userId}) - ${practitioner.firstName}, ${practitioner.lastName}`
+		  }
+	  })
     },
-    events: function() {
+    activities: function() {
       return this.$store.state.activities.data;
-    },
+	},
+	events: function() {
+		return eventData.map(event => {
+			return {
+				value: event,
+				text: `${event.text} - (${Number(event.value).toFixed(4)} RBN)`
+			}
+		})
+	},
     validateInteractionForm: function() {
       return (
         !this.activity.patient ||
@@ -682,16 +704,16 @@ export default {
       // assign the patient to each of the events
       const input = {
         id: new Date().getTime(),
-        interactionPatientId: this.activity.patient.id,
-        interactionPractitionerId: this.activity.practitioner.id,
+        interactionPatientId: this.activity.patient.value.id,
+        interactionPractitionerId: this.activity.practitioner.value.id,
         interaction: this.activity.activity
-          .map(item => item.eventName)
+          .map(item => item.text)
           .join(", "),
         ratings: this.rating,
         prescriptions: this.activity.prescriptions
-      };
-      let patientWallet = this.activity.patient.walletAddress;
-      let practitionerWallet = this.activity.practitioner.walletAddress;
+	  };
+      let patientWallet = this.activity.patient.value.walletAddress;
+      let practitionerWallet = this.activity.practitioner.value.walletAddress;
       await API.graphql(graphqlOperation(createInteraction, { input }))
         .then(async response => {
           await this.$notify({
@@ -724,7 +746,8 @@ export default {
           //amount sent to CommunityHealthWorker
           const rewardToHealthWorker = parseFloat(rewardToBeSent) * 0.15;
           this.sendToken(this.account, rewardToHealthWorker.toString(), 2);
-          this.$bvModal.hide("interaction-modal");
+		  this.$bvModal.hide("interaction-modal");
+		  this.activity = {};
         })
         .catch(async error => {
           await this.$notify({
@@ -754,6 +777,14 @@ export default {
       });
     },
 
+    onInteractionSelect(activities, lastSelectedActivity) {
+      this.activity.activity = activities;
+      this.activity.lastSelectedActivity = lastSelectedActivity;
+    },
+    onPrescriptionSelect(prescriptions, lastSelectedPrescription) {
+      this.activity.prescriptions = prescriptions;
+      this.activity.lastSelectedPrescription = lastSelectedPrescription;
+    },
     contactSelect(phoneNumber) {
       this.activity.phoneNumber = phoneNumber;
     },
