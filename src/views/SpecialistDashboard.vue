@@ -46,7 +46,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="nav-wrapper">
-                    <table class="table table-striped" style="width:100%" v-if="activities.length > 0">
+                    <table class="table table-striped" style="width:100%" v-if="events.length > 0">
                       <thead>
                         <tr>
                           <th>Patient Name</th>
@@ -56,7 +56,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="activity in activities" v-bind:key="activity.id">
+                        <tr v-for="activity in events" v-bind:key="activity.id">
                           <td>
                             <a
                               href="#"
@@ -69,7 +69,7 @@
                               @click.prevent="openDetails(activity.practitioner)"
                             >{{ `${activity.practitioner.firstName} ${activity.practitioner.lastName}` }}</a>
                           </td>
-                          <td>{{ parseInt(activity.id) | moment("ddd, MMM Do YYYY HH:mm:ss") }}</td>
+                          <td>{{ parseInt(activity.id) | moment("ddd, MMM Do YYYY") }}</td>
                           <td>{{ activity.interaction }}</td>
                         </tr>
                       </tbody>
@@ -165,7 +165,7 @@
               <label>Phone Number</label>
               <input
                 type="text"
-                v-mask="'+##-##-###-####'"
+                v-mask="'+## ## ### ####'"
                 class="form-control form-control-alternative"
                 v-model="patient.phoneNumber"
               />
@@ -221,7 +221,7 @@
           <label>Phone Number</label>
           <input
             type="text"
-            v-mask="'+##-##-###-####'"
+            v-mask="'+## ## ### ####'"
             class="form-control form-control-alternative"
             v-model="practitioner.phoneNumber"
           />
@@ -250,60 +250,58 @@
           <p>Record a patient activity.</p>
         </div>
       </div>
-
       <div class="row">
-        <div class="col-12">
-          <label>Select Patient</label>
-          <div class="form-group">
-            <model-select
-              :options="patients"
-              v-model="activity.patient"
-              placeholder="select patient"
-            ></model-select>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-12">
+              <label>Select Patient</label>
+              <div class="form-group">
+                <v-select
+                  style="width: 100%"
+                  label="userId"
+                  v-model="activity.patient"
+                  :options="patients"
+                ></v-select>
+              </div>
+            </div>
+            <div class="col-12">
+              <label>Select Practitioner</label>
+              <div class="form-group">
+                <v-select
+                  style="width: 100%"
+                  label="userId"
+                  v-model="activity.practitioner"
+                  :options="practitioners"
+                ></v-select>
+              </div>
+            </div>
+            <div class="col-12">
+              <label>Select Activity</label>
+              <div class="form-group">
+                <v-select
+                  style="width: 100%"
+                  label="eventName"
+                  multiple
+                  v-model="activity.activity"
+                  :options="eventData"
+                ></v-select>
+              </div>
+            </div>
+            <div class="col-12">
+              <label>Select Prescriptions</label>
+              <div class="form-group">
+                <v-select
+                  multiple
+                  style="width: 100%"
+                  label="title"
+                  v-model="activity.prescriptions"
+                  :options="prescriptions"
+                ></v-select>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <label>Select Practitioner</label>
-          <div class="form-group">
-			<model-select
-              :options="practitioners"
-              v-model="activity.practitioner"
-              placeholder="select practitioner"
-            ></model-select>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <label>Select Activity</label>
-          <div class="form-group">
-            <multi-select
-              :options="events"
-              :selected-options="activity.activity"
-              placeholder="select activity"
-              @select="onInteractionSelect"
-            ></multi-select>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <label>Select Prescriptions</label>
-          <div class="form-group">
-            <multi-select
-              :options="prescriptions"
-              :selected-options="activity.prescriptions"
-              placeholder="select prescriptions"
-              @select="onPrescriptionSelect"
-            ></multi-select>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        <div class="col-12">
+        <div class="col-6">
           <table style="width: 100%">
             <tr v-for="healthcare in healthcareServices" :key="healthcare.key">
               <td>
