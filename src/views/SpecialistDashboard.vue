@@ -60,7 +60,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="activity in activities" v-bind:key="activity.id">
+                        <tr v-for="activity in events" v-bind:key="activity.id">
                           <td>
                             <a
                               href="#"
@@ -73,7 +73,7 @@
                               @click.prevent="openDetails(activity.practitioner)"
                             >{{ `${activity.practitioner.firstName} ${activity.practitioner.lastName}` }}</a>
                           </td>
-                          <td>{{ parseInt(activity.id) | moment("ddd, MMM Do YYYY HH:mm:ss") }}</td>
+                          <td>{{ parseInt(activity.id) | moment("ddd, MMM Do YYYY") }}</td>
                           <td>{{ activity.interaction }}</td>
                         </tr>
                       </tbody>
@@ -169,7 +169,7 @@
               <label>Phone Number</label>
               <input
                 type="text"
-                v-mask="'+##-##-###-####'"
+                v-mask="'+## ## ### ####'"
                 class="form-control form-control-alternative"
                 v-model="patient.phoneNumber"
               />
@@ -225,7 +225,7 @@
           <label>Phone Number</label>
           <input
             type="text"
-            v-mask="'+##-##-###-####'"
+            v-mask="'+## ## ### ####'"
             class="form-control form-control-alternative"
             v-model="practitioner.phoneNumber"
           />
