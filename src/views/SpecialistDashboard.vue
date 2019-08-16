@@ -165,7 +165,7 @@
               <label>Phone Number</label>
               <input
                 type="text"
-                v-mask="'+###-(###)-###-####'"
+                v-mask="'+##-##-###-####'"
                 class="form-control form-control-alternative"
                 v-model="patient.phoneNumber"
               />
@@ -221,7 +221,7 @@
           <label>Phone Number</label>
           <input
             type="text"
-            v-mask="'+###-(###)-###-####'"
+            v-mask="'+##-##-###-####'"
             class="form-control form-control-alternative"
             v-model="practitioner.phoneNumber"
           />
