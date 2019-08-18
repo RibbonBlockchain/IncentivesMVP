@@ -60,7 +60,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="activity in events" v-bind:key="activity.id">
+                        <tr v-for="activity in activities" v-bind:key="activity.id">
                           <td>
                             <a
                               href="#"
