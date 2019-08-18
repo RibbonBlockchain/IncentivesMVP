@@ -46,7 +46,11 @@
               <div class="row">
                 <div class="col-12">
                   <div class="nav-wrapper">
-                    <table class="table table-striped" style="width:100%" v-if="events.length > 0">
+                    <table
+                      class="table table-striped"
+                      style="width:100%"
+                      v-if="activities.length > 0"
+                    >
                       <thead>
                         <tr>
                           <th>Patient Name</th>
@@ -56,7 +60,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="activity in events" v-bind:key="activity.id">
+                        <tr v-for="activity in activities" v-bind:key="activity.id">
                           <td>
                             <a
                               href="#"
@@ -69,7 +73,7 @@
                               @click.prevent="openDetails(activity.practitioner)"
                             >{{ `${activity.practitioner.firstName} ${activity.practitioner.lastName}` }}</a>
                           </td>
-                          <td>{{ parseInt(activity.id) | moment("ddd, MMM Do YYYY HH:mm:ss") }}</td>
+                          <td>{{ parseInt(activity.id) | moment("ddd, MMM Do YYYY") }}</td>
                           <td>{{ activity.interaction }}</td>
                         </tr>
                       </tbody>
@@ -165,7 +169,7 @@
               <label>Phone Number</label>
               <input
                 type="text"
-                v-mask="'+##-##-###-####'"
+                v-mask="'+## ## ### ####'"
                 class="form-control form-control-alternative"
                 v-model="patient.phoneNumber"
               />
@@ -221,7 +225,7 @@
           <label>Phone Number</label>
           <input
             type="text"
-            v-mask="'+##-##-###-####'"
+            v-mask="'+## ## ### ####'"
             class="form-control form-control-alternative"
             v-model="practitioner.phoneNumber"
           />
@@ -252,68 +256,76 @@
       </div>
 
       <div class="row">
-        <div class="col-12">
-          <label>Select Patient</label>
-          <div class="form-group">
-            <model-select
-              :options="patients"
-              v-model="activity.patient"
-              placeholder="select patient"
-            ></model-select>
+        <div class="col-lg-6 col-md-12">
+          <div class="row">
+            <div class="col-12">
+              <label>Select Patient</label>
+              <div class="form-group">
+                <model-select
+                  :options="patients"
+                  v-model="activity.patient"
+                  placeholder="select patient"
+                ></model-select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <label>Select Practitioner</label>
+              <div class="form-group">
+                <model-select
+                  :options="practitioners"
+                  v-model="activity.practitioner"
+                  placeholder="select practitioner"
+                ></model-select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <label>Select Activity</label>
+              <div class="form-group">
+                <multi-select
+                  :options="events"
+                  :selected-options="activity.activity"
+                  placeholder="select activity"
+                  @select="onInteractionSelect"
+                ></multi-select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <label>Select Prescriptions</label>
+              <div class="form-group">
+                <multi-select
+                  :options="prescriptions"
+                  :selected-options="activity.prescriptions"
+                  placeholder="select prescriptions"
+                  @select="onPrescriptionSelect"
+                ></multi-select>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <label>Select Practitioner</label>
-          <div class="form-group">
-			<model-select
-              :options="practitioners"
-              v-model="activity.practitioner"
-              placeholder="select practitioner"
-            ></model-select>
+        <div class="col-lg-6 col-md-12">
+          <div class="row">
+            <div class="text-center">
+              <h3>Rating</h3>
+            </div>
+            <div class="col-12">
+              <table style="width: 100%">
+                <tr v-for="healthcare in healthcareServices" :key="healthcare.key">
+                  <td>
+                    <span for="health_services">{{ healthcare.value }}</span>
+                  </td>
+                  <td>
+                    <star-rating v-model="rating[healthcare.key]"></star-rating>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <label>Select Activity</label>
-          <div class="form-group">
-            <multi-select
-              :options="eventData"
-              :selected-options="activity.activity"
-              placeholder="select activity"
-              @select="onInteractionSelect"
-            ></multi-select>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <label>Select Prescriptions</label>
-          <div class="form-group">
-            <multi-select
-              :options="prescriptions"
-              :selected-options="activity.prescriptions"
-              placeholder="select prescriptions"
-              @select="onPrescriptionSelect"
-            ></multi-select>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        <div class="col-12">
-          <table style="width: 100%">
-            <tr v-for="healthcare in healthcareServices" :key="healthcare.key">
-              <td>
-                <span for="health_services">{{ healthcare.value }}</span>
-              </td>
-              <td>
-                <star-rating v-model="rating[healthcare.key]"></star-rating>
-              </td>
-            </tr>
-          </table>
         </div>
       </div>
       <div slot="modal-footer" class="w-100">
@@ -419,7 +431,6 @@ export default {
         showDetailModal: false
       },
       selectedPerson: {},
-      eventData: eventData,
       healthcareServices: healthcareServices,
       prescriptions: prescriptions,
       web3: {
@@ -522,14 +533,22 @@ export default {
     },
     practitioners: function() {
       return this.$store.state.practitioners.data.map(practitioner => {
-		  return {
-			  value: practitioner,
-			  text: `(${practitioner.userId}) - ${practitioner.firstName}, ${practitioner.lastName}`
-		  }
-	  })
+        return {
+          value: practitioner,
+          text: `(${practitioner.userId}) - ${practitioner.firstName}, ${practitioner.lastName}`
+        };
+      });
+    },
+    activities: function() {
+      return this.$store.state.activities.data.sort((a, b) => (a.id > b.id)*2-1);
     },
     events: function() {
-      return this.$store.state.activities.data;
+      return eventData.sort((a, b) => (a.text > b.text)*2-1).map(event => {
+        return {
+          value: event,
+          text: `${event.text} - (${Number(event.value).toFixed(4)} RBN)`
+        };
+      });
     },
     validateInteractionForm: function() {
       return (
@@ -689,12 +708,10 @@ export default {
         id: new Date().getTime(),
         interactionPatientId: this.activity.patient.value.id,
         interactionPractitionerId: this.activity.practitioner.value.id,
-        interaction: this.activity.activity
-          .map(item => item.text)
-          .join(", "),
+        interaction: this.activity.activity.map(item => item.text).join(", "),
         ratings: this.rating,
         prescriptions: this.activity.prescriptions
-	  };
+      };
       let patientWallet = this.activity.patient.value.walletAddress;
       let practitionerWallet = this.activity.practitioner.value.walletAddress;
       await API.graphql(graphqlOperation(createInteraction, { input }))
@@ -703,6 +720,7 @@ export default {
             group: "foo",
             title: "New Interaction",
             text: `Interaction has been recorded.`
+
 		  });
 		  const rewardToBeSent = this.activity.activity.reduce((acc, balance) =>  acc + balance.reward, 0);
       console.log(rewardToBeSent)
@@ -721,6 +739,7 @@ export default {
       const rewardToHealthWorker = parseFloat(rewardToBeSent)*0.15
       this.sendToken(this.account, rewardToHealthWorker.toString());
       this.$bvModal.hide('interaction-modal')
+
         })
         .catch(async error => {
           await this.$notify({
