@@ -407,7 +407,6 @@ const contractAbi = abi;
 let provider = new ethers.providers.Web3Provider(web3.currentProvider);
 // let wallet = new ethers.Wallet(privateKey ,provider);
 const contract = new ethers.Contract(contractAddr, contractAbi, provider.getSigner(0));
-console.log(provider.utils.getAddress)
 
 export default {
   components: {
