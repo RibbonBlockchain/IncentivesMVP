@@ -38,7 +38,7 @@
               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6">
                 <div class="text-right">
                   <div>{{ user.email }}</div>
-                  <strong>{{ provider.balance }} RBN</strong>
+                  <strong>{{ web3.balance }} RBN</strong>
                 </div>
               </div>
             </div>
@@ -384,9 +384,6 @@ import abi from "../abi.json";
 import { ethers } from "ethers";
 
 // const web3 = new Web3(
-//   // new Web3.providers.HttpProvider(
-//   //   "https://rinkeby.infura.io/v3/a8853810b5054964b0fbe19c8e02e9c1"
-//   // )
 //   window.web3.currentProvider
 // );
 
@@ -396,9 +393,9 @@ const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
 const contractAbi = abi;
 
 let provider = new ethers.providers.Web3Provider(web3.currentProvider);
-//let provider = new ethers.providers.JsonRpcProvider()
-let wallet = new ethers.Wallet(provider);
+// let wallet = new ethers.Wallet(privateKey ,provider);
 const contract = new ethers.Contract(contractAddr, contractAbi, provider.getSigner(0));
+console.log(provider.utils.getAddress)
 
 export default {
   components: {
@@ -475,30 +472,19 @@ export default {
     this.$store.dispatch("loadEvents");
     this.$store.dispatch("loadPatients");
     this.$store.dispatch("loadPractitioners");
-    // await token.methods
-    //   .owner()
-    //   .call()
-    //   .then(result => {
-    //     token.methods
-    //       .balanceOf(result)
-    //       .call()
-    //       .then(balance => {
-    //         this.web3 = {
-    //           balance: web3.utils.fromWei(balance.toString(), "ether")
-    //         };
-    //       });
-    //   });
-    const accounts = await web3.eth.getAccounts();
-    const Nonce = await provider.getTransactionCount(accounts[0], "pending");
-    this.account = accounts[0];
-    this.newNonce = Nonce;
-    const options = { address: accounts[0], provider: provider };
-    await contract.balanceOf(options.address).then(balance => {
+
+    // const accounts = await web3.eth.getAccounts();
+    // this.account = accounts[0];
+    // const options = { address: accounts[0], provider: provider };
+
+    await contract.balanceOf("0x07F72ecFFDcB30618c522da4042D7a8c16Db7282").then(balance => {
       this.web3 = {
-        balance: web3.utils.fromWei(balance.toString(), "ether")
+        balance: ethers.utils.formatEther(balance)
       };
     });
+
   },
+
   mounted: function() {
     API.graphql(graphqlOperation(onCreateInteraction)).subscribe({
       next: data => {
@@ -631,7 +617,7 @@ export default {
         .balanceOf(walletAddress)
         .call()
         .then(balance => {
-          this.myBalance = web3.utils.fromWei(balance.toString(), "ether");
+          this.myBalance = ethers.utils.formatEther(balance);
         });
 
       this.modals.showDetailModal = true;
@@ -719,6 +705,7 @@ export default {
             text: `Interaction has been recorded.`
 		  });
 		  const rewardToBeSent = this.activity.activity.reduce((acc, balance) =>  acc + balance.reward, 0);
+      console.log(rewardToBeSent)
       
       //amount sent to patient
 		  this.sendToken(patientWallet, rewardToBeSent.toString());
@@ -744,12 +731,10 @@ export default {
         });
     },
 
-    //cant send bulk transactions as nonce will be the same if transaction isnt yet mined.
-    //transaction nonce has to be manipulated to aceept bulk transactions
     async sendToken(receiver, amount) {
       const numberOfDecimals = 18;
       // const numberOfTokens = ethers.utils.bigNumberify(amount);
-      const numberOfTokens = ethers.utils.parseUnits(amount, numberOfDecimals);
+      const numberOfTokens = ethers.utils.parseUnits('1.0', numberOfDecimals);
 
       let overrides = {
         gasLimit: 750000,
