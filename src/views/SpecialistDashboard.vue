@@ -406,8 +406,9 @@ const contractAbi = abi;
 
 let provider = new ethers.providers.Web3Provider(web3.currentProvider);
 // let wallet = new ethers.Wallet(privateKey ,provider);
+const signer = provider.getSigner();
 const contract = new ethers.Contract(contractAddr, contractAbi, provider.getSigner(0));
-console.log(web3.eth.accounts[0])
+
 
 export default {
   components: {
@@ -483,9 +484,7 @@ export default {
     this.$store.dispatch("loadPatients");
     this.$store.dispatch("loadPractitioners");
 
-    // const accounts = await web3.eth.getAccounts();
-    this.account = web3.eth.accounts[0];
-    // const options = { address: accounts[0], provider: provider };
+    this.account = signer.provider._web3Provider.selectedAddress;
 
     await contract.balanceOf(this.account).then(balance => {
       this.web3 = {
