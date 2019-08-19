@@ -721,16 +721,27 @@ export default {
             text: `Interaction has been recorded.`
 
 		  });
-		  const rewardToBeSent = this.activity.activity.reduce((acc, balance) =>  acc + balance.reward, 0);
-      console.log(rewardToBeSent)
+
+		  // const rewardToBeSent = this.activity.activity.reduce((acc, balance) =>  acc + balance.reward, 0);
+      let rewardedTokens = [];
+      this.activity.activity.forEach((activity) => {
+        rewardedTokens.push(activity.value);
+      })
+
+      const rewardToBeSent = rewardedTokens.reduce(function (acc, obj) { return acc + obj.value; }, 0);
+
+      console.log(rewardToBeSent);
       
       //amount sent to patient
 		  this.sendToken(patientWallet, rewardToBeSent.toString());
 
       //sum of ratings object
       const sumRatings = (obj) => Object.keys(obj).reduce((acc, value) => acc + obj[value], 0);
+
       // amount sent to practitioner
-      const rewardToPractitioner = parseFloat(rewardToBeSent)*0.10 + parseFloat((sumRatings(this.rating)/30))*0.05
+      const rewardToPractitioner = 
+          parseFloat(rewardToBeSent)*0.10 + 
+          parseFloat((sumRatings(this.rating)/30))*0.05
       
       this.sendToken(practitionerWallet, rewardToPractitioner.toString());
 
@@ -752,7 +763,7 @@ export default {
     async sendToken(receiver, amount) {
       const numberOfDecimals = 18;
       // const numberOfTokens = ethers.utils.bigNumberify(amount);
-      const numberOfTokens = ethers.utils.parseUnits('1.0', numberOfDecimals);
+      const numberOfTokens = ethers.utils.parseUnits(amount, numberOfDecimals);
 
       let overrides = {
         gasLimit: 750000,
