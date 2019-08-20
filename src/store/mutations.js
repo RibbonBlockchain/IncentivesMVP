@@ -11,10 +11,10 @@ import {
   LIST_PATIENTS,
   LIST_ACTIVITIES,
   NEW_ACTIVITY_SUCCESS,
-  PATIENT_ACTIVITY_SUCCESS,
   REGISTER_WEB3_INSTANCE,
   LIST_PRACTITIONERS,
-  NEW_PRACTITIONER_SUCCESS
+  NEW_PRACTITIONER_SUCCESS,
+  SET_CHW
 } from "./types";
 
 export const AuthMutations = {
@@ -90,5 +90,11 @@ export const InteractionMutation = {
   [NEW_ACTIVITY_SUCCESS](state, payload) {
     state.activities.data = state.activities.data.concat(payload);
     state.activities.error = null;
+  }
+};
+
+export const CHWMutation = {
+  [SET_CHW](state, payload) {
+    state.chw = payload;
   }
 };

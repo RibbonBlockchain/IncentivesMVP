@@ -38,7 +38,13 @@
               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6">
                 <div class="text-right">
                   <div>{{ user.email }}</div>
-                  <strong>{{ web3.balance }} RBN</strong>
+                  <strong v-if="chwWalletAddress">{{ getCHWBalance }} RBN</strong>
+                  <base-button
+                    v-else
+                    type="default"
+                    size="sm"
+                    @click="modals.showCHWModal = true"
+                  >Set Address</base-button>
                 </div>
               </div>
             </div>
@@ -105,14 +111,6 @@
               <strong>{{ myBalance }} RBN</strong>
             </span>
           </div>
-          <div class="col-12 mb-4">
-            <div class="text-center mb-4">
-              <amplify-s3-image
-                :imagePath="this.selectedPerson.imageLink"
-                v-if="this.selectedPerson.imageLink"
-              ></amplify-s3-image>
-            </div>
-          </div>
           <div class="col-lg-12">
             <div class="mb-3">
               <a
@@ -132,6 +130,48 @@
                 <td>{{ this.selectedPerson.phoneNumber }}</td>
               </tr>
             </table>
+          </div>
+        </div>
+      </div>
+    </modal>
+    <modal :show.sync="modals.showCHWModal" :large="false">
+      <h4 slot="header" class="modal-title" id="modal-title-default">{{user.email}}</h4>
+      <div class="container pt-xs-sm">
+        <div class="row">
+          <div class="col-12 text-right">
+            <span>
+              Token Balance:
+              <strong>{{ myBalance }} RBN</strong>
+            </span>
+          </div>
+          <div class="col-lg-12">
+            <div class="mb-3">
+              <a
+                target="_blank"
+                rel="noopener"
+                ref="no-referrer"
+                :href="'https://rinkeby.etherscan.io/address/' +this.selectedPerson.walletAddress"
+              >{{ this.selectedPerson.walletAddress }}</a>
+            </div>
+            <table style="width: 100%" class="pt-4">
+              <tr>
+                <td style="width: 50%">Wallet Balance</td>
+                <td>{{ this.selectedPerson.phoneNumber }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <input
+              type="text"
+              v-model="chw_address"
+              class="form-control"
+              placeholder="Enter your wallet address here."
+            />
+          </div>
+          <div class="col-12 text-right mt-4">
+            <b-button variant="primary" size="md" @click="setCHWAddress">Set Address</b-button>
           </div>
         </div>
       </div>
@@ -372,17 +412,20 @@ import "datatables.net-select-bs4/css/select.bootstrap4.min.css";
 import {
   listPatients,
   listInteractions,
-  listPractitioners
+  listPractitioners,
+  getChw
 } from "../graphql/queries.js";
 import {
   createPatient,
   createInteraction,
-  createPractitioner
+  createPractitioner,
+  createChw
 } from "../graphql/mutations";
 import {
   onCreatePatient,
   onCreateInteraction,
-  onCreatePractitioner
+  onCreatePractitioner,
+  onCreateChw
 } from "../graphql/subscriptions";
 
 import token from "../util/token";
@@ -429,7 +472,7 @@ export default {
         onboard: false,
         patientInteraction: false,
         newPractitioner: false,
-        showDetailModal: false
+        showCHWModal: false
       },
       selectedPerson: {},
       healthcareServices: healthcareServices,
@@ -440,6 +483,7 @@ export default {
       myBalance: 0,
       newNonce: 0,
       account: null,
+      chw_address: "",
       patient: {
         idNumber: "",
         firstName: "",
@@ -484,6 +528,10 @@ export default {
     this.$store.dispatch("loadEvents");
     this.$store.dispatch("loadPatients");
     this.$store.dispatch("loadPractitioners");
+    this.$store.dispatch(
+      "loadCHW",
+      this.$store.state.login.user.attributes.sub
+    );
     // await token.methods
     //   .owner()
     //   .call()
@@ -530,11 +578,24 @@ export default {
         );
       }
     });
+    API.graphql(graphqlOperation(onCreateChw)).subscribe({
+      next: data => {
+		this.$store.dispatch("setCHW", data.value.data.onCreateChw);
+		window.location.reload();
+      }
+    });
   },
   computed: {
     user: function() {
       return this.$store.state.login.user.attributes;
-    },
+	},
+	getCHWBalance: function() {
+		return this.$store.state.chw.walletAddress ? contract.balanceOf(this.$store.state.chw.walletAddress).then(balance => {
+			this.web3 = {
+				balance: web3.utils.fromWei(balance.toString(), "ether")
+			};
+		}) : 0.00;
+	},
     patients: function() {
       return this.$store.state.patients.data.map(patient => {
         return {
@@ -542,6 +603,9 @@ export default {
           text: `(${patient.userId}) - ${patient.firstName}, ${patient.lastName}`
         };
       });
+    },
+    chwWalletAddress: function() {
+      return this.$store.state.chw ? this.$store.state.chw.walletAddress : null;
     },
     practitioners: function() {
       return this.$store.state.practitioners.data.map(practitioner => {
@@ -552,15 +616,19 @@ export default {
       });
     },
     activities: function() {
-      return this.$store.state.activities.data.sort((a, b) => (a.id > b.id)*2-1);
+      return this.$store.state.activities.data.sort(
+        (a, b) => (a.id > b.id) * 2 - 1
+      );
     },
     events: function() {
-      return eventData.sort((a, b) => (a.text > b.text)*2-1).map(event => {
-        return {
-          value: event,
-          text: `${event.text} - (${Number(event.value).toFixed(4)} RBN)`
-        };
-      });
+      return eventData
+        .sort((a, b) => (a.text > b.text) * 2 - 1)
+        .map(event => {
+          return {
+            value: event,
+            text: `${event.text} - (${Number(event.value).toFixed(4)} RBN)`
+          };
+        });
     },
     validateInteractionForm: function() {
       return (
@@ -789,6 +857,29 @@ export default {
       });
     },
 
+    async setCHWAddress() {
+      const user = this.$store.state.login.user.attributes;
+      const input = {
+        email: user.email,
+        id: user.sub,
+        walletAddress: this.chw_address
+      };
+      await API.graphql(graphqlOperation(createChw, { input }))
+        .then(response => {
+          this.$notify({
+            group: "foo",
+            title: "Community Health Worker",
+            text: `Address has been recorded`
+          });
+        })
+        .catch(err => {
+          this.$notify({
+            group: "foo",
+            title: "Community Health Worker",
+            text: `${JSON.stringify(err)}`
+          });
+        });
+    },
     onInteractionSelect(activities, lastSelectedActivity) {
       this.activity.activity = activities;
       this.activity.lastSelectedActivity = lastSelectedActivity;
