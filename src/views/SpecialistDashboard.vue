@@ -137,7 +137,7 @@
     <modal :show.sync="modals.showCHWModal" :large="false">
       <h4 slot="header" class="modal-title" id="modal-title-default">{{user.email}}</h4>
       <div class="container pt-xs-sm">
-        <div class="row">
+        <div class="row" v-if="chwWalletAddress">
           <div class="col-12 text-right">
             <span>
               Token Balance:
@@ -161,7 +161,7 @@
             </table>
           </div>
         </div>
-        <div class="row">
+        <div class="row" v-else>
           <div class="col-12">
             <input
               type="text"
