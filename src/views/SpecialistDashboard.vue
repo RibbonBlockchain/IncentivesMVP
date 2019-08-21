@@ -134,48 +134,8 @@
         </div>
       </div>
     </modal>
-    <modal :show.sync="modals.showCHWModal" :large="false">
-      <h4 slot="header" class="modal-title" id="modal-title-default">{{user.email}}</h4>
-      <div class="container pt-xs-sm">
-        <div class="row" v-if="chwWalletAddress">
-          <div class="col-12 text-right">
-            <span>
-              Token Balance:
-              <strong>{{ myBalance }} RBN</strong>
-            </span>
-          </div>
-          <div class="col-lg-12">
-            <div class="mb-3">
-              <a
-                target="_blank"
-                rel="noopener"
-                ref="no-referrer"
-                :href="'https://rinkeby.etherscan.io/address/' +this.selectedPerson.walletAddress"
-              >{{ this.selectedPerson.walletAddress }}</a>
-            </div>
-            <table style="width: 100%" class="pt-4">
-              <tr>
-                <td style="width: 50%">Wallet Balance</td>
-                <td>{{ this.selectedPerson.phoneNumber }}</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="row" v-else>
-          <div class="col-12">
-            <input
-              type="text"
-              v-model="chw_address"
-              class="form-control"
-              placeholder="Enter your wallet address here."
-            />
-          </div>
-          <div class="col-12 text-right mt-4">
-            <b-button variant="primary" size="md" @click="setCHWAddress">Set Address</b-button>
-          </div>
-        </div>
-      </div>
-    </modal>
+    
+    
     <!-- onboard modal -->
     <b-modal id="patient-modal" size="xl" title="Register New Patient">
       <div class="row">
@@ -778,51 +738,66 @@ export default {
       };
       let patientWallet = this.activity.patient.value.walletAddress;
       let practitionerWallet = this.activity.practitioner.value.walletAddress;
-      await API.graphql(graphqlOperation(createInteraction, { input }))
-        .then(async response => {
-          await this.$notify({
-            group: "foo",
-            title: "New Interaction",
-            text: `Interaction has been recorded.`
+      let rewardedTokens = [];
+      this.activity.activity.forEach((activity) => {
+          rewardedTokens.push(activity.value);
+      })
+
+      const rewardToBeSent = rewardedTokens.reduce(function (acc, obj) { return acc + obj.value; }, 0);
+      const sumRatings = obj =>
+          Object.keys(obj).reduce((acc, value) => acc + obj[value], 0);
+
+      const rewardToPractitioner =
+        parseFloat(rewardToBeSent) * 0.1 +
+        parseFloat(sumRatings(this.rating) / 30) * 0.05 * rewardToBeSent;
+
+      const totalAmountOfRewards = rewardToBeSent*2 + rewardToPractitioner;
+
+      if(totalAmountOfRewards < this.web3.balance){
+
+        //amount sent to patient
+        this.sendToken(patientWallet, rewardToBeSent.toString());
+
+        //amount sent to practitioner
+        const rewardToPractitioner =
+          parseFloat(rewardToBeSent) * 0.1 +
+          parseFloat(sumRatings(this.rating) / 30) * 0.05 * rewardToBeSent;
+
+        this.sendToken(
+          practitionerWallet,
+          rewardToPractitioner.toString()
+        );
+
+        //amount sent to CommunityHealthWorker
+        const rewardToHealthWorker = parseFloat(rewardToBeSent) * 0.15;
+        this.sendToken(this.$store.state.chw.walletAddress, rewardToHealthWorker.toString());
+        this.$bvModal.hide("interaction-modal");
+        this.activity = {};
+        
+        await API.graphql(graphqlOperation(createInteraction, { input }))
+          .then(async response => {
+            await this.$notify({
+              group: "foo",
+              title: "New Interaction",
+              text: `Interaction has been recorded.`
+            })
+          .catch(async error => {
+            await this.$notify({
+              group: "foo",
+              title: "Interaction Failed",
+              text: `${JSON.stringify(error)}`
+              });
+            });
           });
 
-          let rewardedTokens = [];
-          this.activity.activity.forEach((activity) => {
-              rewardedTokens.push(activity.value);
-          })
-          const rewardToBeSent = rewardedTokens.reduce(function (acc, obj) { return acc + obj.value; }, 0);
-
-          //amount sent to patient
-          this.sendToken(patientWallet, rewardToBeSent.toString());
-
-          //sum of ratings object
-          const sumRatings = obj =>
-            Object.keys(obj).reduce((acc, value) => acc + obj[value], 0);
-
-          //amount sent to practitioner
-          const rewardToPractitioner =
-            parseFloat(rewardToBeSent) * 0.1 +
-            parseFloat(sumRatings(this.rating) / 30) * 0.05 * rewardToBeSent;
-
-          this.sendToken(
-            practitionerWallet,
-            rewardToPractitioner.toString()
-          );
-
-          //amount sent to CommunityHealthWorker
-          const rewardToHealthWorker = parseFloat(rewardToBeSent) * 0.15;
-          this.sendToken(this.$store.state.chw.walletAddress, rewardToHealthWorker.toString());
-          this.$bvModal.hide("interaction-modal");
-          this.activity = {};
-        })
-        .catch(async error => {
-          await this.$notify({
-            group: "foo",
-            title: "New Patient",
-            text: `${JSON.stringify(error)}`
-          });
-        });
-    },
+        }else{
+            await this.$notify({
+              group: "foo",
+              title: "Failed Interaction",
+              text: `Insufficient Tokens in account to perform transaction`
+            });
+        }
+      },
 
     async sendToken(receiver, amount) {
       const numberOfDecimals = 18;
