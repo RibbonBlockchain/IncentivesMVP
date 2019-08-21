@@ -22,6 +22,7 @@
     "ethers": "^4.0.33",
     "flatpickr": "^4.5.1",
     "graphql-tag": "^2.10.1",
+    "moment-timezone": "^0.5.26",
     "nouislider": "^11.1.0",
     "plotly.js": "^1.41.3",
     "truffle-contract": "^4.0.11",

@@ -97,14 +97,12 @@
       </div>
     </section>
     <!-- MODALS -->
-    <modal :show.sync="modals.showDetailModal" :large="false">
-      <h4
-        slot="header"
-        class="modal-title"
-        id="modal-title-default"
-      >{{ `${this.selectedPerson.firstName} ${this.selectedPerson.lastName}'s details`}}</h4>
+	<b-modal id="detail-modal" size="xl" title="Details">
       <div class="container pt-xs-sm">
         <div class="row">
+			<div class="col-12 text-center">
+				{{ `${this.selectedPerson.firstName} ${this.selectedPerson.lastName}'s details`}}
+			</div>
           <div class="col-12 text-right">
             <span>
               Token Balance:
@@ -133,9 +131,49 @@
           </div>
         </div>
       </div>
+    </b-modal>
+    <modal :show.sync="modals.showCHWModal" :large="false">
+      <h4 slot="header" class="modal-title" id="modal-title-default">{{user.email}}</h4>
+      <div class="container pt-xs-sm">
+        <div class="row" v-if="chwWalletAddress">
+          <div class="col-12 text-right">
+            <span>
+              Token Balance:
+              <strong>{{ myBalance }} RBN</strong>
+            </span>
+          </div>
+          <div class="col-lg-12">
+            <div class="mb-3">
+              <a
+                target="_blank"
+                rel="noopener"
+                ref="no-referrer"
+                :href="'https://rinkeby.etherscan.io/address/' +this.selectedPerson.walletAddress"
+              >{{ this.selectedPerson.walletAddress }}</a>
+            </div>
+            <table style="width: 100%" class="pt-4">
+              <tr>
+                <td style="width: 50%">Wallet Balance</td>
+                <td>{{ this.selectedPerson.phoneNumber }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="row" v-else>
+          <div class="col-12">
+            <input
+              type="text"
+              v-model="chw_address"
+              class="form-control"
+              placeholder="Enter your wallet address here."
+            />
+          </div>
+          <div class="col-12 text-right mt-4">
+            <b-button variant="primary" size="md" @click="setCHWAddress">Set Address</b-button>
+          </div>
+        </div>
+      </div>
     </modal>
-    
-    
     <!-- onboard modal -->
     <b-modal id="patient-modal" size="xl" title="Register New Patient">
       <div class="row">
@@ -559,7 +597,7 @@ export default {
     },
     activities: function() {
       return this.$store.state.activities.data.sort(
-        (a, b) => (a.id > b.id) * 2 - 1
+        (a, b) => (b.id > a.id) * 2 - 1
       );
     },
     events: function() {
@@ -660,8 +698,7 @@ export default {
         .then(balance => {
           this.myBalance = ethers.utils.formatEther(balance);
         });
-
-      this.modals.showDetailModal = true;
+		this.$bvModal.show("detail-modal");
     },
 
     createNewPatient() {

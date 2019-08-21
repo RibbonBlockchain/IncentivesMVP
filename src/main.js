@@ -3,7 +3,8 @@ require("dotenv").config();
 import Vue from "vue";
 import vSelect from "vue-select";
 import VueMask from "v-mask";
-import * as moment from "vue-moment";
+import * as Vmoment from "vue-moment";
+import moment from 'moment-timezone'
 import * as VueScrollTo from "vue-scrollto";
 import App from "./App.vue";
 import router from "./router";
@@ -18,9 +19,11 @@ import aws_exports from "./aws-exports";
 
 Vue.use(Notifications);
 Vue.use(VueMask);
-Vue.use(moment);
+Vue.use(Vmoment);
 Vue.use(VueScrollTo);
 Vue.use(BootstrapVue);
+
+moment.tz.setDefault('Africa/Johannesburg')
 
 Vue.component("v-select", vSelect);
 
