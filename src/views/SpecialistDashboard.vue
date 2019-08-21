@@ -597,7 +597,7 @@ export default {
     },
     activities: function() {
       return this.$store.state.activities.data.sort(
-        (a, b) => (a.id > b.id) * 2 - 1
+        (a, b) => (b.id > a.id) * 2 - 1
       );
     },
     events: function() {
