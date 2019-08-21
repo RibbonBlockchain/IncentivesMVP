@@ -705,12 +705,13 @@ export default {
     },
 
     createNewPatient() {
+      const randomWallet = ethers.Wallet.createRandom();
       const input = {
         firstName: this.patient.firstName,
         lastName: this.patient.lastName,
         userId: this.patient.idNumber,
         phoneNumber: this.patient.phoneNumber,
-        walletAddress: web3.eth.accounts.create().address
+        walletAddress: randomWallet.address
       };
       API.graphql(graphqlOperation(createPatient, { input }))
         .then(response => {
@@ -734,12 +735,13 @@ export default {
     },
 
     createNewPractitioner() {
+      const randomWallet = ethers.Wallet.createRandom();
       const input = {
         firstName: this.practitioner.firstName,
         lastName: this.practitioner.lastName,
         userId: this.practitioner.idNumber,
         phoneNumber: this.practitioner.phoneNumber,
-        walletAddress: web3.eth.accounts.create().address
+        walletAddress: randomWallet.address
       };
       API.graphql(graphqlOperation(createPractitioner, { input }))
         .then(response => {
