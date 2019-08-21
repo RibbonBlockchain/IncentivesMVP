@@ -97,14 +97,12 @@
       </div>
     </section>
     <!-- MODALS -->
-    <modal :show.sync="modals.showDetailModal" :large="false">
-      <h4
-        slot="header"
-        class="modal-title"
-        id="modal-title-default"
-      >{{ `${this.selectedPerson.firstName} ${this.selectedPerson.lastName}'s details`}}</h4>
+	<b-modal id="detail-modal" size="xl" title="Details">
       <div class="container pt-xs-sm">
         <div class="row">
+			<div class="col-12 text-center">
+				{{ `${this.selectedPerson.firstName} ${this.selectedPerson.lastName}'s details`}}
+			</div>
           <div class="col-12 text-right">
             <span>
               Token Balance:
@@ -133,7 +131,7 @@
           </div>
         </div>
       </div>
-    </modal>
+    </b-modal>
     <modal :show.sync="modals.showCHWModal" :large="false">
       <h4 slot="header" class="modal-title" id="modal-title-default">{{user.email}}</h4>
       <div class="container pt-xs-sm">
@@ -700,8 +698,7 @@ export default {
         .then(balance => {
           this.myBalance = ethers.utils.formatEther(balance);
         });
-
-      this.modals.showDetailModal = true;
+		this.$bvModal.show("detail-modal");
     },
 
     createNewPatient() {
