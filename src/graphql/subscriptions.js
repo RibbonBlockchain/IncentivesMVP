@@ -154,6 +154,30 @@ export const onDeleteInteraction = `subscription OnDeleteInteraction {
   }
 }
 `;
+export const onCreateChw = `subscription OnCreateChw {
+  onCreateCHW {
+    id
+    email
+    walletAddress
+  }
+}
+`;
+export const onUpdateChw = `subscription OnUpdateChw {
+  onUpdateCHW {
+    id
+    email
+    walletAddress
+  }
+}
+`;
+export const onDeleteChw = `subscription OnDeleteChw {
+  onDeleteCHW {
+    id
+    email
+    walletAddress
+  }
+}
+`;
 export const onCreatePractitioner = `subscription OnCreatePractitioner {
   onCreatePractitioner {
     id

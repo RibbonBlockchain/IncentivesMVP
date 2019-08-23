@@ -2,7 +2,8 @@ import { Auth, API, graphqlOperation } from "aws-amplify";
 import {
   listPatients,
   listInteractions,
-  listPractitioners
+  listPractitioners,
+  getChw
 } from "../../graphql/queries";
 import {
   LOGIN_ERROR,
@@ -13,7 +14,8 @@ import {
   LIST_PATIENTS,
   LIST_ACTIVITIES,
   LIST_PRACTITIONERS,
-  NEW_PRACTITIONER_SUCCESS
+  NEW_PRACTITIONER_SUCCESS,
+  SET_CHW
 } from "../types";
 
 export const AuthActions = {
@@ -85,5 +87,24 @@ export const PractitionerActions = {
 
   addPractitioner({ commit }, payload) {
     commit(NEW_PRACTITIONER_SUCCESS, payload);
+  }
+};
+
+export const CHWActions = {
+  loadCHW({ commit }, payload) {
+    const input = {
+      id: payload
+    };
+    API.graphql(graphqlOperation(getChw, input))
+      .then(response => {
+        commit(SET_CHW, response.data.getCHW);
+      })
+      .catch(err => {
+        commit(SET_CHW, {});
+      });
+  },
+  setCHW({ commit }, payload) {
+	  console.log(payload)
+	  commit(SET_CHW, payload)
   }
 };

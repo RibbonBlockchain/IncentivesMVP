@@ -154,6 +154,30 @@ export const deleteInteraction = `mutation DeleteInteraction($input: DeleteInter
   }
 }
 `;
+export const createChw = `mutation CreateChw($input: CreateCHWInput!) {
+  createCHW(input: $input) {
+    id
+    email
+    walletAddress
+  }
+}
+`;
+export const updateChw = `mutation UpdateChw($input: UpdateCHWInput!) {
+  updateCHW(input: $input) {
+    id
+    email
+    walletAddress
+  }
+}
+`;
+export const deleteChw = `mutation DeleteChw($input: DeleteCHWInput!) {
+  deleteCHW(input: $input) {
+    id
+    email
+    walletAddress
+  }
+}
+`;
 export const createPractitioner = `mutation CreatePractitioner($input: CreatePractitionerInput!) {
   createPractitioner(input: $input) {
     id

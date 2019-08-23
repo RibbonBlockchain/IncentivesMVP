@@ -36,3 +36,6 @@ export const OPEN_RESET_MODAL = "modal/OPEN_RESET_MODAL";
 export const CLOSE_RESET_MODAL = "modal/CLOSE_RESET_MODAL";
 
 export const REGISTER_WEB3_INSTANCE = "web3/REGISTER_WEB3_INSTANCE";
+
+export const SET_CHW = 'chw/SET_CHW';
+export const LIST_CHWs = 'chw/LIST_CHWs';

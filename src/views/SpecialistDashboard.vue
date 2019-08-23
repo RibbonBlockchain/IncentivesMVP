@@ -38,7 +38,13 @@
               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6">
                 <div class="text-right">
                   <div>{{ user.email }}</div>
-                  <strong>{{ web3.balance }} RBN</strong>
+                  <strong v-if="chwWalletAddress">{{ chwBalance }} RBN</strong>
+                  <base-button
+                    v-else
+                    type="default"
+                    size="sm"
+                    @click="modals.showCHWModal = true"
+                  >Set Address</base-button>
                 </div>
               </div>
             </div>
@@ -91,27 +97,17 @@
       </div>
     </section>
     <!-- MODALS -->
-    <modal :show.sync="modals.showDetailModal" :large="false">
-      <h4
-        slot="header"
-        class="modal-title"
-        id="modal-title-default"
-      >{{ `${this.selectedPerson.firstName} ${this.selectedPerson.lastName}'s details`}}</h4>
+	<b-modal id="detail-modal" size="xl" title="Details">
       <div class="container pt-xs-sm">
         <div class="row">
+			<div class="col-12 text-center">
+				{{ `${this.selectedPerson.firstName} ${this.selectedPerson.lastName}'s details`}}
+			</div>
           <div class="col-12 text-right">
             <span>
               Token Balance:
               <strong>{{ myBalance }} RBN</strong>
             </span>
-          </div>
-          <div class="col-12 mb-4">
-            <div class="text-center mb-4">
-              <amplify-s3-image
-                :imagePath="this.selectedPerson.imageLink"
-                v-if="this.selectedPerson.imageLink"
-              ></amplify-s3-image>
-            </div>
           </div>
           <div class="col-lg-12">
             <div class="mb-3">
@@ -132,6 +128,48 @@
                 <td>{{ this.selectedPerson.phoneNumber }}</td>
               </tr>
             </table>
+          </div>
+        </div>
+      </div>
+    </b-modal>
+    <modal :show.sync="modals.showCHWModal" :large="false">
+      <h4 slot="header" class="modal-title" id="modal-title-default">{{user.email}}</h4>
+      <div class="container pt-xs-sm">
+        <div class="row" v-if="chwWalletAddress">
+          <div class="col-12 text-right">
+            <span>
+              Token Balance:
+              <strong>{{ myBalance }} RBN</strong>
+            </span>
+          </div>
+          <div class="col-lg-12">
+            <div class="mb-3">
+              <a
+                target="_blank"
+                rel="noopener"
+                ref="no-referrer"
+                :href="'https://rinkeby.etherscan.io/address/' +this.selectedPerson.walletAddress"
+              >{{ this.selectedPerson.walletAddress }}</a>
+            </div>
+            <table style="width: 100%" class="pt-4">
+              <tr>
+                <td style="width: 50%">Wallet Balance</td>
+                <td>{{ this.selectedPerson.phoneNumber }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="row" v-else>
+          <div class="col-12">
+            <input
+              type="text"
+              v-model="chw_address"
+              class="form-control"
+              placeholder="Enter your wallet address here."
+            />
+          </div>
+          <div class="col-12 text-right mt-4">
+            <b-button variant="primary" size="md" @click="setCHWAddress">Set Address</b-button>
           </div>
         </div>
       </div>
@@ -372,17 +410,20 @@ import "datatables.net-select-bs4/css/select.bootstrap4.min.css";
 import {
   listPatients,
   listInteractions,
-  listPractitioners
+  listPractitioners,
+  getChw
 } from "../graphql/queries.js";
 import {
   createPatient,
   createInteraction,
-  createPractitioner
+  createPractitioner,
+  createChw
 } from "../graphql/mutations";
 import {
   onCreatePatient,
   onCreateInteraction,
-  onCreatePractitioner
+  onCreatePractitioner,
+  onCreateChw
 } from "../graphql/subscriptions";
 
 import token from "../util/token";
@@ -395,20 +436,13 @@ import abi from "../abi.json";
 
 import { ethers } from "ethers";
 
-const web3 = new Web3(
-  // new Web3.providers.HttpProvider(
-  //   "https://rinkeby.infura.io/v3/a8853810b5054964b0fbe19c8e02e9c1"
-  // )
-  window.web3.currentProvider
-);
 
-const privateKey =
-  "97cbbf9b269f0f58d1c4b0f3af662dc627937a2a1a6aa959219c7051b4306371";
 const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
 const contractAbi = abi;
-let provider = ethers.getDefaultProvider("rinkeby");
-let wallet = new ethers.Wallet(privateKey, provider);
-const contract = new ethers.Contract(contractAddr, contractAbi, wallet);
+let provider = new ethers.providers.Web3Provider(web3.currentProvider);
+
+const signer = provider.getSigner();
+const contract = new ethers.Contract(contractAddr, contractAbi, provider.getSigner(0));
 
 export default {
   components: {
@@ -429,7 +463,7 @@ export default {
         onboard: false,
         patientInteraction: false,
         newPractitioner: false,
-        showDetailModal: false
+        showCHWModal: false
       },
       selectedPerson: {},
       healthcareServices: healthcareServices,
@@ -438,8 +472,9 @@ export default {
         balance: 0
       },
       myBalance: 0,
-      newNonce: 0,
+      chwBalance: 0,
       account: null,
+      chw_address: "",
       patient: {
         idNumber: "",
         firstName: "",
@@ -484,30 +519,25 @@ export default {
     this.$store.dispatch("loadEvents");
     this.$store.dispatch("loadPatients");
     this.$store.dispatch("loadPractitioners");
-    // await token.methods
-    //   .owner()
-    //   .call()
-    //   .then(result => {
-    //     token.methods
-    //       .balanceOf(result)
-    //       .call()
-    //       .then(balance => {
-    //         this.web3 = {
-    //           balance: web3.utils.fromWei(balance.toString(), "ether")
-    //         };
-    //       });
-    //   });
-    const accounts = await web3.eth.getAccounts();
-    const Nonce = await provider.getTransactionCount(accounts[0], "pending");
-    this.account = accounts[0];
-    this.newNonce = Nonce;
-    const options = { address: accounts[0], provider: provider };
-    await contract.balanceOf(options.address).then(balance => {
+    this.$store.dispatch(
+      "loadCHW",
+      this.$store.state.login.user.attributes.sub
+    );
+
+    this.account = signer.provider._web3Provider.selectedAddress;
+    await contract.balanceOf(this.account).then(balance => {
       this.web3 = {
-        balance: web3.utils.fromWei(balance.toString(), "ether")
+        balance: ethers.utils.formatEther(balance)
       };
     });
+
+    //chw balance
+    await contract.balanceOf(this.$store.state.chw.walletAddress).then(balance => {
+      this.chwBalance = ethers.utils.formatEther(balance)
+    });
+
   },
+
   mounted: function() {
     API.graphql(graphqlOperation(onCreateInteraction)).subscribe({
       next: data => {
@@ -530,11 +560,22 @@ export default {
         );
       }
     });
+    API.graphql(graphqlOperation(onCreateChw)).subscribe({
+      next: data => {
+		this.$store.dispatch("setCHW", data.value.data.onCreateChw);
+		window.location.reload();
+      }
+    });
   },
   computed: {
     user: function() {
       return this.$store.state.login.user.attributes;
-    },
+	},
+	// getCHWBalance: function() {
+	// 	return this.$store.state.chw.walletAddress ? contract.balanceOf(this.$store.state.chw.walletAddress).then(balance => {
+	// 		this.chwBalance = ethers.utils.formatEther(balance)
+	// 	}) : 0.00;
+	// },
     patients: function() {
       return this.$store.state.patients.data.map(patient => {
         return {
@@ -542,6 +583,9 @@ export default {
           text: `(${patient.userId}) - ${patient.firstName}, ${patient.lastName}`
         };
       });
+    },
+    chwWalletAddress: function() {
+      return this.$store.state.chw ? this.$store.state.chw.walletAddress : null;
     },
     practitioners: function() {
       return this.$store.state.practitioners.data.map(practitioner => {
@@ -552,15 +596,19 @@ export default {
       });
     },
     activities: function() {
-      return this.$store.state.activities.data.sort((a, b) => (a.id > b.id)*2-1);
+      return this.$store.state.activities.data.sort(
+        (a, b) => (b.id > a.id) * 2 - 1
+      );
     },
     events: function() {
-      return eventData.sort((a, b) => (a.text > b.text)*2-1).map(event => {
-        return {
-          value: event,
-          text: `${event.text} - (${Number(event.value).toFixed(4)} RBN)`
-        };
-      });
+      return eventData
+        .sort((a, b) => (a.text > b.text) * 2 - 1)
+        .map(event => {
+          return {
+            value: event,
+            text: `${event.text} - (${Number(event.value).toFixed(4)} RBN)`
+          };
+        });
     },
     validateInteractionForm: function() {
       return (
@@ -648,19 +696,19 @@ export default {
         .balanceOf(walletAddress)
         .call()
         .then(balance => {
-          this.myBalance = web3.utils.fromWei(balance.toString(), "ether");
+          this.myBalance = ethers.utils.formatEther(balance);
         });
-
-      this.modals.showDetailModal = true;
+		this.$bvModal.show("detail-modal");
     },
 
     createNewPatient() {
+      const randomWallet = ethers.Wallet.createRandom();
       const input = {
         firstName: this.patient.firstName,
         lastName: this.patient.lastName,
         userId: this.patient.idNumber,
         phoneNumber: this.patient.phoneNumber,
-        walletAddress: web3.eth.accounts.create().address
+        walletAddress: randomWallet.address
       };
       API.graphql(graphqlOperation(createPatient, { input }))
         .then(response => {
@@ -684,12 +732,13 @@ export default {
     },
 
     createNewPractitioner() {
+      const randomWallet = ethers.Wallet.createRandom();
       const input = {
         firstName: this.practitioner.firstName,
         lastName: this.practitioner.lastName,
         userId: this.practitioner.idNumber,
         phoneNumber: this.practitioner.phoneNumber,
-        walletAddress: web3.eth.accounts.create().address
+        walletAddress: randomWallet.address
       };
       API.graphql(graphqlOperation(createPractitioner, { input }))
         .then(response => {
@@ -726,69 +775,102 @@ export default {
       };
       let patientWallet = this.activity.patient.value.walletAddress;
       let practitionerWallet = this.activity.practitioner.value.walletAddress;
-      await API.graphql(graphqlOperation(createInteraction, { input }))
-        .then(async response => {
-          await this.$notify({
-            group: "foo",
-            title: "New Interaction",
-            text: `Interaction has been recorded.`
+      let rewardedTokens = [];
+      this.activity.activity.forEach((activity) => {
+          rewardedTokens.push(activity.value);
+      })
+
+      const rewardToBeSent = rewardedTokens.reduce(function (acc, obj) { return acc + obj.value; }, 0);
+      const sumRatings = obj =>
+          Object.keys(obj).reduce((acc, value) => acc + obj[value], 0);
+
+      const rewardToPractitioner =
+        parseFloat(rewardToBeSent) * 0.1 +
+        parseFloat(sumRatings(this.rating) / 30) * 0.05 * rewardToBeSent;
+
+      const totalAmountOfRewards = rewardToBeSent*2 + rewardToPractitioner;
+
+      if(totalAmountOfRewards < this.web3.balance){
+
+        //amount sent to patient
+        this.sendToken(patientWallet, rewardToBeSent.toString());
+
+        //amount sent to practitioner
+        const rewardToPractitioner =
+          parseFloat(rewardToBeSent) * 0.1 +
+          parseFloat(sumRatings(this.rating) / 30) * 0.05 * rewardToBeSent;
+
+        this.sendToken(
+          practitionerWallet,
+          rewardToPractitioner.toString()
+        );
+
+        //amount sent to CommunityHealthWorker
+        const rewardToHealthWorker = parseFloat(rewardToBeSent) * 0.15;
+        this.sendToken(this.$store.state.chw.walletAddress, rewardToHealthWorker.toString());
+        this.$bvModal.hide("interaction-modal");
+        this.activity = {};
+        
+        await API.graphql(graphqlOperation(createInteraction, { input }))
+          .then(async response => {
+            await this.$notify({
+              group: "foo",
+              title: "New Interaction",
+              text: `Interaction has been recorded.`
+            })
+          .catch(async error => {
+            await this.$notify({
+              group: "foo",
+              title: "Interaction Failed",
+              text: `${JSON.stringify(error)}`
+              });
+            });
           });
-          const rewardToBeSent = this.activity.activity.reduce(
-            (acc, balance) => acc + balance.reward,
-            0
-          );
 
-          //amount sent to patient
-          this.sendToken(patientWallet, rewardToBeSent.toString(), 0);
+        }else{
+            await this.$notify({
+              group: "foo",
+              title: "Failed Interaction",
+              text: `Insufficient Tokens in account to perform transaction`
+            });
+        }
+      },
 
-          //sum of ratings object
-          const sumRatings = obj =>
-            Object.keys(obj).reduce((acc, value) => acc + obj[value], 0);
-          //amount sent to practitioner
-          const rewardToPractitioner =
-            parseFloat(rewardToBeSent) * 0.1 +
-            parseFloat(sumRatings(this.rating) / 30) * 0.05;
-
-          this.sendToken(
-            practitionerWallet,
-            rewardToPractitioner.toString(),
-            1
-          );
-
-          //amount sent to CommunityHealthWorker
-          const rewardToHealthWorker = parseFloat(rewardToBeSent) * 0.15;
-          this.sendToken(this.account, rewardToHealthWorker.toString(), 2);
-          this.$bvModal.hide("interaction-modal");
-          this.activity = {};
-        })
-        .catch(async error => {
-          await this.$notify({
-            group: "foo",
-            title: "New Patient",
-            text: `${JSON.stringify(error)}`
-          });
-        });
-    },
-
-    //cant send bulk transactions as nonce will be the same if transaction isnt yet mined.
-    //transaction nonce has to be manipulated to aceept bulk transactions
-    sendToken(receiver, amount, gennonce) {
+    async sendToken(receiver, amount) {
       const numberOfDecimals = 18;
-      // const numberOfTokens = ethers.utils.bigNumberify(amount);
       const numberOfTokens = ethers.utils.parseUnits(amount, numberOfDecimals);
-
       let overrides = {
-        // gasLimit: 21000,
-        // gasPrice: ethers.utils.parseUnits('9.0', 'gwei'),
-        nonce: this.newNonce + gennonce
+        gasLimit: 750000,
       };
-
       // send tokens
-      contract.transfer(receiver, numberOfTokens, overrides).then(function(tx) {
+      await contract.transfer(receiver, numberOfTokens, overrides).then(function(tx) {
         console.log(tx);
       });
     },
 
+    async setCHWAddress() {
+      const user = this.$store.state.login.user.attributes;
+      const input = {
+        email: user.email,
+        id: user.sub,
+        walletAddress: this.chw_address
+      };
+      await API.graphql(graphqlOperation(createChw, { input }))
+        .then(response => {
+          this.$notify({
+            group: "foo",
+            title: "Community Health Worker",
+            text: `Address has been recorded`
+          });
+        })
+        .catch(err => {
+          this.$notify({
+            group: "foo",
+            title: "Community Health Worker",
+            text: `${JSON.stringify(err)}`
+          });
+        });
+    },
     onInteractionSelect(activities, lastSelectedActivity) {
       this.activity.activity = activities;
       this.activity.lastSelectedActivity = lastSelectedActivity;
