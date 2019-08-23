@@ -15,6 +15,11 @@ type Interaction @model {
   prescriptions: String!
   practitioner: Practitioner @connection(name: "PractitionerInteraction")
 }
+type CHW @model {
+	id: ID!
+	email: String!
+	walletAddress: String!
+}
 type Practitioner @model {
   id: ID!
   firstName: String!

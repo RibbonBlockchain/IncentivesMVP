@@ -16,6 +16,11 @@ export const PatientGetters = {
   }
 };
 
+export const CHWGetters = {
+  chw: (state, getters) => {
+    return state.chw;
+  }
+};
 export const PractitionerGetters = {
   practitioners: (state, getters) => {
     return state.practitioners;

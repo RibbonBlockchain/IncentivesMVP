@@ -7,7 +7,7 @@
 		}
 	},
 	"api": {
-		"ribbon": {
+		"dapp": {
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {

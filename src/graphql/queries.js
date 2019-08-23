@@ -105,6 +105,25 @@ export const listInteractions = `query ListInteractions(
   }
 }
 `;
+export const getChw = `query GetChw($id: ID!) {
+  getCHW(id: $id) {
+    id
+    email
+    walletAddress
+  }
+}
+`;
+export const listChWs = `query ListChWs($filter: ModelCHWFilterInput, $limit: Int, $nextToken: String) {
+  listCHWs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      email
+      walletAddress
+    }
+    nextToken
+  }
+}
+`;
 export const getPractitioner = `query GetPractitioner($id: ID!) {
   getPractitioner(id: $id) {
     id
