@@ -55,14 +55,20 @@ export const AuthActions = {
 
 export const PatientActions = {
   loadPatients({ commit }, payload) {
-    API.graphql(graphqlOperation(listPatients))
+    API.graphql(graphqlOperation(listPatients, {
+		limit: 1000
+	}))
       .then(response => {
         commit(LIST_PATIENTS, response.data.listPatients.items);
       })
       .catch(err => commit(LIST_PATIENTS, []));
   },
   loadEvents({ commit }, payload) {
-    API.graphql(graphqlOperation(listInteractions))
+    API.graphql(
+      graphqlOperation(listInteractions, {
+        limit: 1000
+      })
+    )
       .then(response => {
         commit(LIST_ACTIVITIES, response.data.listInteractions.items);
       })
@@ -78,7 +84,9 @@ export const PatientActions = {
 
 export const PractitionerActions = {
   loadPractitioners({ commit }, payload) {
-    API.graphql(graphqlOperation(listPractitioners))
+    API.graphql(graphqlOperation(listPractitioners, {
+		limit: 1000
+	}))
       .then(response => {
         commit(LIST_PRACTITIONERS, response.data.listPractitioners.items);
       })
@@ -104,7 +112,6 @@ export const CHWActions = {
       });
   },
   setCHW({ commit }, payload) {
-	  console.log(payload)
-	  commit(SET_CHW, payload)
+    commit(SET_CHW, payload);
   }
 };
