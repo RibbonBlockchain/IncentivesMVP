@@ -7,10 +7,23 @@ import {
   PatientMutations,
   PractitionerMutation,
   InteractionMutation,
-  CHWMutation
+  CHWMutation,
+  Web3Mutations
 } from "./mutations";
-import { AuthActions, PatientActions, PractitionerActions, CHWActions } from "./actions";
-import { AuthGetters, PatientGetters, PractitionerGetters, CHWGetters } from "./getters";
+import {
+  AuthActions,
+  PatientActions,
+  PractitionerActions,
+  CHWActions,
+  Web3Actions
+} from "./actions";
+import {
+  AuthGetters,
+  PatientGetters,
+  PractitionerGetters,
+  CHWGetters,
+  Web3Getters
+} from "./getters";
 
 Vue.use(Vuex);
 
@@ -38,21 +51,39 @@ const store = new Vuex.Store({
     practitioners: {
       data: [],
       error: null
-	},
-	chw: {},
-    web3: {}
+    },
+    chw: {},
+    web3: {
+      balance: 0,
+      rbn: 0
+    }
   },
-  getters: Object.assign({}, AuthGetters, PatientGetters, PractitionerGetters, CHWGetters),
+  getters: Object.assign(
+    {},
+    AuthGetters,
+    PatientGetters,
+    PractitionerGetters,
+    CHWGetters,
+    Web3Getters
+  ),
   mutations: Object.assign(
     {},
     AuthMutations,
     ModalMutations,
     PatientMutations,
     PractitionerMutation,
-	InteractionMutation,
-	CHWMutation
+    InteractionMutation,
+    CHWMutation,
+    Web3Mutations
   ),
-  actions: Object.assign({}, AuthActions, PatientActions, PractitionerActions, CHWActions),
+  actions: Object.assign(
+    {},
+    AuthActions,
+    PatientActions,
+    PractitionerActions,
+    CHWActions,
+    Web3Actions
+  ),
   modules: {
     accounts
   }
