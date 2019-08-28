@@ -1,4 +1,8 @@
-type Patient @model {
+type Patient
+  @model
+  @auth(
+    rules: [{ allow: owner},{ allow: groups, groups: ["Testers"] }]
+  ) {
   id: ID!
   firstName: String!
   lastName: String!
@@ -7,7 +11,11 @@ type Patient @model {
   phoneNumber: String!
   interactions: [Interaction] @connection(name: "PatientInteraction")
 }
-type Interaction @model {
+type Interaction
+  @model
+  @auth(
+    rules: [{ allow: owner},{ allow: groups, groups: ["Testers"] }]
+  ) {
   id: ID!
   interaction: String!
   ratings: String!
@@ -15,12 +23,20 @@ type Interaction @model {
   prescriptions: String!
   practitioner: Practitioner @connection(name: "PractitionerInteraction")
 }
-type CHW @model {
-	id: ID!
-	email: String!
-	walletAddress: String!
+type CHW
+  @model
+  @auth(
+    rules: [{ allow: owner},{ allow: groups, groups: ["Testers"] }]
+  ) {
+  id: ID!
+  email: String!
+  walletAddress: String!
 }
-type Practitioner @model {
+type Practitioner
+  @model
+  @auth(
+    rules: [{ allow: owner},{ allow: groups, groups: ["Testers"] }]
+  ) {
   id: ID!
   firstName: String!
   lastName: String!
