@@ -38,7 +38,7 @@
               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6">
                 <div class="text-right">
                   <div>{{ user.email }}</div>
-                  <strong v-if="chwWalletAddress">{{ chwBalance }} RBN</strong>
+                  <strong v-if="hasWalletAddress">{{ this.$store.state.web3.balance }} RBN</strong>
                   <base-button
                     v-else
                     type="default"
@@ -97,12 +97,12 @@
       </div>
     </section>
     <!-- MODALS -->
-	<b-modal id="detail-modal" size="xl" title="Details">
+    <b-modal id="detail-modal" size="xl" title="Details">
       <div class="container pt-xs-sm">
         <div class="row">
-			<div class="col-12 text-center">
-				{{ `${this.selectedPerson.firstName} ${this.selectedPerson.lastName}'s details`}}
-			</div>
+          <div
+            class="col-12 text-center"
+          >{{ `${this.selectedPerson.firstName} ${this.selectedPerson.lastName}'s details`}}</div>
           <div class="col-12 text-right">
             <span>
               Token Balance:
@@ -135,7 +135,7 @@
     <modal :show.sync="modals.showCHWModal" :large="false">
       <h4 slot="header" class="modal-title" id="modal-title-default">{{user.email}}</h4>
       <div class="container pt-xs-sm">
-        <div class="row" v-if="chwWalletAddress">
+        <div class="row" v-if="hasWalletAddress">
           <div class="col-12 text-right">
             <span>
               Token Balance:
@@ -436,13 +436,16 @@ import abi from "../abi.json";
 
 import { ethers } from "ethers";
 
-
 const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
 const contractAbi = abi;
 let provider = new ethers.providers.Web3Provider(web3.currentProvider);
 
 const signer = provider.getSigner();
-const contract = new ethers.Contract(contractAddr, contractAbi, provider.getSigner(0));
+const contract = new ethers.Contract(
+  contractAddr,
+  contractAbi,
+  provider.getSigner(0)
+);
 
 export default {
   components: {
@@ -468,11 +471,7 @@ export default {
       selectedPerson: {},
       healthcareServices: healthcareServices,
       prescriptions: prescriptions,
-      web3: {
-        balance: 0
-      },
       myBalance: 0,
-      chwBalance: 0,
       account: null,
       chw_address: "",
       patient: {
@@ -499,20 +498,7 @@ export default {
       },
       rewardsToSend: [],
       rewardsToSendTotal: 0,
-      rating: {},
-      avatar: {
-        imageURL: null
-      },
-      imageKey: "",
-      mediaStream: null,
-      video: {},
-      canvas: {},
-      webCam: {
-        captureButton: true,
-        setPictureButton: false,
-        showCaptureDiv: false,
-        showPictureDiv: false
-      }
+      rating: {}
     };
   },
   async created() {
@@ -523,19 +509,8 @@ export default {
       "loadCHW",
       this.$store.state.login.user.attributes.sub
     );
-
-    this.account = signer.provider._web3Provider.selectedAddress;
-    await contract.balanceOf(this.account).then(balance => {
-      this.web3 = {
-        balance: ethers.utils.formatEther(balance)
-      };
-    });
-
-    //chw balance
-    await contract.balanceOf(this.$store.state.chw.walletAddress).then(balance => {
-      this.chwBalance = ethers.utils.formatEther(balance)
-    });
-
+    this.$store.dispatch("loadTokenBalance");
+    this.$store.dispatch("loadBalance", this.$store.state.chw.walletAddress);
   },
 
   mounted: function() {
@@ -562,20 +537,15 @@ export default {
     });
     API.graphql(graphqlOperation(onCreateChw)).subscribe({
       next: data => {
-		this.$store.dispatch("setCHW", data.value.data.onCreateChw);
-		window.location.reload();
+        this.$store.dispatch("setCHW", data.value.data.onCreateChw);
+        window.location.reload();
       }
     });
   },
   computed: {
     user: function() {
       return this.$store.state.login.user.attributes;
-	},
-	// getCHWBalance: function() {
-	// 	return this.$store.state.chw.walletAddress ? contract.balanceOf(this.$store.state.chw.walletAddress).then(balance => {
-	// 		this.chwBalance = ethers.utils.formatEther(balance)
-	// 	}) : 0.00;
-	// },
+    },
     patients: function() {
       return this.$store.state.patients.data.map(patient => {
         return {
@@ -584,8 +554,10 @@ export default {
         };
       });
     },
-    chwWalletAddress: function() {
-      return this.$store.state.chw ? this.$store.state.chw.walletAddress : null;
+    hasWalletAddress: function() {
+      return typeof this.$store.state.chw.walletAddress !== "undefined"
+        ? true
+        : false;
     },
     practitioners: function() {
       return this.$store.state.practitioners.data.map(practitioner => {
@@ -637,35 +609,6 @@ export default {
     }
   },
   methods: {
-    capture() {
-      this.webCam.showCaptureDiv = true;
-      this.avatar = {};
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices
-          .getUserMedia({ video: true })
-          .then(mediaStream => {
-            this.mediaStream = mediaStream;
-            this.$refs.video.srcObject = mediaStream;
-            this.webCam.captureButton = false;
-            this.webCam.setPictureButton = true;
-            this.$refs.video.play();
-          })
-          .catch(err => console.error("getUserMedia() error: ", err));
-      }
-    },
-    async setPicture() {
-      this.webCam.showCaptureDiv = false;
-      this.webCam.showPictureDiv = true;
-      const mediaStreamTrack = await this.mediaStream.getVideoTracks()[0];
-      const imageCapture = new window.ImageCapture(mediaStreamTrack);
-      await imageCapture.takePhoto().then(async blob => {
-        await blobToDataURL(blob, data => {
-          this.avatar.imageURL = data;
-          this.webCam.captureButton = true;
-          this.webCam.setPictureButton = false;
-        });
-      });
-    },
     toHex(string) {
       let result = "";
       for (let i = 0; i < string.length; i++) {
@@ -698,7 +641,7 @@ export default {
         .then(balance => {
           this.myBalance = ethers.utils.formatEther(balance);
         });
-		this.$bvModal.show("detail-modal");
+      this.$bvModal.show("detail-modal");
     },
 
     createNewPatient() {
@@ -776,22 +719,23 @@ export default {
       let patientWallet = this.activity.patient.value.walletAddress;
       let practitionerWallet = this.activity.practitioner.value.walletAddress;
       let rewardedTokens = [];
-      this.activity.activity.forEach((activity) => {
-          rewardedTokens.push(activity.value);
-      })
+      this.activity.activity.forEach(activity => {
+        rewardedTokens.push(activity.value);
+      });
 
-      const rewardToBeSent = rewardedTokens.reduce(function (acc, obj) { return acc + obj.value; }, 0);
+      const rewardToBeSent = rewardedTokens.reduce(function(acc, obj) {
+        return acc + obj.value;
+      }, 0);
       const sumRatings = obj =>
-          Object.keys(obj).reduce((acc, value) => acc + obj[value], 0);
+        Object.keys(obj).reduce((acc, value) => acc + obj[value], 0);
 
       const rewardToPractitioner =
         parseFloat(rewardToBeSent) * 0.1 +
         parseFloat(sumRatings(this.rating) / 30) * 0.05 * rewardToBeSent;
 
-      const totalAmountOfRewards = rewardToBeSent*2 + rewardToPractitioner;
+      const totalAmountOfRewards = rewardToBeSent * 2 + rewardToPractitioner;
 
-      if(totalAmountOfRewards < this.web3.balance){
-
+      if (totalAmountOfRewards < this.$store.state.web3.rbn) {
         //amount sent to patient
         this.sendToken(patientWallet, rewardToBeSent.toString());
 
@@ -800,54 +744,57 @@ export default {
           parseFloat(rewardToBeSent) * 0.1 +
           parseFloat(sumRatings(this.rating) / 30) * 0.05 * rewardToBeSent;
 
-        this.sendToken(
-          practitionerWallet,
-          rewardToPractitioner.toString()
-        );
+        this.sendToken(practitionerWallet, rewardToPractitioner.toString());
 
         //amount sent to CommunityHealthWorker
         const rewardToHealthWorker = parseFloat(rewardToBeSent) * 0.15;
-        this.sendToken(this.$store.state.chw.walletAddress, rewardToHealthWorker.toString());
+        this.sendToken(
+          this.$store.state.chw.walletAddress,
+          rewardToHealthWorker.toString()
+        );
         this.$bvModal.hide("interaction-modal");
         this.activity = {};
-        
-        await API.graphql(graphqlOperation(createInteraction, { input }))
-          .then(async response => {
+
+        await API.graphql(graphqlOperation(createInteraction, { input })).then(
+          async response => {
             await this.$notify({
               group: "foo",
               title: "New Interaction",
               text: `Interaction has been recorded.`
-            })
-          .catch(async error => {
-            await this.$notify({
-              group: "foo",
-              title: "Interaction Failed",
-              text: `${JSON.stringify(error)}`
+            }).catch(async error => {
+              await this.$notify({
+                group: "foo",
+                title: "Interaction Failed",
+                text: `${JSON.stringify(error)}`
               });
             });
-          });
-
-        }else{
-            await this.$notify({
-              group: "foo",
-              title: "Failed Interaction",
-              text: `Insufficient Tokens in account to perform transaction`
-            });
-        }
-      },
+          }
+        );
+      } else {
+        await this.$notify({
+          group: "foo",
+          title: "Failed Interaction",
+          text: `Insufficient Tokens in account to perform transaction`
+        });
+      }
+    },
 
     async sendToken(receiver, amount) {
       const numberOfDecimals = 18;
       const numberOfTokens = ethers.utils.parseUnits(amount, numberOfDecimals);
       let overrides = {
-        gasLimit: 750000,
+        gasLimit: 750000
       };
       // send tokens
-      await contract.transfer(receiver, numberOfTokens, overrides).then(function(tx) {
-        console.log(tx);
-      });
+      await contract
+        .transfer(receiver, numberOfTokens, overrides)
+        .then(tx => this.loadBalances());
     },
 
+    loadBalances() {
+      this.$store.dispatch("loadBalance", this.$store.state.chw.walletAddress);
+      this.$store.dispatch("loadTokenBalance");
+    },
     async setCHWAddress() {
       const user = this.$store.state.login.user.attributes;
       const input = {

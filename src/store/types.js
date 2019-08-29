@@ -39,3 +39,6 @@ export const REGISTER_WEB3_INSTANCE = "web3/REGISTER_WEB3_INSTANCE";
 
 export const SET_CHW = 'chw/SET_CHW';
 export const LIST_CHWs = 'chw/LIST_CHWs';
+
+export const WEB3_BALANCE = 'web3/WEB3_BALANCE';
+export const TOKEN_BALANCE = 'web3/TOKEN_BALANCE';

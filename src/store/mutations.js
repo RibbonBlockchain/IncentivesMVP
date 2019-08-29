@@ -14,7 +14,9 @@ import {
   REGISTER_WEB3_INSTANCE,
   LIST_PRACTITIONERS,
   NEW_PRACTITIONER_SUCCESS,
-  SET_CHW
+  SET_CHW,
+  WEB3_BALANCE,
+  TOKEN_BALANCE
 } from "./types";
 
 export const AuthMutations = {
@@ -79,6 +81,12 @@ export const Web3Mutations = {
   [REGISTER_WEB3_INSTANCE](state, payload) {
     state.web3.web3Instance = Object.assign({}, payload.web3);
     state.web3.contract = Object.assign({}, payload.contract);
+  },
+  [WEB3_BALANCE](state, payload) {
+    state.web3.balance = payload;
+  },
+  [TOKEN_BALANCE](state, payload) {
+    state.web3.rbn = payload;
   }
 };
 

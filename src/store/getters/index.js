@@ -21,6 +21,7 @@ export const CHWGetters = {
     return state.chw;
   }
 };
+
 export const PractitionerGetters = {
   practitioners: (state, getters) => {
     return state.practitioners;
@@ -29,5 +30,5 @@ export const PractitionerGetters = {
 export const Web3Getters = {
   web3: (state, getters) => {
     return state.web3;
-  }
+  },
 };

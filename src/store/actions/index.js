@@ -15,8 +15,25 @@ import {
   LIST_ACTIVITIES,
   LIST_PRACTITIONERS,
   NEW_PRACTITIONER_SUCCESS,
-  SET_CHW
+  SET_CHW,
+  WEB3_BALANCE,
+  TOKEN_BALANCE
 } from "../types";
+
+import abi from "../../abi.json";
+
+import { ethers } from "ethers";
+
+const contractAddr = "0x180170386b1794ccf5bb5bb420658b76bcdb5262";
+const contractAbi = abi;
+let provider = new ethers.providers.Web3Provider(web3.currentProvider);
+
+const signer = provider.getSigner();
+const contract = new ethers.Contract(
+  contractAddr,
+  contractAbi,
+  provider.getSigner(0)
+);
 
 export const AuthActions = {
   loginUser({ commit }, payload) {
@@ -55,14 +72,22 @@ export const AuthActions = {
 
 export const PatientActions = {
   loadPatients({ commit }, payload) {
-    API.graphql(graphqlOperation(listPatients))
+    API.graphql(
+      graphqlOperation(listPatients, {
+        limit: 1000
+      })
+    )
       .then(response => {
         commit(LIST_PATIENTS, response.data.listPatients.items);
       })
       .catch(err => commit(LIST_PATIENTS, []));
   },
   loadEvents({ commit }, payload) {
-    API.graphql(graphqlOperation(listInteractions))
+    API.graphql(
+      graphqlOperation(listInteractions, {
+        limit: 1000
+      })
+    )
       .then(response => {
         commit(LIST_ACTIVITIES, response.data.listInteractions.items);
       })
@@ -76,9 +101,26 @@ export const PatientActions = {
   }
 };
 
+export const Web3Actions = {
+  async loadBalance({ commit }, payload) {
+    await contract.balanceOf(payload).then(balance => {
+      commit(WEB3_BALANCE, ethers.utils.formatEther(balance));
+    });
+  },
+  async loadTokenBalance({ commit }, payload) {
+    let _account = signer.provider._web3Provider.selectedAddress;
+    await contract.balanceOf(_account).then(balance => {
+      commit(TOKEN_BALANCE, ethers.utils.formatEther(balance));
+    });
+  }
+};
 export const PractitionerActions = {
   loadPractitioners({ commit }, payload) {
-    API.graphql(graphqlOperation(listPractitioners))
+    API.graphql(
+      graphqlOperation(listPractitioners, {
+        limit: 1000
+      })
+    )
       .then(response => {
         commit(LIST_PRACTITIONERS, response.data.listPractitioners.items);
       })
@@ -104,7 +146,6 @@ export const CHWActions = {
       });
   },
   setCHW({ commit }, payload) {
-	  console.log(payload)
-	  commit(SET_CHW, payload)
+    commit(SET_CHW, payload);
   }
 };
