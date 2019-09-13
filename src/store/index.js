@@ -52,7 +52,9 @@ const store = new Vuex.Store({
       data: [],
       error: null
     },
-    chw: {},
+    chw: {
+		walletAddress: null
+	},
     web3: {
       balance: 0,
       rbn: 0

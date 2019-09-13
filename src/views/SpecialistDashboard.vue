@@ -555,9 +555,7 @@ export default {
       });
     },
     hasWalletAddress: function() {
-      return typeof this.$store.state.chw.walletAddress !== "undefined"
-        ? true
-        : false;
+      return this.$store.state.chw.walletAddress !== null ? true : false;
     },
     practitioners: function() {
       return this.$store.state.practitioners.data.map(practitioner => {
