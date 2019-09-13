@@ -103,6 +103,6 @@ export const InteractionMutation = {
 
 export const CHWMutation = {
   [SET_CHW](state, payload) {
-    state.chw = payload;
+    state.chw.walletAddress = payload;
   }
 };
