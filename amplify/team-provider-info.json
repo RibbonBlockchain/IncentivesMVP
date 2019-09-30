@@ -1,18 +1,18 @@
 {
-    "rbn": {
+    "ribbon": {
         "awscloudformation": {
-            "AuthRoleName": "dapp-rbn-20190724192934-authRole",
-            "UnauthRoleArn": "arn:aws:iam::853431608467:role/dapp-rbn-20190724192934-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::853431608467:role/dapp-rbn-20190724192934-authRole",
+            "AuthRoleName": "incentivesmvp-ribbon-20190930132615-authRole",
+            "UnauthRoleArn": "arn:aws:iam::508414249081:role/incentivesmvp-ribbon-20190930132615-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::508414249081:role/incentivesmvp-ribbon-20190930132615-authRole",
             "Region": "eu-west-1",
-            "DeploymentBucketName": "dapp-rbn-20190724192934-deployment",
-            "UnauthRoleName": "dapp-rbn-20190724192934-unauthRole",
-            "StackName": "dapp-rbn-20190724192934",
-            "StackId": "arn:aws:cloudformation:eu-west-1:853431608467:stack/dapp-rbn-20190724192934/fd7fec70-ae40-11e9-a261-0a99a68566c4"
+            "DeploymentBucketName": "incentivesmvp-ribbon-20190930132615-deployment",
+            "UnauthRoleName": "incentivesmvp-ribbon-20190930132615-unauthRole",
+            "StackName": "incentivesmvp-ribbon-20190930132615",
+            "StackId": "arn:aws:cloudformation:eu-west-1:508414249081:stack/incentivesmvp-ribbon-20190930132615/1e834930-e375-11e9-97d2-0a0cb138cf0a"
         },
         "categories": {
             "auth": {
-                "dappd5162aded5162ade": {}
+                "incentivesMVP": {}
             }
         }
     }
