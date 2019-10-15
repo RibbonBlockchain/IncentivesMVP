@@ -1,9 +1,10 @@
 {
-    "AppSyncApiName": "dapp",
+    "AppSyncApiName": "incentivesmvp",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
     "AuthCognitoUserPoolId": {
         "Fn::GetAtt": [
-            "authdappd5162aded5162ade",
+            "authincentivesMVP",
             "Outputs.UserPoolId"
         ]
     }
