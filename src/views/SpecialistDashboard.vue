@@ -747,7 +747,7 @@ export default {
         //amount sent to CommunityHealthWorker
         const rewardToHealthWorker = parseFloat(rewardToBeSent) * 0.15;
         this.sendToken(
-          this.$store.state.chw.walletAddress,
+          this.$store.state.chw_address,
           rewardToHealthWorker.toString()
         );
         this.$bvModal.hide("interaction-modal");
