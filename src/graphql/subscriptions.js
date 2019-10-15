@@ -1,8 +1,8 @@
-/* eslint-disable */
+// eslint-disable
 // this is an auto generated file. This will be overwritten
 
-export const onCreatePatient = `subscription OnCreatePatient($owner: String) {
-  onCreatePatient(owner: $owner) {
+export const onCreatePatient = `subscription OnCreatePatient {
+  onCreatePatient {
     id
     firstName
     lastName
@@ -15,16 +15,14 @@ export const onCreatePatient = `subscription OnCreatePatient($owner: String) {
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;
-export const onUpdatePatient = `subscription OnUpdatePatient($owner: String) {
-  onUpdatePatient(owner: $owner) {
+export const onUpdatePatient = `subscription OnUpdatePatient {
+  onUpdatePatient {
     id
     firstName
     lastName
@@ -37,16 +35,14 @@ export const onUpdatePatient = `subscription OnUpdatePatient($owner: String) {
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;
-export const onDeletePatient = `subscription OnDeletePatient($owner: String) {
-  onDeletePatient(owner: $owner) {
+export const onDeletePatient = `subscription OnDeletePatient {
+  onDeletePatient {
     id
     firstName
     lastName
@@ -59,16 +55,14 @@ export const onDeletePatient = `subscription OnDeletePatient($owner: String) {
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;
-export const onCreateInteraction = `subscription OnCreateInteraction($owner: String) {
-  onCreateInteraction(owner: $owner) {
+export const onCreateInteraction = `subscription OnCreateInteraction {
+  onCreateInteraction {
     id
     interaction
     ratings
@@ -82,7 +76,6 @@ export const onCreateInteraction = `subscription OnCreateInteraction($owner: Str
       interactions {
         nextToken
       }
-      owner
     }
     prescriptions
     practitioner {
@@ -95,14 +88,12 @@ export const onCreateInteraction = `subscription OnCreateInteraction($owner: Str
       interactions {
         nextToken
       }
-      owner
     }
-    owner
   }
 }
 `;
-export const onUpdateInteraction = `subscription OnUpdateInteraction($owner: String) {
-  onUpdateInteraction(owner: $owner) {
+export const onUpdateInteraction = `subscription OnUpdateInteraction {
+  onUpdateInteraction {
     id
     interaction
     ratings
@@ -116,7 +107,6 @@ export const onUpdateInteraction = `subscription OnUpdateInteraction($owner: Str
       interactions {
         nextToken
       }
-      owner
     }
     prescriptions
     practitioner {
@@ -129,14 +119,12 @@ export const onUpdateInteraction = `subscription OnUpdateInteraction($owner: Str
       interactions {
         nextToken
       }
-      owner
     }
-    owner
   }
 }
 `;
-export const onDeleteInteraction = `subscription OnDeleteInteraction($owner: String) {
-  onDeleteInteraction(owner: $owner) {
+export const onDeleteInteraction = `subscription OnDeleteInteraction {
+  onDeleteInteraction {
     id
     interaction
     ratings
@@ -150,7 +138,6 @@ export const onDeleteInteraction = `subscription OnDeleteInteraction($owner: Str
       interactions {
         nextToken
       }
-      owner
     }
     prescriptions
     practitioner {
@@ -163,41 +150,36 @@ export const onDeleteInteraction = `subscription OnDeleteInteraction($owner: Str
       interactions {
         nextToken
       }
-      owner
     }
-    owner
   }
 }
 `;
-export const onCreateChw = `subscription OnCreateChw($owner: String) {
-  onCreateCHW(owner: $owner) {
+export const onCreateChw = `subscription OnCreateChw {
+  onCreateCHW {
     id
     email
     walletAddress
-    owner
   }
 }
 `;
-export const onUpdateChw = `subscription OnUpdateChw($owner: String) {
-  onUpdateCHW(owner: $owner) {
+export const onUpdateChw = `subscription OnUpdateChw {
+  onUpdateCHW {
     id
     email
     walletAddress
-    owner
   }
 }
 `;
-export const onDeleteChw = `subscription OnDeleteChw($owner: String) {
-  onDeleteCHW(owner: $owner) {
+export const onDeleteChw = `subscription OnDeleteChw {
+  onDeleteCHW {
     id
     email
     walletAddress
-    owner
   }
 }
 `;
-export const onCreatePractitioner = `subscription OnCreatePractitioner($owner: String) {
-  onCreatePractitioner(owner: $owner) {
+export const onCreatePractitioner = `subscription OnCreatePractitioner {
+  onCreatePractitioner {
     id
     firstName
     lastName
@@ -210,16 +192,14 @@ export const onCreatePractitioner = `subscription OnCreatePractitioner($owner: S
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;
-export const onUpdatePractitioner = `subscription OnUpdatePractitioner($owner: String) {
-  onUpdatePractitioner(owner: $owner) {
+export const onUpdatePractitioner = `subscription OnUpdatePractitioner {
+  onUpdatePractitioner {
     id
     firstName
     lastName
@@ -232,16 +212,14 @@ export const onUpdatePractitioner = `subscription OnUpdatePractitioner($owner: S
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;
-export const onDeletePractitioner = `subscription OnDeletePractitioner($owner: String) {
-  onDeletePractitioner(owner: $owner) {
+export const onDeletePractitioner = `subscription OnDeletePractitioner {
+  onDeletePractitioner {
     id
     firstName
     lastName
@@ -254,11 +232,9 @@ export const onDeletePractitioner = `subscription OnDeletePractitioner($owner: S
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;

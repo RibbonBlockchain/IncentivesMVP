@@ -510,7 +510,7 @@ export default {
       this.$store.state.login.user.attributes.sub
     );
     this.$store.dispatch("loadTokenBalance");
-    this.$store.dispatch("loadBalance", this.state.chw.walletAddress);
+    this.$store.dispatch("loadBalance", this.$store.state.chw.walletAddress);
   },
 
   mounted: function() {
@@ -714,7 +714,6 @@ export default {
         ratings: this.rating,
         prescriptions: this.activity.prescriptions
       };
-      
       let patientWallet = this.activity.patient.value.walletAddress;
       let practitionerWallet = this.activity.practitioner.value.walletAddress;
       let rewardedTokens = [];
@@ -748,7 +747,7 @@ export default {
         //amount sent to CommunityHealthWorker
         const rewardToHealthWorker = parseFloat(rewardToBeSent) * 0.15;
         this.sendToken(
-          this.state.chw.walletAddress,
+          this.$store.state.chw.walletAddress,
           rewardToHealthWorker.toString()
         );
         this.$bvModal.hide("interaction-modal");

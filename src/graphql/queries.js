@@ -1,4 +1,4 @@
-/* eslint-disable */
+// eslint-disable
 // this is an auto generated file. This will be overwritten
 
 export const getPatient = `query GetPatient($id: ID!) {
@@ -15,11 +15,9 @@ export const getPatient = `query GetPatient($id: ID!) {
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;
@@ -39,7 +37,6 @@ export const listPatients = `query ListPatients(
       interactions {
         nextToken
       }
-      owner
     }
     nextToken
   }
@@ -60,7 +57,6 @@ export const getInteraction = `query GetInteraction($id: ID!) {
       interactions {
         nextToken
       }
-      owner
     }
     prescriptions
     practitioner {
@@ -73,9 +69,7 @@ export const getInteraction = `query GetInteraction($id: ID!) {
       interactions {
         nextToken
       }
-      owner
     }
-    owner
   }
 }
 `;
@@ -96,7 +90,6 @@ export const listInteractions = `query ListInteractions(
         walletAddress
         userId
         phoneNumber
-        owner
       }
       prescriptions
       practitioner {
@@ -106,9 +99,7 @@ export const listInteractions = `query ListInteractions(
         walletAddress
         userId
         phoneNumber
-        owner
       }
-      owner
     }
     nextToken
   }
@@ -119,7 +110,6 @@ export const getChw = `query GetChw($id: ID!) {
     id
     email
     walletAddress
-    owner
   }
 }
 `;
@@ -129,7 +119,6 @@ export const listChWs = `query ListChWs($filter: ModelCHWFilterInput, $limit: In
       id
       email
       walletAddress
-      owner
     }
     nextToken
   }
@@ -149,11 +138,9 @@ export const getPractitioner = `query GetPractitioner($id: ID!) {
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;
@@ -173,7 +160,6 @@ export const listPractitioners = `query ListPractitioners(
       interactions {
         nextToken
       }
-      owner
     }
     nextToken
   }

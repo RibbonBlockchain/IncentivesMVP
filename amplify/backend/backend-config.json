@@ -1,26 +1,24 @@
 {
 	"auth": {
-		"incentivesMVP": {
+		"dappd5162aded5162ade": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": []
 		}
 	},
 	"api": {
-		"incentivesmvp": {
+		"dapp": {
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {
-				"authConfig": {
-					"additionalAuthenticationProviders": [],
-					"defaultAuthentication": {
-						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
-						"userPoolConfig": {
-							"userPoolId": "authincentivesMVP"
-						}
-					}
-				}
+				"securityType": "AMAZON_COGNITO_USER_POOLS"
 			}
+		}
+	},
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation"
 		}
 	}
 }

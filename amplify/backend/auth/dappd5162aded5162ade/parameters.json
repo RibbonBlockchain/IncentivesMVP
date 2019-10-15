@@ -1,8 +1,6 @@
 {
-    "identityPoolName": "incentivesmvp031134d8_identitypool_031134d8",
-    "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "incent031134d8",
-    "userPoolName": "incentivesmvp031134d8_userpool_031134d8",
+    "resourceNameTruncated": "dappd5d5162ade",
+    "userPoolName": "dappd5162ade_userpool_d5162ade",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -17,28 +15,35 @@
     "defaultPasswordPolicy": true,
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [
-        "Requires Lowercase"
+        "Requires Lowercase",
+        "Requires Uppercase"
     ],
     "requiredAttributes": [
         "email"
     ],
+    "userpoolClientName": "dappd5d5162ade_app_client",
     "userpoolClientGenerateSecret": true,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
-        "phone_number",
         "email"
     ],
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "incent031134d8_userpoolclient_lambda_role",
+    "mfaLambdaRole": "dappd5d5162ade_totp_lambda_role",
+    "userpoolClientLambdaRole": "dappd5d5162ade_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,
     "useDefault": "manual",
-    "authSelections": "identityPoolAndUserPool",
-    "resourceName": "incentivesMVP",
-    "thirdPartyAuth": false,
+    "authSelections": "userPoolOnly",
+    "resourceName": "dappd5162aded5162ade",
     "triggers": "{}",
     "hostedUI": false,
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",

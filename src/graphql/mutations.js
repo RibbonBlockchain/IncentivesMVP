@@ -1,4 +1,4 @@
-/* eslint-disable */
+// eslint-disable
 // this is an auto generated file. This will be overwritten
 
 export const createPatient = `mutation CreatePatient($input: CreatePatientInput!) {
@@ -15,11 +15,9 @@ export const createPatient = `mutation CreatePatient($input: CreatePatientInput!
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;
@@ -37,11 +35,9 @@ export const updatePatient = `mutation UpdatePatient($input: UpdatePatientInput!
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;
@@ -59,11 +55,9 @@ export const deletePatient = `mutation DeletePatient($input: DeletePatientInput!
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;
@@ -82,7 +76,6 @@ export const createInteraction = `mutation CreateInteraction($input: CreateInter
       interactions {
         nextToken
       }
-      owner
     }
     prescriptions
     practitioner {
@@ -95,9 +88,7 @@ export const createInteraction = `mutation CreateInteraction($input: CreateInter
       interactions {
         nextToken
       }
-      owner
     }
-    owner
   }
 }
 `;
@@ -116,7 +107,6 @@ export const updateInteraction = `mutation UpdateInteraction($input: UpdateInter
       interactions {
         nextToken
       }
-      owner
     }
     prescriptions
     practitioner {
@@ -129,9 +119,7 @@ export const updateInteraction = `mutation UpdateInteraction($input: UpdateInter
       interactions {
         nextToken
       }
-      owner
     }
-    owner
   }
 }
 `;
@@ -150,7 +138,6 @@ export const deleteInteraction = `mutation DeleteInteraction($input: DeleteInter
       interactions {
         nextToken
       }
-      owner
     }
     prescriptions
     practitioner {
@@ -163,9 +150,7 @@ export const deleteInteraction = `mutation DeleteInteraction($input: DeleteInter
       interactions {
         nextToken
       }
-      owner
     }
-    owner
   }
 }
 `;
@@ -174,7 +159,6 @@ export const createChw = `mutation CreateChw($input: CreateCHWInput!) {
     id
     email
     walletAddress
-    owner
   }
 }
 `;
@@ -183,7 +167,6 @@ export const updateChw = `mutation UpdateChw($input: UpdateCHWInput!) {
     id
     email
     walletAddress
-    owner
   }
 }
 `;
@@ -192,7 +175,6 @@ export const deleteChw = `mutation DeleteChw($input: DeleteCHWInput!) {
     id
     email
     walletAddress
-    owner
   }
 }
 `;
@@ -210,11 +192,9 @@ export const createPractitioner = `mutation CreatePractitioner($input: CreatePra
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;
@@ -232,11 +212,9 @@ export const updatePractitioner = `mutation UpdatePractitioner($input: UpdatePra
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;
@@ -254,11 +232,9 @@ export const deletePractitioner = `mutation DeletePractitioner($input: DeletePra
         interaction
         ratings
         prescriptions
-        owner
       }
       nextToken
     }
-    owner
   }
 }
 `;
