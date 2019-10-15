@@ -733,6 +733,7 @@ export default {
         parseFloat(sumRatings(this.rating) / 30) * 0.05 * rewardToBeSent;
 
       const totalAmountOfRewards = rewardToBeSent * 2 + rewardToPractitioner;
+      console.log(this.$store.state.web3.rbn)
 
       if (totalAmountOfRewards < this.$store.state.web3.rbn) {
         //amount sent to patient
