@@ -139,7 +139,7 @@ export const CHWActions = {
     };
     API.graphql(graphqlOperation(getChw, input))
       .then(response => {
-        commit(SET_CHW, response.data.getCHW);
+        commit(SET_CHW, response.data.getCHW.walletAddress);
       })
       .catch(err => {
         commit(SET_CHW, {});
